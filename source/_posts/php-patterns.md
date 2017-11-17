@@ -72,3 +72,5 @@ tags:
 ## 纠错
 
 如果大家发现有什么理解有误的地方，可以发起一个issue[点击纠错](https://github.com/TIGERB/easy-tips/issues),我会及时纠正，THX～
+
+> [Easy PHP：一个极速轻量级的PHP全栈框架](http://easy-php.tigerb.cn)

@@ -178,3 +178,5 @@ FROM `destination_table_name`;
 - 使用一个数据库：USE database_name;
 - 导入：source 'file';
 - 导出：mysqldump -h 127.0.0.1 -u root -p "database_name" "table_name" --where="condition" > file_name.sql;
+
+> [Easy PHP：一个极速轻量级的PHP全栈框架](http://easy-php.tigerb.cn)

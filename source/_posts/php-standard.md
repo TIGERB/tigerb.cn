@@ -189,3 +189,5 @@ abstract class StandardExample // {}必须换行
 ## 纠错
 
 如果有写的不对的地方欢迎大家指正，THX～
+
+> [Easy PHP：一个极速轻量级的PHP全栈框架](http://easy-php.tigerb.cn)
