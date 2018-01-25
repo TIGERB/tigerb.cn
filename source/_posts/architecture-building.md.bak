@@ -8,7 +8,7 @@ tags: arthitecture
 
 接口：go
 
-天然并发编程 未来不会考虑太多的性能问题 一般级别的架构nginx+go无限水平扩展应该还是应付来的
+天然并发编程 未来不会考虑太多的性能问题 一般级别的架构nginx+go无限水平扩展应该还是应付来的
 
 后台：php+yii2
 
@@ -18,7 +18,7 @@ php开发快速写后台还是蛮不错的，再配上yii2框架的gii工具，�
 
 大势所趋，模块化
 
-链路追踪：ELK套装
+链路追踪：ELK套装
 
 基础必备，日志追踪，问题排查
 
@@ -32,4 +32,4 @@ api blueprint接口描述语言／swagger
 
 ### 工作流
 
-git workflow
+git workflow
