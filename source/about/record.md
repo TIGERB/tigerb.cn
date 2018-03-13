@@ -5,6 +5,7 @@
 - 小米
     + 一面
         * js闭包
+        * http status
         * 手写实现php框架路由
         * http协议cookie属性
         * https协议
@@ -13,6 +14,7 @@
 ```
 function closure()
 {
+
     var i = 0;
     function incre()
     {
@@ -42,7 +44,7 @@ secure:　仅在https下才传输cookie
 domain: 只允许该域名读取cookie
 path: 指定cookie发送的目录范围
 
-less demo.log | awk '{print &3}' | sort -nr | head -n 10
+awk '{print $3}' demo.log | sort -nr | head -n 10
 
 ```
 
@@ -76,9 +78,9 @@ client -syn-> server
 client <-ack/syn- server
 client -ack-> server
 
-client -fin-> server
+client -fin/ack-> server
 client <-ack- server
-client <-fin- server
+client <-fin/ack- server
 client -ack-> server
 
 ```
@@ -100,7 +102,7 @@ mint->rint->(语法分析、词法分析、抽象语法树ast)->rshutdown->mshut
 数据、对象类的复合类型
 
 isset -> null坑
-empty -> 0 '0'坑
+empty -> 0 '0' 0.0 null [] $variable '' false坑
 
 进程　计算机资源分配的基本单位
 线程　资源调度
@@ -112,7 +114,7 @@ empty -> 0 '0'坑
 304 not modify
 
 400 bad request
-401 
+401 http auth
 403 forbidden
 404 not found
 
@@ -146,16 +148,26 @@ empty -> 0 '0'坑
         * 算法：两个上亿长度的无序数组合并成一个有序数+ 
 
 ```
-4种标量类型：int、string、fload、bool
+error_log => 串行
+
+pcntl_fork => 大于0处于父进程上下文/0处于子进程上下文/小于0 fork失败 
+
+
+4种标量类型：int、string、float、bool
 2种复合类型：array、object
 2种特殊类型: resource、null
 
 struct z_val{
     type
     value
-    is_ref
-    refcount
+    is_ref_gc
+    refcount_gc
 } _zval_struct;
+
+myISAM => 表锁、非聚簇索引、不支持事务、不支持安全恢复
+InnoDB => 行锁、聚簇索引、事务
+
+从左往右匹配不到索引或者范围查询(between/</>/like)为止
 ```
 
 ### 2017-12
@@ -164,6 +176,8 @@ struct z_val{
     + 一面
         * redis是单进程/单线程还是多
         * nginx是单进程/单线程还是多
+        * http结构
+        * http常见头字段
         * nginx和php交互
         * 怎么实现fastcgi
         * mysql的ACDI
@@ -173,7 +187,7 @@ struct z_val{
         * 平常怎么获取知识+       
         * git怎么避免冲突
         * 进程间通信方式
-        * epoll/pool/select差异
+        * epoll/poll/select差异
     + 二面
         * 你最得意的项目，怎么构建和实现的
         * 你平常使用那些psr
@@ -222,3 +236,110 @@ struct z_val{
         - 如何学习
         - 换工作原因
         - 记不清了...
+
+### 2018-02
+
+- 滴滴(ai lab)
+    + 一面 php面
+        * 说一个值得说的项目
+        * mysql的ACDI
+        * mysql默认事务隔离级别
+        * 不可重复读和可重复读级别区别
+        * 实现一个hashtable
+        * 写一个快速排序
+    + 二面　前端面
+        * 盒模型
+        * css垂直居中
+        * css position
+        * juery相关api
+        * 数组去重
+    + 三面　负责人面
+        * http2的好处
+        * 对rpc的理解
+        * 算法　->　不同音轨匹配组合　->　图的遍历       
+    + 四面　总监面
+        * 一个影响深刻的项目 -> 你带来的价值
+        * 说一个遇到的困难，然后怎么解决的
+        * 为什么离职
+
+- 滴滴(平台技术－核心出行)
+    + 一面
+        * 自我介绍
+        * 介绍一个项目
+        * mvc的理解
+        * 你所理解的client发起一个请求的过程
+        * sql优化你怎么做
+        * 算法->　abcd|efg 变成　efg|abcd
+        * array_merge&数组相加区别
+        * 系统中的502请求原因
+    + 二面
+        * 自我介绍
+        * 介绍一个项目
+        * 并行下的数据一直问题
+        * 说说get/post的区别
+        * 算法
+            - 一个有序数里插入一个数
+            - 1～９组成所有不重复的三位数
+    + 三面
+        * 一步一步聊了之前一个项目的架构
+            - 怎么防止的重放攻击
+            - 当时的网关qps
+            - 说说微信或者支付宝支付方式大致的流程
+        * 说说你对php的理解
+        * 对fastcgi的理解
+        * 一个系统上线后，你从那几个方面评估系统的好坏
+        * 不同域名下，怎么能安全的共享cookie信息
+        * 说说外观模式，与中介者模式＆适配器模式的区别
+        * m个大数　求top n    
+
+### 2018-03
+
+- 马蜂窝(目的地 估计一个资格比较老的朋友内推的　技术面试基本问的比较少　聊得比较多)
+    + 一面
+        - 讲项目
+    + 二面
+        - 讲项目
+        - 我自己框架路由的实现
+        - mysql的基本优化
+        - redis在项目中的使用
+    + 三面(HR面)
+        - 聊了聊每段公司的经历和换公司原因
+- 陌陌(api)
+    + 笔试
+        - 2018-03-01到2018-03-09有个活动抽奖，10％中奖概率
+            * 判断在这个时间段内
+            * 判断是android用户
+            * 抽奖算法
+        - nginx日志的各种过滤查找
+            * top 10 ip请求
+            * 查找当前日志文件的绝对路径
+            * 查找进程id
+            * 系统内存快速增长，快速定位问题
+        - 一千万用户，10M内存，设计签到
+        - 设计限流
+    + 一面
+        - 讲项目
+        - 网络编程　-> select/epoll区别
+        - 说说异步非阻塞
+        - 讲下https
+    + 二面
+        - 讲项目
+        - 问了高并发场景的qps和大致机器数量　分析每台机器的性能
+        - 设计个限流
+        - 换工作的原因(被带进了沟里面　尴尬)
+    + 三面(HR面)  
+        - 聊了聊每段公司的经历和换公司原因   
+- 360(erp)
+    + 一面
+    + 二面
+    + 三面
+- 链家(二手房交易组)
+    + 一面
+    + 二面
+    + 三面
+- 小米(海外组)
+    + 一面
+    + 二面
+    + 三面  
+
+
