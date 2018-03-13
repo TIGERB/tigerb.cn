@@ -57,17 +57,17 @@ time_format: HH:mm:ss
 
 # Pagination
 ## Set per_page to 0 to disable pagination
-per_page: 0
+per_page: 15
 pagination_dir: page
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: beautiful-hexo
+theme: anodyne
 
 archive_generator:
     per_page: 0
-    yearly: false
+    yearly: true
     monthly: false
     daily: false
 
@@ -77,3 +77,5 @@ deploy:
   type: git
   repo: git@github.com:TIGERB/tigerb.cn.git
   branch: master
+
+show_ad_post: true  ##如需要开启广告位,设置为 true
