@@ -77,3 +77,5 @@ deploy:
   type: git
   repo: git@github.com:TIGERB/tigerb.cn.git
   branch: master
+
+show_ad_post: true  ##如需要开启广告位,设置为 true
