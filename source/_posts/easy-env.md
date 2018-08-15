@@ -1,5 +1,5 @@
 ---
-title: 酷!一键构建我自己的PHP框架的开发环境
+title: 酷!一键构建我自己的PHP框架的开发环境
 date: 2018-07-08 23:27:26
 tags: docker
 ---
@@ -22,11 +22,11 @@ tags: docker
 ```
 docker image ls
 
-REPOSITORY                               TAG                   IMAGE ID            CREATED             SIZE
-php                                      7.2.7-fpm-alpine3.6   39b42adef50e        10 days ago         79.9MB
-mysql                                    8.0.11                8d99edb9fd40        11 days ago         445MB
-redis                                    4-alpine              caaeda72bf8f        3 weeks ago         27.8MB
-nginx                                    1.15-alpine           bc7fdec94612        4 weeks ago         18MB
+REPOSITORY           TAG                   IMAGE ID            CREATED             SIZE
+php                  7.2.7-fpm-alpine3.6   39b42adef50e        10 days ago         79.9MB
+mysql                8.0.11                8d99edb9fd40        11 days ago         445MB
+redis                4-alpine              caaeda72bf8f        3 weeks ago         27.8MB
+nginx                1.15-alpine           bc7fdec94612        4 weeks ago         18MB
 
 ```
 
@@ -41,7 +41,7 @@ nginx                                    1.15-alpine           bc7fdec94612     
 
 > export EASY_PATH=$(pwd) && export PATH="$PATH:$EASY_PATH/bin"
 
-<p align="center"><img src="https://im5.ezgif.com/tmp/ezgif-5-9651e1e039.gif"></p>
+<p align="center"><img src="http://cdn.tigerb.cn/easy-env-gif.gif"></p>
 
 # 命令列表
 
