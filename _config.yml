@@ -5,7 +5,7 @@
 # Site
 title: TIGERB
 subtitle: TIGERB's blog
-description: no code no life
+description: No code No life
 author: TIGERB
 language: zh-cn
 timezone:
@@ -39,7 +39,7 @@ relative_link: false
 future: true
 highlight:
   enable: true
-  line_number: true
+  line_number: false
   auto_detect: false
   tab_replace:
 
@@ -57,7 +57,7 @@ time_format: HH:mm:ss
 
 # Pagination
 ## Set per_page to 0 to disable pagination
-per_page: 15
+per_page: 20
 pagination_dir: page
 
 # Extensions
@@ -78,4 +78,14 @@ deploy:
   repo: git@github.com:TIGERB/tigerb.cn.git
   branch: master
 
-show_ad_post: true  ##如需要开启广告位,设置为 true
+show_ad_post: false  ##如需要开启广告位,设置为 true
+
+# RSS
+feed:
+    type: atom
+    path: atom.xml
+    limit: 0
+    hub:
+    content:
+    content_limit:
+    content_limit_delim: ' '
