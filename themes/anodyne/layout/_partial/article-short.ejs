@@ -1,0 +1,22 @@
+<a href="<%- url_for(item.path) %>">
+    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv4">
+        <div class="dtc v-mid w-90 black-70">
+            <div>
+                <% if(item.date) { %>
+                    <span class="f5 fw3 lh-copy pr4" style="color: #bbb"><%= item.date.format(config.date_format) %></span> 
+                <% } %>
+                <% if (item.tags && item.tags.length) {
+                    var tags = [];
+                    item.tags.forEach(function(tag) {
+                        <!-- Need to use JS to handle link click to avoid display issues. Best to put here than outer div for SEO. -->
+                        tags.push('');
+                    });
+                %>
+                <%- tags.join(' ') %>
+                <% } %>
+            </div>
+            <span class="f3 fw3 lh-copy" style="color: #333; font-weight: lighter;"><%- item.title || theme.default_post_title || __('default_post_title') %><span>
+        </div>
+    </div>
+</a>
+<span style="display:inline-block; width: 90%; border-bottom: 1px solid #eee;"></span>

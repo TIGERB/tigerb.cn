@@ -1,0 +1,50 @@
+# Logo
+logo_image_source: https://avatars3.githubusercontent.com/u/12149373?s=460&v=4
+
+# Index Page
+index_banner_text: TIGERB'S Blog
+index_banner_text_secondary: No Code No Life
+index_font_awesome_icon_css: fa fa-magic
+
+# Header
+menu:
+  首页: /
+  # Archives: /archives
+  Github: https://github.com/TIGERB
+  Segmentfault: https://segmentfault.com/u/tigerb
+  掘金: https://juejin.im/user/5855e82d1b69e6006c9278b4
+  # About: /about.html
+  # Contact: /contact.html
+
+# Post
+default_post_title: Untitled
+default_post_icon: fa-file-text-o
+
+# Archive Date Format
+archive_date_format: MMM YYYY
+archive_font_awesome_icon_css: fa-folder-open
+
+# About Widget
+about_widget_avatar_url: https://avatars3.githubusercontent.com/u/12149373?s=460&v=4
+about_widget_text: "TIGERB@<a href='http://www.mi.com/en'>小米科技</a><br>时刻夯实基础<br>时刻对新技术保持热忱<br>新一代轻量级PHP框架作者 <a href='http://easy-php.tigerb.cn'>EasyPHP</a>"
+
+
+# Comments.
+comments:
+  # Disqus comments
+  disqus_shortname: 
+
+# Google Analytics Tracking ID
+google_analytics:
+
+# Social Media Platforms
+social_platforms:
+  - url: https://twitter.com/CODERCOOKER
+    fa_icon: fa-twitter
+  - url: https://github.com/TIGERB
+    fa_icon: fa-github
+  - url: /atom.xml
+    fa_icon: fa-rss
+
+# Footer about
+footer_about: "@TIGERB.cn All right reserved  津ICP备17006784号-2"
