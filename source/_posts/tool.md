@@ -23,7 +23,7 @@ tags: tools
 
 推荐理由|安装地址
 ---|---
-zsh插件&主题集合和管理工具 | <https://github.com/robbyrussell/oh-my-zsh>
+zsh插件&主题集合和管理工具 | <https://github.com/robbyrussell/oh-my-zsh>
 
 > Antigen
 
@@ -35,41 +35,41 @@ zsh插件&主题集合和管理工具 | <https://github.com/robbyrussell/oh-my-
 
 推荐理由|安装地址
 ---|---
-重点推荐，根据你的历史命令权重，自动进行可视化命令提示 | <https://github.com/zsh-users/zsh-autosuggestions>
+重点推荐，根据你的历史命令权重，自动进行可视化命令提示 | <https://github.com/zsh-users/zsh-autosuggestions>
 友情提示: 设置term为256色 `export TERM="xterm-256color"'`|
 
 > git-extras
 
 推荐理由|安装地址
 ---|---
-提供了很多省事的git命 | <https://github.com/tj/git-extras>
+提供了很多省事的git命 | <https://github.com/tj/git-extras>
 比如 `git ignore <filename>` 添加需要忽略的文件到.ignore文件 |
-比如 `git undo` 重执当前的commit的改动为未add到暂存库的状态，方便回退 |
-比如 `git show-tree` 查看git tree | 
+比如 `git undo` 重执当前的commit的改动为未add到暂存库的状态，方便回退 |
+比如 `git show-tree` 查看git tree | 
 
 > z
 
 推荐理由|安装地址
 ---|---
-超级好用的shell路径快速跳转工具，比autojump更轻量更快，而且就一个字母多省事 | <https://github.com/rupa/z>
+超级好用的shell路径快速跳转工具，比autojump更轻量更快，而且就一个字母多省事 | <https://github.com/rupa/z>
 
 > tmux
 
 推荐理由|安装地址
 ---|---
-好用的shell分屏工具，并且支持会话(分屏版Screen)| <https://github.com/tmux/tmux>
+好用的shell分屏工具，并且支持会话(分屏版Screen)| <https://github.com/tmux/tmux>
 
 > watch
 
 推荐理由|安装地址
 ---|---
-可以按频率执行某个命令并输出结果，比如实时观察一些统计结果| 一般发行办自带(Mac: `brew install watch`)
+可以按频率执行某个命令并输出结果，比如实时观察一些统计结果| 一般发行办自带(Mac: `brew install watch`)
 
 > alias
 
 推荐理由|安装地址
 ---|---
-把一些常用的命令，或者过长的命令设置为简短的别名，提升效率 | shell built-in command
+把一些常用的命令，或者过长的命令设置为简短的别名，提升效率 | shell built-in command
 
 > alfred
 
@@ -82,13 +82,13 @@ zsh插件&主题集合和管理工具 | <https://github.com/robbyrussell/oh-my-
 
 推荐理由|安装地址
 ---|---
-轻量多主题免费的Markdown编辑器，有Vue文档的主题哦，轻松复制到微信公众号 | <https://typora.io/>
+轻量多主题免费的Markdown编辑器，有Vue文档的主题哦，轻松复制到微信公众号 | <https://typora.io/>
 
 > dash
 
 推荐理由|安装地址
 ---|---
-文档阅读以及管理工具 | <https://kapeli.com/dash>
+文档阅读以及管理工具 | <https://kapeli.com/dash>
 
 ### mysql相关工具
 
@@ -102,7 +102,7 @@ zsh插件&主题集合和管理工具 | <https://github.com/robbyrussell/oh-my-
 
 推荐理由|安装地址
 ---|---
-一个轻量级的Mysql管理工具，多主题支持，整个工具仅仅是一个php文件 | <https://www.adminer.org/>
+一个轻量级的Mysql管理工具，多主题支持，整个工具仅仅是一个php文件 | <https://www.adminer.org/>
 
 > mysqlworkbench
 
@@ -120,7 +120,7 @@ zsh插件&主题集合和管理工具 | <https://github.com/robbyrussell/oh-my-
 
 ### 其他
 
-> OmniPlan
+> OmniPlan
 
 推荐理由|安装地址
 ---|---
@@ -130,13 +130,13 @@ zsh插件&主题集合和管理工具 | <https://github.com/robbyrussell/oh-my-
 
 推荐理由|安装地址
 ---|---
-手绘版原型图绘制工具，简单好看，可以画流程图 | <https://balsamiq.com/wireframes/>
+手绘版原型图绘制工具，简单好看，可以画流程图 | <https://balsamiq.com/wireframes/>
 
 > unsplash
 
 推荐理由|安装地址
 ---|---
-好看的壁纸也会让你在工作中心情舒畅，一个值的推荐的壁纸网站 | <https://unsplash.com/search/photos/wallpaper>
+好看的壁纸也会让你在工作中心情舒畅，一个值的推荐的壁纸网站 | <https://unsplash.com/search/photos/wallpaper>
 
 > asciinema
 
