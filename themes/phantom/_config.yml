@@ -1,0 +1,52 @@
+menu:
+  首页: /
+  # Archives: /archives
+  Github: https://github.com/TIGERB
+  Segmentfault: https://segmentfault.com/u/tigerb
+  掘金: https://juejin.im/user/5855e82d1b69e6006c9278b4
+  # About: /about.html
+  # Contact: /contact.html
+
+# Logo Image Source
+logo_src: https://avatars3.githubusercontent.com/u/12149373?s=460&v=4
+
+# Theme Main Subtitle
+subtitle_main: No Code No Life
+
+# Theme Secondary subtitle
+susbtitle_secondary: 时刻夯实基础，时刻对新技术保持热忱。新一代轻量级「<a href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，「<a href='http://skrshop.tech/'>《电商设计手册》</a>」作者。
+
+# Footer About Section
+about_footer: 新一代轻量级PHP框架「<a href='http://easy-php.tigerb.cn'>EasyPHP</a>」作者，「<a href='http://skrshop.tech/'>《电商设计手册》</a>」作者，拥有A/B/C轮电商创业公司工作经验，现于小米科技海外商城组从事商城后端研发工作。
+
+# Default post title
+default_post_title: No Code No Life
+
+# Default post cover index page (Recommended)
+default_cover_index: "http://cdn.tigerb.cn/20190330161746.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
+
+# Default post cover index page (Optional)
+default_cover_detail: No Code No Life
+
+# Show Dates for posts and pages
+show_dates: YYYY-MM-DD
+
+# Comments. Choose one by filling up the information
+comments:
+  # Disqus comments
+  disqus_shortname: klugjo
+  # Facebook comments
+  facebook:
+    appid:
+    comment_count: 5
+    comment_colorscheme: light
+
+# Google Analytics Tracking ID
+google_analytics:
+
+# Social Accounts
+twitter_url: https://twitter.com/CODERCOOKER
+instagram_url: https://www.instagram.com/codercooker/
+github_url: https://github.com/TIGERB
+email_url: tigerbcode@gmail.com
+rss_url: \atom.xml
