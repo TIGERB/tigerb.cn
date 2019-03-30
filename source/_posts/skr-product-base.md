@@ -2,6 +2,7 @@
 title: 电商设计手册之基础商品信息
 date: 2019-01-26 13:27:31
 tags: shop
+cover_index: "http://cdn.tigerb.cn/20190330162050.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
 ---
 
 # 前言
@@ -53,11 +54,7 @@ tags: shop
 
 通过上面的需求分析，再加上之前的《电商设计手册之用户体系》中的用户体系和《支付开发，不得不了解的国内、国际第三方支付流程》中的支付服务，我们规划出以下的架构图。
 
-<p align="center">
-    <a href="http://cdn.tigerb.cn/skr-product-service.jpg" data-lightbox="roadtrip">
-        <img src="http://cdn.tigerb.cn/skr-product-service.jpg">
-    </a>
-</p>
+<img src="http://cdn.tigerb.cn/skr-product-service.jpg" style:"width:100%;">
 
 # Spu和Sku的故事
 
