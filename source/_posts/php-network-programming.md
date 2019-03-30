@@ -2,6 +2,7 @@
 title: 用php入门网络编程
 date: 2018-11-24 21:54:11
 tags: network-programming
+cover_index: "http://cdn.tigerb.cn/20190330182116.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
 ---
 
 # 前言
@@ -110,11 +111,7 @@ Accept: */*
 
 接着我们看看如何用php创建一个简单的TCP Server过程如下：
 
-<p align="center">
-    <a href="http://cdn.tigerb.cn/php-tcp-serve-2.png" data-lightbox="roadtrip">
-        <img src="http://cdn.tigerb.cn/php-tcp-serve-2.png">
-    </a>
-</p>
+<img src="http://cdn.tigerb.cn/php-tcp-serve-2.png" width="100%">
 
 主要涉及的PHP函数如下：
 ```
@@ -176,11 +173,7 @@ Connection to 127.0.0.1 port 8889 [tcp/ddi-tcp-2] succeeded!
 
 上面简单的TCP Server基本出来了，我们需要让php直接成为一个Web Server，想一想Web Server是基于HTTP协议的，HTTP协议又是基于TCP协议实现的。也就是说我们在上面的TCP Server基础上实现下HTTP协议即可。我们改进下流程图加入HTTP部分（橙黄色），如下
 
-<p align="center">
-    <a href="http://cdn.tigerb.cn/php-http-server.png" data-lightbox="roadtrip">
-        <img src="http://cdn.tigerb.cn/php-http-server.png">
-    </a>
-</p>
+<img src="http://cdn.tigerb.cn/php-http-server.png" width="100%">
 
 实现HTTP协议的过程其实就是：
 1. 能读懂发来请求的信息

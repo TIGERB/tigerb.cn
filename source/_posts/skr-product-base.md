@@ -54,7 +54,7 @@ cover_index: "http://cdn.tigerb.cn/20190330162050.jpg?imageMogr2/thumbnail/640x4
 
 通过上面的需求分析，再加上之前的《电商设计手册之用户体系》中的用户体系和《支付开发，不得不了解的国内、国际第三方支付流程》中的支付服务，我们规划出以下的架构图。
 
-<img src="http://cdn.tigerb.cn/skr-product-service.jpg" style:"width:100%;">
+<img src="http://cdn.tigerb.cn/skr-product-service.jpg" style="width:100%;">
 
 # Spu和Sku的故事
 

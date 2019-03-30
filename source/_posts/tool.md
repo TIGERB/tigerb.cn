@@ -2,6 +2,7 @@
 title: 开发工具分享(2019新年快乐)
 date: 2019-01-02 21:40:55
 tags: tools
+cover_index: "http://cdn.tigerb.cn/20190330181813.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
 ---
 
 # 前言

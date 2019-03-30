@@ -2,6 +2,7 @@
 title: 电商设计手册之用户体系[下]
 date: 2018-08-15 21:50:08
 tags: shop
+cover_index: "http://cdn.tigerb.cn/20190330182424.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
 ---
 
 # 前言

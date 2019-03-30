@@ -8,7 +8,7 @@ menu:
   # Contact: /contact.html
 
 # Logo Image Source
-logo_src: https://avatars3.githubusercontent.com/u/12149373?s=460&v=4
+logo_src: http://cdn.tigerb.cn/20190330232521.png
 
 # Theme Main Subtitle
 subtitle_main: No Code No Life
@@ -48,5 +48,5 @@ google_analytics:
 twitter_url: https://twitter.com/CODERCOOKER
 instagram_url: https://www.instagram.com/codercooker/
 github_url: https://github.com/TIGERB
-email_url: tigerbcode@gmail.com
+email_url: mailto:tigerbcode@gmail.com
 rss_url: \atom.xml
