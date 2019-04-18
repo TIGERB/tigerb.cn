@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Description-->
+    
+        <meta name="description" content="No code No life">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="TIGERB">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="我所理解的接口设计"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="TIGERB"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="undefined"/>
+    
+
+    <!-- Title -->
+    
+    <title>我所理解的接口设计 - TIGERB</title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/sass/main.css">
+
+    <!--[if lt IE 8]>
+        <script src="/js/ie/html5shiv.js"></script>
+    <![endif]-->
+
+    <!--[if lt IE 8]>
+        <link rel="stylesheet" href="/sass/ie8.css">
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+        <link rel="stylesheet" href="/sass/ie9.css">
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?30c7e7d53256334a8dc1cf524fcc77f6";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Menu -->
+        <!-- Header -->
+<header id="header">
+    <div class="inner">
+
+        <!-- Logo -->
+        <a href="/" class="logo">
+            <span class="symbol"><img src="http://cdn.tigerb.cn/20190330232521.png" alt="" /></span><span class="title">TIGERB</span>
+        </a>
+
+        <!-- Nav -->
+        <nav>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+    <h2>Menu</h2>
+    <ul>
+        
+            <li>
+                <a href="/">首页</a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/TIGERB">Github</a>
+            </li>
+        
+            <li>
+                <a href="https://segmentfault.com/u/tigerb">Segmentfault</a>
+            </li>
+        
+            <li>
+                <a href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
+            </li>
+        
+    </ul>
+</nav>
+
+
+        <div id="main">
+            <div class="inner">
+
+                <!-- Main Content -->
+                
+
+    <h1 class="title">我所理解的接口设计</h1>
+    <div class="meta">
+        2018-03-13
+    </div>
+
+
+    <span class="image main"><img src="No Code No Life" alt="" /></span>
+
+
+<!-- Gallery -->
+
+
+<!-- Content -->
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>自己做接口开发的时间也算不短了(三年)，想写这篇文章其实差不多已经有一年多的时间了。我将从下面的方向来对我所理解的接口设计做个总结：</p>
+<blockquote>
+<p>接口参数定义 -&gt; 接口版本化的问题 -&gt; 接口的安全性 -&gt; 接口的代码设计 -&gt; 接口的可读性 -&gt; 接口文档 -&gt; 我遇到的坑</p>
+</blockquote>
+<h1 id="接口参数定义"><a href="#接口参数定义" class="headerlink" title="接口参数定义"></a>接口参数定义</h1><p>接口设计中往可以抽象出一些新的公共参数，从事了近三年的接口开发工作中，我目前能想到了一些较为常见的公共接口参数如下：</p>
+<table>
+<thead>
+<tr>
+<th>公共参数</th>
+<th>含意</th>
+<th>定义该参数的意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>timestamp</td>
+<td>毫秒级时间戳</td>
+<td>1.客户端的请求时间标示 2.后端可以做请求过期验证 3.该参数参与签名算法增加签名的唯一性</td>
+</tr>
+<tr>
+<td>app_key</td>
+<td>签名公钥</td>
+<td>签名算法的公钥，后端通过公钥可以得到对应的私钥</td>
+</tr>
+<tr>
+<td>sign</td>
+<td>接口签名</td>
+<td>通过请求的参数和定义好的签名算法生成接口签名，作用防止中间人篡改请求参数</td>
+</tr>
+<tr>
+<td>did</td>
+<td>设备ID</td>
+<td>设备的唯一标示，生成规则例如android的mac地址的md5和ios曾今udid(目前无法获取)的md5, 1:数据收集 2.便于问题追踪 3.消息推送标示</td>
+</tr>
+</tbody>
+</table>
+<h1 id="接口版本化的问题"><a href="#接口版本化的问题" class="headerlink" title="接口版本化的问题"></a>接口版本化的问题</h1><p>接口设计中有个算是历史上的难题 -&gt; 接口版本化。曾经也去调研了很多关于接口版本化的资料和设计，最后我得到的结论大致如下：</p>
+<ul>
+<li>接口的版本区分为<ul>
+<li>大版本<ul>
+<li>原则：大版本的数量最多控制到5个以内(我个人跟倾向于3个)，超过版本限制的版本提示升级到新版本</li>
+<li>方案<ul>
+<li>uri携带版本号，例如：v1/user/get</li>
+<li>请求参数，例如：user/get?v=1.0</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>小版本<ul>
+<li>原则：自己把控吧😄</li>
+<li>方案<ul>
+<li>uri携带版本号，例如：v1/user/get_01</li>
+<li>请求参数，小数点右边就是小版本，例如：user/get?v=1.1</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="接口的安全性"><a href="#接口的安全性" class="headerlink" title="接口的安全性"></a>接口的安全性</h1><p>接口的设计肯定绕不开安全这两个字，为了达到尽可能的安全，我们需要<strong>尽可能的增加被攻击的难度</strong>，以下是我了解和使用到的一些常见的手段去增加接口的安全性(https这里就不讨论了)：</p>
+<blockquote>
+<p>过期验证／签名验证／重访攻击／限流／转义</p>
+</blockquote>
+<p>伪代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 过期验证</span><br><span class="line">if (microtime(true)*1000 - $_REQUEST[&apos;timestamp&apos;] &gt; 5000) &#123;</span><br><span class="line">    throw new \Exception(401, &apos;Expired request&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 签名验证(公钥校验省略)</span><br><span class="line">$params = ksort($_REQUEST);</span><br><span class="line">unset($params[&apos;sign&apos;]);</span><br><span class="line">$sign = md5(sha1(implode(&apos;-&apos;, $params) . $_REQUEST[&apos;app_key&apos;]));</span><br><span class="line">if ($sign !== $_REQUEST[&apos;sign&apos;]) &#123;</span><br><span class="line">    throw new \Exception(401, &apos;Invalid sign&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 重访攻击</span><br><span class="line"> * @params noise string 随机字符串</span><br><span class="line"> */</span><br><span class="line">$key = md5(&quot;&#123;$_REQUEST[&apos;REQUEST_URI&apos;]&#125;-&#123;$_REQUEST[&apos;timestamp&apos;]&#125;-&#123;$_REQUEST[&apos;noise&apos;]&#125;-&#123;$_REQUEST[&apos;did&apos;]&#125;&quot;);</span><br><span class="line">if ($redisInstance-&gt;exists($key)) &#123;</span><br><span class="line">    throw new \Exception(401, &apos;Repeated request&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 限流</span><br><span class="line">$key = md5(&quot;&#123;$_REQUEST[&apos;REQUEST_URI&apos;]&#125;-&#123;$_REQUEST[&apos;REMOTE_ADDR&apos;]&#125;-&#123;$_REQUEST[&apos;did&apos;]&#125;&quot;);</span><br><span class="line">if ($redisInstance-&gt;get($key) &gt; 60) &#123;</span><br><span class="line">    throw new \Exception(401, &apos;Request limit&apos;);</span><br><span class="line">&#125;</span><br><span class="line">$redisInstance-&gt;incre($key);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 转义</span><br><span class="line">$username = htmlspecialchars($_REQUEST[&apos;username&apos;]);</span><br></pre></td></tr></table></figure>
+<h1 id="接口的代码设计-gt-解耦业务-即插即用"><a href="#接口的代码设计-gt-解耦业务-即插即用" class="headerlink" title="接口的代码设计 -&gt; 解耦业务 即插即用"></a>接口的代码设计 -&gt; 解耦业务 即插即用</h1><blockquote>
+<p>这个过程的关键字：抽象成类 前置中间件 注入</p>
+</blockquote>
+<p>接着就是我们代码设计的层面了，如何抽象公共的部分与业务代码解耦。</p>
+<p>一般写法, 定义个全局函数，然后每个接口开始时调用该函数：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 全局定义一个函数</span><br><span class="line">function check () &#123;</span><br><span class="line">    // 校验公共参数</span><br><span class="line">    # code ...</span><br><span class="line">    // 校验签名</span><br><span class="line">    # code ...</span><br><span class="line">    // 校验频率</span><br><span class="line">    # code ...</span><br><span class="line">    // 等等...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>二般写法, 定义个父类方法，然后每个接口类继承该接口，构造函数调用改方法，其实和上面的换汤不换药：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 父类方法</span><br><span class="line"></span><br><span class="line">class father</span><br><span class="line">&#123;</span><br><span class="line">    public function __construct()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;check();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function check () &#123;</span><br><span class="line">        // 校验公共参数</span><br><span class="line">        # code ...</span><br><span class="line">        // 校验签名</span><br><span class="line">        # code ...</span><br><span class="line">        // 校验频率</span><br><span class="line">        # code ...</span><br><span class="line">        // 等等...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>重点来了，我提倡的第三般写法，对象链和前置中间件：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 检验抽象类</span><br><span class="line"> */</span><br><span class="line">abstract class Check</span><br><span class="line">&#123;</span><br><span class="line">    /**</span><br><span class="line">     * 下一个check实体</span><br><span class="line">     *</span><br><span class="line">     * @var object</span><br><span class="line">     */</span><br><span class="line">    private $nextCheckInstance;</span><br><span class="line">    </span><br><span class="line">    /**</span><br><span class="line">     * 校验方法</span><br><span class="line">     *</span><br><span class="line">     * @param Request $request 请求对象</span><br><span class="line">     */</span><br><span class="line">    abstract public function operate(Request $request);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 设置责任链上的下一个对象</span><br><span class="line">     *</span><br><span class="line">     * @param Check $check</span><br><span class="line">     */</span><br><span class="line">    public function setNext(Check $check)</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;nextCheckInstance = $check;</span><br><span class="line">        return $check;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 启动</span><br><span class="line">     *</span><br><span class="line">     * @param Request $request 请求对象</span><br><span class="line">     */</span><br><span class="line">    public function start(Request $request)</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;doCheck($request);</span><br><span class="line">        // 调用下一个对象</span><br><span class="line">        if (! empty($this-&gt;nextCheckInstance)) &#123;</span><br><span class="line">            $this-&gt;nextCheckInstance-&gt;start($request);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 校验公共参数类</span><br><span class="line">class ParamsCheck extends Check</span><br><span class="line">&#123;</span><br><span class="line">    public function operate()</span><br><span class="line">    &#123;</span><br><span class="line">       // 校验公共参数</span><br><span class="line">        # code ... </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 校验签名类</span><br><span class="line">class SignCheck extends Check</span><br><span class="line">&#123;</span><br><span class="line">    public function operate()</span><br><span class="line">    &#123;</span><br><span class="line">       // 校验签名</span><br><span class="line">        # code ... </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 等等...</span><br><span class="line"></span><br><span class="line">// 前置中间件类</span><br><span class="line">class FrontMiddleware</span><br><span class="line">&#123;</span><br><span class="line">    public function run()</span><br><span class="line">    &#123;</span><br><span class="line">        // 初始化一个：必传参数校验的check</span><br><span class="line">        $checkParams   =  new ParamsCheck();</span><br><span class="line">        // 初始化一个：签名check</span><br><span class="line">        $checkSign     =  new SignCheck();</span><br><span class="line">        // 初始化一个：频率check</span><br><span class="line">        $checkFrequent =  new FrequentCheck();</span><br><span class="line">        // 等等...</span><br><span class="line"></span><br><span class="line">        // 构成对象链</span><br><span class="line">        $checkParams-&gt;setNext($checkSign)</span><br><span class="line">                    -&gt;setNext($checkFrequent)</span><br><span class="line">                    ...</span><br><span class="line">        // 启动</span><br><span class="line">        $checkArguments-&gt;start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="接口的可读性"><a href="#接口的可读性" class="headerlink" title="接口的可读性"></a>接口的可读性</h1><p>关于可读性的不得不提到的就是RESTFUL，这里我就不讨论RESTFUL，大家可以自行补充相关知识。关于接口设计可读性的我的一些思考：</p>
+<ul>
+<li>url<ul>
+<li>非RESTFUL: 资源／资源／操作(动词)， 例如 content/article/get -&gt; 获取内容资源下的一篇文章资源</li>
+<li>RESTFUL: 资源／资源／资源， 例如 get content/article/1 -&gt; 获取内容资源下文章ID为1的文章资源</li>
+</ul>
+</li>
+<li>method<ul>
+<li>非RESTFUL: get便于查nginx日志，上传资源post, 没啥硬性要求</li>
+<li>RESTFUL: 符合RESTFUL的思想</li>
+</ul>
+</li>
+<li>request params: 个人更青睐于下划线命名，适当的单词缩写</li>
+<li>response params: 响应的code要符合http status<ul>
+<li>200 -&gt; 正常</li>
+<li>400 -&gt; 缺少公共必传参数或者业务必传参数</li>
+<li>401 -&gt; 接口校验失败 例如签名</li>
+<li>403 -&gt; 没有该接口的访问权限</li>
+<li>499 -&gt; 上游服务响应时间超过接口设置的超时时间</li>
+<li>500 -&gt; 代码错误</li>
+<li>501 -&gt; 不支持的接口method</li>
+<li>502 -&gt; 上游服务返回的数据格式不正确</li>
+<li>503 -&gt; 上游服务超时</li>
+<li>504 -&gt; 上游服务不可用</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 响应的格式</span><br><span class="line">&#123;</span><br><span class="line">    &quot;code&quot;: 200,</span><br><span class="line">    &quot;msg&quot;: &quot;ok&quot;,</span><br><span class="line">    &quot;data&quot;: &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h1><p>好的接口文档就是生产力， swagger + api blueprint 自行google吧😄</p>
+<h1 id="我遇到的坑"><a href="#我遇到的坑" class="headerlink" title="我遇到的坑"></a>我遇到的坑</h1><p>这里遇到的一个比较大的坑就是http协议历史遗留的bug：</p>
+<blockquote>
+<p>不区分url里的空格 和加号➕</p>
+</blockquote>
+<p>带来的问题就是urldecode会把参数里的+号转为空格，所以这种场景的就得使用rawurldecode防止+转成空格。比如做接口的参数校验的时候～</p>
+
+
+<!-- Tags -->
+
+
+
+<div class="tags">
+    <a href="/tags/api/" class="button small">api</a>
+</div>
+
+
+
+<!-- Comments -->
+<div>
+    
+    <hr />
+    <h3>Comments:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+</div>
+
+
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+        <section>
+            <h2>About</h2>
+            <div>
+                新一代轻量级PHP框架「<a href='http://easy-php.tigerb.cn'>EasyPHP</a>」作者，「<a href='http://skrshop.tech/'>《电商设计手册》</a>」作者，拥有A/B/C轮电商创业公司工作经验，现于小米科技海外商城组从事商城后端研发工作。
+            </div>
+        </section>
+        <section>
+            <h2>Follow</h2>
+            <ul class="icons">
+                
+                    <li><a href="https://twitter.com/CODERCOOKER" class="icon style2 fa-twitter" target="_blank" ><span class="label">Twitter</span></a></li>
+                
+                
+                
+                    <li><a href="https://www.instagram.com/codercooker/" class="icon style2 fa-instagram" target="_blank" ><span class="label">Instagram</span></a></li>
+                
+                
+                
+                    <li><a href="https://github.com/TIGERB" class="icon style2 fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
+                
+                
+                
+                
+                
+                    <li><a href="mailto:tigerbcode@gmail.com" class="icon style2 fa-envelope-o" target="_blank" ><span class="label">Email</span></a></li>
+                
+                
+                    <li><a href="\atom.xml" class="icon style2 fa-rss" target="_blank" ><span class="label">RSS</span></a></li>
+                
+            </ul>
+        </section>
+        <ul class="copyright">
+            <li>&copy; TIGERB.cn All right reserved. 津ICP备17006784号-2</li>
+            <li><a href="https://juejin.im/user/5855e82d1b69e6006c9278b4" target="_blank">juejin</a></li>
+            <li><a href="https://segmentfault.com/u/tigerb" target="_blank">Segmentfault</a></li>
+            <li><a href="http://skrshop.tech/">电商设计手册</a></li>
+            <li><a href="https://dayutalk.cn/">大愚Talk</a></li>
+        </ul>
+    </div>
+</footer>
+    </div>
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- skel -->
+<script src="/js/skel.min.js"></script>
+
+<!-- Custom Code -->
+<script src="/js/util.js"></script>
+
+<!--[if lte IE 8]>
+<script src="/js/ie/respond.min.js"></script>
+<![endif]-->
+
+<!-- Custom Code -->
+<script src="/js/main.js"></script>
+
+<!-- Gallery -->
+<script src="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'klugjo';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+</body>
+
+</html>
