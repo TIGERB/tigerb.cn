@@ -139,7 +139,7 @@
 <!-- Content -->
 <p><br>    <img src="http://cdn.tigerb.cn/prometey-sanchez-noskov-340992-unsplash.jpg?imageMogr2/thumbnail/1280x960!/format/webp/blur/1x0/quality/75|imageslim" width="100%"><br></p>
 
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>今天看见有人聊目前系统有2亿的PV，该如何优化？当我看到这个话题的时候，突然在想自己工作中也遇到了不少高并发的场景了，所以即兴发挥，在这里简单总结和分享下，欢迎指正和补充。</p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>今天看见有人聊目前系统有2亿的PV，该如何优化？当我看到这个话题的时候，突然在想自己工作中也遇到了不少高并发的场景了，所以即兴发挥，在这里简单总结和分享下服务端相关，欢迎指正和补充。</p>
 <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h3 id="读操作"><a href="#读操作" class="headerlink" title="读操作"></a>读操作</h3><p>关于读，我们一般遵循如下优先级：</p>
 <table>
 <thead>
@@ -154,7 +154,7 @@
 <tr>
 <td>最高</td>
 <td>尽可能静态化</td>
-<td>对实时性要去不高的数据，尽可能全走CDN</td>
+<td>对实时性要求不高的数据，尽可能全走CDN</td>
 <td>例如获取基础商品信息</td>
 </tr>
 <tr>
@@ -231,7 +231,7 @@
 <tbody>
 <tr>
 <td>异步</td>
-<td>异步回调，层层回调似灾难(Promise也是很臃肿的链式代码)</td>
+<td>例如nodejs，层层回调似灾难(Promise也是很臃肿的链式代码)</td>
 </tr>
 <tr>
 <td>epoll</td>

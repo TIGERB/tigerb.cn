@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://TIGERB.cn/"/>
-  <updated>2019-04-18T15:59:37.128Z</updated>
+  <updated>2019-04-18T16:41:03.184Z</updated>
   <id>http://TIGERB.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://TIGERB.cn/2019/04/18/top-qps-experience/"/>
     <id>http://TIGERB.cn/2019/04/18/top-qps-experience/</id>
     <published>2019-04-18T14:56:55.000Z</published>
-    <updated>2019-04-18T15:59:37.128Z</updated>
+    <updated>2019-04-18T16:41:03.184Z</updated>
     
     <summary type="html">
     
@@ -255,9 +255,9 @@
   </entry>
   
   <entry>
-    <title>电商设计手册之用户体系[下]</title>
-    <link href="http://TIGERB.cn/2018/08/15/skr-account-system-two/"/>
-    <id>http://TIGERB.cn/2018/08/15/skr-account-system-two/</id>
+    <title>电商设计手册之用户体系[上]</title>
+    <link href="http://TIGERB.cn/2018/08/15/skr-account-system-one/"/>
+    <id>http://TIGERB.cn/2018/08/15/skr-account-system-one/</id>
     <published>2018-08-15T13:50:08.000Z</published>
     <updated>2019-04-18T14:43:16.711Z</updated>
     
@@ -279,9 +279,9 @@
   </entry>
   
   <entry>
-    <title>电商设计手册之用户体系[上]</title>
-    <link href="http://TIGERB.cn/2018/08/15/skr-account-system-one/"/>
-    <id>http://TIGERB.cn/2018/08/15/skr-account-system-one/</id>
+    <title>电商设计手册之用户体系[下]</title>
+    <link href="http://TIGERB.cn/2018/08/15/skr-account-system-two/"/>
+    <id>http://TIGERB.cn/2018/08/15/skr-account-system-two/</id>
     <published>2018-08-15T13:50:08.000Z</published>
     <updated>2019-04-18T14:43:16.711Z</updated>
     
