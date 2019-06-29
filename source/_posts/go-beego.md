@@ -1,7 +1,7 @@
 ---
-title: beego框架代码分析
+title: golang框架解析-beego
 date: 2018-12-06 20:27:19
-tags: go
+tags: golang
 cover_index: "http://cdn.tigerb.cn/20190330182113.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
 ---
 

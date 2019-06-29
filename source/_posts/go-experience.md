@@ -1,7 +1,7 @@
 ---
 title: go新手容易犯的三个致命错误
 date: 2019-01-19 20:19:02
-tags: go
+tags: golang
 ---
 
 # 前言
