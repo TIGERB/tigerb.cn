@@ -1,5 +1,5 @@
 ---
-title: golang框架解析-iris
+title: Go框架解析:iris
 date: 2019-06-29 19:46:53
 tags: golang
 cover_index: "http://cdn.tigerb.cn/20190627125846.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
@@ -7,9 +7,9 @@ cover_index: "http://cdn.tigerb.cn/20190627125846.jpg?imageMogr2/thumbnail/640x4
 
 ## 前言
 
-报了个驾校，时隔两个多月没发文章了，驾考上周终于都结束了，这之后得补补前两月的文章了。之前定了个目标，读完beego、iris、gin等go框架的源码，之前已经发过一篇过于beego的文章[golang框架解析-beego](http://tigerb.cn/2018/12/06/beego/)，今天带来的是go框架iris的解析，主要讲解iris框架的一个生命周期过程。
+报了个驾校，时隔两个多月没发文章了，驾考上周终于都结束了，这之后得补补前两月的文章了。之前定了个目标，读完beego、iris、gin等go框架的源码，之前已经发过一篇过于beego的文章[Go框架解析:beego](http://tigerb.cn/2018/12/06/go-beego/)，今天带来的是go框架iris的解析，主要讲解iris框架的一个生命周期过程。
 
-在读这篇文章之前，如果没看过[golang框架解析-beego](http://tigerb.cn/2018/12/06/beego/)的可以先去看看，因为[golang框架解析-beego](http://tigerb.cn/2018/12/06/beego/)有讲关于**go如何启动一个http server**,这个知识点对理解本篇文章有很大的帮助。
+在读这篇文章之前，如果没看过[Go框架解析:beego](http://tigerb.cn/2018/12/06/go-beego/)的可以先去看看，因为[Go框架解析:beego](http://tigerb.cn/2018/12/06/go-beego/)有讲关于**go如何启动一个http server**,这个知识点对理解本篇文章有很大的帮助。
 
 ## 安装
 
@@ -40,22 +40,31 @@ func main() {
 
 ## iris的生命周期
 
-<img src="http://cdn.tigerb.cn/20190628234814.png" style="width:100%">
+<img src="http://cdn.tigerb.cn/20190704211456.png" style="width:100%">
 
 > 访问图片源地址查看大图 http://cdn.tigerb.cn/20190628234814.png
 
 上图是我在读iris代码时，整理的iris框架的一个生命周期流程图，内容比较多。总的来说划分为四个大的部分：
 
-1.(**橙色部分**)初始化iris.Application
-    + 创建iris.Application 
-    + 创建APIBuilder(app.Get()等方法的路由都是注册到这里) 
-    + 创建Router(每个http请求都是通过router处理的)
-2.(**蓝色部分**)注册路由到app.APIBuilder
-3.(**紫色部分**)初始化一个http.Server
-4.(**绿色部分**)构建路由handler&启动http server
-    + 注册app.APIBuilder到app.Router.routesProvider 
-    + 注册app.APIBuilder.routes的路由到app.Router.requestHandler
-    + 启动http server
+#### 橙色部分
+初始化iris.Application:
+- 创建iris.Application 
+- 创建APIBuilder(app.Get()等方法的路由都是注册到这里) 
+- 创建Router(每个http请求都是通过router处理的)
+
+#### 蓝色部分
+注册路由到app.APIBuilder
+
+#### 紫色部分
+初始化一个http.Server
+
+#### 绿色部分
+
+构建路由handler&启动http server:
+
+- 注册`app.APIBuilder`到`app.Router.routesProvider`
+- 注册`app.APIBuilder.routes`的路由到`app.Router.requestHandler`
+- 启动http server
 
 ## 关键代码解析
 
@@ -288,7 +297,10 @@ serverHandler{c.server}.ServeHTTP(w, w.req)
     <img src="http://cdn.tigerb.cn/20190629151818.png" style="width:30%">
 </p>
 
-《golang框架解析》系列文章链接如下：
+---
 
-- [golang框架解析-beego](http://tigerb.cn/2018/12/06/beego/)
-- [golang框架解析-iris](http://tigerb.cn/2018/06/29/iris/)
+《Go框架解析:系列文章链接如下：
+
+- [Go框架解析:gin](http://tigerb.cn/2019/07/06/go-gin/)
+- [Go框架解析:iris](http://tigerb.cn/2019/06/29/go-iris/)
+- [Go框架解析:beego](http://tigerb.cn/2018/12/06/go-beego/)

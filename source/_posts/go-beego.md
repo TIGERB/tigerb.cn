@@ -1,5 +1,5 @@
 ---
-title: golang框架解析-beego
+title: Go框架解析-beego
 date: 2018-12-06 20:27:19
 tags: golang
 cover_index: "http://cdn.tigerb.cn/20190330182113.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
@@ -251,4 +251,12 @@ beego.Router()
 > 备注：go导入包相当于入栈过程，先import后执行init
 
 ![http://cdn.tigerb.cn/beego_2.png](http://cdn.tigerb.cn/beego_2.png)
+
+---
+
+《Go框架解析》系列文章链接如下：
+
+- [Go框架解析:gin](http://tigerb.cn/2019/07/06/go-gin/)
+- [Go框架解析:iris](http://tigerb.cn/2019/06/29/go-iris/)
+- [Go框架解析:beego](http://tigerb.cn/2018/12/06/go-beego/)
 

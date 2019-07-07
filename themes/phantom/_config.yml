@@ -8,7 +8,7 @@ menu:
   # Contact: /contact.html
 
 # Logo Image Source
-logo_src: http://cdn.tigerb.cn/20190330232521.png
+logo_src: http://cdn.tigerb.cn/20190707142019.png
 
 # Theme Main Subtitle
 subtitle_main: No Code No Life
@@ -34,7 +34,7 @@ show_dates: YYYY-MM-DD
 # Comments. Choose one by filling up the information
 comments:
   # Disqus comments
-  disqus_shortname: TIGERB
+  # disqus_shortname: TIGERB
   # Facebook comments
   # facebook:
   #   appid:
