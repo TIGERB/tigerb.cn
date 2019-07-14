@@ -28,7 +28,9 @@ cover_index: "http://cdn.tigerb.cn/20190330182424.jpg?imageMogr2/thumbnail/640x4
 
 当你第一次接触和用户相关的互联网产品时，或者曾今在我眼里。**用户体系**无非就是“登录”和“注册”，“修改用户信息”这些，等。简单来做的话，无非我们需要一张表去记录用户的身份信息：注册时(insert操作)，往表里插入一个数据；登录时(select&update操作)，通过用户标识(手机号、邮箱等)判断用户的密码是否正确；修改用户信息(select&update操作)，就是直接update这个uid的用户信息(头像、昵称等)。
 
-<img src="http://cdn.tigerb.cn/skr-account-smaple-structure.png" style="width:80%">
+<p align="center">
+  <img src="http://cdn.tigerb.cn/skr-account-smaple-structure.png" style="width:20%">
+</p>
 
 这样设计的确没什么问题，很简单不是么。但是随着业务的发展，一方面我们需要提供统一的用户管理(高内聚)，又要提高系统的可扩展性，所以我想呈现出来的是我理解的**一个基本用户体系应该有的东西**。
 

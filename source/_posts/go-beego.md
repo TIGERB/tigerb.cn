@@ -256,6 +256,7 @@ beego.Router()
 
 《Go框架解析》系列文章链接如下：
 
+- [Go框架解析:echo](http://tigerb.cn/2019/07/13/go-echo/)
 - [Go框架解析:gin](http://tigerb.cn/2019/07/06/go-gin/)
 - [Go框架解析:iris](http://tigerb.cn/2019/06/29/go-iris/)
 - [Go框架解析:beego](http://tigerb.cn/2018/12/06/go-beego/)

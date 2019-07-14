@@ -1,11 +1,11 @@
 ---
-title: Go框架解析-gin
+title: Go框架解析:gin
 date: 2019-07-06 12:40:30
 tags: golang
-cover_index: "http://cdn.tigerb.cn/20190705125057.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
+cover_index: "http://cdn.tigerb.cn/20190714105017.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
 ---
 
-<img src="http://cdn.tigerb.cn/20190705124639.jpg" style="width:100%">
+<img src="http://cdn.tigerb.cn/20190714104800.jpg" style="width:100%">
 
 ## 前言
 
@@ -13,12 +13,12 @@ cover_index: "http://cdn.tigerb.cn/20190705125057.jpg?imageMogr2/thumbnail/640x4
 
 计划|状态
 ---|---
-[Go框架解析-beego](http://tigerb.cn/2018/12/06/go-beego/)|done
-[Go框架解析-iris](http://tigerb.cn/2019/06/29/go-iris/)|done
-[Go框架解析-gin](http://tigerb.cn/2019/07/06/go-gin/) |done
-Go框架解析-echo|doing
-Go框架解析-revel|doing
-Go框架解析-Martini|doing
+[Go框架解析:beego](http://tigerb.cn/2018/12/06/go-beego/)|✅done
+[Go框架解析:iris](http://tigerb.cn/2019/06/29/go-iris/)|✅done
+[Go框架解析:gin](http://tigerb.cn/2019/07/06/go-gin/) |✅done
+[Go框架解析:echo](http://tigerb.cn/2019/07/13/go-echo/)|✅done
+Go框架解析:revel|✈️doing
+Go框架解析:Martini|️️✈️doing
 
 再完成各个golang框架生命周期的解析之后，我会计划对这几个框架的优略进行一个系列分析，由于业内大多都是性能分析的比较多，我可能会更侧重于以下维度：
 
@@ -344,7 +344,7 @@ func (c *Context) reset() {
 
 ## 结语
 
-最后我们再简单的回顾下上面的流程,从上图看来，是不是相对于iris简单了好多。
+最后我们再简单的回顾下上面的流程,从下图看来，是不是相对于iris简单了好多。
 
 <p align="center">
     <img src="http://cdn.tigerb.cn/20190706222632.png" style="width:30%">
@@ -354,6 +354,7 @@ func (c *Context) reset() {
 
 《Go框架解析》系列文章链接如下：
 
+- [Go框架解析:echo](http://tigerb.cn/2019/07/13/go-echo/)
 - [Go框架解析:gin](http://tigerb.cn/2019/07/06/go-gin/)
 - [Go框架解析:iris](http://tigerb.cn/2019/06/29/go-iris/)
 - [Go框架解析:beego](http://tigerb.cn/2018/12/06/go-beego/)
