@@ -29,7 +29,7 @@ cover_detail: "http://cdn.tigerb.cn/20190720222404.jpg?/format/webp/blur/1x0/qua
 
 ### beego框架中间件的实现
 
-首先我们来看看beego框架中间件的实现方式，beego对于框架中间件的实现最与众不同(天生的MVC框架)，所以我们先来看beego，对于beego自身来讲，框架中间件叫请求预执行应该更为贴切，但是无论叫啥，其实目的还是一致的，注册一些前置操作到实际的业务前去执行。而它实现的方式也是很清晰和简单，在controller接口里定义了一个`Prepare()`的发方法，beego提供了一个基础的controller结构，然后实际的业务controller会合成复用这个基础的controller,然后我们再去复写`Prepare()`就可以了。代码如下：
+首先我们来看看beego框架中间件的实现方式，beego对于框架中间件的实现最与众不同(天生的MVC框架)，所以我们先来看beego，大家都知道beego在controller接口里定义了一个`Prepare()`的发方法，beego提供了一个基础的controller结构，然后实际的业务controller会合成复用这个基础的controller,然后我们再去复写`Prepare()`就可以了，通过这个预执行方法可以达到中间件的目的。代码如下：
 
 ```go
 // 控制器接口
@@ -39,16 +39,24 @@ type ControllerInterface interface {
 }
 ```
 
-除了上面之外，beego里还有一个`AddAPPStartHook`的方法，我们可以当作注册启动前中间件的地方，代码如下：
+但是除了上面之外大家常用的`Prepare()`，beego里其实还有一个`RunWithMiddleWares`的方法，我们可以当作注册启动前中间件的地方，代码如下：
 
 ```go
-// 在beego里这称之为钩子
-func AddAPPStartHook(hf ...hookfunc) {
-	hooks = append(hooks, hf...)
+// 注册中间件
+func RunWithMiddleWares(addr string, mws ...MiddleWare) {
+	// ...
+	BeeApp.Run(mws...)
+}
+
+// ...
+app.Server.Handler = app.Handlers
+for i := len(mws) - 1; i >= 0; i-- {
+	if mws[i] == nil {
+		continue
+	}
+	app.Server.Handler = mws[i](app.Server.Handler)
 }
 ```
-
-beego框架中间件总结：beego对于框架中间件这个概念突出的并不是很明显，是通过路由预执行、启动钩子来满足用户对于插入请求前置操作(所谓框架中间件)，总之是满足需求的。
 
 ### iris框架中间件的实现
 
@@ -430,7 +438,7 @@ nullHandler.Run(&Context{})
 
 框架中间件|优点|不足
 --------------|--------------|--------------
-beego's middleware|符合php开发者使用框架的习惯|耦合到业务controller，不够简单，概念不够抽象、隔离
+beego's middleware|符合php开发者使用框架的习惯|中间件概念不够突出，概念不够抽象、隔离
 iris's middleware|执行过程中链式调用、去耦合、复用性高|手动Next()、实现不够优雅、执行前未先构成调用链
 gin's middleware|同iris|同iris、此外用了for循环(for循环里递归代码阅读起来是个坑)
 echo's middleware|同iris、先构成链再执行|同iris
