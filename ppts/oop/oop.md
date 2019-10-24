@@ -378,16 +378,27 @@ coupon_id
 
 <slide :class="size-40">
 
-## 完整代码
+## PHP完整代码
 ---
 
 :::card {.quote}
 
-![](http://cdn.tigerb.cn/20191021001359.png)
+![](http://cdn.tigerb.cn/20191024143840.png)
 
 :::
 
-<slide :class="size-80">
+<slide :class="size-50">
+
+## Go完整代码
+---
+
+:::card {.quote}
+
+![](http://cdn.tigerb.cn/20191024144623.png)
+
+:::
+
+<slide :class="size-80 aligncenter">
 
 #### 上面的代码有什么好处？🤔️
 ---
