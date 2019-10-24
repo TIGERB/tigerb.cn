@@ -4,13 +4,16 @@ url: http://tigerb.cn/
 
 <slide class="bg-black-blue aligncenter" image="https://images.unsplash.com/photo-1505238680356-667803448bb6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80 .dark">
 
-# 面向对象的设计过程 {.text-landing.text-shadow}
+# 面向对象的设计过程 {.text-landing}
+
 ----
+
 By 施展 {.text-subtitle.animated.fadeInDown.delay-800}
 
 
 <slide class="aligncenter">
-## 前言
+
+## 前言 {.gray2}
 ----
 我一直认为分享的目的不是炫技。 {.text-intro}
 
@@ -32,7 +35,7 @@ By 施展 {.text-subtitle.animated.fadeInDown.delay-800}
 
 <slide>
 
-### 本次分享有下面四个要素
+### 本次分享有下面四个要素 {.gray3}
 ----
 
 :::column {.sms}
@@ -68,9 +71,9 @@ By 施展 {.text-subtitle.animated.fadeInDown.delay-800}
 - 耦合高 
 - 无法扩展
 
---- 
-
-> 今天就来探讨如何**克服**上面的问题～
+:::note
+今天就来探讨如何**克服**上面的问题～ {.slideInUp}
+:::
 
 <slide class="aligncenter">
 
@@ -89,9 +92,9 @@ By 施展 {.text-subtitle.animated.fadeInDown.delay-800}
 
 > 此处有人觉着有啥问题么？
 
-```
+:::note
 备注：说出来问题的，本次分享就可以略过了~
-```
+:::
 
 <slide :class="aligncenter">
 
@@ -158,14 +161,21 @@ By 施展 {.text-subtitle.animated.fadeInDown.delay-800}
 
 <slide class="aligncenter size-50">
 
+### 上面就是面向对象设计的代码结果
+
+<slide class="aligncenter size-50">
+
 ## 思考🤔
 ----
 
 > 上面的代码就没啥问题了吗？
 
+<slide class="aligncenter size-50">
+
+## 思考🤔
 ----
 
-> 最后的设计就是面向对象设计的代码结果，所以，如何设计出完全面向对象的代码？
+> 所以，如何设计出完全面向对象的代码？
 
 
 <slide>
@@ -339,11 +349,9 @@ coupon_id
 
 <slide :class="size-200">
 
-### 设计代码
+### 创建订单
 
 ----
-
-##### 4.创建订单
 
 :::gallery
 
@@ -381,7 +389,7 @@ coupon_id
 
 <slide :class="size-80">
 
-## 上面的代码有什么好处？🤔️
+#### 上面的代码有什么好处？🤔️
 ---
 
 :::card {.quote}
@@ -405,32 +413,32 @@ coupon_id
 
 ----
 
-- 对接口编程，不要对实现编程
-- 使用对象之间的组合，减少对继承的使用
+- 对接口编程而不是对实现编程
+- 优先使用对象组合而不是继承
 - 抽象用于不同的事物，而接口用于事物的行为
 
-<slide class="size-40 aligncenter">
+<slide class="size-100 aligncenter">
+
+#### 回归代码
+----
 
 :::gallery
 
-![](http://cdn.tigerb.cn/20191021001359.png)
+![](http://cdn.tigerb.cn/20190714103845.jpg)
 
-## 回归代码
-`---------------------------------------------------------------`
-
-> 对接口编程，不要对实现编程
+> 1.对接口编程而不是对实现编程
 
 ```
 结果：RobotOrderCreate依赖了BehaviorOrderCreateInterface抽象接口
 ```
 
-> 使用对象之间的组合，减少对继承的使用
+> 2.优先使用对象组合而不是继承
 
 ```
 结果：完全没有使用继承，多个行为不同场景组合使用
 ```
 
-> 抽象用于不同的事物，而接口用于事物的行为
+> 3.抽象用于不同的事物，而接口用于事物的行为
 
 ```
 结果：
@@ -438,6 +446,10 @@ coupon_id
 2. 机器人又有不同的创建行为
 3. 机器人的创建行为最终依赖于BehaviorOrderCreateInterface接口
 ```
+
+---
+
+![](http://cdn.tigerb.cn/20191021001359.png)
 
 :::
 
@@ -453,6 +465,10 @@ coupon_id
 
 #### 设计模式又是什么？
 
+:::note
+前人面向对象编程过程中的经验总结
+:::
+
 <slide class="size-60 aligncenter">
 
 #### 设计模式的设计原则（开闭原则）
@@ -465,8 +481,6 @@ coupon_id
 
 ## 开闭原则：对扩展开放，对修改封闭
 
-:::
-
 <slide class="size-60 aligncenter">
 
 ### 设计模式的设计原则
@@ -474,12 +488,16 @@ coupon_id
 ----
 
 - 开闭原则：对扩展开放，对修改封闭
-- 接口隔离：使用多个接口，而不是对一个接口编程，去依赖降低耦合
-- 最少知道：减少内部依赖，尽可能的独立
-- 合成复用：多个独立的实体合成聚合，而不是使用继承
 - 里氏代换：超类（父类）出现的地方，派生类（子类）都可以出现
+- 依赖倒转：对接口编程，依赖于抽象而不依赖于具体
+- 接口隔离：使用多个接口，而不是对一个接口编程，去依赖降低耦合
+- 合成复用：多个独立的实体合成聚合，而不是使用继承
+- 迪米特法则，又称最少知道原则：减少内部依赖，尽可能的独立
+
+:::
 
 <slide class="size-60 aligncenter">
+
 
 ### 下回预告👋
 
