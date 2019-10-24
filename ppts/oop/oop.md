@@ -515,3 +515,16 @@ coupon_id
 ----
 
 上面预习了设计模式的概念，下次我们进行《设计模式业务实战》。
+
+<slide class="size-60 aligncenter">
+
+### 完了？没有～ 重点来了
+
+<slide class="size-60 aligncenter">
+
+### 😨作业😨
+
+----
+
+找一个你最近写过的业务，重新设计你的业务代码。
+
