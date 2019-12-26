@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://TIGERB.cn/"/>
-  <updated>2019-11-04T04:51:56.437Z</updated>
+  <updated>2019-12-31T14:40:29.470Z</updated>
   <id>http://TIGERB.cn/</id>
   
   <author>
@@ -17,11 +17,83 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>通用抽奖工具之系统设计</title>
+    <link href="http://TIGERB.cn/2019/12/31/skr-lottery-sys/"/>
+    <id>http://TIGERB.cn/2019/12/31/skr-lottery-sys/</id>
+    <published>2019-12-31T14:33:00.000Z</published>
+    <updated>2019-12-31T14:40:29.470Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="shop" scheme="http://TIGERB.cn/tags/shop/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>通用抽奖工具之需求分析</title>
+    <link href="http://TIGERB.cn/2019/12/23/skr-lottery/"/>
+    <id>http://TIGERB.cn/2019/12/23/skr-lottery/</id>
+    <published>2019-12-23T08:46:07.000Z</published>
+    <updated>2019-12-31T14:40:07.260Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="shop" scheme="http://TIGERB.cn/tags/shop/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>营销体系开篇</title>
+    <link href="http://TIGERB.cn/2019/12/22/skr-marketing/"/>
+    <id>http://TIGERB.cn/2019/12/22/skr-marketing/</id>
+    <published>2019-12-22T08:46:07.000Z</published>
+    <updated>2019-12-31T14:32:30.638Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="shop" scheme="http://TIGERB.cn/tags/shop/"/>
+    
+  </entry>
+  
+  <entry>
     <title>面向对象的设计过程</title>
     <link href="http://TIGERB.cn/2019/10/11/oop/"/>
     <id>http://TIGERB.cn/2019/10/11/oop/</id>
     <published>2019-10-11T12:44:39.000Z</published>
-    <updated>2019-11-04T04:51:56.437Z</updated>
+    <updated>2019-11-07T12:14:12.224Z</updated>
     
     <summary type="html">
     
