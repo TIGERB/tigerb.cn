@@ -80,7 +80,7 @@
 
         <!-- Logo -->
         <a href="/" class="logo">
-            <span class="symbol"><img src="http://cdn.tigerb.cn/20190330232521.png" alt="" /></span><span class="title">TIGERB</span>
+            <span class="symbol"><img src="http://cdn.tigerb.cn/20190707142019.png" alt="" /></span><span class="title">TIGERB</span>
         </a>
 
         <!-- Nav -->
@@ -149,10 +149,11 @@
 <li>接口设计</li>
 </ul>
 <h1 id="架构设计"><a href="#架构设计" class="headerlink" title="架构设计"></a>架构设计</h1><h3 id="简单来看用户体系"><a href="#简单来看用户体系" class="headerlink" title="简单来看用户体系"></a>简单来看用户体系</h3><p>当你第一次接触和用户相关的互联网产品时，或者曾今在我眼里。<strong>用户体系</strong>无非就是“登录”和“注册”，“修改用户信息”这些，等。简单来做的话，无非我们需要一张表去记录用户的身份信息：注册时(insert操作)，往表里插入一个数据；登录时(select&amp;update操作)，通过用户标识(手机号、邮箱等)判断用户的密码是否正确；修改用户信息(select&amp;update操作)，就是直接update这个uid的用户信息(头像、昵称等)。</p>
-<p><img src="http://cdn.tigerb.cn/skr-account-smaple-structure.png" style:"width:80%"=""></p>
+<p align="center"><br>  <img src="http://cdn.tigerb.cn/skr-account-smaple-structure.png" style="width:20%"><br></p>
+
 <p>这样设计的确没什么问题，很简单不是么。但是随着业务的发展，一方面我们需要提供统一的用户管理(高内聚)，又要提高系统的可扩展性，所以我想呈现出来的是我理解的<strong>一个基本用户体系应该有的东西</strong>。</p>
 <h3 id="一个基本用户体系应该有的东西"><a href="#一个基本用户体系应该有的东西" class="headerlink" title="一个基本用户体系应该有的东西"></a>一个基本用户体系应该有的东西</h3><p>首先我们对原有的用户表进行再一次的抽象(抽离用户注册、登录依赖的字段、第三方登陆) -&gt; <strong>账户表</strong>，为什么这么做？随着业务的发展，以前只维护一个产品，也许某一天又开发新的产品，这样我们就可以统一的维护我们公司所有产品的注册登录逻辑，不同的产品只维护该产品和用户相关的信息即可(具体依赖产品形态)。如下图所示：</p>
-<p><img src="http://cdn.tigerb.cn/skr-user-system-2.png" style:"width:80%"=""></p>
+<p><img src="http://cdn.tigerb.cn/skr-user-system-2.png" style="width:80%"></p>
 <p>上图中，还提到了第三方登陆/员工表/后台权限管理，这些都是一些用户体系基本必备的结构。</p>
 <p>第三方登录：第三方也是登陆方式的一种，我们也把它抽象到账户的一部分，如上图所示。其次，关于第三方登录这里存在一个交互方式设计存在的问题，后面交互设计时会提到。</p>
 <p>员工：因为上面我们抽离了账户表，所以内部的管理系统后台也可以统一的使用账户表的登录逻辑，这样全公司在账号这个事情上达到了真正的高内聚。</p>
@@ -173,7 +174,7 @@
 <li>第二部分：用户(<strong>应用层</strong>，无限水平扩展)</li>
 <li>第三部分：员工(<strong>应用层</strong>，员工权限体系)</li>
 </ul>
-<p><img src="http://cdn.tigerb.cn/skr-account-structure.jpg" style:"width:80%"=""></p>
+<p><img src="http://cdn.tigerb.cn/skr-account-structure.jpg" style="width:80%"></p>
 <h1 id="数据模型设计"><a href="#数据模型设计" class="headerlink" title="数据模型设计"></a>数据模型设计</h1><p>对应上面的架构，我们很容易设计出我们的数据模型(这里假设我们目前只有一个对C端的应用)：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">账户 -&gt; 1.账户表</span><br><span class="line">用户 -&gt; 2.用户表</span><br><span class="line">员工 -&gt; 3.员工表</span><br></pre></td></tr></table></figure>
 <p>除了上面三张表外，还需要我们的R(role)B(base)A(access)C(control)权限管理,RBAC基于角色的权限管理大家应该很熟悉，这里我就不详细说了，简单的RBAC首先需要：</p>
@@ -183,7 +184,7 @@
 <p>最后我们的用户体系应该基本就上面8张表。咦，貌似漏掉了第三方登陆，我们加上吧，很简单如下：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">9. 第三方用户登陆表，记录不同第三方的用户标示</span><br></pre></td></tr></table></figure>
 <p>最最后就是上面的9张表了，具体的表结构和sql如下：</p>
-<p><img src="http://cdn.tigerb.cn/skr-account-model-2.png" style:"width:100%"=""></p>
+<p><img src="http://cdn.tigerb.cn/skr-account-model-2.png" style="width:100%"></p>
 <h3 id="表sql"><a href="#表sql" class="headerlink" title="表sql"></a>表sql</h3><p><strong>账户模型</strong></p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">-- 账户模型</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`account_user`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">unsigned</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT <span class="keyword">COMMENT</span> <span class="string">'账号id'</span>,</span><br><span class="line">  <span class="string">`email`</span> <span class="built_in">varchar</span>(<span class="number">30</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span> <span class="keyword">COMMENT</span> <span class="string">'邮箱'</span>,</span><br><span class="line">  <span class="string">`phone`</span> <span class="built_in">varchar</span>(<span class="number">15</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span> <span class="keyword">COMMENT</span> <span class="string">'手机号'</span>,</span><br><span class="line">  <span class="string">`username`</span> <span class="built_in">varchar</span>(<span class="number">30</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span> <span class="keyword">COMMENT</span> <span class="string">'用户名'</span>,</span><br><span class="line">  <span class="string">`password`</span> <span class="built_in">varchar</span>(<span class="number">32</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span> <span class="keyword">COMMENT</span> <span class="string">'密码'</span>,</span><br><span class="line">  <span class="string">`create_at`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'0'</span> <span class="keyword">COMMENT</span> <span class="string">'创建时间'</span>,</span><br><span class="line">  <span class="string">`create_ip_at`</span> <span class="built_in">varchar</span>(<span class="number">12</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span> <span class="keyword">COMMENT</span> <span class="string">'创建ip'</span>,</span><br><span class="line">  <span class="string">`last_login_at`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'0'</span> <span class="keyword">COMMENT</span> <span class="string">'最后一次登陆时间'</span>,</span><br><span class="line">  <span class="string">`last_login_ip_at`</span> <span class="built_in">varchar</span>(<span class="number">12</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span> <span class="keyword">COMMENT</span> <span class="string">'最后一次登陆ip'</span>,</span><br><span class="line">  <span class="string">`login_times`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'0'</span> <span class="keyword">COMMENT</span> <span class="string">'登录次数'</span>,</span><br><span class="line">  <span class="string">`status`</span> tinyint(<span class="number">1</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'0'</span> <span class="keyword">COMMENT</span> <span class="string">'状态 1:enable, 0:disable, -1:deleted'</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>),</span><br><span class="line">  <span class="keyword">KEY</span> <span class="string">`idx_email`</span> (<span class="string">`email`</span>),</span><br><span class="line">  <span class="keyword">KEY</span> <span class="string">`idx_phone`</span> (<span class="string">`phone`</span>),</span><br><span class="line">  <span class="keyword">KEY</span> <span class="string">`idx_username`</span> (<span class="string">`username`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8mb4 <span class="keyword">COMMENT</span>=<span class="string">'账户'</span>;</span><br></pre></td></tr></table></figure>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 第三方账户</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`account_platform`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">unsigned</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT <span class="keyword">COMMENT</span> <span class="string">'自增id'</span>,</span><br><span class="line">  <span class="string">`uid`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">unsigned</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'0'</span> <span class="keyword">COMMENT</span> <span class="string">'账号id'</span>,</span><br><span class="line">  <span class="string">`platform_id`</span> <span class="built_in">varchar</span>(<span class="number">60</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span> <span class="keyword">COMMENT</span> <span class="string">'平台id'</span>,</span><br><span class="line">  <span class="string">`platform_token`</span> <span class="built_in">varchar</span>(<span class="number">60</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span> <span class="keyword">COMMENT</span> <span class="string">'平台access_token'</span>,</span><br><span class="line">  <span class="string">`type`</span> tinyint(<span class="number">1</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'0'</span> <span class="keyword">COMMENT</span> <span class="string">'平台类型 0:未知,1:facebook,2:google,3:wechat,4:qq,5:weibo,6:twitter'</span>,</span><br><span class="line">  <span class="string">`nickname`</span> <span class="built_in">varchar</span>(<span class="number">60</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span> <span class="keyword">COMMENT</span> <span class="string">'昵称'</span>,</span><br><span class="line">  <span class="string">`avatar`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span> <span class="keyword">COMMENT</span> <span class="string">'头像'</span>,</span><br><span class="line">  <span class="string">`create_at`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'0'</span> <span class="keyword">COMMENT</span> <span class="string">'创建时间'</span>,</span><br><span class="line">  <span class="string">`update_at`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'0'</span> <span class="keyword">COMMENT</span> <span class="string">'更新时间'</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>),</span><br><span class="line">  <span class="keyword">KEY</span> <span class="string">`idx_uid`</span> (<span class="string">`uid`</span>),</span><br><span class="line">  <span class="keyword">KEY</span> <span class="string">`idx_platform_id`</span> (<span class="string">`platform_id`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8mb4 <span class="keyword">COMMENT</span>=<span class="string">'第三方用户信息'</span>;</span><br></pre></td></tr></table></figure>
@@ -240,15 +241,14 @@
 
 
 
+<!-- Qrcode -->
+<div width="100px">
+    <img src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg" alt="TIGERB" width="300px" style="display:block; margin: 30px auto 0px auto;">
+</div>
+
 <!-- Comments -->
 <div>
     
-    <hr />
-    <h3>Comments:</h3>
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-
 
 
 </div>
@@ -325,18 +325,6 @@
 <script src="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
 
 <!-- Disqus Comments -->
-
-<script type="text/javascript">
-    var disqus_shortname = 'klugjo';
-
-    (function(){
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
 
 
 </body>
