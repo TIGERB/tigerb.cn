@@ -10,7 +10,7 @@ cover_index: "http://cdn.tigerb.cn/20200330204649.jpg?imageMogr2/thumbnail/640x4
 > 嗯，我的代码没有`else`系列，一个设计模式业务真实使用的golang系列。
 
 <p>
-    <img src="http://cdn.tigerb.cn/20200328215543.jpg" width="50%">
+    <img src="http://cdn.tigerb.cn/20200425144718.jpg" width="50%">
 </p>
 
 # **前言**
@@ -757,4 +757,11 @@ demo2代码地址：<https://github.com/TIGERB/easy-tips/blob/master/go/src/patt
 2. 本系列的一些设计模式的概念可能和原概念存在差异，因为会结合实际使用，取其精华，适当改变，灵活使用。
 ```
 
-> [我的代码没有else系列 更多文章 点击此处查看](https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns)
+# 文章列表
+---
+
+- [代码模板 | 我的代码没有else](https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns/template)
+- [链式调用 | 我的代码没有else](https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns/responsibility)
+- [代码组件 | 我的代码没有else](https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns/composite)
+- [订阅通知 | 我的代码没有else](https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns/observer)
+- [客户决策 | 我的代码没有else](https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns/strategy)
