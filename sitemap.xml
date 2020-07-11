@@ -149,14 +149,14 @@
   </url>
   
   <url>
-    <loc>http://TIGERB.cn/2017/05/30/travis-ci/</loc>
+    <loc>http://TIGERB.cn/2019/04/18/top-qps-experience/</loc>
     
     <lastmod>2019-10-22T10:44:33.283Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://TIGERB.cn/2019/04/18/top-qps-experience/</loc>
+    <loc>http://TIGERB.cn/2017/05/30/travis-ci/</loc>
     
     <lastmod>2019-10-22T10:44:33.283Z</lastmod>
     
@@ -177,14 +177,14 @@
   </url>
   
   <url>
-    <loc>http://TIGERB.cn/2017/08/21/summary-august/</loc>
+    <loc>http://TIGERB.cn/2017/03/06/standard/</loc>
     
     <lastmod>2019-10-22T10:44:33.281Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://TIGERB.cn/2017/03/06/standard/</loc>
+    <loc>http://TIGERB.cn/2017/08/21/summary-august/</loc>
     
     <lastmod>2019-10-22T10:44:33.281Z</lastmod>
     
@@ -226,7 +226,7 @@
   </url>
   
   <url>
-    <loc>http://TIGERB.cn/2016/12/14/php-patterns/</loc>
+    <loc>http://TIGERB.cn/2018/11/24/php-network-programming/</loc>
     
     <lastmod>2019-10-22T10:44:33.276Z</lastmod>
     
@@ -234,6 +234,13 @@
   
   <url>
     <loc>http://TIGERB.cn/2016/12/23/php-standard/</loc>
+    
+    <lastmod>2019-10-22T10:44:33.276Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://TIGERB.cn/2016/12/14/php-patterns/</loc>
     
     <lastmod>2019-10-22T10:44:33.276Z</lastmod>
     
@@ -254,21 +261,14 @@
   </url>
   
   <url>
-    <loc>http://TIGERB.cn/2018/11/24/php-network-programming/</loc>
-    
-    <lastmod>2019-10-22T10:44:33.276Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://TIGERB.cn/2016/10/12/php-mipush/</loc>
+    <loc>http://TIGERB.cn/2017/03/04/php-magic-function/</loc>
     
     <lastmod>2019-10-22T10:44:33.275Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://TIGERB.cn/2017/03/04/php-magic-function/</loc>
+    <loc>http://TIGERB.cn/2016/10/12/php-mipush/</loc>
     
     <lastmod>2019-10-22T10:44:33.275Z</lastmod>
     
@@ -317,7 +317,7 @@
   </url>
   
   <url>
-    <loc>http://TIGERB.cn/2019/06/29/go-iris/</loc>
+    <loc>http://TIGERB.cn/2019/07/06/go-gin/</loc>
     
     <lastmod>2019-10-22T10:44:33.271Z</lastmod>
     
@@ -331,7 +331,7 @@
   </url>
   
   <url>
-    <loc>http://TIGERB.cn/2019/07/06/go-gin/</loc>
+    <loc>http://TIGERB.cn/2019/06/29/go-iris/</loc>
     
     <lastmod>2019-10-22T10:44:33.271Z</lastmod>
     
