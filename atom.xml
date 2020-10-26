@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://TIGERB.cn/"/>
-  <updated>2020-08-02T14:50:44.241Z</updated>
+  <updated>2020-10-26T12:14:45.587Z</updated>
   <id>http://TIGERB.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一篇文章搞清电商订单结算页面设计？</title>
+    <link href="http://TIGERB.cn/2020/10/31/skrshop/order-checkout/"/>
+    <id>http://TIGERB.cn/2020/10/31/skrshop/order-checkout/</id>
+    <published>2020-10-31T12:30:00.000Z</published>
+    <updated>2020-10-26T12:14:45.587Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="shop" scheme="http://TIGERB.cn/tags/shop/"/>
+    
+      <category term="订单系统" scheme="http://TIGERB.cn/tags/%E8%AE%A2%E5%8D%95%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>做电商还搞不清一元秒杀、常规秒杀、限时购？</title>
