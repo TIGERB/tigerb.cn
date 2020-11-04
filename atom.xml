@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://TIGERB.cn/"/>
-  <updated>2020-10-26T12:14:45.587Z</updated>
+  <updated>2020-11-04T11:35:34.032Z</updated>
   <id>http://TIGERB.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>并发组件 | Go设计模式实战</title>
+    <link href="http://TIGERB.cn/2020/11/04/go-patterns/component-concurrency/"/>
+    <id>http://TIGERB.cn/2020/11/04/go-patterns/component-concurrency/</id>
+    <published>2020-11-04T13:13:11.000Z</published>
+    <updated>2020-11-04T11:35:34.032Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="设计模式" scheme="http://TIGERB.cn/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+      <category term="Go" scheme="http://TIGERB.cn/tags/Go/"/>
+    
+  </entry>
   
   <entry>
     <title>一篇文章搞清电商订单结算页面设计？</title>
@@ -95,11 +121,11 @@
   </entry>
   
   <entry>
-    <title>状态变换 | 我的代码没有else</title>
+    <title>状态变换 | Go设计模式实战</title>
     <link href="http://TIGERB.cn/2020/05/31/go-patterns/state/"/>
     <id>http://TIGERB.cn/2020/05/31/go-patterns/state/</id>
     <published>2020-05-31T08:25:11.000Z</published>
-    <updated>2020-05-31T09:13:18.392Z</updated>
+    <updated>2020-11-04T11:36:38.970Z</updated>
     
     <summary type="html">
     
@@ -147,11 +173,11 @@
   </entry>
   
   <entry>
-    <title>客户决策 | 我的代码没有else</title>
+    <title>客户决策 | Go设计模式实战</title>
     <link href="http://TIGERB.cn/2020/04/25/go-patterns/strategy/"/>
     <id>http://TIGERB.cn/2020/04/25/go-patterns/strategy/</id>
     <published>2020-04-25T08:13:11.000Z</published>
-    <updated>2020-04-25T15:20:04.079Z</updated>
+    <updated>2020-11-04T11:36:38.967Z</updated>
     
     <summary type="html">
     
@@ -199,11 +225,11 @@
   </entry>
   
   <entry>
-    <title>订阅通知 | 我的代码没有else</title>
+    <title>订阅通知 | Go设计模式实战</title>
     <link href="http://TIGERB.cn/2020/04/11/go-patterns/observer/"/>
     <id>http://TIGERB.cn/2020/04/11/go-patterns/observer/</id>
     <published>2020-04-11T11:40:11.000Z</published>
-    <updated>2020-04-25T15:20:39.810Z</updated>
+    <updated>2020-11-04T11:36:38.969Z</updated>
     
     <summary type="html">
     
@@ -225,11 +251,11 @@
   </entry>
   
   <entry>
-    <title>代码组件 | 我的代码没有else</title>
+    <title>代码组件 | Go设计模式实战</title>
     <link href="http://TIGERB.cn/2020/04/06/go-patterns/component/"/>
     <id>http://TIGERB.cn/2020/04/06/go-patterns/component/</id>
     <published>2020-04-06T08:13:11.000Z</published>
-    <updated>2020-04-25T15:20:33.219Z</updated>
+    <updated>2020-11-04T11:36:44.244Z</updated>
     
     <summary type="html">
     
@@ -251,11 +277,11 @@
   </entry>
   
   <entry>
-    <title>链式调用 | 我的代码没有else</title>
+    <title>链式调用 | Go设计模式实战</title>
     <link href="http://TIGERB.cn/2020/04/02/go-patterns/responsbility/"/>
     <id>http://TIGERB.cn/2020/04/02/go-patterns/responsbility/</id>
     <published>2020-04-02T14:22:11.000Z</published>
-    <updated>2020-04-25T15:20:46.800Z</updated>
+    <updated>2020-11-04T11:36:38.969Z</updated>
     
     <summary type="html">
     
@@ -277,11 +303,11 @@
   </entry>
   
   <entry>
-    <title>代码模板 | 我的代码没有else</title>
+    <title>代码模板 | Go设计模式实战</title>
     <link href="http://TIGERB.cn/2020/03/30/go-patterns/template/"/>
     <id>http://TIGERB.cn/2020/03/30/go-patterns/template/</id>
     <published>2020-03-30T14:22:11.000Z</published>
-    <updated>2020-04-25T15:20:51.643Z</updated>
+    <updated>2020-11-04T11:36:38.969Z</updated>
     
     <summary type="html">
     
