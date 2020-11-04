@@ -1,5 +1,5 @@
 ---
-title: 状态变换 | 我的代码没有else
+title: 状态变换 | Go设计模式实战
 date: 2020-05-31 16:25:11
 tags: 
 	- 设计模式
@@ -7,10 +7,10 @@ tags:
 cover_index: "http://cdn.tigerb.cn/20200531163250.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
 ---
 
-> 嗯，我的代码没有`else`系列，一个设计模式业务真实使用的golang系列。
+> 嗯，Go设计模式实战系列，一个设计模式业务真实使用的golang系列。
 
 <p>
-    <img src="http://cdn.tigerb.cn/20200425144718.jpg" width="50%">
+    <img src="http://cdn.tigerb.cn/20201103130617.png" width="50%">
 </p>
 
 # **前言**
@@ -136,7 +136,7 @@ cover_index: "http://cdn.tigerb.cn/20200531163250.jpg?imageMogr2/thumbnail/640x4
 package main
 
 //------------------------------------------------------------
-//我的代码没有`else`系列
+//Go设计模式实战系列
 //状态模式
 //@auhtor TIGERB<https://github.com/TIGERB>
 //------------------------------------------------------------
@@ -348,19 +348,18 @@ main.(*ServiceProviderYunpian).Send 【云片】短信发送成功，手机号:+
 
 ```
 特别说明：
-1. 我的代码没有`else`，只是一个在代码合理设计的情况下自然而然无限接近或者达到的结果，并不是一个硬性的目标，务必较真。
+1. Go设计模式实战，只是一个在代码合理设计的情况下自然而然无限接近或者达到的结果，并不是一个硬性的目标，务必较真。
 2. 本系列的一些设计模式的概念可能和原概念存在差异，因为会结合实际使用，取其精华，适当改变，灵活使用。
 ```
 
 # 文章列表
 ---
 
-- [代码模板 | 我的代码没有else](https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns/template)
-- [链式调用 | 我的代码没有else](https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns/responsibility)
-- [代码组件 | 我的代码没有else](https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns/composite)
-- [订阅通知 | 我的代码没有else](https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns/observer)
-- [客户决策 | 我的代码没有else](https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns/strategy)
-- [状态变换 | 我的代码没有else](https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns/state)
+- [代码模板 | Go设计模式实战](https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns/template)
+- [链式调用 | Go设计模式实战](https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns/responsibility)
+- [代码组件 | Go设计模式实战](https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns/composite)
+- [订阅通知 | Go设计模式实战](https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns/observer)
+- [客户决策 | Go设计模式实战](https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns/strategy)
+- [状态变换 | Go设计模式实战](https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns/state)
 
-> [我的代码没有else系列 更多文章 点击此处查看](https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns)
-
+> [Go设计模式实战系列 更多文章 点击此处查看](https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns)
