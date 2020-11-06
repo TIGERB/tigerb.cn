@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://TIGERB.cn/"/>
-  <updated>2020-11-04T11:35:34.032Z</updated>
+  <updated>2020-11-06T02:56:01.961Z</updated>
   <id>http://TIGERB.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://TIGERB.cn/2020/11/04/go-patterns/component-concurrency/"/>
     <id>http://TIGERB.cn/2020/11/04/go-patterns/component-concurrency/</id>
     <published>2020-11-04T13:13:11.000Z</published>
-    <updated>2020-11-04T11:35:34.032Z</updated>
+    <updated>2020-11-06T02:56:01.961Z</updated>
     
     <summary type="html">
     
@@ -125,7 +125,7 @@
     <link href="http://TIGERB.cn/2020/05/31/go-patterns/state/"/>
     <id>http://TIGERB.cn/2020/05/31/go-patterns/state/</id>
     <published>2020-05-31T08:25:11.000Z</published>
-    <updated>2020-11-04T11:36:38.970Z</updated>
+    <updated>2020-11-06T02:31:13.198Z</updated>
     
     <summary type="html">
     
@@ -177,7 +177,7 @@
     <link href="http://TIGERB.cn/2020/04/25/go-patterns/strategy/"/>
     <id>http://TIGERB.cn/2020/04/25/go-patterns/strategy/</id>
     <published>2020-04-25T08:13:11.000Z</published>
-    <updated>2020-11-04T11:36:38.967Z</updated>
+    <updated>2020-11-06T02:31:13.175Z</updated>
     
     <summary type="html">
     
@@ -229,7 +229,7 @@
     <link href="http://TIGERB.cn/2020/04/11/go-patterns/observer/"/>
     <id>http://TIGERB.cn/2020/04/11/go-patterns/observer/</id>
     <published>2020-04-11T11:40:11.000Z</published>
-    <updated>2020-11-04T11:36:38.969Z</updated>
+    <updated>2020-11-06T02:31:13.175Z</updated>
     
     <summary type="html">
     
@@ -255,7 +255,7 @@
     <link href="http://TIGERB.cn/2020/04/06/go-patterns/component/"/>
     <id>http://TIGERB.cn/2020/04/06/go-patterns/component/</id>
     <published>2020-04-06T08:13:11.000Z</published>
-    <updated>2020-11-04T11:36:44.244Z</updated>
+    <updated>2020-11-06T02:31:13.175Z</updated>
     
     <summary type="html">
     
@@ -281,7 +281,7 @@
     <link href="http://TIGERB.cn/2020/04/02/go-patterns/responsbility/"/>
     <id>http://TIGERB.cn/2020/04/02/go-patterns/responsbility/</id>
     <published>2020-04-02T14:22:11.000Z</published>
-    <updated>2020-11-04T11:36:38.969Z</updated>
+    <updated>2020-11-06T02:31:13.175Z</updated>
     
     <summary type="html">
     
@@ -307,7 +307,7 @@
     <link href="http://TIGERB.cn/2020/03/30/go-patterns/template/"/>
     <id>http://TIGERB.cn/2020/03/30/go-patterns/template/</id>
     <published>2020-03-30T14:22:11.000Z</published>
-    <updated>2020-11-04T11:36:38.969Z</updated>
+    <updated>2020-11-06T02:31:13.175Z</updated>
     
     <summary type="html">
     
