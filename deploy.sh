@@ -1,4 +1,4 @@
 hexo generate \
-&& cp -r ./source/go-patterns ./public \
-&& cp -r ./source/go-patterns ./.deploy_git \
+&& cp -r ./source/go ./public \
+&& cp -r ./source/go ./.deploy_git \
 && hexo deploy
