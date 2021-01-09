@@ -12,9 +12,13 @@
   * [策略模式](patterns/strategy)
   * [状态模式](patterns/state)
   * [并发组合模式](patterns/concurrency-component)
-  * 更新中...
+  * ...
 
 * Go语言轻松进阶
   * [前言](kernal/)
   * [Map的设计与实现](kernal/map)
-  * 更新中...
+    * [收益](kernal/map?id=收益)
+    * [一般Map的实现思路](/kernal/map?id=简单看看一般map的实现思路)
+    * [轻松入门](/kernal/map?id=go语言里map的实现思路入门程度)
+    * [快速进阶](/kernal/map?id=go语言里map的实现思路熟悉程度)
+  * ...
