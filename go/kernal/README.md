@@ -8,10 +8,10 @@
     </a>
 </p>
 
-> 嗯，Go语言轻松进阶，一个可以让深入学习Go语言的你，轻松进阶的系列。
+> 嗯，Go语言轻松进阶，一个帮助深入学习Go语言的你，轻松进阶的系列。
 
 <p>
-    <img src="http://cdn.tigerb.cn/20210108200447.png" width="36%">
+    <img src="http://cdn.tigerb.cn/20210109200839.png" width="36%" style="box-shadow: 3px 3px 3px 3px #ddd;">
 </p>
 
 ## 版权申明
