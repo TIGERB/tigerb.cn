@@ -1,7 +1,4 @@
-* 简介
-  * [Go设计模式实战](patterns/)
-  * [Go语言轻松进阶](kernal/)
-
+* [首页](/)
 * Go设计模式实战
 
   * [前言](patterns/)
@@ -18,7 +15,7 @@
   * [前言](kernal/)
   * [Map的设计与实现](kernal/map)
     * [收益](kernal/map?id=收益)
-    * [一般Map的实现思路](/kernal/map?id=简单看看一般map的实现思路)
-    * [轻松入门](/kernal/map?id=go语言里map的实现思路入门程度)
-    * [快速进阶](/kernal/map?id=go语言里map的实现思路熟悉程度)
+    * [基础](/kernal/map?id=简单看看一般map的实现思路)
+    * [入门](/kernal/map?id=go语言里map的实现思路入门程度)
+    * [进阶](/kernal/map?id=go语言里map的实现思路熟悉程度)
   * ...
