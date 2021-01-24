@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://TIGERB.cn/"/>
-  <updated>2020-12-20T14:55:01.189Z</updated>
+  <updated>2021-01-24T01:57:50.492Z</updated>
   <id>http://TIGERB.cn/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>64位平台下，指针自身的大小为什么是8字节？</title>
+    <link href="http://TIGERB.cn/2021/01/23/go-base/memory-pointer/"/>
+    <id>http://TIGERB.cn/2021/01/23/go-base/memory-pointer/</id>
+    <published>2021-01-23T14:00:11.000Z</published>
+    <updated>2021-01-24T01:57:50.492Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Go" scheme="http://TIGERB.cn/tags/Go/"/>
+    
+  </entry>
   
   <entry>
     <title>过去2020，未来2021</title>
@@ -42,10 +66,10 @@
   
   <entry>
     <title>由浅到深，入门Go语言Map实现原理</title>
-    <link href="http://TIGERB.cn/2020/12/20/go-base/map/"/>
-    <id>http://TIGERB.cn/2020/12/20/go-base/map/</id>
-    <published>2020-12-20T13:54:16.719Z</published>
-    <updated>2020-12-22T04:36:26.609Z</updated>
+    <link href="http://TIGERB.cn/2020/12/21/go-base/map/"/>
+    <id>http://TIGERB.cn/2020/12/21/go-base/map/</id>
+    <published>2020-12-21T13:55:11.000Z</published>
+    <updated>2021-01-24T01:50:41.085Z</updated>
     
     <summary type="html">
     
