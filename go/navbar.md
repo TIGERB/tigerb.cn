@@ -12,5 +12,6 @@
 
 * Go语言轻松进阶
   * [前言](kernal/)
-  * [Map的设计与实现](kernal/map)
+  * [1.0 Map的设计与实现](kernal/map)
+  * [2.0 内存与垃圾回收](kernal/memory)
   * 更新中...
