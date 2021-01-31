@@ -13,17 +13,19 @@
 
 * Go语言轻松进阶
   * [前言](kernal/)
-  * [Map的设计与实现](kernal/map)
-    * [导读](kernal/map?id=收益)
-    * [基础](/kernal/map?id=简单看看一般map的实现思路)
-    * [入门](/kernal/map?id=go语言里map的实现思路入门程度)
-    * [进阶](/kernal/map?id=go语言里map的实现思路熟悉程度)
-  * [内存与垃圾回收](kernal/memory)
-    * [导读](kernal/memory?id=导读)
-    * [指针的大小](kernal/memory-pointer)
-    <!-- * TCMalloc内存分配原理
-      - `Freelist`的概念
-      - `Page`、`Span`、`Object`的概念
-      - `PageHeap`、`CentralFreeList`、`ThreadCache`的概念
-      - `TCMalloc`基本结构的依赖关系 -->
+  * [1.0 Map的设计与实现](kernal/map)
+    * [1.1 导读](kernal/map?id=收益)
+    * [1.2 基础](/kernal/map?id=简单看看一般map的实现思路)
+    * [1.3 入门](/kernal/map?id=go语言里map的实现思路入门程度)
+    * [1.4 进阶](/kernal/map?id=go语言里map的实现思路熟悉程度)
+  * [2.0 内存与垃圾回收](kernal/memory)
+    * [2.1 导读](kernal/memory?id=导读)
+    * [2.2 指针的大小](kernal/memory-pointer)
+    * [2.3 内存的线性分配](kernal/tcmalloc?id=内存的线性分配)
+    * [2.4 什么是FreeList？](kernal/tcmalloc?id=什么是freelist？)
+    * [2.5 虚拟内存](kernal/tcmalloc?id=虚拟内存)
+    * [2.6 什么是TCMalloc？](kernal/tcmalloc?id=什么是tcmalloc？)
+      * [2.6.1 基本概念](kernal/tcmalloc?id=TCMalloc中的五个基本概念)
+      * [2.6.2 基本结构](kernal/tcmalloc?id=解密Tcmalloc的基本结构)
+      * [2.6.3 内存分配](kernal/tcmalloc?id=解密Tcmalloc的内存分配过程)
   * ...
