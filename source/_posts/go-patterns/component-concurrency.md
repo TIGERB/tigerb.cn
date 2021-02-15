@@ -10,7 +10,7 @@ cover_index: "http://cdn.tigerb.cn/20201104193311.jpg?imageMogr2/thumbnail/640x4
 > 嗯，Go设计模式实战系列，一个设计模式业务真实使用的golang系列。
 
 <p align="left">
-  <img src="http://cdn.tigerb.cn/20201103130617.png" style="width:38%">
+  <img src="http://cdn.tigerb.cn/20210215112122.png" style="width:38%">
 </p>
 
 # 前言
