@@ -11,7 +11,7 @@
 > 嗯，Go设计模式实战系列，一个设计模式业务真实使用的golang系列。
 
 <p>
-    <img src="http://cdn.tigerb.cn/20201103130617.png" width="36%">
+    <img src="http://cdn.tigerb.cn/20210215112122.png" width="36%">
 </p>
 
 ## 版权申明
