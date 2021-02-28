@@ -18,10 +18,10 @@
     * [1.2 一般map的实现思路](/kernal/map?id=一般map的实现思路)
     * [1.3 入门Go语言里map的实现](/kernal/map?id=go语言里map的实现思路入门程度)
     * [1.4 熟悉Go语言里map的实现](/kernal/map?id=go语言里map的实现思路熟悉程度)
-    
-    <!-- * [1.5 其他疑问]()
-      * [1.5.1 为什么说Map是无序的?]()
-      * [1.5.2 为什么读不到key时没有Panic?]() -->
+    * [1.5 解疑答惑]()
+      * [1.5.1 为什么说Go的Map是无序的?](/kernal/map-range)
+      <!-- * [1.5.2 为什么读不到key时没有Panic?]() -->
+      <!-- * [1.5.3 为什么并发写操作会Panic?]() -->
 
   * [2.0 内存与垃圾回收](kernal/memory)
     * [2.1 导读](kernal/memory?id=导读)
