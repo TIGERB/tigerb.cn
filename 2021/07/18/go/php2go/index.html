@@ -442,11 +442,10 @@
 </tr>
 </tbody>
 </table>
-<h2 id="常用函数对比"><a href="#常用函数对比" class="headerlink" title="常用函数对比"></a>常用函数对比</h2><hr>
 <h2 id="PHP类的实例化和Go结构体的初始化的对比"><a href="#PHP类的实例化和Go结构体的初始化的对比" class="headerlink" title="PHP类的实例化和Go结构体的初始化的对比"></a>PHP类的实例化和Go结构体的初始化的对比</h2><hr>
 <p>PHP类的实例化<br><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">定义class</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassDemo</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 私有属性</span></span><br><span class="line">    <span class="keyword">private</span> $privateVar = <span class="string">""</span>;</span><br><span class="line">    <span class="comment">// 公有属性</span></span><br><span class="line">    <span class="keyword">public</span> $publicVar = <span class="string">""</span>;</span><br><span class="line">    <span class="comment">// 构造函数</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 实例化类时执行</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 私有方法</span></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">privateFun</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 公有方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">publicFun</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 实例化类ClassDemo 获取类ClassDemo的对象</span></span><br><span class="line">$varObject = <span class="keyword">new</span> ClassDemo(); <span class="comment">// 对象(类)</span></span><br></pre></td></tr></table></figure></p>
 <p>Go结构体的初始化<br><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 包初始化时执行</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> StructDemo <span class="keyword">struct</span>&#123;</span><br><span class="line">    <span class="comment">// 小写开头驼峰表示私有属性</span></span><br><span class="line">    <span class="comment">// 不可导出</span></span><br><span class="line">    privateVar <span class="keyword">string</span></span><br><span class="line">    <span class="comment">// 大写开头驼峰表示公有属性</span></span><br><span class="line">    <span class="comment">// 可导出</span></span><br><span class="line">    PublicVar <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 小写开头驼峰表示私有方法</span></span><br><span class="line"><span class="comment">// 结构体StructDemo的私有方法</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(demo *StructDemo)</span> <span class="title">privateFun</span><span class="params">()</span> <span class="title">error</span></span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 大写开头驼峰表示公有属性</span></span><br><span class="line"><span class="comment">// 结构体StructDemo的公有方法</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(demo *StructDemo)</span> <span class="title">PublicFun</span><span class="params">()</span> <span class="title">error</span></span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化结构体StructDemo</span></span><br><span class="line"><span class="comment">// structDemo := &amp;StructDemo&#123;&#125;</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="常用函数对比-1"><a href="#常用函数对比-1" class="headerlink" title="常用函数对比"></a>常用函数对比</h2><hr>
+<h2 id="常用函数对比"><a href="#常用函数对比" class="headerlink" title="常用函数对比"></a>常用函数对比</h2><hr>
 <table>
 <thead>
 <tr>
@@ -492,14 +491,24 @@
 <td>json.Unmarshal(data []byte, v interface{}) error</td>
 </tr>
 <tr>
+<td>序列化(不再建议使用)</td>
+<td>serialize()、unserialize()</td>
+<td>包<a href="https://github.com/wulijun/go-php-serialize" target="_blank" rel="noopener">https://github.com/wulijun/go-php-serialize</a></td>
+</tr>
+<tr>
 <td>md5</td>
 <td>md5()</td>
-<td>包<code>crypto/md5</code></td>
+<td>包crypto/md5</td>
 </tr>
 <tr>
 <td>终端输出</td>
 <td>echo、var_dump等</td>
 <td>fmt.Println(a …interface{})</td>
+</tr>
+<tr>
+<td>各种类型互转</td>
+<td>intval()等</td>
+<td>包strconv</td>
 </tr>
 </tbody>
 </table>
