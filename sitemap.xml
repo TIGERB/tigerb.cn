@@ -51,13 +51,6 @@
   </url>
   
   <url>
-    <loc>http://TIGERB.cn/2020/05/31/go-patterns/state/</loc>
-    
-    <lastmod>2021-02-15T03:24:24.549Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://TIGERB.cn/2020/03/30/go-patterns/template/</loc>
     
     <lastmod>2021-02-15T03:24:24.549Z</lastmod>
@@ -65,9 +58,9 @@
   </url>
   
   <url>
-    <loc>http://TIGERB.cn/2020/04/02/go-patterns/responsbility/</loc>
+    <loc>http://TIGERB.cn/2020/05/31/go-patterns/state/</loc>
     
-    <lastmod>2021-02-15T03:24:24.548Z</lastmod>
+    <lastmod>2021-02-15T03:24:24.549Z</lastmod>
     
   </url>
   
@@ -80,6 +73,13 @@
   
   <url>
     <loc>http://TIGERB.cn/2020/11/04/go-patterns/component-concurrency/</loc>
+    
+    <lastmod>2021-02-15T03:24:24.548Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://TIGERB.cn/2020/04/02/go-patterns/responsbility/</loc>
     
     <lastmod>2021-02-15T03:24:24.548Z</lastmod>
     
@@ -191,14 +191,14 @@
   </url>
   
   <url>
-    <loc>http://TIGERB.cn/about/record.html</loc>
+    <loc>http://TIGERB.cn/contact/index.html</loc>
     
     <lastmod>2019-10-22T10:44:33.292Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://TIGERB.cn/contact/index.html</loc>
+    <loc>http://TIGERB.cn/about/record.html</loc>
     
     <lastmod>2019-10-22T10:44:33.292Z</lastmod>
     
@@ -226,14 +226,14 @@
   </url>
   
   <url>
-    <loc>http://TIGERB.cn/2017/04/23/summary/</loc>
+    <loc>http://TIGERB.cn/2019/01/02/tool/</loc>
     
     <lastmod>2019-10-22T10:44:33.282Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://TIGERB.cn/2019/01/02/tool/</loc>
+    <loc>http://TIGERB.cn/2017/04/23/summary/</loc>
     
     <lastmod>2019-10-22T10:44:33.282Z</lastmod>
     
@@ -303,14 +303,14 @@
   </url>
   
   <url>
-    <loc>http://TIGERB.cn/2016/12/23/php-standard/</loc>
+    <loc>http://TIGERB.cn/2017/02/20/php-redis/</loc>
     
     <lastmod>2019-10-22T10:44:33.276Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://TIGERB.cn/2017/02/20/php-redis/</loc>
+    <loc>http://TIGERB.cn/2016/12/23/php-standard/</loc>
     
     <lastmod>2019-10-22T10:44:33.276Z</lastmod>
     
@@ -324,14 +324,14 @@
   </url>
   
   <url>
-    <loc>http://TIGERB.cn/2016/10/12/php-mipush/</loc>
+    <loc>http://TIGERB.cn/2017/03/04/php-magic-function/</loc>
     
     <lastmod>2019-10-22T10:44:33.275Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://TIGERB.cn/2017/03/04/php-magic-function/</loc>
+    <loc>http://TIGERB.cn/2016/10/12/php-mipush/</loc>
     
     <lastmod>2019-10-22T10:44:33.275Z</lastmod>
     
@@ -352,6 +352,13 @@
   </url>
   
   <url>
+    <loc>http://TIGERB.cn/2018/05/22/interview/</loc>
+    
+    <lastmod>2019-10-22T10:44:33.273Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://TIGERB.cn/2018/01/31/mysql-base/</loc>
     
     <lastmod>2019-10-22T10:44:33.273Z</lastmod>
@@ -366,13 +373,6 @@
   </url>
   
   <url>
-    <loc>http://TIGERB.cn/2018/05/22/interview/</loc>
-    
-    <lastmod>2019-10-22T10:44:33.273Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://TIGERB.cn/2019/07/20/go-middleware/</loc>
     
     <lastmod>2019-10-22T10:44:33.272Z</lastmod>
@@ -380,14 +380,14 @@
   </url>
   
   <url>
-    <loc>http://TIGERB.cn/2019/01/19/go-experience/</loc>
+    <loc>http://TIGERB.cn/2019/07/06/go-gin/</loc>
     
     <lastmod>2019-10-22T10:44:33.271Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://TIGERB.cn/2019/07/06/go-gin/</loc>
+    <loc>http://TIGERB.cn/2019/01/19/go-experience/</loc>
     
     <lastmod>2019-10-22T10:44:33.271Z</lastmod>
     
@@ -422,7 +422,7 @@
   </url>
   
   <url>
-    <loc>http://TIGERB.cn/2018/07/08/easy-env/</loc>
+    <loc>http://TIGERB.cn/2017/06/18/easy-php/</loc>
     
     <lastmod>2019-10-22T10:44:33.268Z</lastmod>
     
@@ -443,7 +443,7 @@
   </url>
   
   <url>
-    <loc>http://TIGERB.cn/2017/06/18/easy-php/</loc>
+    <loc>http://TIGERB.cn/2018/07/08/easy-env/</loc>
     
     <lastmod>2019-10-22T10:44:33.268Z</lastmod>
     
@@ -499,13 +499,6 @@
   </url>
   
   <url>
-    <loc>http://TIGERB.cn/2016/09/24/2016/</loc>
-    
-    <lastmod>2019-10-22T10:44:33.262Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://TIGERB.cn/2016/03/26/2015/</loc>
     
     <lastmod>2019-10-22T10:44:33.262Z</lastmod>
@@ -514,6 +507,13 @@
   
   <url>
     <loc>http://TIGERB.cn/2018/01/04/2017/</loc>
+    
+    <lastmod>2019-10-22T10:44:33.262Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://TIGERB.cn/2016/09/24/2016/</loc>
     
     <lastmod>2019-10-22T10:44:33.262Z</lastmod>
     

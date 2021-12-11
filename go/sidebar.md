@@ -1,5 +1,5 @@
 * [首页](/)
-* 《Go设计模式实战》
+* Go设计模式实战
 
   * [前言](patterns/)
   * [1.0 模板模式](patterns/template)
@@ -11,7 +11,7 @@
   * [7.0 并发组合模式](patterns/concurrency-component)
   * ...
 
-* 《Go语言轻松进阶》
+* Go语言轻松进阶
   * [前言](kernal/)
   * [1.0 Map的设计与实现](kernal/map)
     * [1.1 导读](kernal/map?id=导读)
