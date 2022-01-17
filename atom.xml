@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://TIGERB.cn/"/>
-  <updated>2021-07-18T05:55:59.695Z</updated>
+  <updated>2022-01-17T14:18:10.632Z</updated>
   <id>http://TIGERB.cn/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>总结，新领域</title>
+    <link href="http://TIGERB.cn/2022/01/17/2021/"/>
+    <id>http://TIGERB.cn/2022/01/17/2021/</id>
+    <published>2022-01-17T13:12:05.000Z</published>
+    <updated>2022-01-17T14:18:10.632Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="年终总结" scheme="http://TIGERB.cn/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
   
   <entry>
     <title>PHP到Go速转手册</title>
@@ -410,9 +434,9 @@
     </summary>
     
     
-      <category term="Go" scheme="http://TIGERB.cn/tags/Go/"/>
-    
       <category term="算法" scheme="http://TIGERB.cn/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Go" scheme="http://TIGERB.cn/tags/Go/"/>
     
   </entry>
   
@@ -975,11 +999,11 @@
   </entry>
   
   <entry>
-    <title>电商设计手册之用户体系[上]</title>
-    <link href="http://TIGERB.cn/2018/08/15/skr-account-system-one/"/>
-    <id>http://TIGERB.cn/2018/08/15/skr-account-system-one/</id>
+    <title>电商设计手册之用户体系[下]</title>
+    <link href="http://TIGERB.cn/2018/08/15/skr-account-system-two/"/>
+    <id>http://TIGERB.cn/2018/08/15/skr-account-system-two/</id>
     <published>2018-08-15T13:50:08.000Z</published>
-    <updated>2019-10-22T10:44:33.278Z</updated>
+    <updated>2019-10-22T10:44:33.279Z</updated>
     
     <summary type="html">
     
@@ -999,11 +1023,11 @@
   </entry>
   
   <entry>
-    <title>电商设计手册之用户体系[下]</title>
-    <link href="http://TIGERB.cn/2018/08/15/skr-account-system-two/"/>
-    <id>http://TIGERB.cn/2018/08/15/skr-account-system-two/</id>
+    <title>电商设计手册之用户体系[上]</title>
+    <link href="http://TIGERB.cn/2018/08/15/skr-account-system-one/"/>
+    <id>http://TIGERB.cn/2018/08/15/skr-account-system-one/</id>
     <published>2018-08-15T13:50:08.000Z</published>
-    <updated>2019-10-22T10:44:33.279Z</updated>
+    <updated>2019-10-22T10:44:33.278Z</updated>
     
     <summary type="html">
     
