@@ -955,11 +955,11 @@
 <p>思考个问题，如果某个词条在所有文档都出现，相关性越好还是越不好？</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">答：不好，对吧。</span><br></pre></td></tr></table></figure>
-<p>这个就是文档率：文档率 = 包含某个词条的文档数 / 所有文档数，文档率值越大越不相关，反之相关。</p>
+<p>这个就是文档率：<code>文档率 = 包含某个词条的文档数 / 所有文档数</code>，文档率值越大越不相关，反之相关。</p>
 <p>因为词频的值越大越相关，反之越不相关。为了保证和词频的逻辑一致，以及最终相关得分越高越相关，调整了文档率的算法，调换了分子分母：<code>所有文档数 / (包含某个词条的文档数 + 1)</code>加1保证分母不为零，这个就是<code>逆文档率</code>。</p>
 <p>逆文档率 = <code>所有文档数 / (包含某个词条的文档数 + 1)</code>。</p>
 <p>但是呢，因为文档数往往特别大，上面的到的<code>逆文档率</code>的值会巨大无比，所以调整下公式，引入对数，降低值的大小，且让值变得平滑：</p>
-<p>逆文档率 = log(所有文档数 / (包含某个词条的文档数 + 1))</p>
+<p><code>逆文档率 = log(所有文档数 / (包含某个词条的文档数 + 1))</code></p>
 <table>
 <thead>
 <tr>
@@ -970,11 +970,11 @@
 <tbody>
 <tr>
 <td>电商</td>
-<td>log(3/3+1)</td>
+<td>log(3/(3+1))</td>
 </tr>
 <tr>
 <td>秒杀</td>
-<td>log(3/1+1)</td>
+<td>log(3/(1+1))</td>
 </tr>
 </tbody>
 </table>
@@ -1006,7 +1006,7 @@
 <ol start="2">
 <li>查询过程：关键字(Query) -&gt; 分析 -&gt; 召回 -&gt; 粗排 -&gt; 精排。</li>
 </ol>
-<p align="center"><br>    <a href="http://cdn.tigerb.cn/20220308194729.png" data-lightbox="roadtrip" target="_blank" rel="noopener"><br>        <a href="http://cdn.tigerb.cn/20220308194729.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20220308194729.png" style="width:30%"></a><br>    </a><br></p>
+<p align="center"><br>    <a href="http://cdn.tigerb.cn/20220309203114.png" data-lightbox="roadtrip" target="_blank" rel="noopener"><br>        <a href="http://cdn.tigerb.cn/20220309203114.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20220309203114.png" style="width:30%"></a><br>    </a><br></p>
 
 <h1 id="搜索引擎ES进阶"><a href="#搜索引擎ES进阶" class="headerlink" title="搜索引擎ES进阶"></a>搜索引擎ES进阶</h1><hr>
 <h2 id="索引-名词-的基本结构"><a href="#索引-名词-的基本结构" class="headerlink" title="索引(名词)的基本结构"></a>索引(名词)的基本结构</h2><ul>
