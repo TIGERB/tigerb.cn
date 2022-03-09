@@ -137,7 +137,7 @@
 
 
 <!-- Content -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <p="">次带来电商搜索业务的介绍，电商搜索系列分为两篇文章：<p></p>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <p="">本次带来电商搜索业务的介绍，电商搜索系列分为两篇文章：<p></p>
 <ul>
 <li>电商搜索业务介绍</li>
 <li>由浅到深，入门搜索原理</li>
@@ -182,6 +182,14 @@
 <td>逆文档率(idf:Inverse Document Frequency)</td>
 <td>？</td>
 </tr>
+<tr>
+<td>粗排</td>
+<td>？</td>
+</tr>
+<tr>
+<td>精排</td>
+<td>？</td>
+</tr>
 </tbody>
 </table>
 <p>本篇文章由简到繁入门搜索原理，并逐步揭开上面这些概念的面纱。本文结构如下：</p>
@@ -220,6 +228,7 @@
 <li>排序<ul>
 <li>什么是词频(tf:Term Frequency)</li>
 <li>什么是逆文档率(idf:Inverse Document Frequency)</li>
+<li>粗排/精排</li>
 </ul>
 </li>
 </ul>
@@ -811,22 +820,24 @@
 </tr>
 </tbody>
 </table>
-<p>上述召回过程，用户通过搜索<code>秒杀系统的设计</code>找到了文档1、2。问题来了：</p>
+<p>上述召回过程，用户通过搜索<code>秒杀系统的设计</code>找到了文档1、2。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">补充：以上基于倒排索引的文本召回方式。除此之外还有基于相同类目、其他相似属性的召回方式，以及基于深度学习的向量召回。</span><br></pre></td></tr></table></figure>
+<p>接着问题来了：</p>
 <blockquote>
-<p>文档1、2，谁在前，谁在后的顺序怎么决定呢？</p>
+<p>召回的文档1、2，谁在前，谁在后的顺序怎么决定呢？</p>
 </blockquote>
 <p>接着下文来讲搜索引擎排序的实现。</p>
 <h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><p>引入上面的问题：</p>
 <blockquote>
 <p>文档1、2，谁在前，谁在后的顺序怎么决定呢？</p>
 </blockquote>
-<p>答：文档的相关性决定的，搜索引擎会给文档的相关性进行打分score。决定这个分数score主要是两个指标：</p>
+<p>答：文档的相关性决定的，搜索引擎会给文档的相关性进行打分score。通常决定这个分数score主要是两个指标：</p>
 <ul>
 <li>文档率：tf(Term Frequency)</li>
 <li>逆文档率：idf(Inverse Document Frequency)</li>
 </ul>
-<p>可以简单理解为相关性score = 文档率 * 逆文档率，接着，我们分别看看相关概念的含义。</p>
-<h5 id="什么是词频-tf-Term-Frequency"><a href="#什么是词频-tf-Term-Frequency" class="headerlink" title="什么是词频(tf:Term Frequency)"></a>什么是词频(tf:Term Frequency)</h5><p>还是使用上面的文档：</p>
+<p>可以简单理解为相关性score = 文档率 * 逆文档率，相关性score的值越高排序越靠前，接着，我们分别看看相关概念的含义。</p>
+<h4 id="什么是词频-tf-Term-Frequency"><a href="#什么是词频-tf-Term-Frequency" class="headerlink" title="什么是词频(tf:Term Frequency)"></a>什么是词频(tf:Term Frequency)</h4><p>还是使用上面的文档：</p>
 <table>
 <thead>
 <tr>
@@ -853,7 +864,7 @@
 </tr>
 </tbody>
 </table>
-<p>这里我们以Query: <code>电商秒杀</code>（词条：<code>电商/秒杀</code>）为例。</p>
+<p>这里我们以词条：<code>电商/秒杀</code>为例。</p>
 <p>词频的简单算法：词频 = 词条在单个文档出现的次数/文档总词条数，词频的值越大越相关，反之越不相关。</p>
 <p>比如，<code>秒杀</code>一词在文档1中出现的频率，以单个文档的全部词条为维度，我们简单的到了<code>秒杀</code>一词在各文档的词频：</p>
 <table>
@@ -939,7 +950,7 @@
 </tr>
 </tbody>
 </table>
-<h5 id="什么是逆文档率-idf-Inverse-Document-Frequency"><a href="#什么是逆文档率-idf-Inverse-Document-Frequency" class="headerlink" title="什么是逆文档率(idf:Inverse Document Frequency)"></a>什么是逆文档率(idf:Inverse Document Frequency)</h5><p>对于单个文档而言，词频越的值越相关，这个对于单个文档的维度。</p>
+<h4 id="什么是逆文档率-idf-Inverse-Document-Frequency"><a href="#什么是逆文档率-idf-Inverse-Document-Frequency" class="headerlink" title="什么是逆文档率(idf:Inverse Document Frequency)"></a>什么是逆文档率(idf:Inverse Document Frequency)</h4><p>对于单个文档而言，词频越的值越相关，这个对于单个文档的维度。</p>
 <blockquote>
 <p>思考个问题，如果某个词条在所有文档都出现，相关性越好还是越不好？</p>
 </blockquote>
@@ -967,16 +978,35 @@
 </tr>
 </tbody>
 </table>
-<p>最终就计算出每个文档分别对应每个Query词条的相关性score：相关性score = 文档率 * 逆文档率。</p>
+<p>最终就计算出每个文档分别对应每个Query词条的相关性score(tf/idf)：相关性score = 文档率 * 逆文档率。</p>
+<h4 id="粗排-精排"><a href="#粗排-精排" class="headerlink" title="粗排/精排"></a>粗排/精排</h4><p>上面利用tf/idf分数(<code>相关性score = 文档率 * 逆文档率</code>)排序的结果只是对召回文档的初步排序，称之为<code>粗排</code>。得到<code>粗排</code>的结果后，通常还会把文档按照实际业务的要求进行更精确的排序，比如通过<code>人工干预</code>增加一些文档的权重，使之排序更靠前，这个过程就是<code>精排</code>。</p>
+<table>
+<thead>
+<tr>
+<th>搜索名词概念</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>粗排</td>
+<td>利用tf/idf分数排序召回文档的过程</td>
+</tr>
+<tr>
+<td>精排</td>
+<td>把粗排结果，按照实际业务的要求更加精确的排序等等</td>
+</tr>
+</tbody>
+</table>
 <h2 id="搜索过程总结"><a href="#搜索过程总结" class="headerlink" title="搜索过程总结"></a>搜索过程总结</h2><ol>
 <li>索引过程：文档(Doc) -&gt; 分析 -&gt; 倒排索引。</li>
 </ol>
 <p align="center"><br>    <a href="https://cdn.tigerb.cn/20220306223101.png" data-lightbox="roadtrip" target="_blank" rel="noopener"><br>        <a href="https://cdn.tigerb.cn/20220306223101.png" class="gallery-item" target="_blank" rel="noopener"><img src="https://cdn.tigerb.cn/20220306223101.png" style="width:50%"></a><br>    </a><br></p>
 
 <ol start="2">
-<li>查询过程：关键字(Query) -&gt; 分析 -&gt; 召回 -&gt; 排序。</li>
+<li>查询过程：关键字(Query) -&gt; 分析 -&gt; 召回 -&gt; 粗排 -&gt; 精排。</li>
 </ol>
-<p align="center"><br>    <a href="https://cdn.tigerb.cn/20220306223043.png" data-lightbox="roadtrip" target="_blank" rel="noopener"><br>        <a href="https://cdn.tigerb.cn/20220306223043.png" class="gallery-item" target="_blank" rel="noopener"><img src="https://cdn.tigerb.cn/20220306223043.png" style="width:30%"></a><br>    </a><br></p>
+<p align="center"><br>    <a href="http://cdn.tigerb.cn/20220308194729.png" data-lightbox="roadtrip" target="_blank" rel="noopener"><br>        <a href="http://cdn.tigerb.cn/20220308194729.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20220308194729.png" style="width:30%"></a><br>    </a><br></p>
 
 <h1 id="搜索引擎ES进阶"><a href="#搜索引擎ES进阶" class="headerlink" title="搜索引擎ES进阶"></a>搜索引擎ES进阶</h1><hr>
 <h2 id="索引-名词-的基本结构"><a href="#索引-名词-的基本结构" class="headerlink" title="索引(名词)的基本结构"></a>索引(名词)的基本结构</h2><ul>
@@ -989,10 +1019,10 @@
 </ul>
 </li>
 </ul>
-<p align="center"><br>    <a href="https://cdn.tigerb.cn/20220129190541.png" data-lightbox="roadtrip" target="_blank" rel="noopener"><br>        <a href="https://cdn.tigerb.cn/20220129190541.png" class="gallery-item" target="_blank" rel="noopener"><img src="https://cdn.tigerb.cn/20220129190541.png" style="width:60%"></a><br>    </a><br></p>
+<p align="center"><br>    <a href="http://cdn.tigerb.cn/20220308195018.png" data-lightbox="roadtrip" target="_blank" rel="noopener"><br>        <a href="http://cdn.tigerb.cn/20220308195018.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20220308195018.png" style="width:60%"></a><br>    </a><br></p>
 
 <p>进一步完善搜索过程：加入更详细的索引(名词)结构</p>
-<p align="center"><br>    <a href="https://cdn.tigerb.cn/20220306224045.png" data-lightbox="roadtrip" target="_blank" rel="noopener"><br>        <a href="https://cdn.tigerb.cn/20220306224045.png" class="gallery-item" target="_blank" rel="noopener"><img src="https://cdn.tigerb.cn/20220306224045.png" style="width:80%"></a><br>    </a><br></p>
+<p align="center"><br>    <a href="http://cdn.tigerb.cn/20220308194814.png" data-lightbox="roadtrip" target="_blank" rel="noopener"><br>        <a href="http://cdn.tigerb.cn/20220308194814.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20220308194814.png" style="width:80%"></a><br>    </a><br></p>
 
 <h2 id="搜索引擎ES的逻辑结构"><a href="#搜索引擎ES的逻辑结构" class="headerlink" title="搜索引擎ES的逻辑结构"></a>搜索引擎ES的逻辑结构</h2><p align="center"><br>    <a href="https://cdn.tigerb.cn/20220129191435.png" data-lightbox="roadtrip" target="_blank" rel="noopener"><br>        <a href="https://cdn.tigerb.cn/20220129191435.png" class="gallery-item" target="_blank" rel="noopener"><img src="https://cdn.tigerb.cn/20220129191435.png" style="width:90%"></a><br>    </a><br></p></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
         var options = {
