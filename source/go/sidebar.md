@@ -14,7 +14,7 @@
 * Go语言轻松进阶
   * [前言](kernal/)
   * [1.0 Map的设计与实现](kernal/map)
-    * [1.1 导读](kernal/map?id=导读)
+    * [1.1 本章导读](kernal/map?id=导读)
     * [1.2 一般map的实现思路](/kernal/map?id=一般map的实现思路)
     * [1.3 入门Go语言里map的实现](/kernal/map?id=go语言里map的实现思路入门程度)
     * [1.4 熟悉Go语言里map的实现](/kernal/map?id=go语言里map的实现思路熟悉程度)
@@ -24,7 +24,7 @@
       <!-- * [1.5.3 为什么并发写操作会Panic?]() -->
 
   * [2.0 内存与垃圾回收](kernal/memory)
-    * [2.1 导读](kernal/memory?id=导读)
+    * [2.1 本章导读](kernal/memory?id=导读)
     * [2.2 指针的大小](kernal/memory-pointer)
     * [2.3 内存的线性分配](kernal/tcmalloc?id=内存的线性分配)
     * [2.4 什么是FreeList？](kernal/tcmalloc?id=什么是freelist？)
@@ -32,14 +32,14 @@
     * [2.6 什么是TCMalloc？](kernal/tcmalloc?id=什么是tcmalloc？)
       * [2.6.1 基本概念](kernal/tcmalloc?id=TCMalloc中的五个基本概念)
       * [2.6.2 基本结构](kernal/tcmalloc?id=解密Tcmalloc的基本结构)
-      * [2.6.3 内存分配](kernal/tcmalloc?id=解密Tcmalloc的内存分配过程)
-    
-    <!-- * [2.7 内存管理]()
-          * [2.7.1 设计与实现]()
-          * [2.7.2 栈内存]()
-          * [2.7.3 堆内存]()
-        * [2.8 垃圾回收]()
-      * [3.0 Channel的设计与实现]()
-      * [4.0 Goroutine的调度]() -->
+      * [2.6.3 内存分配过程](kernal/tcmalloc?id=解密Tcmalloc的内存分配过程)
+    * [2.7 Go内存管理](kernal/memory-arch)
+      * [2.7.1 本节导读](kernal/memory-arch?id=导读)
+      * [2.7.2 架构](kernal/memory-arch?id=go内存管理架构)
+      * [2.7.3 有趣的问题](kernal/memory-mcache)
+      * [2.7.4 内存管理单元`mspan`](kernal/memory-mspan)
+      * [2.7.5 栈内存分配](kernal/memory-heap)
+      * [2.7.6 堆内存分配](kernal/memory-stack)
+    * [2.8 垃圾回收](kernal/memory-gc)
       
   * ...
