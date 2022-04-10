@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://TIGERB.cn/"/>
-  <updated>2022-03-09T12:34:11.015Z</updated>
+  <updated>2022-04-10T08:36:47.785Z</updated>
   <id>http://TIGERB.cn/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>浅析Go内存管理架构</title>
+    <link href="http://TIGERB.cn/2022/04/10/go-base/memory-arch/"/>
+    <id>http://TIGERB.cn/2022/04/10/go-base/memory-arch/</id>
+    <published>2022-04-10T08:33:11.000Z</published>
+    <updated>2022-04-10T08:36:47.785Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Go" scheme="http://TIGERB.cn/tags/Go/"/>
+    
+  </entry>
   
   <entry>
     <title>由浅到深，入门搜索原理</title>
@@ -1075,11 +1099,11 @@
   </entry>
   
   <entry>
-    <title>电商设计手册之用户体系[下]</title>
-    <link href="http://TIGERB.cn/2018/08/15/skr-account-system-two/"/>
-    <id>http://TIGERB.cn/2018/08/15/skr-account-system-two/</id>
+    <title>电商设计手册之用户体系[上]</title>
+    <link href="http://TIGERB.cn/2018/08/15/skr-account-system-one/"/>
+    <id>http://TIGERB.cn/2018/08/15/skr-account-system-one/</id>
     <published>2018-08-15T13:50:08.000Z</published>
-    <updated>2019-10-22T10:44:33.279Z</updated>
+    <updated>2019-10-22T10:44:33.278Z</updated>
     
     <summary type="html">
     
@@ -1099,11 +1123,11 @@
   </entry>
   
   <entry>
-    <title>电商设计手册之用户体系[上]</title>
-    <link href="http://TIGERB.cn/2018/08/15/skr-account-system-one/"/>
-    <id>http://TIGERB.cn/2018/08/15/skr-account-system-one/</id>
+    <title>电商设计手册之用户体系[下]</title>
+    <link href="http://TIGERB.cn/2018/08/15/skr-account-system-two/"/>
+    <id>http://TIGERB.cn/2018/08/15/skr-account-system-two/</id>
     <published>2018-08-15T13:50:08.000Z</published>
-    <updated>2019-10-22T10:44:33.278Z</updated>
+    <updated>2019-10-22T10:44:33.279Z</updated>
     
     <summary type="html">
     
