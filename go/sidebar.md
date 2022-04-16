@@ -36,9 +36,10 @@
     * [2.7 Go内存管理](kernal/memory-arch)
       * [2.7.1 本节导读](kernal/memory-arch?id=导读)
       * [2.7.2 架构](kernal/memory-arch?id=go内存管理架构)
-      * [2.7.3 内存管理单元`mspan`](kernal/memory-mspan)
-      * [2.7.4 栈内存分配](kernal/memory-heap)
-      * [2.7.5 堆内存分配](kernal/memory-stack)
+      * [2.7.3 有趣的问题](kernal/memory-mcache)
+      * [2.7.4 内存管理单元`mspan`](kernal/memory-mspan)
+      * [2.7.5 栈内存分配](kernal/memory-heap)
+      * [2.7.6 堆内存分配](kernal/memory-stack)
     * [2.8 垃圾回收](kernal/memory-gc)
       
   * ...

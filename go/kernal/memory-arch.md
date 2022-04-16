@@ -5,16 +5,16 @@
 本文基于Go源码版本1.16、64位Linux平台、1Page=8KB、本文的内存特指虚拟内存
 ```
 
-今天我们开始进入《Go语言轻松系列》第二章「内存与垃圾回收」第二部分「Go语言内存管理」。
+今天我们开始进入《Go语言轻松进阶》系列第二章「内存与垃圾回收」第二部分「Go语言内存管理」。
 
 关于「内存与垃圾回收」章节，会从如下三大部分展开：
 
 - 读前知识储备(已完结)
-	+ [指针的大小](http://tigerb.cn/go/#/kernal/memory-pointer)
-    + [内存的线性分配](http://tigerb.cn/go/#/kernal/tCMalloc?id=%e5%86%85%e5%ad%98%e7%9a%84%e7%ba%bf%e6%80%a7%e5%88%86%e9%85%8d)
-    + [什么是FreeList？](http://tigerb.cn/go/#/kernal/tCMalloc?id=%e4%bb%80%e4%b9%88%e6%98%affreelist%ef%bc%9f)
-    + [虚拟内存](http://tigerb.cn/go/#/kernal/tCMalloc?id=%e8%99%9a%e6%8b%9f%e5%86%85%e5%ad%98)
-	+ [TCMalloc内存分配原理](http://tigerb.cn/go/#/kernal/tCMalloc?id=%e4%bb%80%e4%b9%88%e6%98%aftCMalloc%ef%bc%9f)
+	+ [指针的大小](/kernal/memory-pointer)
+    + [内存的线性分配](/kernal/tCMalloc?id=%e5%86%85%e5%ad%98%e7%9a%84%e7%ba%bf%e6%80%a7%e5%88%86%e9%85%8d)
+    + [什么是FreeList？](/kernal/tCMalloc?id=%e4%bb%80%e4%b9%88%e6%98%affreelist%ef%bc%9f)
+    + [虚拟内存](/kernal/tCMalloc?id=%e8%99%9a%e6%8b%9f%e5%86%85%e5%ad%98)
+	+ [TCMalloc内存分配原理](/kernal/tCMalloc?id=%e4%bb%80%e4%b9%88%e6%98%aftCMalloc%ef%bc%9f)
 - Go语言内存管理(当前部分)
 - Go语言垃圾回收原理(未开始)
 
@@ -33,11 +33,11 @@
 
 通过这个思路拆解的目录：
 
-- Go内存管理架构(本篇内容)
+- [Go内存管理架构](kernal/memory-arch?id=go内存管理架构)
     + `mcache`
     + `mcentral`
     + `mheap`
-- 为什么线程缓存`mcache`是被逻辑处理器`p`持有，而不是系统线程`m`?
+- [为什么线程缓存`mcache`是被逻辑处理器`p`持有，而不是系统线程`m`?](kernal/memory-mcache)
 - Go内存管理单元`mspan`
     + `page`的概念
     + `mspan`的概念

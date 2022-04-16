@@ -39,7 +39,7 @@
 		* `mcache`
 		* `mcentral`
 		* `mheap`
-	+ 为什么线程缓存`mcache`是被逻辑处理器`p`持有，而不是系统线程`m`?
+	+ [为什么线程缓存`mcache`是被逻辑处理器`p`持有，而不是系统线程`m`?](kernal/memory-mcache)
 	+ Go内存管理单元`mspan`
 		* `page`的概念
 		* `mspan`的概念
