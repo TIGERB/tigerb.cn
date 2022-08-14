@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Description-->
+    
+        <meta name="description" content="Trying to be the person you want to be.">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="TIGERB">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="回到本真，梦回计算机发展史"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="TIGERB"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content=""/>
+    
+
+    <!-- Title -->
+    
+    <title>回到本真，梦回计算机发展史 - TIGERB</title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/sass/main.css">
+
+
+    <!--[if lt IE 8]>
+        
+<script src="/js/ie/html5shiv.js"></script>
+
+    <![endif]-->
+
+    <!--[if lt IE 8]>
+        
+<link rel="stylesheet" href="/sass/ie8.css">
+
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+        
+<link rel="stylesheet" href="/sass/ie9.css">
+
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?30c7e7d53256334a8dc1cf524fcc77f6";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="TIGERB" type="application/atom+xml">
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Menu -->
+        <!-- Header -->
+<header id="header">
+    <div class="inner">
+
+        <!-- Logo -->
+        <a href="/" class="logo">
+            <span class="symbol"><img src="http://cdn.tigerb.cn/20190707142019.png" alt="" /></span><span class="title">TIGERB</span>
+        </a>
+
+        <!-- Nav -->
+        <nav>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+    <h2>Menu</h2>
+    <ul>
+        
+            <li>
+                <a href="/">首页</a>
+            </li>
+        
+            <li>
+                <a target="_blank" rel="noopener" href="https://github.com/TIGERB">Github</a>
+            </li>
+        
+            <li>
+                <a target="_blank" rel="noopener" href="https://segmentfault.com/u/tigerb">Segmentfault</a>
+            </li>
+        
+            <li>
+                <a target="_blank" rel="noopener" href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
+            </li>
+        
+    </ul>
+</nav>
+
+
+        <div id="main">
+            <div class="inner">
+
+                <!-- Main Content -->
+                
+
+    <h1 class="title">回到本真，梦回计算机发展史</h1>
+    <div class="meta">
+        2022-07-10
+    </div>
+
+
+    <span class="image main"><img src="No Code No Life" alt="" /></span>
+
+
+<!-- Gallery -->
+
+
+<!-- Content -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"><span>
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><hr>
+<p>关于之前「Go语言的内存管理实现」这部分，本来接下来是要给大家继续讲解「Go语言堆内存、栈内存分配」的，以及这部分之前图都画完了。但是呢，写文章的时候，写着写着发现写不下去了，为什么？</p>
+<p>我发现想要彻底理解「Go语言堆内存、栈内存分配」必须需要很清楚的理解：<strong>什么是堆内存和栈内存</strong>，看到这里肯定很多朋友笑了「堆内存&#x2F;栈内存」那不简单么：</p>
+<ul>
+<li>栈内存：栈内存的分配和释放都是由程序自己操作的，无需我们程序员关心。</li>
+<li>堆内存：一种是编程语言要求由我们程序员分配、释放堆内存，不小心的话就会带来内存泄漏；另一种由于编程语言自己实现了垃圾回收器，堆内存的分配、释放也不需要由我们程序员关心了，垃圾回收器会自动回收堆内存。</li>
+</ul>
+<p>确实，上面的说法没什么问题。但是呢，本着<strong>刨根问底</strong>的态度，我再来引申几个问题：</p>
+<ul>
+<li><strong>栈内存到底存在于哪？栈内存具体是被谁分配和释放的？栈内存分配和释放的具体时机是什么时候？</strong></li>
+<li><strong>有了栈内存为什么还需要堆内存？堆内存到底存在于哪？为什么只有堆内存需要垃圾回收机制回收？</strong></li>
+</ul>
+<p>为了彻底帮助大家简单明了的吃透「堆内存、栈内存」，又不断引申出了新的问题：</p>
+<blockquote>
+<p>我们写的代码、以及运行起来的程序到底是什么？</p>
+</blockquote>
+<p>在解决这个问题的时候，却又引申出了新的问题：</p>
+<blockquote>
+<p>刨根问底，计算机到底是怎么运行起来的？</p>
+</blockquote>
+<p>最后这样一步步引申到了「计算机原理」和「计算机的发展史」，为了更好理解这些问题，于是这两个月我又读了三本书，具体如下：</p>
+<ul>
+<li>《程序是怎么跑起来的》</li>
+<li>《计算机是怎样跑起来的》</li>
+<li>《计算机：一部历史》</li>
+</ul>
+<p>我把读完这三本书学习到的知识点进行整理，以及结合自己的理解，抽丝拔茧帮助大家去理解：</p>
+<ul>
+<li>我们写的代码到底是什么？</li>
+<li>运行的程序到底是什么？</li>
+<li>计算机到底是什么？</li>
+</ul>
+<p>搞定了这些问题，我们再去学习「Go语言堆内存、栈内存」或者别的语言的「堆内存、栈内存」都会得心应手，容易很多。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><hr>
+<p>本篇文章是自己对这两个月学习内容的总结，同时也帮助大家对计算机发展历史有一个基本的认知，本文主要目录如下：</p>
+<ul>
+<li>计算机启蒙于数学</li>
+<li>计算机发展于电子学+数学</li>
+<li>具有语义的编程语言</li>
+<li>程序集合：操作系统</li>
+</ul>
+<h3 id="计算机启蒙于数学"><a href="#计算机启蒙于数学" class="headerlink" title="计算机启蒙于数学"></a>计算机启蒙于数学</h3><hr>
+<h4 id="理论计算机：图灵机"><a href="#理论计算机：图灵机" class="headerlink" title="理论计算机：图灵机"></a>理论计算机：图灵机</h4><hr>
+<p>上个世纪伟大的数学家们发起了一个挑战大概意思是：“制造一台机器可以自动计算数学问题”。当时伟大的数学家艾伦·图灵提出了自己的理论，大概思路是通过输入之后机器可以自动计算并输出结果，这个理论就是大名鼎鼎的“图灵机”，艾伦·图灵就是理论计算机“图灵机”的创造者。</p>
+<h4 id="算术问题也是逻辑问题"><a href="#算术问题也是逻辑问题" class="headerlink" title="算术问题也是逻辑问题"></a>算术问题也是逻辑问题</h4><hr>
+<p>不难理解，数学问题都可以转化为两类问题：</p>
+<ul>
+<li>算术问题：四则运算等</li>
+<li>逻辑问题：与、或、非、异或等</li>
+</ul>
+<p>算术问题可以通过逻辑运算解决，所以<strong>所有数学问题都可以看作是逻辑问题</strong>。所以，只要找到可以<strong>自动判定真假的某种机器</strong>即可实现自动计算。</p>
+<p>这里就有人疑惑🤔了，逻辑问题怎么解决算术问题的，想要理解这个问题我们先回到小学加法运算，比如16+36的计算过程：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">16</span><br><span class="line">36</span><br><span class="line">    +</span><br><span class="line">------</span><br><span class="line"> 2</span><br><span class="line">4   1(进位)</span><br><span class="line">------</span><br><span class="line">52</span><br></pre></td></tr></table></figure>
+
+<p>这个运算过程我们只需要重点关注以下几点：</p>
+<ul>
+<li>从左到右按位进行10以内的加法运算(<strong>算术问题</strong>)</li>
+<li>保存当前位的计算结果(<strong>存储</strong>)</li>
+<li>当前位计算结果是否需要进位(<strong>逻辑问题</strong>是否需要进位)</li>
+</ul>
+<p>目前进位的问题已经可以转化为逻辑问题了。以上是十进制的加法运算过程，我们换成更简单二进制加法运算再来看看，如下：</p>
+<h4 id="最简单的二进制"><a href="#最简单的二进制" class="headerlink" title="最简单的二进制"></a>最简单的二进制</h4><hr>
+<p>二进制相对于十进制更加简单，只有0和1两个状态，简单回顾下二进制的加法运算过程：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">为了简化理解这里以十进制 3 + 6 的二进制运算过程为例：</span><br><span class="line"></span><br><span class="line">二进制分别为：</span><br><span class="line">0011</span><br><span class="line">0110</span><br><span class="line"></span><br><span class="line">A：加数</span><br><span class="line">B：被加数</span><br><span class="line">C：进位，当前位运算后的进位结果，有进位则进位值为1，无进位则进位值为0</span><br><span class="line">D：结果，当前位运算结果</span><br><span class="line">C1：进位，上一位运算后的进位</span><br><span class="line"></span><br><span class="line">二进制计算过程：</span><br><span class="line"></span><br><span class="line">&lt;------从右到左最低位开始逐位运算------</span><br><span class="line"></span><br><span class="line">A   0   0   1   1</span><br><span class="line">                ^    按位异或运算</span><br><span class="line">B   0   1   1   0</span><br><span class="line">---------------------计算第1位</span><br><span class="line">D               1</span><br><span class="line">C               0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">C1          0      </span><br><span class="line">            ^  </span><br><span class="line">A           1</span><br><span class="line">            ^</span><br><span class="line">B           1</span><br><span class="line">---------------------计算第2位</span><br><span class="line">D           0</span><br><span class="line">C           1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">C1      1      </span><br><span class="line">        ^  </span><br><span class="line">A       0</span><br><span class="line">        ^</span><br><span class="line">B       1</span><br><span class="line">---------------------计算第3位</span><br><span class="line">D       0</span><br><span class="line">C       1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">C1  1      </span><br><span class="line">    ^  </span><br><span class="line">A   0</span><br><span class="line">    ^</span><br><span class="line">B   0</span><br><span class="line">---------------------计算第4位</span><br><span class="line">D   1   0   0   1</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>A：加数</li>
+<li>B：被加数</li>
+<li>C：进位，当前位运算后的进位结果，有进位则进位值为1，无进位则进位值为0</li>
+<li>D：结果，当前位运算结果</li>
+<li>C1：进位，上一位运算后的进位</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>C1</th>
+<th>D</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>A异或B异或C1</td>
+<td>(A 与 B) 或者 (C1 与 (A 或 B))</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<ul>
+<li>结果D表达式： D &#x3D; A 异或 B 异或 C1</li>
+<li>进位C表达式：​ C &#x3D; (A 与 B) 或者 (C1 与 (A 或 B))</li>
+</ul>
+<p>以上过程把十进制 3 + 6 的算术运算完全转化为了逻辑问题，所以只要找到可以<strong>自动判定真假的某种机器</strong>即可实现自动计算。</p>
+<h3 id="计算机发展于电子学和数学"><a href="#计算机发展于电子学和数学" class="headerlink" title="计算机发展于电子学和数学"></a>计算机发展于电子学和数学</h3><hr>
+<p>上个世纪电子学开始广泛发展，晶体管的诞生为理论上的「自动的机器」指明了新的方向🧭。晶体管有两个状态，分别是：</p>
+<ul>
+<li>导通：即可以代表二进制的1</li>
+<li>截止：即可以代表二进制的0</li>
+</ul>
+<p>接着，数学家&amp;电子学家们用多个晶体管构成门电路：</p>
+<ul>
+<li>与门</li>
+<li>非门</li>
+<li>或门</li>
+<li>异或门</li>
+</ul>
+<p>这样就实现了可以「<strong>自动判定逻辑问题的真假的设备</strong>」，同时数学家和电子学家们又通过多个门电路实现了<strong>半加器、全加器、全减器、乘法器</strong>等实现算术运算：</p>
+<ul>
+<li>半加器</li>
+<li>全加器</li>
+<li>全减器</li>
+<li>乘法器</li>
+</ul>
+<p>这样就诞生了世界上第一台真正意义的计算机。</p>
+<h3 id="具有语义的编程语言"><a href="#具有语义的编程语言" class="headerlink" title="具有语义的编程语言"></a>具有语义的编程语言</h3><hr>
+<p>上面诞生了硬件，也就是真正意义的计算机。问题是如何编写程序？我们的程序其实就是门电路中的晶体管不断的运行导通1和截止0两个状态之间，对应的文本代码其实就是数字0和1，所以早期的代码就是<strong>直接编写0和1的代码</strong>。但是对于人类阅读友好的永远是具备描述性的具备可读性的文本，于是诞生了更适合人们阅读和编写的汇编代码。</p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220717220131.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220717220131.png" style="width:100%"></a>
+</p>
+
+<h4 id="汇编代码"><a href="#汇编代码" class="headerlink" title="汇编代码"></a>汇编代码</h4><hr>
+<p>人们把中央处理器CPU可以运行的一系列指令集合分别命名了具备可读性的文本，这样就诞生了由助记符和操作数等组成的汇编语言。通常来看CPU一般具备四类指令，分别为：</p>
+<ul>
+<li>数据传输指令</li>
+<li>运算指令</li>
+<li>jmp指令</li>
+<li>call&#x2F;return指令</li>
+</ul>
+<p>简单来看就这些类别的指令，分别给它们用更适合人类阅读文本替代0和1，比如MOV指令代表传输数据、jmp指令代表跳转到代码任意位置。</p>
+<p>同时人们发明了编译器自动把汇编代码转换为0和1组成的机器代码。</p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220717220225.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220717220225.png" style="width:100%"></a>
+</p>
+
+<h4 id="子函数和函数库"><a href="#子函数和函数库" class="headerlink" title="子函数和函数库"></a>子函数和函数库</h4><hr>
+<p>同时人们发现编写程序过程中，发现经常会出现重复性的逻辑编写，比如算术平方根。为了提高效率和复用，就诞生了子函数和函数库的概念。</p>
+<h4 id="编程语言和集成开发环境"><a href="#编程语言和集成开发环境" class="headerlink" title="编程语言和集成开发环境"></a>编程语言和集成开发环境</h4><hr>
+<p>随着计算机技术和编程技术的快速发展，逐步诞生了更高效的编程语言、以及集成开发环境等等。</p>
+<h3 id="程序集合：操作系统"><a href="#程序集合：操作系统" class="headerlink" title="程序集合：操作系统"></a>程序集合：操作系统</h3><hr>
+<p>先来看看计算机的组成：</p>
+<ul>
+<li>输入设备</li>
+<li>输出设备</li>
+<li>中央处理器CPU：运行指令</li>
+<li>存储器：内存、磁盘等</li>
+</ul>
+<p>最早工程师编写的程序是可以直接操作这些硬件设备的：</p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220717184303.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220717184303.png" style="width:60%"></a>
+</p>
+
+<p>存在问题：每个编写程序的工程师都要实现对这些硬件的操作，存在大量重复的工作，以及安全性等等问题。</p>
+<p>于是对硬件设备的操作进行统一的封装，比如对输入&#x2F;输出设备的操作，对磁盘的操作等等 这样就形成了一系列统一的API以及应用程序，提升了开发效率也保证了安全等等。</p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220717184227.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220717184227.png" style="width:60%"></a>
+</p>
+
+<p><strong>这就是操作系统：封装了一系列对计算机硬件设备操作的API和应用程序的集合。</strong></p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><hr>
+<p>计算机简易的关键发展点：</p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220717220342.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220717220342.png" style="width:60%"></a>
+</p>
+
+<p>编程语言的关键发展点：</p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220717220428.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220717220428.png" style="width:100%"></a>
+</p>
+
+<p>本文从一些关键点回顾了计算机的发展史，为后面理解程序的运行打好基础。下篇文章我们就来看看：</p>
+<blockquote>
+<p>我们写的代码到底是什么？</p>
+</blockquote>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+
+<!-- Tags -->
+
+
+
+<div class="tags">
+    <a href="/tags/Go-计算机原理/" class="button small">Go - 计算机原理</a>
+</div>
+
+
+
+<!-- Qrcode -->
+<div width="100px">
+    <img src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg" alt="TIGERB" width="300px" style="display:block; margin: 30px auto 0px auto;">
+</div>
+
+<!-- Comments -->
+<div>
+    
+
+
+</div>
+
+
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+        <section>
+            <h2>About</h2>
+            <div>
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+            </div>
+        </section>
+        <section>
+            <h2>Follow</h2>
+            <ul class="icons">
+                
+                    <li><a href="https://twitter.com/CODERCOOKER" class="icon style2 fa-twitter" target="_blank" ><span class="label">Twitter</span></a></li>
+                
+                
+                
+                
+                
+                    <li><a href="https://github.com/TIGERB" class="icon style2 fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
+                
+                
+                
+                
+                
+                    <li><a href="mailto:tigerbcode@gmail.com" class="icon style2 fa-envelope-o" target="_blank" ><span class="label">Email</span></a></li>
+                
+                
+                    <li><a href="\atom.xml" class="icon style2 fa-rss" target="_blank" ><span class="label">RSS</span></a></li>
+                
+            </ul>
+        </section>
+        <ul class="copyright">
+            <li>&copy; TIGERB.cn All right reserved. 津ICP备17006784号-2</li>
+            <li><a href="https://juejin.im/user/5855e82d1b69e6006c9278b4" target="_blank">juejin</a></li>
+            <li><a href="https://segmentfault.com/u/tigerb" target="_blank">Segmentfault</a></li>
+            <li><a target="_blank" rel="noopener" href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
+            <li><a href="http://tigerb.cn/go/#/patterns/">Go设计模式实战</a></li>
+            <li><a href="http://tigerb.cn/go/#/kernal/">Go语言轻松进阶</a></li>
+            <li><a target="_blank" rel="noopener" href="https://dayutalk.cn/">大愚Talk</a></li>
+        </ul>
+    </div>
+</footer>
+    </div>
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- skel -->
+
+<script src="/js/skel.min.js"></script>
+
+
+<!-- Custom Code -->
+
+<script src="/js/util.js"></script>
+
+
+<!--[if lte IE 8]>
+
+<script src="/js/ie/respond.min.js"></script>
+
+<![endif]-->
+
+<!-- Custom Code -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Gallery -->
+<script src="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+</body>
+
+</html>

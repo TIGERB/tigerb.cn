@@ -28,7 +28,7 @@
 
     <!--Page Cover-->
     
-        <meta property="og:image" content="undefined"/>
+        <meta property="og:image" content=""/>
     
 
     <!-- Title -->
@@ -36,18 +36,26 @@
     <title>什么，秒杀系统也有这么多种！ - TIGERB</title>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/sass/main.css">
+    
+<link rel="stylesheet" href="/sass/main.css">
+
 
     <!--[if lt IE 8]>
-        <script src="/js/ie/html5shiv.js"></script>
+        
+<script src="/js/ie/html5shiv.js"></script>
+
     <![endif]-->
 
     <!--[if lt IE 8]>
-        <link rel="stylesheet" href="/sass/ie8.css">
+        
+<link rel="stylesheet" href="/sass/ie8.css">
+
     <![endif]-->
 
     <!--[if lt IE 9]>
-        <link rel="stylesheet" href="/sass/ie9.css">
+        
+<link rel="stylesheet" href="/sass/ie9.css">
+
     <![endif]-->
 
     <!-- Gallery -->
@@ -67,6 +75,7 @@
     })();
     </script>
 
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="TIGERB" type="application/atom+xml">
 </head>
 
 <body>
@@ -103,15 +112,15 @@
             </li>
         
             <li>
-                <a href="https://github.com/TIGERB">Github</a>
+                <a target="_blank" rel="noopener" href="https://github.com/TIGERB">Github</a>
             </li>
         
             <li>
-                <a href="https://segmentfault.com/u/tigerb">Segmentfault</a>
+                <a target="_blank" rel="noopener" href="https://segmentfault.com/u/tigerb">Segmentfault</a>
             </li>
         
             <li>
-                <a href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
+                <a target="_blank" rel="noopener" href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
             </li>
         
     </ul>
@@ -137,14 +146,18 @@
 
 
 <!-- Content -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <hr="">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"><hr>
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文结构很简单：</p>
 <blockquote>
 <p>5张图送你5种秒杀系统，再加点骚操作，再顺带些点心里话🤷‍♀️。</p>
 </blockquote>
 <h1 id="一个简单的秒杀系统"><a href="#一个简单的秒杀系统" class="headerlink" title="一个简单的秒杀系统"></a>一个简单的秒杀系统</h1><p><strong>实现原理：</strong> 通过redis原子操作减库存</p>
 <p><strong>图一</strong></p>
-<p align="center"><br>    <a href="http://cdn.tigerb.cn/20200501175532.png" target="_blank" rel="noopener"><br>        <a href="http://cdn.tigerb.cn/20200501175532.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20200501175532.png" width="90%"></a><br>    </a><br></p>
+<p align="center">
+    <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20200501175532.png">
+        <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20200501175532.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20200501175532.png" width="90%"></a>
+    </a>
+</p>
 
 <table>
 <thead>
@@ -153,28 +166,24 @@
 <th>缺点</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>简单好用</td>
 <td>考验redis服务能力</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <table>
 <thead>
 <tr>
 <th>是否公平</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>公平</td>
 </tr>
 <tr>
 <td>先到先得</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>我们称这类秒杀系统为：</p>
 <blockquote>
 <p>简单秒杀系统</p>
@@ -182,7 +191,11 @@
 <p>如果刚开始QPS并不高，redis完全抗的下来的情况，完全可以依赖这个「简单秒杀系统」。</p>
 <h1 id="一个够用的秒杀系统"><a href="#一个够用的秒杀系统" class="headerlink" title="一个够用的秒杀系统"></a>一个够用的秒杀系统</h1><p><strong>实现原理：</strong> 服务内存限流算法 + redis原子操作减库存</p>
 <p><strong>图二</strong></p>
-<p align="center"><br>    <a href="http://cdn.tigerb.cn/20200501183037.png" target="_blank" rel="noopener"><br>        <a href="http://cdn.tigerb.cn/20200501183037.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20200501183037.png" width="90%"></a><br>    </a><br></p>
+<p align="center">
+    <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20200501183037.png">
+        <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20200501183037.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20200501183037.png" width="90%"></a>
+    </a>
+</p>
 
 <table>
 <thead>
@@ -191,28 +204,24 @@
 <th>缺点</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>简单好用</td>
 <td>-</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <table>
 <thead>
 <tr>
 <th>是否公平</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>不是很公平</td>
 </tr>
 <tr>
 <td>相对的先到先得</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>我们称这类秒杀系统为：</p>
 <blockquote>
 <p>够用秒杀系统</p>
@@ -223,7 +232,11 @@
 </blockquote>
 <p>活动开始前分配好每台机器的库存，推送到机器上。</p>
 <p><strong>图三</strong></p>
-<p align="center"><br>    <a href="http://cdn.tigerb.cn/20200501200309.png" target="_blank" rel="noopener"><br>        <a href="http://cdn.tigerb.cn/20200501200309.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20200501200309.png" width="90%"></a><br>    </a><br></p>
+<p align="center">
+    <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20200501200309.png">
+        <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20200501200309.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20200501200309.png" width="90%"></a>
+    </a>
+</p>
 
 <table>
 <thead>
@@ -232,8 +245,7 @@
 <th>缺点</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>高性能</td>
 <td>不支持动态伸缩容(活动进行期间)，因为库存是活动开始前分配好的</td>
 </tr>
@@ -241,30 +253,31 @@
 <td>释放redis压力</td>
 <td>-</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <table>
 <thead>
 <tr>
 <th>是否公平</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>不是很公平</td>
 </tr>
 <tr>
 <td>不是绝对的先到先得</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>我们称这类秒杀系统为：</p>
 <blockquote>
 <p>预备库存秒杀系统</p>
 </blockquote>
 <h1 id="支持动态伸缩容的秒杀系统"><a href="#支持动态伸缩容的秒杀系统" class="headerlink" title="支持动态伸缩容的秒杀系统"></a>支持动态伸缩容的秒杀系统</h1><p><strong>实现原理：</strong> 服务本地协程Coroutine<strong>定时redis原子操作减部分库存</strong>到本地内存 + 服务本地内存原子操作减库存</p>
 <p><strong>图四</strong></p>
-<p align="center"><br>    <a href="http://cdn.tigerb.cn/20200501200846.png" target="_blank" rel="noopener"><br>        <a href="http://cdn.tigerb.cn/20200501200846.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20200501200846.png" width="90%"></a><br>    </a><br></p>
+<p align="center">
+    <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20200501200846.png">
+        <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20200501200846.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20200501200846.png" width="90%"></a>
+    </a>
+</p>
 
 <table>
 <thead>
@@ -273,8 +286,7 @@
 <th>缺点</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>高性能</td>
 <td>-</td>
 </tr>
@@ -290,30 +302,31 @@
 <td><strong>具备通用性</strong></td>
 <td>-</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <table>
 <thead>
 <tr>
 <th>是否公平</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>不是很公平，但是好了点</td>
 </tr>
 <tr>
 <td>几乎先到先得</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>我们称这类秒杀系统为：</p>
 <blockquote>
 <p>实时预备库存秒杀系统</p>
 </blockquote>
 <h1 id="公平的秒杀系统"><a href="#公平的秒杀系统" class="headerlink" title="公平的秒杀系统"></a>公平的秒杀系统</h1><p><strong>实现原理：</strong> 服务本地Goroutine<strong>定时同步是否售罄</strong>到本地内存 + 队列 + 排队成功轮训(或主动Push)结果</p>
 <p><strong>图五</strong></p>
-<p align="center"><br>    <a href="http://cdn.tigerb.cn/20200502195413.png" target="_blank" rel="noopener"><br>        <a href="http://cdn.tigerb.cn/20200502195413.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20200502195413.png" width="90%"></a><br>    </a><br></p>
+<p align="center">
+    <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20200502195413.png">
+        <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20200502195413.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20200502195413.png" width="90%"></a>
+    </a>
+</p>
 
 <table>
 <thead>
@@ -322,8 +335,7 @@
 <th>缺点</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>高性能</td>
 <td>开发成本高(需主动通知或轮训排队结果)</td>
 </tr>
@@ -335,23 +347,20 @@
 <td><strong>具备通用性</strong></td>
 <td>-</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <table>
 <thead>
 <tr>
 <th>是否公平</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>很公平</td>
 </tr>
 <tr>
 <td>绝对的先到先得</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>我们称这类秒杀系统为：</p>
 <blockquote>
 <p>公平排队秒杀系统</p>
@@ -376,66 +385,60 @@
 <th>数据存储位置</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>秒杀服务</td>
-<td><a href="https://seckill.skrshop.tech/v1/acticity/get" target="_blank" rel="noopener">https://seckill.skrshop.tech/v1/acticity/get</a></td>
+<td><a target="_blank" rel="noopener" href="https://seckill.skrshop.tech/v1/acticity/get">https://seckill.skrshop.tech/v1/acticity/get</a></td>
 <td>秒杀服务内存或redis等</td>
 </tr>
 <tr>
 <td>接口静态化服务</td>
-<td><a href="https://static-api.skrshop.tech/seckill/v1/acticity/get" target="_blank" rel="noopener">https://static-api.skrshop.tech/seckill/v1/acticity/get</a></td>
+<td><a target="_blank" rel="noopener" href="https://static-api.skrshop.tech/seckill/v1/acticity/get">https://static-api.skrshop.tech/seckill/v1/acticity/get</a></td>
 <td>CDN、本地文件</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p><strong>以前是这样</strong></p>
-<p align="center"><br>    <a href="http://cdn.tigerb.cn/20200502195950.png" target="_blank" rel="noopener"><br>        <a href="http://cdn.tigerb.cn/20200502195950.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20200502195950.png" width="66%"></a><br>    </a><br></p>
+<p align="center">
+    <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20200502195950.png">
+        <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20200502195950.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20200502195950.png" width="66%"></a>
+    </a>
+</p>
 
 <p><strong>变成了这样</strong></p>
-<p align="center"><br>    <a href="http://cdn.tigerb.cn/20200502200723.png" target="_blank" rel="noopener"><br>        <a href="http://cdn.tigerb.cn/20200502200723.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20200502200723.png" width="90%"></a><br>    </a><br></p>
+<p align="center">
+    <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20200502200723.png">
+        <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20200502200723.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20200502200723.png" width="90%"></a>
+    </a>
+</p>
 
 <p>结果：可以通过接口<code>https://static-api.skrshop.tech/seckill/v1/acticity/get</code>就获取到了秒杀活动信息，流量都分摊到了cdn，秒杀服务自身没了这部分的负载。</p>
 <blockquote>
 <p>小声点说：“秒杀结果我也敢推CDN😏😏😏。”</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">备注：</span><br><span class="line">之后我们会分享`如何用Golang设计一个好用的「接口静态化服务」`。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">备注：</span><br><span class="line">之后我们会分享`如何用Golang设计一个好用的「接口静态化服务」`。</span><br></pre></td></tr></table></figure>
+
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>上面我们得到了如下几类<code>秒杀系统</code></p>
 <table>
 <thead>
 <tr>
-<th></th>
 <th>秒杀系统</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td></td>
+<tbody><tr>
 <td>简单秒杀系统</td>
-<td></td>
 </tr>
 <tr>
-<td></td>
 <td>够用秒杀系统</td>
-<td></td>
 </tr>
 <tr>
-<td></td>
 <td>预备库存秒杀系统</td>
-<td></td>
 </tr>
 <tr>
-<td></td>
 <td>实时预备库存秒杀系统</td>
-<td></td>
 </tr>
 <tr>
-<td></td>
 <td>公平排队秒杀系统</td>
-<td></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>我想说的是里面没有最好的方案，也没有最坏的方案，只有<strong>适合你</strong>的。</p>
 <p>拿<code>先到先得</code>来说，一定要看你们的产品对外宣传，切勿上来就追逐绝对的先到先得。其实你看所有的方案，相对而言都是“先到先得”，比如，活动开始一个小时了你再来抢，那相对于准时的用户自然抢不过，对吧。</p>
 <p>又如<code>预备库存秒杀系统</code>，虽然不支持动态伸缩容。但是如果你的环境满足如下任意条件，就完全够用了。</p>
@@ -492,7 +495,7 @@
         <section>
             <h2>About</h2>
             <div>
-                新一代轻量级「<a href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
             </div>
         </section>
         <section>
@@ -522,10 +525,10 @@
             <li>&copy; TIGERB.cn All right reserved. 津ICP备17006784号-2</li>
             <li><a href="https://juejin.im/user/5855e82d1b69e6006c9278b4" target="_blank">juejin</a></li>
             <li><a href="https://segmentfault.com/u/tigerb" target="_blank">Segmentfault</a></li>
-            <li><a href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
+            <li><a target="_blank" rel="noopener" href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
             <li><a href="http://tigerb.cn/go/#/patterns/">Go设计模式实战</a></li>
             <li><a href="http://tigerb.cn/go/#/kernal/">Go语言轻松进阶</a></li>
-            <li><a href="https://dayutalk.cn/">大愚Talk</a></li>
+            <li><a target="_blank" rel="noopener" href="https://dayutalk.cn/">大愚Talk</a></li>
         </ul>
     </div>
 </footer>
@@ -534,20 +537,30 @@
     <!-- After footer scripts -->
     
 <!-- jQuery -->
+
 <script src="/js/jquery.min.js"></script>
 
+
 <!-- skel -->
+
 <script src="/js/skel.min.js"></script>
 
+
 <!-- Custom Code -->
+
 <script src="/js/util.js"></script>
 
+
 <!--[if lte IE 8]>
+
 <script src="/js/ie/respond.min.js"></script>
+
 <![endif]-->
 
 <!-- Custom Code -->
+
 <script src="/js/main.js"></script>
+
 
 <!-- Gallery -->
 <script src="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>

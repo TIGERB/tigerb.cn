@@ -28,7 +28,7 @@
 
     <!--Page Cover-->
     
-        <meta property="og:image" content="undefined"/>
+        <meta property="og:image" content=""/>
     
 
     <!-- Title -->
@@ -36,18 +36,26 @@
     <title>通用抽奖工具之需求分析 - TIGERB</title>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/sass/main.css">
+    
+<link rel="stylesheet" href="/sass/main.css">
+
 
     <!--[if lt IE 8]>
-        <script src="/js/ie/html5shiv.js"></script>
+        
+<script src="/js/ie/html5shiv.js"></script>
+
     <![endif]-->
 
     <!--[if lt IE 8]>
-        <link rel="stylesheet" href="/sass/ie8.css">
+        
+<link rel="stylesheet" href="/sass/ie8.css">
+
     <![endif]-->
 
     <!--[if lt IE 9]>
-        <link rel="stylesheet" href="/sass/ie9.css">
+        
+<link rel="stylesheet" href="/sass/ie9.css">
+
     <![endif]-->
 
     <!-- Gallery -->
@@ -67,6 +75,7 @@
     })();
     </script>
 
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="TIGERB" type="application/atom+xml">
 </head>
 
 <body>
@@ -103,15 +112,15 @@
             </li>
         
             <li>
-                <a href="https://github.com/TIGERB">Github</a>
+                <a target="_blank" rel="noopener" href="https://github.com/TIGERB">Github</a>
             </li>
         
             <li>
-                <a href="https://segmentfault.com/u/tigerb">Segmentfault</a>
+                <a target="_blank" rel="noopener" href="https://segmentfault.com/u/tigerb">Segmentfault</a>
             </li>
         
             <li>
-                <a href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
+                <a target="_blank" rel="noopener" href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
             </li>
         
     </ul>
@@ -137,22 +146,20 @@
 
 
 <!-- Content -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <h2="" id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言<p>首先我们先来回顾下<strong>营销体系</strong>的组成：</p>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>首先我们先来回顾下<strong>营销体系</strong>的组成：</p>
 <table>
 <thead>
 <tr>
 <th>营销体系</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>活动营销系统</td>
 </tr>
 <tr>
 <td>销售营销系统</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>今天带来的是<strong>活动营销系统</strong>下的第一个独立子系统<strong>通用抽奖工具</strong>的介绍，本篇文章主要分为如下4部分：</p>
 <ul>
 <li>常见抽奖场景与归类</li>
@@ -168,8 +175,7 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>红包雨</td>
 <td>每日整点抢红包🧧抽奖，每个整点一般可参与一次</td>
 </tr>
@@ -205,8 +211,7 @@
 <td>积分刮刮乐</td>
 <td>积分刮奖，消费积分额度越大奖品越贵重</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>通过上面的活动描述，我们把整个抽奖场景归为以下三类：</p>
 <table>
 <thead>
@@ -216,8 +221,7 @@
 <th>维度</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>按时间抽奖</td>
 <td>红包雨、糖果雨、打地鼠、幸运大转盘(九宫格)、考眼力</td>
 <td>时间维度</td>
@@ -232,8 +236,7 @@
 <td>支付刮刮乐、积分刮刮乐</td>
 <td>数额区间维度</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>接着我们来看下每类抽奖活动具体的抽奖需求配置。</p>
 <h2 id="抽奖需求配置"><a href="#抽奖需求配置" class="headerlink" title="抽奖需求配置"></a>抽奖需求配置</h2><p>本小节每类抽奖活动的需求配置，分为如下三个部分：</p>
 <ul>
@@ -249,14 +252,12 @@
 <th>特点</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>按时间抽奖</td>
 <td>红包雨、糖果雨、打地鼠、幸运大转盘(九宫格)、考眼力</td>
 <td>时间维度</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <table>
 <thead>
 <tr>
@@ -266,8 +267,7 @@
 <th>总场次次数限制(次)</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>红包雨</td>
 <td>是</td>
 <td>1</td>
@@ -297,8 +297,7 @@
 <td>N</td>
 <td>N</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>通过上面的分析我们得到了<strong>活动</strong>和<strong>场次</strong>的概念: 一个活动需要支持多场次的配置。</p>
 <ul>
 <li>活动activity:配置活动的日期范围</li>
@@ -316,8 +315,7 @@
 <th>双十二红包雨</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>活动配置：</td>
 </tr>
 <tr>
@@ -335,8 +333,7 @@
 <tr>
 <td>18:00:00 ~ 18:01:00</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>奖品配置：</p>
 <table>
 <thead>
@@ -348,8 +345,7 @@
 <th>奖品N</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>场次10:00:00 ~ 10:01:00</td>
 <td>优惠券2元</td>
 <td>空奖</td>
@@ -370,9 +366,9 @@
 <td>—</td>
 <td>空奖</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <figure class="highlight md"><table><tr><td class="code"><pre><span class="line">上面配置的结果如下：</span><br><span class="line"></span><br><span class="line">2019-12-10日三场整点红包雨：</span><br><span class="line">2019-12-10 10:00:00 ~ 10:01:00</span><br><span class="line">2019-12-10 12:00:00 ~ 12:01:00</span><br><span class="line">2019-12-10 18:00:00 ~ 18:01:00</span><br><span class="line"></span><br><span class="line">2019-12-11日三场整点红包雨：</span><br><span class="line">2019-12-11 10:00:00 ~ 10:01:00</span><br><span class="line">2019-12-11 12:00:00 ~ 12:01:00</span><br><span class="line">2019-12-11 18:00:00 ~ 18:01:00</span><br><span class="line"></span><br><span class="line">2019-12-12日三场整点红包雨：</span><br><span class="line">2019-12-12 10:00:00 ~ 10:01:00</span><br><span class="line">2019-12-12 12:00:00 ~ 12:01:00</span><br><span class="line">2019-12-12 18:00:00 ~ 18:01:00</span><br></pre></td></tr></table></figure>
+
 <p><strong>幸运大转盘的需求配置示例：</strong></p>
 <blockquote>
 <p>活动特征：幸运大转盘不需要多场次。</p>
@@ -385,8 +381,7 @@
 <th>双十二幸运大转盘</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>活动配置：</td>
 </tr>
 <tr>
@@ -398,8 +393,7 @@
 <tr>
 <td>00:00:00 ~ 23:59:59</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>奖品配置：</p>
 <table>
 <thead>
@@ -411,17 +405,16 @@
 <th>奖品N</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>场次00:00:00 ~ 23:59:59</td>
 <td>优惠券2元</td>
 <td>空奖</td>
 <td>—</td>
 <td>无</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <figure class="highlight md"><table><tr><td class="code"><pre><span class="line">上面配置的结果如下：</span><br><span class="line"></span><br><span class="line">幸运大转盘抽奖活动将于 2019-12-10 00:00:00 ~ 2019-12-12 23:59:59 进行</span><br></pre></td></tr></table></figure>
+
 <p>注意与思考：双十二幸运大转盘不需要多个场次，只配置一个场次即可，完全复用活动场次模型。</p>
 <h3 id="接着，第二类-按抽奖次数抽奖的需求配置"><a href="#接着，第二类-按抽奖次数抽奖的需求配置" class="headerlink" title="接着，第二类: 按抽奖次数抽奖的需求配置"></a>接着，第二类: <code>按抽奖次数抽奖</code>的需求配置</h3><table>
 <thead>
@@ -431,14 +424,12 @@
 <th>特点</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>按抽奖次数抽奖</td>
 <td>答题闯关、游戏闯关</td>
 <td>(成功参与)当前活动次数维度</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p><strong>答题闯关的需求配置示例：</strong></p>
 <blockquote>
 <p>活动特征：每一关的奖品不同，一般越到后面中大奖的几率越大。</p>
@@ -450,8 +441,7 @@
 <th>双十二答题闯关</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>活动配置：</td>
 </tr>
 <tr>
@@ -463,8 +453,7 @@
 <tr>
 <td>00:00:00 ~ 23:59:59</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>奖品配置：</p>
 <table>
 <thead>
@@ -473,8 +462,7 @@
 <th>奖品</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>第一关</td>
 <td>优惠券2元</td>
 </tr>
@@ -498,8 +486,7 @@
 <td>第六关</td>
 <td>优惠券100元</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>注意与思考：同理活动&amp;场次配置完全复用，同幸运大转盘配置(不需要支持多场次)。</p>
 <h3 id="最后，第三类-按数额范围区间抽奖的需求配置："><a href="#最后，第三类-按数额范围区间抽奖的需求配置：" class="headerlink" title="最后，第三类: 按数额范围区间抽奖的需求配置："></a>最后，第三类: <code>按数额范围区间抽奖</code>的需求配置：</h3><table>
 <thead>
@@ -509,14 +496,12 @@
 <th>特点</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>按数额范围区间抽奖</td>
 <td>支付刮刮乐、积分刮刮乐</td>
 <td>数额区间维度</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p><strong>支付刮刮乐的需求配置示例：</strong></p>
 <blockquote>
 <p>活动特征：不同的订单金额，一般金额越大中大奖的几率越大。</p>
@@ -528,8 +513,7 @@
 <th>双十二答题闯关</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>活动配置：</td>
 </tr>
 <tr>
@@ -541,8 +525,7 @@
 <tr>
 <td>00:00:00 ~ 23:59:59</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>奖品配置：</p>
 <table>
 <thead>
@@ -554,8 +537,7 @@
 <th>奖品N</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>0~100</td>
 <td>优惠券2元</td>
 <td>空奖</td>
@@ -583,8 +565,7 @@
 <td>—</td>
 <td>空奖</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>注意与思考：同理活动&amp;场次配置完全复用，同幸运大转盘配置(不需要支持多场次)。</p>
 <blockquote>
 <p>总结: 通过上面的分析我们得到了抽奖工具的两个要素<strong>活动</strong>和<strong>场次</strong>。</p>
@@ -598,8 +579,7 @@
 <th>常见奖品类型</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>优惠券</td>
 </tr>
 <tr>
@@ -611,8 +591,7 @@
 <tr>
 <td>空奖</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <blockquote>
 <p>总结: 我们得到了抽奖工具的另一个要素<strong>奖品</strong>。</p>
 </blockquote>
@@ -638,8 +617,7 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>活动时间</td>
 <td>2019-12-10~2019-12-12</td>
 </tr>
@@ -655,8 +633,7 @@
 <td>手动设置奖品概率</td>
 <td>是</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <table>
 <thead>
 <tr>
@@ -667,8 +644,7 @@
 <th>中奖概率</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>10:00:00 ~ 10:01:00</td>
 <td>优惠券</td>
 <td>2元优惠券</td>
@@ -731,8 +707,7 @@
 <td>5000</td>
 <td>30%</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>备注：每轮场次中奖概率之和必须为100%，否则剩余部分默认添加为空奖的中奖概率。</p>
 <h4 id="第五要素：均匀投奖"><a href="#第五要素：均匀投奖" class="headerlink" title="第五要素：均匀投奖"></a>第五要素：均匀投奖</h4><blockquote>
 <p>如何均匀的抽走奖品?</p>
@@ -751,8 +726,7 @@
 <th>投奖数量</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>00:00:00 ~ 23:59:59</td>
 <td>优惠券</td>
 <td>2元优惠券</td>
@@ -797,8 +771,7 @@
 <td>18:00:00</td>
 <td>2000</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>这里我们就得到了抽奖的<strong>第五个要素：均匀投奖</strong>。</p>
 <h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>通过上面的分析，我们得到抽奖五要素如下：</p>
 <table>
@@ -808,8 +781,7 @@
 <th>要素名称</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>第一要素</td>
 <td>活动</td>
 </tr>
@@ -829,8 +801,7 @@
 <td>第五要素</td>
 <td>均匀投奖</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>同时我们通过<strong>抽奖五要素</strong>也得到了<strong>通用抽奖工具</strong>配置一场抽奖活动的5个基本步骤：</p>
 <ol>
 <li>活动配置</li>
@@ -880,7 +851,7 @@
         <section>
             <h2>About</h2>
             <div>
-                新一代轻量级「<a href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
             </div>
         </section>
         <section>
@@ -910,10 +881,10 @@
             <li>&copy; TIGERB.cn All right reserved. 津ICP备17006784号-2</li>
             <li><a href="https://juejin.im/user/5855e82d1b69e6006c9278b4" target="_blank">juejin</a></li>
             <li><a href="https://segmentfault.com/u/tigerb" target="_blank">Segmentfault</a></li>
-            <li><a href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
+            <li><a target="_blank" rel="noopener" href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
             <li><a href="http://tigerb.cn/go/#/patterns/">Go设计模式实战</a></li>
             <li><a href="http://tigerb.cn/go/#/kernal/">Go语言轻松进阶</a></li>
-            <li><a href="https://dayutalk.cn/">大愚Talk</a></li>
+            <li><a target="_blank" rel="noopener" href="https://dayutalk.cn/">大愚Talk</a></li>
         </ul>
     </div>
 </footer>
@@ -922,20 +893,30 @@
     <!-- After footer scripts -->
     
 <!-- jQuery -->
+
 <script src="/js/jquery.min.js"></script>
 
+
 <!-- skel -->
+
 <script src="/js/skel.min.js"></script>
 
+
 <!-- Custom Code -->
+
 <script src="/js/util.js"></script>
 
+
 <!--[if lte IE 8]>
+
 <script src="/js/ie/respond.min.js"></script>
+
 <![endif]-->
 
 <!-- Custom Code -->
+
 <script src="/js/main.js"></script>
+
 
 <!-- Gallery -->
 <script src="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>

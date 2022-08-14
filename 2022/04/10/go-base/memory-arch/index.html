@@ -28,7 +28,7 @@
 
     <!--Page Cover-->
     
-        <meta property="og:image" content="undefined"/>
+        <meta property="og:image" content=""/>
     
 
     <!-- Title -->
@@ -36,18 +36,26 @@
     <title>浅析Go内存管理架构 - TIGERB</title>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/sass/main.css">
+    
+<link rel="stylesheet" href="/sass/main.css">
+
 
     <!--[if lt IE 8]>
-        <script src="/js/ie/html5shiv.js"></script>
+        
+<script src="/js/ie/html5shiv.js"></script>
+
     <![endif]-->
 
     <!--[if lt IE 8]>
-        <link rel="stylesheet" href="/sass/ie8.css">
+        
+<link rel="stylesheet" href="/sass/ie8.css">
+
     <![endif]-->
 
     <!--[if lt IE 9]>
-        <link rel="stylesheet" href="/sass/ie9.css">
+        
+<link rel="stylesheet" href="/sass/ie9.css">
+
     <![endif]-->
 
     <!-- Gallery -->
@@ -67,6 +75,7 @@
     })();
     </script>
 
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="TIGERB" type="application/atom+xml">
 </head>
 
 <body>
@@ -103,15 +112,15 @@
             </li>
         
             <li>
-                <a href="https://github.com/TIGERB">Github</a>
+                <a target="_blank" rel="noopener" href="https://github.com/TIGERB">Github</a>
             </li>
         
             <li>
-                <a href="https://segmentfault.com/u/tigerb">Segmentfault</a>
+                <a target="_blank" rel="noopener" href="https://segmentfault.com/u/tigerb">Segmentfault</a>
             </li>
         
             <li>
-                <a href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
+                <a target="_blank" rel="noopener" href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
             </li>
         
     </ul>
@@ -137,11 +146,14 @@
 
 
 <!-- Content -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <hr="">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"><hr>
 <h1 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h1><hr>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">本文基于Go源码版本1.16、64位Linux平台、1Page=8KB、本文的内存特指虚拟内存</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">本文基于Go源码版本1.16、64位Linux平台、1Page=8KB、本文的内存特指虚拟内存</span><br></pre></td></tr></table></figure>
+
 <p>今天我们开始进入《Go语言轻松系列》第二章「内存与垃圾回收」第二部分「Go语言内存管理」。</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210109200839.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210109200839.png" style="width:60%;box-shadow: 3px 3px 3px 3px #ddd;"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210109200839.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210109200839.png" style="width:60%;box-shadow: 3px 3px 3px 3px #ddd;"></a>
+</p>
 
 <p>关于「内存与垃圾回收」章节，会从如下三大部分展开：</p>
 <ul>
@@ -225,7 +237,7 @@
 </blockquote>
 <p><code>TCMalloc</code>把申请的内存对象按大小分为了两类：</p>
 <ul>
-<li>小对象 &lt;= 256 KB</li>
+<li>小对象 &lt;&#x3D; 256 KB</li>
 <li>大对象 &gt; 256 KB</li>
 </ul>
 <p>我们这里以分配小对象为例，当给小对象分配内存时：</p>
@@ -234,7 +246,9 @@
 <li>当线程缓存<code>ThreadCache</code>的内存不足时，从对应<code>SizeClass</code>的中央缓存<code>CentralFreeList</code>获取</li>
 <li>最后，再从对应<code>SizeClass</code>的<code>PageHeap</code>中分配</li>
 </ul>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210120132244.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210120132244.png" style="width:66%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210120132244.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210120132244.png" style="width:66%"></a>
+</p>
 
 <h2 id="Go内存分配器的逻辑架构"><a href="#Go内存分配器的逻辑架构" class="headerlink" title="Go内存分配器的逻辑架构"></a><strong>Go内存分配器的逻辑架构</strong></h2><p>采用了和<code>TCMalloc</code>内存分配器一样的三层逻辑架构：</p>
 <ul>
@@ -242,17 +256,21 @@
 <li><code>mcentral</code>：中央缓存</li>
 <li><code>mheap</code>：堆内存</li>
 </ul>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20220405133623.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20220405133623.png" style="width:60%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220405133623.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220405133623.png" style="width:60%"></a>
+</p>
 
 <p>实际中央缓存<code>central</code>是一个由136个<code>mcentral</code>类型元素的数组构成。</p>
 <p>除此之外需要特别注意的地方：<code>mcache</code>被逻辑处理器<code>p</code>持有，而并不是被真正的系统线程<code>m</code>持有。(这个设计很有意思，后续会有一篇文章来解释这个问题)</p>
 <p>我们更新下架构图如下：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20220405224809.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20220405224809.png" style="width:60%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220405224809.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220405224809.png" style="width:60%"></a>
+</p>
 
 <p>「Go内存分配器」把申请的内存对象按大小分为了三类：</p>
 <ul>
 <li>微对象 0 &lt; Micro Object &lt; 16B</li>
-<li>小对象 16B =&lt; Small Object &lt;= 32KB</li>
+<li>小对象 16B &#x3D;&lt; Small Object &lt;&#x3D; 32KB</li>
 <li>大对象 32KB &lt; Large Object</li>
 </ul>
 <p>为了清晰看出这三层的关系，这里以堆上分配小对象为例：</p>
@@ -261,11 +279,15 @@
 <li>找不到时，再去中央缓存<code>central</code>中分配内存</li>
 <li>最后直接去堆上<code>mheap</code>分配一块内存</li>
 </ul>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20220405224348.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20220405224348.png" style="width:80%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220405224348.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220405224348.png" style="width:80%"></a>
+</p>
 
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><hr>
 <p>通过以上的分析可以看出Go内存分配器的设计和开源<code>TCMalloc</code>内存分配器的理念、思路基本一致。对比图如下：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20220405225026.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20220405225026.png" style="width:100%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220405225026.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220405225026.png" style="width:100%"></a>
+</p>
 
 <p>最后我们总结下：</p>
 <ul>
@@ -317,7 +339,7 @@
         <section>
             <h2>About</h2>
             <div>
-                新一代轻量级「<a href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
             </div>
         </section>
         <section>
@@ -347,10 +369,10 @@
             <li>&copy; TIGERB.cn All right reserved. 津ICP备17006784号-2</li>
             <li><a href="https://juejin.im/user/5855e82d1b69e6006c9278b4" target="_blank">juejin</a></li>
             <li><a href="https://segmentfault.com/u/tigerb" target="_blank">Segmentfault</a></li>
-            <li><a href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
+            <li><a target="_blank" rel="noopener" href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
             <li><a href="http://tigerb.cn/go/#/patterns/">Go设计模式实战</a></li>
             <li><a href="http://tigerb.cn/go/#/kernal/">Go语言轻松进阶</a></li>
-            <li><a href="https://dayutalk.cn/">大愚Talk</a></li>
+            <li><a target="_blank" rel="noopener" href="https://dayutalk.cn/">大愚Talk</a></li>
         </ul>
     </div>
 </footer>
@@ -359,20 +381,30 @@
     <!-- After footer scripts -->
     
 <!-- jQuery -->
+
 <script src="/js/jquery.min.js"></script>
 
+
 <!-- skel -->
+
 <script src="/js/skel.min.js"></script>
 
+
 <!-- Custom Code -->
+
 <script src="/js/util.js"></script>
 
+
 <!--[if lte IE 8]>
+
 <script src="/js/ie/respond.min.js"></script>
+
 <![endif]-->
 
 <!-- Custom Code -->
+
 <script src="/js/main.js"></script>
+
 
 <!-- Gallery -->
 <script src="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>

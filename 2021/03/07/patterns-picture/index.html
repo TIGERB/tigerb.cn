@@ -28,7 +28,7 @@
 
     <!--Page Cover-->
     
-        <meta property="og:image" content="undefined"/>
+        <meta property="og:image" content=""/>
     
 
     <!-- Title -->
@@ -36,18 +36,26 @@
     <title>图解设计模式 - TIGERB</title>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/sass/main.css">
+    
+<link rel="stylesheet" href="/sass/main.css">
+
 
     <!--[if lt IE 8]>
-        <script src="/js/ie/html5shiv.js"></script>
+        
+<script src="/js/ie/html5shiv.js"></script>
+
     <![endif]-->
 
     <!--[if lt IE 8]>
-        <link rel="stylesheet" href="/sass/ie8.css">
+        
+<link rel="stylesheet" href="/sass/ie8.css">
+
     <![endif]-->
 
     <!--[if lt IE 9]>
-        <link rel="stylesheet" href="/sass/ie9.css">
+        
+<link rel="stylesheet" href="/sass/ie9.css">
+
     <![endif]-->
 
     <!-- Gallery -->
@@ -67,6 +75,7 @@
     })();
     </script>
 
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="TIGERB" type="application/atom+xml">
 </head>
 
 <body>
@@ -103,15 +112,15 @@
             </li>
         
             <li>
-                <a href="https://github.com/TIGERB">Github</a>
+                <a target="_blank" rel="noopener" href="https://github.com/TIGERB">Github</a>
             </li>
         
             <li>
-                <a href="https://segmentfault.com/u/tigerb">Segmentfault</a>
+                <a target="_blank" rel="noopener" href="https://segmentfault.com/u/tigerb">Segmentfault</a>
             </li>
         
             <li>
-                <a href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
+                <a target="_blank" rel="noopener" href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
             </li>
         
     </ul>
@@ -137,7 +146,8 @@
 
 
 <!-- Content -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <figure=""><table><tr><td class="code"><pre><span class="line">本文不限于任何面向对象的编程语言</span><br></pre></td></tr></table>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">本文不限于任何面向对象的编程语言</span><br></pre></td></tr></table></figure>
+
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><hr>
 <p>常常听别人说设计模式不太容易理解，以及学习设计模式到底能帮我们解决什么问题，今天我们就用几张图来看看：</p>
 <ul>
@@ -147,14 +157,21 @@
 <h1 id="我也写过烂代码"><a href="#我也写过烂代码" class="headerlink" title="我也写过烂代码"></a>我也写过烂代码</h1><hr>
 <p>是的，没什么，我也写过烂代码，刚毕业时业务逻辑也会一个函数干到底，只知道能实现功能就可以了。</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> demo</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">YourFunc</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 所有的逻辑代码一股脑写完......</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210307142850.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210307142850.png" style="width:30%"></a><br></p>
+
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210307142850.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210307142850.png" style="width:30%"></a>
+</p>
 
 <h1 id="知道了拆分函数"><a href="#知道了拆分函数" class="headerlink" title="知道了拆分函数"></a>知道了拆分函数</h1><hr>
 <p>自然而然知道了需要合理拆分函数。</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210307144448.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210307144448.png" style="width:30%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210307144448.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210307144448.png" style="width:30%"></a>
+</p>
 
 <p>然后把各个函数组织起来。</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210307144536.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210307144536.png" style="width:30%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210307144536.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210307144536.png" style="width:30%"></a>
+</p>
 
 <h1 id="面临新的困境"><a href="#面临新的困境" class="headerlink" title="面临新的困境"></a>面临新的困境</h1><hr>
 <p>某一天产品的需求需要支持新的场景，发现某一处的代码逻辑有变动需要支持新的场景，怎么办？</p>
@@ -163,33 +180,50 @@
 <li>把绿色变动的代码块，复制成一个新的函数，修改为新场景使用的函数？</li>
 <li>把变动的代码再提为两个新函数，一个绿色为老代码，一个蓝色为新场景代码？</li>
 </ol>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210307144547.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210307144547.png" style="width:36%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210307144547.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210307144547.png" style="width:36%"></a>
+</p>
 
 <p>上面这种解决问题的方式就是<strong>面向过程</strong>的编程思想。</p>
 <h1 id="我们都在变优秀"><a href="#我们都在变优秀" class="headerlink" title="我们都在变优秀"></a>我们都在变优秀</h1><hr>
 <p>随着我们不断的学习，学会使用了面向对象的特性。</p>
-<p>以往函数式编程：<br><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> demo</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 函数式编程</span></span><br><span class="line"><span class="comment">// 把一个个你以为可以独立的逻辑封住到一个函数里</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">YourFunc</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// ......</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>面向对象编程：<br><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> demo</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 面向对象编程</span></span><br><span class="line"><span class="comment">// 把不同的逻辑独立成一个对象</span></span><br><span class="line"><span class="keyword">type</span> DemoStruct <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(d *DemoStruct)</span> <span class="title">YourFunc</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// ......</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210307144804.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210307144804.png" style="width:50%"></a><br></p>
+<p>以往函数式编程：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> demo</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 函数式编程</span></span><br><span class="line"><span class="comment">// 把一个个你以为可以独立的逻辑封住到一个函数里</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">YourFunc</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// ......</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>面向对象编程：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> demo</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 面向对象编程</span></span><br><span class="line"><span class="comment">// 把不同的逻辑独立成一个对象</span></span><br><span class="line"><span class="keyword">type</span> DemoStruct <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(d *DemoStruct)</span></span> YourFunc() &#123;</span><br><span class="line">	<span class="comment">// ......</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210307144804.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210307144804.png" style="width:50%"></a>
+</p>
 
 <p>所以，我们如何用面向对象的思想组织上面的代码呢？</p>
 <p>答案：继承。</p>
 <h1 id="学会了使用继承"><a href="#学会了使用继承" class="headerlink" title="学会了使用继承"></a>学会了使用继承</h1><hr>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">特别备注：Go里面用合成复用</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">特别备注：Go里面用合成复用</span><br></pre></td></tr></table></figure>
+
 <p>定义一个父类，并把差异业务代码抽象为一个抽象函数，其他代码逻辑都实现在父类。</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210307145232.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210307145232.png" style="width:50%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210307145232.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210307145232.png" style="width:50%"></a>
+</p>
 
 <p>不同的场景定义为不同的子类，子类继承父类，并实现抽象方法(也就是写差异代码)。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">灰色：父类</span><br><span class="line">绿色：场景一子类</span><br><span class="line">蓝色：场景二子类</span><br></pre></td></tr></table></figure>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210307145349.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210307145349.png" style="width:50%"></a><br></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">灰色：父类</span><br><span class="line">绿色：场景一子类</span><br><span class="line">蓝色：场景二子类</span><br></pre></td></tr></table></figure>
+
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210307145349.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210307145349.png" style="width:50%"></a>
+</p>
 
 <p>是不是很优雅的解决上面的场景的问题。</p>
 <h1 id="什么是设计模式？"><a href="#什么是设计模式？" class="headerlink" title="什么是设计模式？"></a>什么是设计模式？</h1><hr>
 <p>就是优雅解决上面场景问题时，利用面向对象特性的经验总结，就是设计模式。然而在历史的长河中，已经为我们总结了20+的常用设计模式，我们只需要学习和加以灵活运用即可。比如：</p>
 <h2 id="这！就是模板模式"><a href="#这！就是模板模式" class="headerlink" title="这！就是模板模式"></a><strong>这！就是模板模式</strong></h2><p>还记得上面使用继承的过程吗？其实我们只需要做一件事情，就是经典的模板模式了，是什么？</p>
 <p>答案：保证该场景下父类中封装的方法调用过程是稳定不变的，只是其中的方法可能变化。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">灰色：父类</span><br><span class="line">绿色：场景一子类</span><br><span class="line">蓝色：场景二子类</span><br><span class="line">黄色：场景三子类</span><br></pre></td></tr></table></figure>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210307145529.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210307145529.png" style="width:50%"></a><br></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">灰色：父类</span><br><span class="line">绿色：场景一子类</span><br><span class="line">蓝色：场景二子类</span><br><span class="line">黄色：场景三子类</span><br></pre></td></tr></table></figure>
+
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210307145529.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210307145529.png" style="width:50%"></a>
+</p>
 
 <h2 id="这！就是策略模式"><a href="#这！就是策略模式" class="headerlink" title="这！就是策略模式"></a><strong>这！就是策略模式</strong></h2><p>我们把上面代码做些改动：</p>
 <ol>
@@ -197,34 +231,55 @@
 <li>定义一个接口interface类型。</li>
 <li>变更原抽象方法为调用一个接口interface类型的函数。</li>
 </ol>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> demo</span><br><span class="line"> </span><br><span class="line"><span class="comment">// DemoInterface 接口</span></span><br><span class="line"><span class="keyword">type</span> DemoInterface <span class="keyword">interface</span> &#123;</span><br><span class="line">    DoSomething(ctx *Context) error </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> CurrentStrategyInstance DemoInterface</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Demo</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">//.....逻辑略......</span></span><br><span class="line">	CurrentStrategyInstance.DoSomething(c)</span><br><span class="line">	<span class="comment">//.....逻辑略......</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">灰色：主业务类</span><br></pre></td></tr></table></figure>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210307145602.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210307145602.png" style="width:60%"></a><br></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> demo</span><br><span class="line"> </span><br><span class="line"><span class="comment">// DemoInterface 接口</span></span><br><span class="line"><span class="keyword">type</span> DemoInterface <span class="keyword">interface</span> &#123;</span><br><span class="line">    DoSomething(ctx *Context) <span class="type">error</span> </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> CurrentStrategyInstance DemoInterface</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Demo</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">//.....逻辑略......</span></span><br><span class="line">	CurrentStrategyInstance.DoSomething(c)</span><br><span class="line">	<span class="comment">//.....逻辑略......</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">灰色：主业务类</span><br></pre></td></tr></table></figure>
+
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210307145602.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210307145602.png" style="width:60%"></a>
+</p>
 
 <ol start="4">
 <li>不同的场景定义为一个具体的类，且实现上面的interface。</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">灰色：主业务类</span><br><span class="line">绿色：场景一DemoInterface的具体实现类</span><br></pre></td></tr></table></figure>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210307145616.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210307145616.png" style="width:60%"></a><br></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">灰色：主业务类</span><br><span class="line">绿色：场景一DemoInterface的具体实现类</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">灰色：主业务类</span><br><span class="line">绿色：场景一DemoInterface的具体实现类</span><br><span class="line">蓝色：场景二DemoInterface的具体实现类</span><br></pre></td></tr></table></figure>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210307145642.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210307145642.png" style="width:60%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210307145616.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210307145616.png" style="width:60%"></a>
+</p>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">灰色：主业务类</span><br><span class="line">绿色：场景一DemoInterface的具体实现类</span><br><span class="line">蓝色：场景二DemoInterface的具体实现类</span><br><span class="line">黄色：场景三DemoInterface的具体实现类</span><br></pre></td></tr></table></figure>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210307145705.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210307145705.png" style="width:60%"></a><br></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">灰色：主业务类</span><br><span class="line">绿色：场景一DemoInterface的具体实现类</span><br><span class="line">蓝色：场景二DemoInterface的具体实现类</span><br></pre></td></tr></table></figure>
+
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210307145642.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210307145642.png" style="width:60%"></a>
+</p>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">灰色：主业务类</span><br><span class="line">绿色：场景一DemoInterface的具体实现类</span><br><span class="line">蓝色：场景二DemoInterface的具体实现类</span><br><span class="line">黄色：场景三DemoInterface的具体实现类</span><br></pre></td></tr></table></figure>
+
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210307145705.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210307145705.png" style="width:60%"></a>
+</p>
 
 <ol start="5">
 <li>最后我们判断不同的场景初始化不同的具体类，再调用即可。</li>
 </ol>
 <h2 id="这！就是简单工厂模式-策略模式"><a href="#这！就是简单工厂模式-策略模式" class="headerlink" title="这！就是简单工厂模式 + 策略模式"></a><strong>这！就是简单工厂模式 + 策略模式</strong></h2><p>接着我们把<strong>判断不同的场景初始化不同的具体类</strong>单独封装起来，这就是简单工厂模式 + 策略模式。</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> demo</span><br><span class="line"> </span><br><span class="line"><span class="keyword">type</span> DemoFactory <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// Get 获取实例</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(f *DemoFactory)</span> <span class="title">Get</span><span class="params">(instanceType <span class="keyword">string</span>)</span> <span class="title">DemoInterface</span></span> &#123;</span><br><span class="line">	<span class="keyword">switch</span> instanceType &#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">"DemoA"</span>:</span><br><span class="line">		<span class="keyword">return</span> &amp;DemoA&#123;&#125;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">"DemoB"</span>:</span><br><span class="line">		<span class="keyword">return</span> &amp;DemoB&#123;&#125;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">"DemoC"</span>:</span><br><span class="line">		<span class="keyword">return</span> &amp;DemoC&#123;&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">default</span>:</span><br><span class="line">		<span class="built_in">panic</span>(<span class="string">"不支持的类型"</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// DemoInterface 接口</span></span><br><span class="line"><span class="keyword">type</span> DemoInterface <span class="keyword">interface</span> &#123;</span><br><span class="line">    DoSomething(ctx *Context) error </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> CurrentStrategyInstance DemoInterface</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Demo</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">//.....逻辑略......</span></span><br><span class="line">  CurrentStrategyInstance = (DemoFactory&#123;&#125;).Get(<span class="string">"DemoA"</span>)</span><br><span class="line">	CurrentStrategyInstance.DoSomething(c)</span><br><span class="line">	<span class="comment">//.....逻辑略......</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">灰色(大)：主业务类</span><br><span class="line">灰色(小)：简单工厂类</span><br><span class="line">绿色：场景一DemoInterface的具体实现类</span><br><span class="line">蓝色：场景二DemoInterface的具体实现类</span><br><span class="line">黄色：场景三DemoInterface的具体实现类</span><br></pre></td></tr></table></figure>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210307154154.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210307154154.png" style="width:60%"></a><br></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> demo</span><br><span class="line"> </span><br><span class="line"><span class="keyword">type</span> DemoFactory <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// Get 获取实例</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(f *DemoFactory)</span></span> Get(instanceType <span class="type">string</span>) DemoInterface &#123;</span><br><span class="line">	<span class="keyword">switch</span> instanceType &#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">&quot;DemoA&quot;</span>:</span><br><span class="line">		<span class="keyword">return</span> &amp;DemoA&#123;&#125;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">&quot;DemoB&quot;</span>:</span><br><span class="line">		<span class="keyword">return</span> &amp;DemoB&#123;&#125;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">&quot;DemoC&quot;</span>:</span><br><span class="line">		<span class="keyword">return</span> &amp;DemoC&#123;&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">default</span>:</span><br><span class="line">		<span class="built_in">panic</span>(<span class="string">&quot;不支持的类型&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// DemoInterface 接口</span></span><br><span class="line"><span class="keyword">type</span> DemoInterface <span class="keyword">interface</span> &#123;</span><br><span class="line">    DoSomething(ctx *Context) <span class="type">error</span> </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> CurrentStrategyInstance DemoInterface</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Demo</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">//.....逻辑略......</span></span><br><span class="line">  CurrentStrategyInstance = (DemoFactory&#123;&#125;).Get(<span class="string">&quot;DemoA&quot;</span>)</span><br><span class="line">	CurrentStrategyInstance.DoSomething(c)</span><br><span class="line">	<span class="comment">//.....逻辑略......</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">灰色(大)：主业务类</span><br><span class="line">灰色(小)：简单工厂类</span><br><span class="line">绿色：场景一DemoInterface的具体实现类</span><br><span class="line">蓝色：场景二DemoInterface的具体实现类</span><br><span class="line">黄色：场景三DemoInterface的具体实现类</span><br></pre></td></tr></table></figure>
+
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210307154154.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210307154154.png" style="width:60%"></a>
+</p>
 
 <h2 id="这！就是状态模式"><a href="#这！就是状态模式" class="headerlink" title="这！就是状态模式"></a><strong>这！就是状态模式</strong></h2><p>假设判断上面使用何种策略不是依赖外部，而是依赖内部状态，则我们调整下代码，则就变成了状态模式。</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> demo</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> currentStateInstance DemoInterface</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 定时器更新状态</span></span><br><span class="line">    <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">for</span> &#123;</span><br><span class="line">            <span class="keyword">select</span> &#123;</span><br><span class="line">            <span class="keyword">case</span> t := &lt;-time.NewTicker(<span class="number">1</span> * time.Second).C:</span><br><span class="line">                <span class="comment">// 模拟变成状态 StateA</span></span><br><span class="line">                currentStateInstance = setState(<span class="string">"StateA"</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;()</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// Get 获取实例</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">setState</span><span class="params">(State <span class="keyword">string</span>)</span> <span class="title">DemoInterface</span></span> &#123;</span><br><span class="line">  <span class="comment">// 变更状态</span></span><br><span class="line">	<span class="keyword">switch</span> State &#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">"StateA"</span>:</span><br><span class="line">		<span class="keyword">return</span> &amp;StateA&#123;&#125;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">"StateB"</span>:</span><br><span class="line">		<span class="keyword">return</span> &amp;StateB&#123;&#125;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">"StateC"</span>:</span><br><span class="line">		<span class="keyword">return</span> &amp;StateC&#123;&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">default</span>:</span><br><span class="line">		<span class="built_in">panic</span>(<span class="string">"不支持的状态"</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// DemoInterface 接口</span></span><br><span class="line"><span class="keyword">type</span> DemoInterface <span class="keyword">interface</span> &#123;</span><br><span class="line">    DoSomething(ctx *Context) error </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// type StateA StateB StateC 略</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// 模拟</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Demo</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">//.....逻辑略......</span></span><br><span class="line">	CurrentStateInstance.DoSomething(c)</span><br><span class="line">	<span class="comment">//.....逻辑略......</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">灰色(大)：主业务类</span><br><span class="line">灰色(小)：修改内部状态的函数</span><br><span class="line">绿色：场景一DemoInterface的具体实现类</span><br><span class="line">蓝色：场景二DemoInterface的具体实现类</span><br><span class="line">黄色：场景三DemoInterface的具体实现类</span><br></pre></td></tr></table></figure>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210307160512.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210307160512.png" style="width:60%"></a><br></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> demo</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> currentStateInstance DemoInterface</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 定时器更新状态</span></span><br><span class="line">    <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">for</span> &#123;</span><br><span class="line">            <span class="keyword">select</span> &#123;</span><br><span class="line">            <span class="keyword">case</span> t := &lt;-time.NewTicker(<span class="number">1</span> * time.Second).C:</span><br><span class="line">                <span class="comment">// 模拟变成状态 StateA</span></span><br><span class="line">                currentStateInstance = setState(<span class="string">&quot;StateA&quot;</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;()</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// Get 获取实例</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">setState</span><span class="params">(State <span class="type">string</span>)</span></span> DemoInterface &#123;</span><br><span class="line">  <span class="comment">// 变更状态</span></span><br><span class="line">	<span class="keyword">switch</span> State &#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">&quot;StateA&quot;</span>:</span><br><span class="line">		<span class="keyword">return</span> &amp;StateA&#123;&#125;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">&quot;StateB&quot;</span>:</span><br><span class="line">		<span class="keyword">return</span> &amp;StateB&#123;&#125;</span><br><span class="line">	<span class="keyword">case</span> <span class="string">&quot;StateC&quot;</span>:</span><br><span class="line">		<span class="keyword">return</span> &amp;StateC&#123;&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">default</span>:</span><br><span class="line">		<span class="built_in">panic</span>(<span class="string">&quot;不支持的状态&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// DemoInterface 接口</span></span><br><span class="line"><span class="keyword">type</span> DemoInterface <span class="keyword">interface</span> &#123;</span><br><span class="line">    DoSomething(ctx *Context) <span class="type">error</span> </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// type StateA StateB StateC 略</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// 模拟</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Demo</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">//.....逻辑略......</span></span><br><span class="line">	CurrentStateInstance.DoSomething(c)</span><br><span class="line">	<span class="comment">//.....逻辑略......</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">灰色(大)：主业务类</span><br><span class="line">灰色(小)：修改内部状态的函数</span><br><span class="line">绿色：场景一DemoInterface的具体实现类</span><br><span class="line">蓝色：场景二DemoInterface的具体实现类</span><br><span class="line">黄色：场景三DemoInterface的具体实现类</span><br></pre></td></tr></table></figure>
+
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210307160512.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210307160512.png" style="width:60%"></a>
+</p>
 
 <h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><hr>
 <p>举了这么多🌰，所以关于：</p>
@@ -273,7 +328,7 @@
         <section>
             <h2>About</h2>
             <div>
-                新一代轻量级「<a href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
             </div>
         </section>
         <section>
@@ -303,10 +358,10 @@
             <li>&copy; TIGERB.cn All right reserved. 津ICP备17006784号-2</li>
             <li><a href="https://juejin.im/user/5855e82d1b69e6006c9278b4" target="_blank">juejin</a></li>
             <li><a href="https://segmentfault.com/u/tigerb" target="_blank">Segmentfault</a></li>
-            <li><a href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
+            <li><a target="_blank" rel="noopener" href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
             <li><a href="http://tigerb.cn/go/#/patterns/">Go设计模式实战</a></li>
             <li><a href="http://tigerb.cn/go/#/kernal/">Go语言轻松进阶</a></li>
-            <li><a href="https://dayutalk.cn/">大愚Talk</a></li>
+            <li><a target="_blank" rel="noopener" href="https://dayutalk.cn/">大愚Talk</a></li>
         </ul>
     </div>
 </footer>
@@ -315,20 +370,30 @@
     <!-- After footer scripts -->
     
 <!-- jQuery -->
+
 <script src="/js/jquery.min.js"></script>
 
+
 <!-- skel -->
+
 <script src="/js/skel.min.js"></script>
 
+
 <!-- Custom Code -->
+
 <script src="/js/util.js"></script>
 
+
 <!--[if lte IE 8]>
+
 <script src="/js/ie/respond.min.js"></script>
+
 <![endif]-->
 
 <!-- Custom Code -->
+
 <script src="/js/main.js"></script>
+
 
 <!-- Gallery -->
 <script src="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>

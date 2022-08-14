@@ -28,7 +28,7 @@
 
     <!--Page Cover-->
     
-        <meta property="og:image" content="undefined"/>
+        <meta property="og:image" content=""/>
     
 
     <!-- Title -->
@@ -36,18 +36,26 @@
     <title>客户决策 | Go设计模式实战 - TIGERB</title>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/sass/main.css">
+    
+<link rel="stylesheet" href="/sass/main.css">
+
 
     <!--[if lt IE 8]>
-        <script src="/js/ie/html5shiv.js"></script>
+        
+<script src="/js/ie/html5shiv.js"></script>
+
     <![endif]-->
 
     <!--[if lt IE 8]>
-        <link rel="stylesheet" href="/sass/ie8.css">
+        
+<link rel="stylesheet" href="/sass/ie8.css">
+
     <![endif]-->
 
     <!--[if lt IE 9]>
-        <link rel="stylesheet" href="/sass/ie9.css">
+        
+<link rel="stylesheet" href="/sass/ie9.css">
+
     <![endif]-->
 
     <!-- Gallery -->
@@ -67,6 +75,7 @@
     })();
     </script>
 
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="TIGERB" type="application/atom+xml">
 </head>
 
 <body>
@@ -103,15 +112,15 @@
             </li>
         
             <li>
-                <a href="https://github.com/TIGERB">Github</a>
+                <a target="_blank" rel="noopener" href="https://github.com/TIGERB">Github</a>
             </li>
         
             <li>
-                <a href="https://segmentfault.com/u/tigerb">Segmentfault</a>
+                <a target="_blank" rel="noopener" href="https://segmentfault.com/u/tigerb">Segmentfault</a>
             </li>
         
             <li>
-                <a href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
+                <a target="_blank" rel="noopener" href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
             </li>
         
     </ul>
@@ -137,10 +146,12 @@
 
 
 <!-- Content -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <blockquote="">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"><blockquote>
 <p>嗯，Go设计模式实战系列，一个设计模式业务真实使用的golang系列。</p>
-
-<p><br>    <a href="http://cdn.tigerb.cn/20210215112122.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210215112122.png" width="50%"></a><br></p>
+</blockquote>
+<p>
+    <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210215112122.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210215112122.png" width="50%"></a>
+</p>
 
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h1><hr>
 <p>本系列主要分享，如何在我们的真实业务场景中使用设计模式。</p>
@@ -184,7 +195,7 @@
 <li>缓存: 使用什么样的nosql</li>
 <li>存储: 使用什么样的DB</li>
 <li>支付: 使用什么样的支付方式</li>
-<li>等等… </li>
+<li>等等…</li>
 </ul>
 <p>本文以<strong>支付接口</strong>举例，说明「策略模式」的具体使用。</p>
 <h1 id="怎么用「策略模式」？"><a href="#怎么用「策略模式」？" class="headerlink" title="怎么用「策略模式」？"></a><strong>怎么用「策略模式」？</strong></h1><hr>
@@ -195,27 +206,35 @@
 <li>代码建模</li>
 <li>代码demo</li>
 </ul>
-<h2 id="业务梳理"><a href="#业务梳理" class="headerlink" title="### 业务梳理**"></a>##<strong># </strong>业务梳理**</h2><p>我们以某团的订单支付页面为例，页面上的每一个支付选项都是一个支付策略。如下：</p>
+<h2 id="业务梳理"><a href="#业务梳理" class="headerlink" title="##**# 业务梳理"></a>##**# <strong>业务梳理</strong></h2><p>我们以某团的订单支付页面为例，页面上的每一个支付选项都是一个支付策略。如下：</p>
 <p>用户可以使用：</p>
 <ul>
 <li>美团支付(策略)</li>
 <li>微信支付(策略)</li>
 <li>支付宝支付(策略)</li>
 </ul>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20200424131625.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20200424131625.png" style="width:30%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20200424131625.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20200424131625.png" style="width:30%"></a>
+</p>
 
 <p>用户决定使用美团支付下的银行卡支付方式的参数</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20200424132214.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20200424132214.png" style="width:30%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20200424132214.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20200424132214.png" style="width:30%"></a>
+</p>
 
 <p>用户决定使用支付宝网页版支付方式的参数</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20200424132232.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20200424132232.png" style="width:30%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20200424132232.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20200424132232.png" style="width:30%"></a>
+</p>
 
 <blockquote>
 <p>注：不一定完全准确。</p>
 </blockquote>
 <h2 id="业务流程图"><a href="#业务流程图" class="headerlink" title="业务流程图"></a><strong>业务流程图</strong></h2><hr>
 <p>我们通过梳理的文本业务流程得到了如下的业务流程图：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20200425192752.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20200425192752.png" style="width:80%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20200425192752.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20200425192752.png" style="width:80%"></a>
+</p>
 
 <blockquote>
 <p>注：流程不一定完全准确。</p>
@@ -230,14 +249,19 @@
 </li>
 </ul>
 <p>伪代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 定义一个支付接口</span><br><span class="line">- `PaymentInterface`</span><br><span class="line">    + 抽象方法`Pay(ctx *Context) error`: 当前支付方式的支付逻辑</span><br><span class="line">	+ 抽象方法`Refund(ctx *Context) error`: 当前支付方式的退款逻辑</span><br><span class="line"></span><br><span class="line">// 定义具体的支付方式 实现接口`PaymentInterface`</span><br><span class="line"></span><br><span class="line">- 具体的微信支付方式`WechatPay`</span><br><span class="line">    +  实现方法`Pay`: 支付逻辑</span><br><span class="line">	+  实现方法`Refund`: 支付逻辑</span><br><span class="line">- 具体的支付宝支付网页版方式`AliPayWap`</span><br><span class="line">    +  实现方法`Pay`: 支付逻辑</span><br><span class="line">	+  实现方法`Refund`: 支付逻辑</span><br><span class="line">- 具体的支付宝支付网页版方式`BankPay`</span><br><span class="line">    +  实现方法`Pay`: 支付逻辑</span><br><span class="line">	+  实现方法`Refund`: 支付逻辑</span><br><span class="line"></span><br><span class="line">// 客户端代码</span><br><span class="line">通过接口参数pay_type的值判断是哪种支付方式策略</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 定义一个支付接口</span><br><span class="line">- `PaymentInterface`</span><br><span class="line">    + 抽象方法`Pay(ctx *Context) error`: 当前支付方式的支付逻辑</span><br><span class="line">	+ 抽象方法`Refund(ctx *Context) error`: 当前支付方式的退款逻辑</span><br><span class="line"></span><br><span class="line">// 定义具体的支付方式 实现接口`PaymentInterface`</span><br><span class="line"></span><br><span class="line">- 具体的微信支付方式`WechatPay`</span><br><span class="line">    +  实现方法`Pay`: 支付逻辑</span><br><span class="line">	+  实现方法`Refund`: 支付逻辑</span><br><span class="line">- 具体的支付宝支付网页版方式`AliPayWap`</span><br><span class="line">    +  实现方法`Pay`: 支付逻辑</span><br><span class="line">	+  实现方法`Refund`: 支付逻辑</span><br><span class="line">- 具体的支付宝支付网页版方式`BankPay`</span><br><span class="line">    +  实现方法`Pay`: 支付逻辑</span><br><span class="line">	+  实现方法`Refund`: 支付逻辑</span><br><span class="line"></span><br><span class="line">// 客户端代码</span><br><span class="line">通过接口参数pay_type的值判断是哪种支付方式策略</span><br></pre></td></tr></table></figure>
+
 <p>同时得到了我们的UML图：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20200425151733.jpg" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20200425151733.jpg" style="width:100%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20200425151733.jpg" class="gallery-item"><img src="http://cdn.tigerb.cn/20200425151733.jpg" style="width:100%"></a>
+</p>
 
 <h2 id="代码demo"><a href="#代码demo" class="headerlink" title="代码demo"></a><strong>代码demo</strong></h2><hr>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"runtime"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">//------------------------------------------------------------</span></span><br><span class="line"><span class="comment">//Go设计模式实战系列</span></span><br><span class="line"><span class="comment">//策略模式</span></span><br><span class="line"><span class="comment">//@auhtor TIGERB&lt;https://github.com/TIGERB&gt;</span></span><br><span class="line"><span class="comment">//------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">	<span class="comment">// ConstWechatPay 微信支付</span></span><br><span class="line">	ConstWechatPay = <span class="string">"wechat_pay"</span></span><br><span class="line">	<span class="comment">// ConstAliPayWap 支付宝支付 网页版</span></span><br><span class="line">	ConstAliPayWap = <span class="string">"AliPayWapwap"</span></span><br><span class="line">	<span class="comment">// ConstBankPay 银行卡支付</span></span><br><span class="line">	ConstBankPay = <span class="string">"quickbank"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Context 上下文</span></span><br><span class="line"><span class="keyword">type</span> Context <span class="keyword">struct</span> &#123;</span><br><span class="line">	<span class="comment">// 用户选择的支付方式</span></span><br><span class="line">	PayType <span class="keyword">string</span> <span class="string">`json:"pay_type"`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// PaymentInterface 支付方式接口</span></span><br><span class="line"><span class="keyword">type</span> PaymentInterface <span class="keyword">interface</span> &#123;</span><br><span class="line">	Pay(ctx *Context) error    <span class="comment">// 支付</span></span><br><span class="line">	Refund(ctx *Context) error <span class="comment">// 退款</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// WechatPay 微信支付</span></span><br><span class="line"><span class="keyword">type</span> WechatPay <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Pay 当前支付方式的支付逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(p *WechatPay)</span> <span class="title">Pay</span><span class="params">(ctx *Context)</span> <span class="params">(err error)</span></span> &#123;</span><br><span class="line">	<span class="comment">// 当前策略的业务逻辑写这</span></span><br><span class="line">	fmt.Println(runFuncName(), <span class="string">"使用微信支付..."</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Refund 当前支付方式的支付逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(p *WechatPay)</span> <span class="title">Refund</span><span class="params">(ctx *Context)</span> <span class="params">(err error)</span></span> &#123;</span><br><span class="line">	<span class="comment">// 当前策略的业务逻辑写这</span></span><br><span class="line">	fmt.Println(runFuncName(), <span class="string">"使用微信退款..."</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// AliPayWap 支付宝网页版</span></span><br><span class="line"><span class="keyword">type</span> AliPayWap <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Pay 当前支付方式的支付逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(p *AliPayWap)</span> <span class="title">Pay</span><span class="params">(ctx *Context)</span> <span class="params">(err error)</span></span> &#123;</span><br><span class="line">	<span class="comment">// 当前策略的业务逻辑写这</span></span><br><span class="line">	fmt.Println(runFuncName(), <span class="string">"使用支付宝网页版支付..."</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Refund 当前支付方式的支付逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(p *AliPayWap)</span> <span class="title">Refund</span><span class="params">(ctx *Context)</span> <span class="params">(err error)</span></span> &#123;</span><br><span class="line">	<span class="comment">// 当前策略的业务逻辑写这</span></span><br><span class="line">	fmt.Println(runFuncName(), <span class="string">"使用支付宝网页版退款..."</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// BankPay 银行卡支付</span></span><br><span class="line"><span class="keyword">type</span> BankPay <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Pay 当前支付方式的支付逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(p *BankPay)</span> <span class="title">Pay</span><span class="params">(ctx *Context)</span> <span class="params">(err error)</span></span> &#123;</span><br><span class="line">	<span class="comment">// 当前策略的业务逻辑写这</span></span><br><span class="line">	fmt.Println(runFuncName(), <span class="string">"使用银行卡支付..."</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Refund 当前支付方式的支付逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(p *BankPay)</span> <span class="title">Refund</span><span class="params">(ctx *Context)</span> <span class="params">(err error)</span></span> &#123;</span><br><span class="line">	<span class="comment">// 当前策略的业务逻辑写这</span></span><br><span class="line">	fmt.Println(runFuncName(), <span class="string">"使用银行卡退款..."</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取正在运行的函数名</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">runFuncName</span><span class="params">()</span> <span class="title">string</span></span> &#123;</span><br><span class="line">	pc := <span class="built_in">make</span>([]<span class="keyword">uintptr</span>, <span class="number">1</span>)</span><br><span class="line">	runtime.Callers(<span class="number">2</span>, pc)</span><br><span class="line">	f := runtime.FuncForPC(pc[<span class="number">0</span>])</span><br><span class="line">	<span class="keyword">return</span> f.Name()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 相对于被调用的支付策略 这里就是支付策略的客户端</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 业务上下文</span></span><br><span class="line">	ctx := &amp;Context&#123;</span><br><span class="line">		PayType: <span class="string">"wechat_pay"</span>,</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 获取支付方式</span></span><br><span class="line">	<span class="keyword">var</span> instance PaymentInterface</span><br><span class="line">	<span class="keyword">switch</span> ctx.PayType &#123;</span><br><span class="line">	<span class="keyword">case</span> ConstWechatPay:</span><br><span class="line">		instance = &amp;WechatPay&#123;&#125;</span><br><span class="line">	<span class="keyword">case</span> ConstAliPayWap:</span><br><span class="line">		instance = &amp;AliPayWap&#123;&#125;</span><br><span class="line">	<span class="keyword">case</span> ConstBankPay:</span><br><span class="line">		instance = &amp;BankPay&#123;&#125;</span><br><span class="line">	<span class="keyword">default</span>:</span><br><span class="line">		<span class="built_in">panic</span>(<span class="string">"无效的支付方式"</span>)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 支付</span></span><br><span class="line">	instance.Pay(ctx)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;runtime&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">//------------------------------------------------------------</span></span><br><span class="line"><span class="comment">//Go设计模式实战系列</span></span><br><span class="line"><span class="comment">//策略模式</span></span><br><span class="line"><span class="comment">//@auhtor TIGERB&lt;https://github.com/TIGERB&gt;</span></span><br><span class="line"><span class="comment">//------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">	<span class="comment">// ConstWechatPay 微信支付</span></span><br><span class="line">	ConstWechatPay = <span class="string">&quot;wechat_pay&quot;</span></span><br><span class="line">	<span class="comment">// ConstAliPayWap 支付宝支付 网页版</span></span><br><span class="line">	ConstAliPayWap = <span class="string">&quot;AliPayWapwap&quot;</span></span><br><span class="line">	<span class="comment">// ConstBankPay 银行卡支付</span></span><br><span class="line">	ConstBankPay = <span class="string">&quot;quickbank&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Context 上下文</span></span><br><span class="line"><span class="keyword">type</span> Context <span class="keyword">struct</span> &#123;</span><br><span class="line">	<span class="comment">// 用户选择的支付方式</span></span><br><span class="line">	PayType <span class="type">string</span> <span class="string">`json:&quot;pay_type&quot;`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// PaymentInterface 支付方式接口</span></span><br><span class="line"><span class="keyword">type</span> PaymentInterface <span class="keyword">interface</span> &#123;</span><br><span class="line">	Pay(ctx *Context) <span class="type">error</span>    <span class="comment">// 支付</span></span><br><span class="line">	Refund(ctx *Context) <span class="type">error</span> <span class="comment">// 退款</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// WechatPay 微信支付</span></span><br><span class="line"><span class="keyword">type</span> WechatPay <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Pay 当前支付方式的支付逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(p *WechatPay)</span></span> Pay(ctx *Context) (err <span class="type">error</span>) &#123;</span><br><span class="line">	<span class="comment">// 当前策略的业务逻辑写这</span></span><br><span class="line">	fmt.Println(runFuncName(), <span class="string">&quot;使用微信支付...&quot;</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Refund 当前支付方式的支付逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(p *WechatPay)</span></span> Refund(ctx *Context) (err <span class="type">error</span>) &#123;</span><br><span class="line">	<span class="comment">// 当前策略的业务逻辑写这</span></span><br><span class="line">	fmt.Println(runFuncName(), <span class="string">&quot;使用微信退款...&quot;</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// AliPayWap 支付宝网页版</span></span><br><span class="line"><span class="keyword">type</span> AliPayWap <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Pay 当前支付方式的支付逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(p *AliPayWap)</span></span> Pay(ctx *Context) (err <span class="type">error</span>) &#123;</span><br><span class="line">	<span class="comment">// 当前策略的业务逻辑写这</span></span><br><span class="line">	fmt.Println(runFuncName(), <span class="string">&quot;使用支付宝网页版支付...&quot;</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Refund 当前支付方式的支付逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(p *AliPayWap)</span></span> Refund(ctx *Context) (err <span class="type">error</span>) &#123;</span><br><span class="line">	<span class="comment">// 当前策略的业务逻辑写这</span></span><br><span class="line">	fmt.Println(runFuncName(), <span class="string">&quot;使用支付宝网页版退款...&quot;</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// BankPay 银行卡支付</span></span><br><span class="line"><span class="keyword">type</span> BankPay <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Pay 当前支付方式的支付逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(p *BankPay)</span></span> Pay(ctx *Context) (err <span class="type">error</span>) &#123;</span><br><span class="line">	<span class="comment">// 当前策略的业务逻辑写这</span></span><br><span class="line">	fmt.Println(runFuncName(), <span class="string">&quot;使用银行卡支付...&quot;</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Refund 当前支付方式的支付逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(p *BankPay)</span></span> Refund(ctx *Context) (err <span class="type">error</span>) &#123;</span><br><span class="line">	<span class="comment">// 当前策略的业务逻辑写这</span></span><br><span class="line">	fmt.Println(runFuncName(), <span class="string">&quot;使用银行卡退款...&quot;</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取正在运行的函数名</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">runFuncName</span><span class="params">()</span></span> <span class="type">string</span> &#123;</span><br><span class="line">	pc := <span class="built_in">make</span>([]<span class="type">uintptr</span>, <span class="number">1</span>)</span><br><span class="line">	runtime.Callers(<span class="number">2</span>, pc)</span><br><span class="line">	f := runtime.FuncForPC(pc[<span class="number">0</span>])</span><br><span class="line">	<span class="keyword">return</span> f.Name()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 相对于被调用的支付策略 这里就是支付策略的客户端</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 业务上下文</span></span><br><span class="line">	ctx := &amp;Context&#123;</span><br><span class="line">		PayType: <span class="string">&quot;wechat_pay&quot;</span>,</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 获取支付方式</span></span><br><span class="line">	<span class="keyword">var</span> instance PaymentInterface</span><br><span class="line">	<span class="keyword">switch</span> ctx.PayType &#123;</span><br><span class="line">	<span class="keyword">case</span> ConstWechatPay:</span><br><span class="line">		instance = &amp;WechatPay&#123;&#125;</span><br><span class="line">	<span class="keyword">case</span> ConstAliPayWap:</span><br><span class="line">		instance = &amp;AliPayWap&#123;&#125;</span><br><span class="line">	<span class="keyword">case</span> ConstBankPay:</span><br><span class="line">		instance = &amp;BankPay&#123;&#125;</span><br><span class="line">	<span class="keyword">default</span>:</span><br><span class="line">		<span class="built_in">panic</span>(<span class="string">&quot;无效的支付方式&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 支付</span></span><br><span class="line">	instance.Pay(ctx)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>代码运行结果：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[Running] go run &quot;../easy-tips/go/src/patterns/strategy/strategy.go&quot;</span><br><span class="line">main.(*WechatPay).Pay 使用微信支付...</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Running] go run &quot;../easy-tips/go/src/patterns/strategy/strategy.go&quot;</span><br><span class="line">main.(*WechatPay).Pay 使用微信支付...</span><br></pre></td></tr></table></figure>
+
 <h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a><strong>结语</strong></h1><hr>
 <p>最后总结下，「策略模式」抽象过程的核心是：</p>
 <p>在<code>每一行代码下面的十字路口</code></p>
@@ -246,18 +270,19 @@
 <li>封装算法：按照标准<code>interface</code>封装分支代码，得到每一个具体策略</li>
 <li>构建算法集：每一个具体策略构成策略池子 -&gt; 这就是沉淀的过程</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">特别说明：</span><br><span class="line">1. Go设计模式实战，只是一个在代码合理设计的情况下自然而然无限接近或者达到的结果，并不是一个硬性的目标，务必较真。</span><br><span class="line">2. 本系列的一些设计模式的概念可能和原概念存在差异，因为会结合实际使用，取其精华，适当改变，灵活使用。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">特别说明：</span><br><span class="line">1. Go设计模式实战，只是一个在代码合理设计的情况下自然而然无限接近或者达到的结果，并不是一个硬性的目标，务必较真。</span><br><span class="line">2. 本系列的一些设计模式的概念可能和原概念存在差异，因为会结合实际使用，取其精华，适当改变，灵活使用。</span><br></pre></td></tr></table></figure>
+
 <h1 id="文章列表"><a href="#文章列表" class="headerlink" title="文章列表"></a>文章列表</h1><hr>
 <ul>
-<li><a href="https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns/template" target="_blank" rel="noopener">代码模板 | Go设计模式实战</a></li>
-<li><a href="https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns/responsibility" target="_blank" rel="noopener">链式调用 | Go设计模式实战</a></li>
-<li><a href="https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns/composite" target="_blank" rel="noopener">代码组件 | Go设计模式实战</a></li>
-<li><a href="https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns/observer" target="_blank" rel="noopener">订阅通知 | Go设计模式实战</a></li>
-<li><a href="https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns/strategy" target="_blank" rel="noopener">客户决策 | Go设计模式实战</a></li>
-<li><a href="https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns/state" target="_blank" rel="noopener">状态变换 | Go设计模式实战</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns/template">代码模板 | Go设计模式实战</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns/responsibility">链式调用 | Go设计模式实战</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns/composite">代码组件 | Go设计模式实战</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns/observer">订阅通知 | Go设计模式实战</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns/strategy">客户决策 | Go设计模式实战</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns/state">状态变换 | Go设计模式实战</a></li>
 </ul>
 <blockquote>
-<p><a href="https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns" target="_blank" rel="noopener">Go设计模式实战系列 更多文章 点击此处查看</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/TIGERB/easy-tips/tree/master/go/src/patterns">Go设计模式实战系列 更多文章 点击此处查看</a></p>
 </blockquote>
 </div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
         var options = {
@@ -299,7 +324,7 @@
         <section>
             <h2>About</h2>
             <div>
-                新一代轻量级「<a href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
             </div>
         </section>
         <section>
@@ -329,10 +354,10 @@
             <li>&copy; TIGERB.cn All right reserved. 津ICP备17006784号-2</li>
             <li><a href="https://juejin.im/user/5855e82d1b69e6006c9278b4" target="_blank">juejin</a></li>
             <li><a href="https://segmentfault.com/u/tigerb" target="_blank">Segmentfault</a></li>
-            <li><a href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
+            <li><a target="_blank" rel="noopener" href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
             <li><a href="http://tigerb.cn/go/#/patterns/">Go设计模式实战</a></li>
             <li><a href="http://tigerb.cn/go/#/kernal/">Go语言轻松进阶</a></li>
-            <li><a href="https://dayutalk.cn/">大愚Talk</a></li>
+            <li><a target="_blank" rel="noopener" href="https://dayutalk.cn/">大愚Talk</a></li>
         </ul>
     </div>
 </footer>
@@ -341,20 +366,30 @@
     <!-- After footer scripts -->
     
 <!-- jQuery -->
+
 <script src="/js/jquery.min.js"></script>
 
+
 <!-- skel -->
+
 <script src="/js/skel.min.js"></script>
 
+
 <!-- Custom Code -->
+
 <script src="/js/util.js"></script>
 
+
 <!--[if lte IE 8]>
+
 <script src="/js/ie/respond.min.js"></script>
+
 <![endif]-->
 
 <!-- Custom Code -->
+
 <script src="/js/main.js"></script>
+
 
 <!-- Gallery -->
 <script src="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>

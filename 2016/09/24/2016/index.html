@@ -28,7 +28,7 @@
 
     <!--Page Cover-->
     
-        <meta property="og:image" content="undefined"/>
+        <meta property="og:image" content=""/>
     
 
     <!-- Title -->
@@ -36,18 +36,26 @@
     <title>码码踩过的那些坑2016 - TIGERB</title>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/sass/main.css">
+    
+<link rel="stylesheet" href="/sass/main.css">
+
 
     <!--[if lt IE 8]>
-        <script src="/js/ie/html5shiv.js"></script>
+        
+<script src="/js/ie/html5shiv.js"></script>
+
     <![endif]-->
 
     <!--[if lt IE 8]>
-        <link rel="stylesheet" href="/sass/ie8.css">
+        
+<link rel="stylesheet" href="/sass/ie8.css">
+
     <![endif]-->
 
     <!--[if lt IE 9]>
-        <link rel="stylesheet" href="/sass/ie9.css">
+        
+<link rel="stylesheet" href="/sass/ie9.css">
+
     <![endif]-->
 
     <!-- Gallery -->
@@ -67,6 +75,7 @@
     })();
     </script>
 
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="TIGERB" type="application/atom+xml">
 </head>
 
 <body>
@@ -103,15 +112,15 @@
             </li>
         
             <li>
-                <a href="https://github.com/TIGERB">Github</a>
+                <a target="_blank" rel="noopener" href="https://github.com/TIGERB">Github</a>
             </li>
         
             <li>
-                <a href="https://segmentfault.com/u/tigerb">Segmentfault</a>
+                <a target="_blank" rel="noopener" href="https://segmentfault.com/u/tigerb">Segmentfault</a>
             </li>
         
             <li>
-                <a href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
+                <a target="_blank" rel="noopener" href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
             </li>
         
     </ul>
@@ -137,7 +146,7 @@
 
 
 <!-- Content -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <p="">a little tips in my code career | 码码踩过的那些坑<em>2016</em><p></p>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"><p>a little tips in my code career | 码码踩过的那些坑<em>2016</em></p>
 <p>记一下这一年码码中我需要去了解的基础知识</p>
 <hr>
 <ol>
@@ -188,51 +197,52 @@
 <h2 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h2><h6 id="client和nginx简易交互过程"><a href="#client和nginx简易交互过程" class="headerlink" title="client和nginx简易交互过程"></a>client和nginx简易交互过程</h6><ul>
 <li>step1:client发起http请求</li>
 <li>step2:dns服务器解析域名得到主机ip</li>
-<li>step3:默认端口为80，通过ip+port建立tcp/ip链接</li>
-<li>step4:建立连接的tcp/ip三次握手，建立成功发送数据包</li>
+<li>step3:默认端口为80，通过ip+port建立tcp&#x2F;ip链接</li>
+<li>step4:建立连接的tcp&#x2F;ip三次握手，建立成功发送数据包</li>
 <li>step5:nginx匹配请求<ul>
 <li>case .html: 静态内容，分发静态内容响应</li>
 <li>case .php: php脚本，转发请求内容到php-fpm进程，分发php-fpm返回的内容响应</li>
 </ul>
 </li>
-<li>step6:断开连接的tcp/ip四次握手，断开连接</li>
+<li>step6:断开连接的tcp&#x2F;ip四次握手，断开连接</li>
 </ul>
 <h6 id="nginx和php简易交互过程"><a href="#nginx和php简易交互过程" class="headerlink" title="nginx和php简易交互过程"></a>nginx和php简易交互过程</h6><ul>
 <li>背景：web server和服务端语言交互依赖的是cgi(Common Gateway Interface)协议，由于cgi效率不高，后期产生了fastcgi协议(一种常驻型的cgi协议),php-cgi实现了fastcgi，但是相比php-cgi,php-fpm提供了更好的PHP进程管理方式，可以有效控制内存和进程、可以平滑重载PHP配置</li>
-<li><p>流程：</p>
-<ul>
-<li><p>step1:nginx接收到一条http请求，会把环境变量，请求参数转变成php能懂的php变量</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// nginx 配置资料</span><br><span class="line">location ~ \.php$ &#123;</span><br><span class="line">      include snippets/fastcgi-php.conf; //step1</span><br><span class="line">      fastcgi_pass unix:/run/php/php7.0-fpm.sock;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>step2:nginx匹配到.php结尾的访问通过fastcgi_pass命令传递给php-fpm.sock文件，其实这里<br>的ngnix发挥的是反向代理的角色，把http协议请求转到fastcgi协议请求</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// nginx 配置资料</span><br><span class="line">location ~ \.php$ &#123;</span><br><span class="line">      include snippets/fastcgi-php.conf;</span><br><span class="line">      fastcgi_pass unix:/run/php/php7.0-fpm.sock;// step2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>step3:php-fpm.sock文件会被php-fpm的master进程所引用，这里nginx和php-fpm使用的是<br>linux的进程间通信方式unix domain socks，是一种基于文件而不是网络底册协议的通信方式</p>
-</li>
+<li>流程：<ul>
+<li>step1:nginx接收到一条http请求，会把环境变量，请求参数转变成php能懂的php变量<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// nginx 配置资料</span><br><span class="line">location ~ \.php$ &#123;</span><br><span class="line">      include snippets/fastcgi-php.conf; //step1</span><br><span class="line">      fastcgi_pass unix:/run/php/php7.0-fpm.sock;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>step2:nginx匹配到.php结尾的访问通过fastcgi_pass命令传递给php-fpm.sock文件，其实这里<br>的ngnix发挥的是反向代理的角色，把http协议请求转到fastcgi协议请求<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// nginx 配置资料</span><br><span class="line">location ~ \.php$ &#123;</span><br><span class="line">      include snippets/fastcgi-php.conf;</span><br><span class="line">      fastcgi_pass unix:/run/php/php7.0-fpm.sock;// step2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>step3:php-fpm.sock文件会被php-fpm的master进程所引用，这里nginx和php-fpm使用的是<br>linux的进程间通信方式unix domain socks，是一种基于文件而不是网络底册协议的通信方式</li>
 <li>step4:php-fpm的master进程接收到请求后，会把请求分发到php-fpm的子进程，每个php-fpm<br>子进程都包含一个php解析器</li>
 <li>step5:php-fpm进程处理完请求后返回给nginx</li>
 </ul>
 </li>
 </ul>
-<h6 id="知识碎片"><a href="#知识碎片" class="headerlink" title="知识碎片"></a>知识碎片</h6>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//phpfpm配置</span><br><span class="line"></span><br><span class="line">pm.max_children = 最大并发数</span><br><span class="line"></span><br><span class="line">详细的答案：</span><br><span class="line">pm.max_children 表示 php-fpm 能启动的子进程的最大数量。</span><br><span class="line">因为 php-fpm 是多进程单线程同步模式，即一个子进程同时最多处理一个请求，所以子进程数等于最大并发数。</span><br></pre></td></tr></table></figure>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//日志调试方法</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 超级调试</span><br><span class="line"> *</span><br><span class="line"> * 调试非本地环境或分布式环境，通过Log查看变量传递</span><br><span class="line"> * 写入变量值到\var\log\php_super_debug.log</span><br><span class="line"> * @param  mixed  $data     日志数据</span><br><span class="line"> * @param  string $log_path 日志路径</span><br><span class="line"> * @param  string $log_name 日志名称</span><br><span class="line"> * @return void       </span><br><span class="line"> */</span><br><span class="line">function super_debug($data, $log_path=&apos;\var\log\&apos;, $log_name=&apos;debug&apos;)</span><br><span class="line">&#123;</span><br><span class="line">  error_log(json_encode($data, JSON_UNESCAPED_UNICODE).&quot;\n&quot;, 3, $log_path.$log_name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// php实现下载图片</span><br><span class="line"></span><br><span class="line">header(&apos;Content-type: image/jpeg&apos;);</span><br><span class="line">header(&apos;Content-Disposition: attachment; filename=download_name.jpg&apos;);</span><br><span class="line">readfile($yourFilePath);</span><br></pre></td></tr></table></figure>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// php5.6开始干掉了@语法，php上传图片兼容版本写法</span><br><span class="line"></span><br><span class="line">if (class_exists(&apos;\CURLFile&apos;)) &#123;</span><br><span class="line">    curl_setopt($curl, CURLOPT_SAFE_UPLOAD, true);</span><br><span class="line">    $data = array(&apos;file&apos; =&gt; new \CURLFile(realpath($destination)));//5.5+</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    if (defined(&apos;CURLOPT_SAFE_UPLOAD&apos;)) &#123;</span><br><span class="line">        curl_setopt($curl, CURLOPT_SAFE_UPLOAD, false);</span><br><span class="line">    &#125;</span><br><span class="line">    $data = array(&apos;file&apos; =&gt; &apos;@&apos; . realpath($destination));//&lt;=5.5</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 序列化与反序列化</span><br><span class="line"></span><br><span class="line">概念:</span><br><span class="line">序列化：把变量(所有类型)转成能传输和储存的变量(不丢失原变量的属性和结构)</span><br><span class="line">反序列化：把字符串转成原变量</span><br><span class="line"></span><br><span class="line">函数：</span><br><span class="line">序列化：serialize, json_encode(不能序列化对象)</span><br><span class="line">反序列化：unserialize, json_decode</span><br></pre></td></tr></table></figure>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 记一个坑</span><br><span class="line"></span><br><span class="line">ip2long函数</span><br><span class="line">- 32位系统下会转成带符号的int，范围-2^31~2^31-1</span><br><span class="line">- 64位系统下会转成带不符号的int，范围0~2^32-1</span><br></pre></td></tr></table></figure>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># redis发布订阅</span><br><span class="line">ini_set(‘default_socket_timeout’, -1);</span><br><span class="line"></span><br><span class="line">$redis = new \Redis();</span><br><span class="line">$redis-&gt;pconnect(&apos;127.0.0.1&apos;, 6379);</span><br><span class="line"></span><br><span class="line">//订阅</span><br><span class="line">$redis-&gt;subscribe([&apos;msg&apos;], &apos;callfun&apos;);</span><br><span class="line"></span><br><span class="line">function callfun($redis, $channel, $msg)</span><br><span class="line">&#123;</span><br><span class="line">  var_dump([</span><br><span class="line">    &apos;redis&apos; =&gt; $redis,</span><br><span class="line">    &apos;channel&apos; =&gt; $channel,</span><br><span class="line">    &apos;msg&apos; =&gt; $msg</span><br><span class="line">  ]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//发布</span><br><span class="line">$redis = new \Redis();</span><br><span class="line">$redis-&gt;connect(&apos;127.0.0.1&apos;, 6379);</span><br><span class="line">$redis-&gt;publish(&apos;msg&apos;, &apos;moon cake&apos;);</span><br><span class="line">$redis-&gt;close();</span><br></pre></td></tr></table></figure>
+<h6 id="知识碎片"><a href="#知识碎片" class="headerlink" title="知识碎片"></a>知识碎片</h6>  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//phpfpm配置</span><br><span class="line"></span><br><span class="line">pm.max_children = 最大并发数</span><br><span class="line"></span><br><span class="line">详细的答案：</span><br><span class="line">pm.max_children 表示 php-fpm 能启动的子进程的最大数量。</span><br><span class="line">因为 php-fpm 是多进程单线程同步模式，即一个子进程同时最多处理一个请求，所以子进程数等于最大并发数。</span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//日志调试方法</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 超级调试</span><br><span class="line"> *</span><br><span class="line"> * 调试非本地环境或分布式环境，通过Log查看变量传递</span><br><span class="line"> * 写入变量值到\var\log\php_super_debug.log</span><br><span class="line"> * @param  mixed  $data     日志数据</span><br><span class="line"> * @param  string $log_path 日志路径</span><br><span class="line"> * @param  string $log_name 日志名称</span><br><span class="line"> * @return void       </span><br><span class="line"> */</span><br><span class="line">function super_debug($data, $log_path=&#x27;\var\log\&#x27;, $log_name=&#x27;debug&#x27;)</span><br><span class="line">&#123;</span><br><span class="line">  error_log(json_encode($data, JSON_UNESCAPED_UNICODE).&quot;\n&quot;, 3, $log_path.$log_name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// php实现下载图片</span><br><span class="line"></span><br><span class="line">header(&#x27;Content-type: image/jpeg&#x27;);</span><br><span class="line">header(&#x27;Content-Disposition: attachment; filename=download_name.jpg&#x27;);</span><br><span class="line">readfile($yourFilePath);</span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// php5.6开始干掉了@语法，php上传图片兼容版本写法</span><br><span class="line"></span><br><span class="line">if (class_exists(&#x27;\CURLFile&#x27;)) &#123;</span><br><span class="line">    curl_setopt($curl, CURLOPT_SAFE_UPLOAD, true);</span><br><span class="line">    $data = array(&#x27;file&#x27; =&gt; new \CURLFile(realpath($destination)));//5.5+</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    if (defined(&#x27;CURLOPT_SAFE_UPLOAD&#x27;)) &#123;</span><br><span class="line">        curl_setopt($curl, CURLOPT_SAFE_UPLOAD, false);</span><br><span class="line">    &#125;</span><br><span class="line">    $data = array(&#x27;file&#x27; =&gt; &#x27;@&#x27; . realpath($destination));//&lt;=5.5</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 序列化与反序列化</span><br><span class="line"></span><br><span class="line">概念:</span><br><span class="line">序列化：把变量(所有类型)转成能传输和储存的变量(不丢失原变量的属性和结构)</span><br><span class="line">反序列化：把字符串转成原变量</span><br><span class="line"></span><br><span class="line">函数：</span><br><span class="line">序列化：serialize, json_encode(不能序列化对象)</span><br><span class="line">反序列化：unserialize, json_decode</span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 记一个坑</span><br><span class="line"></span><br><span class="line">ip2long函数</span><br><span class="line">- 32位系统下会转成带符号的int，范围-2^31~2^31-1</span><br><span class="line">- 64位系统下会转成带不符号的int，范围0~2^32-1</span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># redis发布订阅</span><br><span class="line">ini_set(‘default_socket_timeout’, -1);</span><br><span class="line"></span><br><span class="line">$redis = new \Redis();</span><br><span class="line">$redis-&gt;pconnect(&#x27;127.0.0.1&#x27;, 6379);</span><br><span class="line"></span><br><span class="line">//订阅</span><br><span class="line">$redis-&gt;subscribe([&#x27;msg&#x27;], &#x27;callfun&#x27;);</span><br><span class="line"></span><br><span class="line">function callfun($redis, $channel, $msg)</span><br><span class="line">&#123;</span><br><span class="line">  var_dump([</span><br><span class="line">    &#x27;redis&#x27; =&gt; $redis,</span><br><span class="line">    &#x27;channel&#x27; =&gt; $channel,</span><br><span class="line">    &#x27;msg&#x27; =&gt; $msg</span><br><span class="line">  ]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//发布</span><br><span class="line">$redis = new \Redis();</span><br><span class="line">$redis-&gt;connect(&#x27;127.0.0.1&#x27;, 6379);</span><br><span class="line">$redis-&gt;publish(&#x27;msg&#x27;, &#x27;moon cake&#x27;);</span><br><span class="line">$redis-&gt;close();</span><br></pre></td></tr></table></figure>
+
 <h6 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h6><ul>
 <li><p>linux</p>
 <ul>
 <li>df -h: 更易读的查看磁盘空间</li>
-<li>du -h –max-depth=1 file_path:查看文件夹占用的空间，–max-depth文件夹下显示层级</li>
+<li>du -h –max-depth&#x3D;1 file_path:查看文件夹占用的空间，–max-depth文件夹下显示层级</li>
 <li>sudo rm -rf *.log：清理日志</li>
 <li>socket<ul>
-<li>http socket = ip:port</li>
+<li>http socket &#x3D; ip:port</li>
 <li>unix domain socket: unix process communication 进程间通信</li>
 </ul>
 </li>
-<li>ubuntu16.04安装php5源：sudo apt-add-repository ppa:ondrej/php</li>
+<li>ubuntu16.04安装php5源：sudo apt-add-repository ppa:ondrej&#x2F;php</li>
 <li>ubuntu中文支持：sudo apt-get install language-pack-zh-hant language-pack-zh-hans</li>
 </ul>
 </li>
@@ -246,7 +256,7 @@
 </ul>
 </li>
 <li>重命名字段：ALTER TABLE table_destination CHANGE column_destination new_name data_type</li>
-<li>导出数据： mysqldump -h 127.0.0.1 -u root -p “database_name” “table_name” –where=”condition” &gt; file_name.sql</li>
+<li>导出数据： mysqldump -h 127.0.0.1 -u root -p “database_name” “table_name” –where&#x3D;”condition” &gt; file_name.sql</li>
 <li>导入数据：source “flie”</li>
 </ul>
 </li>
@@ -255,7 +265,7 @@
 <li>json_encode($data, JSON_UNESCAPED_UNICODE)</li>
 <li>php的自定义头信息都可以使用$<em>SERVER[‘HTTP</em>*’]来获取</li>
 <li>如果你想知道脚本开始执行(译注：即服务器端收到客户端请求)的时刻，使用$_SERVER[‘REQUEST_TIME’]要好于time()</li>
-<li>error_log(json_encode($data, JSON_UNESCAPED_UNICODE), 1/3, <a href="mailto:&#39;tigerbcoder@gmail.com" target="_blank" rel="noopener">&#39;tigerbcoder@gmail.com</a>/log_path’)</li>
+<li>error_log(json_encode($data, JSON_UNESCAPED_UNICODE), 1&#x2F;3, ‘<a href="mailto:&#x74;&#105;&#103;&#101;&#x72;&#x62;&#x63;&#x6f;&#x64;&#101;&#114;&#64;&#x67;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#109;">&#x74;&#105;&#103;&#101;&#x72;&#x62;&#x63;&#x6f;&#x64;&#101;&#114;&#64;&#x67;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#109;</a>&#x2F;log_path’)</li>
 <li>sudo watch service php5.6-fpm status</li>
 <li>foreach后的好习惯reset指针位置，unset掉$key，$value</li>
 <li>curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);</li>
@@ -263,12 +273,14 @@
 <li>php中的语言结构：echo,exit(),print,empty(),unset(),isset(),list(),eval(),array()</li>
 </ul>
 </li>
-<li>git:<ul>
+<li><p>git:</p>
+<ul>
 <li>git commit –amend 重写最近commit message</li>
 <li>git cherry-pick 移花接木</li>
 </ul>
 </li>
-<li>composer:<ul>
+<li><p>composer:</p>
+<ul>
 <li>修改包来源: sudo composer config repositories.包名 vcs 包地址</li>
 </ul>
 </li>
@@ -277,7 +289,8 @@
 <li>PHP还是有很多不足的地方，比如无法进行高效的运算</li>
 </ul>
 <h2 id="互联网协议"><a href="#互联网协议" class="headerlink" title="互联网协议"></a>互联网协议</h2><ul>
-<li>概括：从上到下，越上越接近用户，越下越接近硬件</li>
+<li><p>概括：从上到下，越上越接近用户，越下越接近硬件</p>
+</li>
 <li><p>应用层:</p>
 <ul>
 <li>规定应用程序的数据格式</li>
@@ -300,8 +313,7 @@
 </li>
 <li>TCP协议：<ul>
 <li>带有确认机制的UDP协议</li>
-<li>过程复杂，实现困难，消耗资源<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tcp/ip connect: tcp/ip的三次握手</span><br><span class="line">        syn握手信号</span><br><span class="line">        -------------&gt;</span><br><span class="line">        syn/ack确认字符</span><br><span class="line">client  &lt;-------------  server</span><br><span class="line">        ack确认包</span><br><span class="line">        --------------&gt;</span><br></pre></td></tr></table></figure>
-</li>
+<li>过程复杂，实现困难，消耗资源  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tcp/ip connect: tcp/ip的三次握手</span><br><span class="line">        syn握手信号</span><br><span class="line">        -------------&gt;</span><br><span class="line">        syn/ack确认字符</span><br><span class="line">client  &lt;-------------  server</span><br><span class="line">        ack确认包</span><br><span class="line">        --------------&gt;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
@@ -389,7 +401,7 @@
         <section>
             <h2>About</h2>
             <div>
-                新一代轻量级「<a href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
             </div>
         </section>
         <section>
@@ -419,10 +431,10 @@
             <li>&copy; TIGERB.cn All right reserved. 津ICP备17006784号-2</li>
             <li><a href="https://juejin.im/user/5855e82d1b69e6006c9278b4" target="_blank">juejin</a></li>
             <li><a href="https://segmentfault.com/u/tigerb" target="_blank">Segmentfault</a></li>
-            <li><a href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
+            <li><a target="_blank" rel="noopener" href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
             <li><a href="http://tigerb.cn/go/#/patterns/">Go设计模式实战</a></li>
             <li><a href="http://tigerb.cn/go/#/kernal/">Go语言轻松进阶</a></li>
-            <li><a href="https://dayutalk.cn/">大愚Talk</a></li>
+            <li><a target="_blank" rel="noopener" href="https://dayutalk.cn/">大愚Talk</a></li>
         </ul>
     </div>
 </footer>
@@ -431,20 +443,30 @@
     <!-- After footer scripts -->
     
 <!-- jQuery -->
+
 <script src="/js/jquery.min.js"></script>
 
+
 <!-- skel -->
+
 <script src="/js/skel.min.js"></script>
 
+
 <!-- Custom Code -->
+
 <script src="/js/util.js"></script>
 
+
 <!--[if lte IE 8]>
+
 <script src="/js/ie/respond.min.js"></script>
+
 <![endif]-->
 
 <!-- Custom Code -->
+
 <script src="/js/main.js"></script>
+
 
 <!-- Gallery -->
 <script src="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>

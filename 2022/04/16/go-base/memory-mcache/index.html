@@ -28,7 +28,7 @@
 
     <!--Page Cover-->
     
-        <meta property="og:image" content="undefined"/>
+        <meta property="og:image" content=""/>
     
 
     <!-- Title -->
@@ -36,18 +36,26 @@
     <title>Go内存架构，一个有趣的问题 - TIGERB</title>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/sass/main.css">
+    
+<link rel="stylesheet" href="/sass/main.css">
+
 
     <!--[if lt IE 8]>
-        <script src="/js/ie/html5shiv.js"></script>
+        
+<script src="/js/ie/html5shiv.js"></script>
+
     <![endif]-->
 
     <!--[if lt IE 8]>
-        <link rel="stylesheet" href="/sass/ie8.css">
+        
+<link rel="stylesheet" href="/sass/ie8.css">
+
     <![endif]-->
 
     <!--[if lt IE 9]>
-        <link rel="stylesheet" href="/sass/ie9.css">
+        
+<link rel="stylesheet" href="/sass/ie9.css">
+
     <![endif]-->
 
     <!-- Gallery -->
@@ -67,6 +75,7 @@
     })();
     </script>
 
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="TIGERB" type="application/atom+xml">
 </head>
 
 <body>
@@ -103,15 +112,15 @@
             </li>
         
             <li>
-                <a href="https://github.com/TIGERB">Github</a>
+                <a target="_blank" rel="noopener" href="https://github.com/TIGERB">Github</a>
             </li>
         
             <li>
-                <a href="https://segmentfault.com/u/tigerb">Segmentfault</a>
+                <a target="_blank" rel="noopener" href="https://segmentfault.com/u/tigerb">Segmentfault</a>
             </li>
         
             <li>
-                <a href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
+                <a target="_blank" rel="noopener" href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
             </li>
         
     </ul>
@@ -137,7 +146,7 @@
 
 
 <!-- Content -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <p="">在学习Go语言内存管理部分过程中，发现了一个很有意思的问题，今天就借助这篇文章：<p></p>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"><p>在学习Go语言内存管理部分过程中，发现了一个很有意思的问题，今天就借助这篇文章：</p>
 <ul>
 <li>1.把这个问题也抛给大家，建议大家看见这个问题后，可以先自己思考一番🤔之后再读下文。</li>
 <li>2.进一步强化大家对Go内存架构的理解</li>
@@ -148,14 +157,18 @@
 <h2 id="痛点"><a href="#痛点" class="headerlink" title="痛点"></a>痛点</h2><p>多线程时代 <code>---&gt;</code> 线程共享内存 <code>---&gt;</code> 线程申请内存会产生竞争 <code>---&gt;</code> 竞争加锁 <code>---&gt;</code> 加锁影响性能。</p>
 <h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>每个线程上增加内存缓存。</p>
 <p>简易架构图如下：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210120132244.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210120132244.png" style="width:66%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210120132244.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210120132244.png" style="width:66%"></a>
+</p>
 
 <h1 id="快速回顾「Go内存管理架构」"><a href="#快速回顾「Go内存管理架构」" class="headerlink" title="快速回顾「Go内存管理架构」"></a>快速回顾「Go内存管理架构」</h1><hr>
 <p>接着简单回顾下「Go内存管理架构」。详细讲解可查看之前的文章<a href="http://tigerb.cn/2022/04/10/go-base/memory-arch/">《浅析Go内存管理架构》</a></p>
 <h2 id="痛点-1"><a href="#痛点-1" class="headerlink" title="痛点"></a>痛点</h2><p>同上。</p>
 <h2 id="解法-1"><a href="#解法-1" class="headerlink" title="解法"></a>解法</h2><p>同上，基于「TCMalloc」实现。</p>
 <p>简易架构图如下：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20220405224809.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20220405224809.png" style="width:60%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220405224809.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220405224809.png" style="width:60%"></a>
+</p>
 
 <h1 id="有趣的问题"><a href="#有趣的问题" class="headerlink" title="有趣的问题"></a>有趣的问题</h1><hr>
 <p>关于这个有趣的问题，细心的朋友可能已经发现了，不卖关子了问题如下：</p>
@@ -172,7 +185,9 @@
 <p>那么我们就假设：<strong>按照原<code>TCMalloc</code>的思想，把<code>mcache</code>绑定系统线程<code>M</code>上</strong>。接着我们只需要看看这个<strong>假设</strong>有什么问题即可。</p>
 <p>要论证这个假设需要先来简单看看「Go的调度模型<code>GMP</code>」。</p>
 <h2 id="Go的调度模型GMP"><a href="#Go的调度模型GMP" class="headerlink" title="Go的调度模型GMP"></a>Go的调度模型<code>GMP</code></h2><p>直接上入门级「Go的调度模型<code>GMP</code>」架构图：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20220416214452.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20220416214452.png" style="width:80%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220416214452.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220416214452.png" style="width:80%"></a>
+</p>
 
 <p>关于「Go的调度模型<code>GMP</code>」的原理，大家应该看了无数文章，我这里就不细说了，如果还有不熟悉可以自行搜索哈。</p>
 <p>这里简单提下关于<code>GMP</code>的入门级知识哈，其实<code>GMP</code>对应的只是Go语言自身的逻辑结构而已，含义如下：</p>
@@ -197,16 +212,18 @@
 </ul>
 <p><strong>此阶段结论：</strong>以上的调度过程<code>P</code>的数量和<code>M</code>的数量是一一对应的，所以把<code>mcache</code>绑定系统线程<code>M</code>上和<code>P</code>看起来都可以。所以我们上面的假设「<strong>按照原<code>TCMalloc</code>的思想，把<code>mcache</code>绑定系统线程<code>M</code>上</strong>」目前看起来确实也没啥问题。</p>
 <p>我们继续往下看，一种特殊的场景<code>M</code>会和<code>P</code>解绑。</p>
-<h2 id="I-O操作的系统调用"><a href="#I-O操作的系统调用" class="headerlink" title="I/O操作的系统调用"></a>I/O操作的系统调用</h2><p>当<code>G</code>执行一个I/O操作的系统调用时，比如<code>read</code>、<code>write</code>，因为系统调用过程中的阻塞(原因：内核往用户态拷贝数据的过程产生的阻塞，不在本文范畴，后续文章详解)问题，会发生如下操作：</p>
+<h2 id="I-x2F-O操作的系统调用"><a href="#I-x2F-O操作的系统调用" class="headerlink" title="I&#x2F;O操作的系统调用"></a>I&#x2F;O操作的系统调用</h2><p>当<code>G</code>执行一个I&#x2F;O操作的系统调用时，比如<code>read</code>、<code>write</code>，因为系统调用过程中的阻塞(原因：内核往用户态拷贝数据的过程产生的阻塞，不在本文范畴，后续文章详解)问题，会发生如下操作：</p>
 <ul>
 <li>当前<code>G</code>(我们命名为<code>g1</code>)的<code>M</code>(我们命名为<code>m1</code>)和当前的<code>P</code>(我们命名为<code>p1</code>)解绑</li>
 <li>上面的<code>p1</code>会绑定一个其他的<code>M</code>(<code>m2</code>)</li>
 <li><code>m1</code>执行完成系统调用之后会被放到闲置<code>M</code>链表里</li>
 </ul>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20220416223807.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20220416223807.png" style="width:100%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220416223807.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220416223807.png" style="width:100%"></a>
+</p>
 
 <p>由于<code>m1</code>会被放进闲置链表，这是不是就意味着<code>m1</code>上的<code>mcache</code>当前就不能被复用，所以这样看起来是不是<code>mcache</code>绑定到<code>p1</code>上更合适。</p>
-<p><strong>结论：</strong> 由于<code>M</code>可能因为执行一个I/O操作的系统调用被阻塞(原因：内核往用户态拷贝数据的过程产生的阻塞），<code>M</code>会和当前<code>P</code>解绑，当前<code>P</code>绑定其他闲置或者新的<code>M</code>，之前的<code>M</code>结束系统调用会被放进闲置<code>M</code>链表。之前的<code>M</code>的<code>mcache</code>就不会得到有效的复用，反而<code>mcache</code>绑定到<code>P</code>上就不存在这个问题，所以<code>mcache</code>绑定到<code>P</code>上更合适。</p>
+<p><strong>结论：</strong> 由于<code>M</code>可能因为执行一个I&#x2F;O操作的系统调用被阻塞(原因：内核往用户态拷贝数据的过程产生的阻塞），<code>M</code>会和当前<code>P</code>解绑，当前<code>P</code>绑定其他闲置或者新的<code>M</code>，之前的<code>M</code>结束系统调用会被放进闲置<code>M</code>链表。之前的<code>M</code>的<code>mcache</code>就不会得到有效的复用，反而<code>mcache</code>绑定到<code>P</code>上就不存在这个问题，所以<code>mcache</code>绑定到<code>P</code>上更合适。</p>
 </div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
         var options = {
             selector: '.gallery-item'
@@ -247,7 +264,7 @@
         <section>
             <h2>About</h2>
             <div>
-                新一代轻量级「<a href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
             </div>
         </section>
         <section>
@@ -277,10 +294,10 @@
             <li>&copy; TIGERB.cn All right reserved. 津ICP备17006784号-2</li>
             <li><a href="https://juejin.im/user/5855e82d1b69e6006c9278b4" target="_blank">juejin</a></li>
             <li><a href="https://segmentfault.com/u/tigerb" target="_blank">Segmentfault</a></li>
-            <li><a href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
+            <li><a target="_blank" rel="noopener" href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
             <li><a href="http://tigerb.cn/go/#/patterns/">Go设计模式实战</a></li>
             <li><a href="http://tigerb.cn/go/#/kernal/">Go语言轻松进阶</a></li>
-            <li><a href="https://dayutalk.cn/">大愚Talk</a></li>
+            <li><a target="_blank" rel="noopener" href="https://dayutalk.cn/">大愚Talk</a></li>
         </ul>
     </div>
 </footer>
@@ -289,20 +306,30 @@
     <!-- After footer scripts -->
     
 <!-- jQuery -->
+
 <script src="/js/jquery.min.js"></script>
 
+
 <!-- skel -->
+
 <script src="/js/skel.min.js"></script>
 
+
 <!-- Custom Code -->
+
 <script src="/js/util.js"></script>
 
+
 <!--[if lte IE 8]>
+
 <script src="/js/ie/respond.min.js"></script>
+
 <![endif]-->
 
 <!-- Custom Code -->
+
 <script src="/js/main.js"></script>
+
 
 <!-- Gallery -->
 <script src="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>

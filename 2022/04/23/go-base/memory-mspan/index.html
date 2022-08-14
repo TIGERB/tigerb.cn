@@ -28,7 +28,7 @@
 
     <!--Page Cover-->
     
-        <meta property="og:image" content="undefined"/>
+        <meta property="og:image" content=""/>
     
 
     <!-- Title -->
@@ -36,18 +36,26 @@
     <title>9张图轻松吃透Go内存管理单元 - TIGERB</title>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/sass/main.css">
+    
+<link rel="stylesheet" href="/sass/main.css">
+
 
     <!--[if lt IE 8]>
-        <script src="/js/ie/html5shiv.js"></script>
+        
+<script src="/js/ie/html5shiv.js"></script>
+
     <![endif]-->
 
     <!--[if lt IE 8]>
-        <link rel="stylesheet" href="/sass/ie8.css">
+        
+<link rel="stylesheet" href="/sass/ie8.css">
+
     <![endif]-->
 
     <!--[if lt IE 9]>
-        <link rel="stylesheet" href="/sass/ie9.css">
+        
+<link rel="stylesheet" href="/sass/ie9.css">
+
     <![endif]-->
 
     <!-- Gallery -->
@@ -67,6 +75,7 @@
     })();
     </script>
 
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="TIGERB" type="application/atom+xml">
 </head>
 
 <body>
@@ -103,15 +112,15 @@
             </li>
         
             <li>
-                <a href="https://github.com/TIGERB">Github</a>
+                <a target="_blank" rel="noopener" href="https://github.com/TIGERB">Github</a>
             </li>
         
             <li>
-                <a href="https://segmentfault.com/u/tigerb">Segmentfault</a>
+                <a target="_blank" rel="noopener" href="https://segmentfault.com/u/tigerb">Segmentfault</a>
             </li>
         
             <li>
-                <a href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
+                <a target="_blank" rel="noopener" href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
             </li>
         
     </ul>
@@ -137,7 +146,7 @@
 
 
 <!-- Content -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <hr="">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"><hr>
 <h1 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h1><hr>
 <p>想深入了解Go语言的内存管理实现，必然绕不开「Go内存管理单元<code>mspan</code>」，今天我们就通过几张图，层层深入并解开「Go内存管理单元<code>mspan</code>」的神秘面纱。</p>
 <p>本文也包含的具体概念如下：</p>
@@ -153,11 +162,15 @@
 <p>介绍Go内存管理单元<code>mspan</code>前，需要先看下<code>page</code>的概念，因为<code>mspan</code>是由<strong>N个</strong>且<strong>连续</strong>的<code>page</code>组成。</p>
 <h2 id="page的概念"><a href="#page的概念" class="headerlink" title="page的概念"></a><strong><code>page</code>的概念</strong></h2><hr>
 <p>操作系统是按<code>page</code>管理内存的，同样Go语言也是也是按<code>page</code>管理内存的，1page为8KB，保证了和操作系统一致，如下图所示：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210120131944.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210120131944.png" style="width:100%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210120131944.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210120131944.png" style="width:100%"></a>
+</p>
 
 <p>Go内存管理单元<code>mspan</code>通常由<strong>N个</strong>且<strong>连续</strong>的<code>page</code>组成，如下图所示：</p>
 <h2 id="mspan由page组成"><a href="#mspan由page组成" class="headerlink" title="mspan由page组成"></a><strong><code>mspan</code>由<code>page</code>组成</strong></h2><hr>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20220405235014.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20220405235014.png" style="width:100%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220405235014.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220405235014.png" style="width:100%"></a>
+</p>
 
 <ul>
 <li><code>mspan</code>可以由1个<code>page</code>组成</li>
@@ -168,14 +181,18 @@
 <p>上图左半部分是<code>mspan</code>的结构体的关键字段，其中<code>npages</code>就代表了这个<code>mspan</code>是由几个连续的<code>page</code>组成。</p>
 <p>除此之外，<code>mspan</code>和<code>mspan</code>之间还可以构成链表，如下图所示</p>
 <h2 id="mspan可构成链表"><a href="#mspan可构成链表" class="headerlink" title="mspan可构成链表"></a><strong><code>mspan</code>可构成链表</strong></h2><hr>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20220405235024.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20220405235024.png" style="width:100%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220405235024.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220405235024.png" style="width:100%"></a>
+</p>
 
 <p>这里需要注意的是：<strong>只有<code>npages</code>的值相同的<code>mspan</code>互相才可以组成一个链表</strong>。如上图所示，具体原因下文会讲。</p>
 <blockquote>
 <p>看到这里，你会以为Go是按页<code>page</code>8KB为最小单位分配内存的吗？</p>
 </blockquote>
 <p>答案：当然不是，如果这样的话会导致内存使用率不高。Go语言内存管理器会把<code>mspan</code>再拆解为更小粒度的单位<code>object</code>。如下图所示：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20220423214224.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20220423214224.png" style="width:100%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220423214224.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220423214224.png" style="width:100%"></a>
+</p>
 
 <p><code>object</code>和<code>object</code>之间构成一个链表，大家这里肯定会想到是<code>LinkedList</code>，实际上并不是，因为<code>LinkedList</code>节点自身的指针也会占用8B内存，作为内存管理器，这部分内存会被白白浪费掉，所以这里通常使用的数据结构是<code>FreeList</code>。</p>
 <h2 id="什么是FreeList？"><a href="#什么是FreeList？" class="headerlink" title="什么是FreeList？"></a><strong>什么是FreeList？</strong></h2><hr>
@@ -186,14 +203,19 @@
 <li>分配出去的节点，节点整块内存空间可以被复写(指针的值可以被覆盖掉)</li>
 </ul>
 <p>如下图所示：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210124224723.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210124224723.png" style="width:100%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210124224723.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210124224723.png" style="width:100%"></a>
+</p>
 
 <blockquote>
 <p>所以：<code>FreeList</code>一个节点最小为8字节Byte</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">备注：因为要存指针，指针的大小为8字节，为什么？可以参考之前文章《64位平台下，指针自身的大小为什么是8字节？》</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">备注：因为要存指针，指针的大小为8字节，为什么？可以参考之前文章《64位平台下，指针自身的大小为什么是8字节？》</span><br></pre></td></tr></table></figure>
+
 <p>得到Go内存管理单元<code>mspan</code>被拆解为<code>object</code>图示如下：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20220423215017.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20220423215017.png" style="width:100%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220423215017.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220423215017.png" style="width:100%"></a>
+</p>
 
 <blockquote>
 <p>到这里问题又来了，<code>object</code>的具体大小是多大呢，是怎么决定的？</p>
@@ -201,7 +223,8 @@
 <p>答案：是由<code>sizeclass</code>决定的。</p>
 <h2 id="什么是sizeclass？"><a href="#什么是sizeclass？" class="headerlink" title="什么是sizeclass？"></a><strong>什么是<code>sizeclass</code>？</strong></h2><hr>
 <p><code>sizeclass</code>是一个映射列表，实际是一个数组类型<code>[68]uint16</code>，它的值决定了<code>object</code>的大小，除此之外，<code>mspan</code>由几pages构成也是<code>sizeclass</code>值决定的。<code>sizeclass</code>映射列表的具体规则如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 文件位置：`src/runtime/sizeclasses.g`</span><br><span class="line">// 索引0位置被保留使用，具体使用位置后续会讲。</span><br><span class="line"></span><br><span class="line">如上文所述，`object`之间采用freelist数据结构构成链表，指针为8Byte所以最小的object大小为8Byte</span><br><span class="line"></span><br><span class="line">字段解释：</span><br><span class="line">class: sizeclass值 </span><br><span class="line">bytes/obj: 该`mspan`拆分object大小</span><br><span class="line">bytes/span: 该`mspan`是由几pages组成</span><br><span class="line">objects: 该`mspan`共计包含的object数量</span><br><span class="line">tail waste: 该`mspan`拆分为object之后，mspan剩余末尾浪费的内存</span><br><span class="line"></span><br><span class="line">// class  bytes/obj  bytes/span  objects     tail waste  max waste</span><br><span class="line">//</span><br><span class="line">//     1          8        8192     1024           0     87.50%</span><br><span class="line">//     2         16        8192      512           0     43.75%</span><br><span class="line">//     3         24        8192      341           8     29.24%</span><br><span class="line">//     4         32        8192      256           0     21.88%</span><br><span class="line">//     5         48        8192      170          32     31.52%</span><br><span class="line">//     6         64        8192      128           0     23.44%</span><br><span class="line">// 略...</span><br><span class="line">//    62      20480       40960        2           0      6.87%</span><br><span class="line">//    63      21760       65536        3         256      6.25%</span><br><span class="line">//    64      24576       24576        1           0     11.45%</span><br><span class="line">//    65      27264       81920        3         128     10.00%</span><br><span class="line">//    66      28672       57344        2           0      4.91%</span><br><span class="line">//    67      32768       32768        1           0     12.50%</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 文件位置：`src/runtime/sizeclasses.g`</span><br><span class="line">// 索引0位置被保留使用，具体使用位置后续会讲。</span><br><span class="line"></span><br><span class="line">如上文所述，`object`之间采用freelist数据结构构成链表，指针为8Byte所以最小的object大小为8Byte</span><br><span class="line"></span><br><span class="line">字段解释：</span><br><span class="line">class: sizeclass值 </span><br><span class="line">bytes/obj: 该`mspan`拆分object大小</span><br><span class="line">bytes/span: 该`mspan`是由几pages组成</span><br><span class="line">objects: 该`mspan`共计包含的object数量</span><br><span class="line">tail waste: 该`mspan`拆分为object之后，mspan剩余末尾浪费的内存</span><br><span class="line"></span><br><span class="line">// class  bytes/obj  bytes/span  objects     tail waste  max waste</span><br><span class="line">//</span><br><span class="line">//     1          8        8192     1024           0     87.50%</span><br><span class="line">//     2         16        8192      512           0     43.75%</span><br><span class="line">//     3         24        8192      341           8     29.24%</span><br><span class="line">//     4         32        8192      256           0     21.88%</span><br><span class="line">//     5         48        8192      170          32     31.52%</span><br><span class="line">//     6         64        8192      128           0     23.44%</span><br><span class="line">// 略...</span><br><span class="line">//    62      20480       40960        2           0      6.87%</span><br><span class="line">//    63      21760       65536        3         256      6.25%</span><br><span class="line">//    64      24576       24576        1           0     11.45%</span><br><span class="line">//    65      27264       81920        3         128     10.00%</span><br><span class="line">//    66      28672       57344        2           0      4.91%</span><br><span class="line">//    67      32768       32768        1           0     12.50%</span><br></pre></td></tr></table></figure>
+
 <table>
 <thead>
 <tr>
@@ -210,8 +233,7 @@
 <th>由几<code>pages</code>组成</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>0</td>
 <td>保留</td>
 <td>1page</td>
@@ -241,10 +263,11 @@
 <td>32KB</td>
 <td>4pages</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>所以<code>mspan</code>结构体上只要维护一个<code>sizeclass</code>的字段，就可以知道该<code>mspan</code>中<code>object</code>的大小、数量。但是呢，实际上这个字段并不是<code>sizeclass</code>，而是<code>spanclass</code>，如下图所示：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20220423211420.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20220423211420.png" style="width:30%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220423211420.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220423211420.png" style="width:30%"></a>
+</p>
 
 <p>那么，问题又来了😂。</p>
 <h2 id="什么是spanclass？"><a href="#什么是spanclass？" class="headerlink" title="什么是spanclass？"></a><strong>什么是<code>spanclass</code>？</strong></h2><hr>
@@ -263,7 +286,9 @@
 </li>
 </ul>
 <p>图示如下：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20220423213157.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20220423213157.png" style="width:80%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220423213157.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220423213157.png" style="width:80%"></a>
+</p>
 
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><hr>
 <h2 id="mspan拆分object总结"><a href="#mspan拆分object总结" class="headerlink" title="mspan拆分object总结"></a><strong><code>mspan</code>拆分<code>object</code>总结</strong></h2><hr>
@@ -274,8 +299,7 @@
 <th><code>spanclass</code>10进制值为7</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>可得，<code>spanclass</code>2进制为<code>0000 0111</code></td>
 </tr>
 <tr>
@@ -293,14 +317,17 @@
 <tr>
 <td>可得，<code>mspan</code>尾部浪费8Byte</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>具体图示如下：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20220405235059.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20220405235059.png" style="width:100%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220405235059.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220405235059.png" style="width:100%"></a>
+</p>
 
 <h2 id="mspan关键字段总结"><a href="#mspan关键字段总结" class="headerlink" title="mspan关键字段总结"></a><strong><code>mspan</code>关键字段总结</strong></h2><hr>
 <p>挑选<code>mspan</code>的几个重要字段，如下图：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20220405234945.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20220405234945.png" style="width:30%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220405234945.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220405234945.png" style="width:30%"></a>
+</p>
 
 <table>
 <thead>
@@ -309,8 +336,7 @@
 <th>解释</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>next、prev、list</td>
 <td><code>mspan</code>之间可以构成链表</td>
 </tr>
@@ -338,8 +364,7 @@
 <td>…</td>
 <td>…</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 </div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
         var options = {
             selector: '.gallery-item'
@@ -380,7 +405,7 @@
         <section>
             <h2>About</h2>
             <div>
-                新一代轻量级「<a href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
             </div>
         </section>
         <section>
@@ -410,10 +435,10 @@
             <li>&copy; TIGERB.cn All right reserved. 津ICP备17006784号-2</li>
             <li><a href="https://juejin.im/user/5855e82d1b69e6006c9278b4" target="_blank">juejin</a></li>
             <li><a href="https://segmentfault.com/u/tigerb" target="_blank">Segmentfault</a></li>
-            <li><a href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
+            <li><a target="_blank" rel="noopener" href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
             <li><a href="http://tigerb.cn/go/#/patterns/">Go设计模式实战</a></li>
             <li><a href="http://tigerb.cn/go/#/kernal/">Go语言轻松进阶</a></li>
-            <li><a href="https://dayutalk.cn/">大愚Talk</a></li>
+            <li><a target="_blank" rel="noopener" href="https://dayutalk.cn/">大愚Talk</a></li>
         </ul>
     </div>
 </footer>
@@ -422,20 +447,30 @@
     <!-- After footer scripts -->
     
 <!-- jQuery -->
+
 <script src="/js/jquery.min.js"></script>
 
+
 <!-- skel -->
+
 <script src="/js/skel.min.js"></script>
 
+
 <!-- Custom Code -->
+
 <script src="/js/util.js"></script>
 
+
 <!--[if lte IE 8]>
+
 <script src="/js/ie/respond.min.js"></script>
+
 <![endif]-->
 
 <!-- Custom Code -->
+
 <script src="/js/main.js"></script>
+
 
 <!-- Gallery -->
 <script src="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>

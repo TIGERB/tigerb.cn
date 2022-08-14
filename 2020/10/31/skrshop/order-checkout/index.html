@@ -28,7 +28,7 @@
 
     <!--Page Cover-->
     
-        <meta property="og:image" content="undefined"/>
+        <meta property="og:image" content=""/>
     
 
     <!-- Title -->
@@ -36,18 +36,26 @@
     <title>一篇文章搞清电商订单结算页面设计？ - TIGERB</title>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/sass/main.css">
+    
+<link rel="stylesheet" href="/sass/main.css">
+
 
     <!--[if lt IE 8]>
-        <script src="/js/ie/html5shiv.js"></script>
+        
+<script src="/js/ie/html5shiv.js"></script>
+
     <![endif]-->
 
     <!--[if lt IE 8]>
-        <link rel="stylesheet" href="/sass/ie8.css">
+        
+<link rel="stylesheet" href="/sass/ie8.css">
+
     <![endif]-->
 
     <!--[if lt IE 9]>
-        <link rel="stylesheet" href="/sass/ie9.css">
+        
+<link rel="stylesheet" href="/sass/ie9.css">
+
     <![endif]-->
 
     <!-- Gallery -->
@@ -67,6 +75,7 @@
     })();
     </script>
 
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="TIGERB" type="application/atom+xml">
 </head>
 
 <body>
@@ -103,15 +112,15 @@
             </li>
         
             <li>
-                <a href="https://github.com/TIGERB">Github</a>
+                <a target="_blank" rel="noopener" href="https://github.com/TIGERB">Github</a>
             </li>
         
             <li>
-                <a href="https://segmentfault.com/u/tigerb">Segmentfault</a>
+                <a target="_blank" rel="noopener" href="https://segmentfault.com/u/tigerb">Segmentfault</a>
             </li>
         
             <li>
-                <a href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
+                <a target="_blank" rel="noopener" href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
             </li>
         
     </ul>
@@ -137,7 +146,7 @@
 
 
 <!-- Content -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <hr="">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"><hr>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>截止目前为止SkrShop《电商设计手册》系列梳理的内容已经涵盖了如下几大块：</p>
 <ul>
 <li>用户</li>
@@ -148,7 +157,11 @@
 <li>基础服务</li>
 </ul>
 <p>今天我们准备开启一个新的篇章<strong>订单中心</strong>。</p>
-<p align="center"><br>    <a href="http://cdn.tigerb.cn/20201026131854.jpg" data-lightbox="roadtrip" target="_blank" rel="noopener"><br>        <a href="http://cdn.tigerb.cn/20201026131854.jpg" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20201026131854.jpg" width="100%"></a><br>    </a><br></p>
+<p align="center">
+    <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201026131854.jpg" data-lightbox="roadtrip">
+        <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201026131854.jpg" class="gallery-item"><img src="http://cdn.tigerb.cn/20201026131854.jpg" width="100%"></a>
+    </a>
+</p>
 
 <p>订单中心系列主要内容如下：</p>
 <table>
@@ -157,8 +170,7 @@
 <th>知识点</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>订单结算页</td>
 </tr>
 <tr>
@@ -179,20 +191,33 @@
 <tr>
 <td>…</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>首先，我们来回顾下用户平常在电商平台上的购物的一个简单过程，如下图所示：</p>
-<p align="center"><br>    <a href="http://cdn.tigerb.cn/20201015193036.png" data-lightbox="roadtrip" target="_blank" rel="noopener"><br>        <a href="http://cdn.tigerb.cn/20201015193036.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20201015193036.png" width="80%"></a><br>    </a><br></p>
+<p align="center">
+    <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201015193036.png" data-lightbox="roadtrip">
+        <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201015193036.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20201015193036.png" width="80%"></a>
+    </a>
+</p>
 
 <blockquote>
 <p>所以，今天我们来聊聊什么呢？</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">答：今天的这篇文章我们主要就来聊聊上面流程中『订单结算页』的设计与实现。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">答：今天的这篇文章我们主要就来聊聊上面流程中『订单结算页』的设计与实现。</span><br></pre></td></tr></table></figure>
+
+
 <h2 id="订单结算页长啥样？"><a href="#订单结算页长啥样？" class="headerlink" title="订单结算页长啥样？"></a>订单结算页长啥样？</h2><p>我们来看看某东的订单结算页面：</p>
-<p align="center"><br>    <a href="http://cdn.tigerb.cn/20200331124724.jpeg" data-lightbox="roadtrip" target="_blank" rel="noopener"><br>        <a href="http://cdn.tigerb.cn/20200331124724.jpeg" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20200331124724.jpeg" width="36%"></a><br>    </a><br></p>
+<p align="center">
+    <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20200331124724.jpeg" data-lightbox="roadtrip">
+        <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20200331124724.jpeg" class="gallery-item"><img src="http://cdn.tigerb.cn/20200331124724.jpeg" width="36%"></a>
+    </a>
+</p>
 
 <p>再来看看某宝的订单结算页面：</p>
-<p align="center"><br>    <a href="http://cdn.tigerb.cn/20200929124345.jpeg" data-lightbox="roadtrip" target="_blank" rel="noopener"><br>        <a href="http://cdn.tigerb.cn/20200929124345.jpeg" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20200929124345.jpeg" width="36%"></a><br>    </a><br></p>
+<p align="center">
+    <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20200929124345.jpeg" data-lightbox="roadtrip">
+        <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20200929124345.jpeg" class="gallery-item"><img src="http://cdn.tigerb.cn/20200929124345.jpeg" width="36%"></a>
+    </a>
+</p>
 
 <p>通过上面的截图，我们可以大致得出<strong>订单结算页面</strong>的主要页面内容：</p>
 <ul>
@@ -208,9 +233,14 @@
 <h2 id="订单结算页面的组成"><a href="#订单结算页面的组成" class="headerlink" title="订单结算页面的组成"></a>订单结算页面的组成</h2><blockquote>
 <p>我一直在思考前端可以模块化，后端接口数据不可以模块化吗？</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">我的答案：是可以的。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">我的答案：是可以的。</span><br></pre></td></tr></table></figure>
+
 <p>我们依据上面整理的内容，再通过以往的经验把<strong>订单结算页面</strong>进行模块化拆分和组合，得到如下订单结算页面的<strong>模块化构成</strong>:</p>
-<p align="center"><br>    <a href="http://cdn.tigerb.cn/20201026165711.png" data-lightbox="roadtrip" target="_blank" rel="noopener"><br>        <a href="http://cdn.tigerb.cn/20201026165711.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20201026165711.png" width="38%"></a><br>    </a><br></p>
+<p align="center">
+    <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201026165711.png" data-lightbox="roadtrip">
+        <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201026165711.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20201026165711.png" width="38%"></a>
+    </a>
+</p>
 
 <p>关于这块代码如何设计，可以参考我的文章<a href="http://tigerb.cn/go-patterns/#/?id=%e7%bb%84%e5%90%88%e6%a8%a1%e5%bc%8f">《代码组件 | 我的代码没有else》</a></p>
 <h2 id="订单结算页面各模块分析"><a href="#订单结算页面各模块分析" class="headerlink" title="订单结算页面各模块分析"></a>订单结算页面各模块分析</h2><table>
@@ -223,8 +253,7 @@
 <th>模块描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>1</td>
 <td>地址模块</td>
 <td>-</td>
@@ -322,8 +351,7 @@
 <td>-</td>
 <td>包含该订单的金额明细</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h2 id="地址模块"><a href="#地址模块" class="headerlink" title="地址模块"></a>地址模块</h2><blockquote>
 <p>展示用户的最优地址</p>
 </blockquote>
@@ -342,8 +370,7 @@
 <th>字段含义</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>consignee</td>
 <td>string</td>
 <td>-</td>
@@ -483,11 +510,16 @@
 <td>-</td>
 <td>纬度</td>
 </tr>
-</tbody>
-</table>
-<p align="center"><br>    <a href="http://cdn.tigerb.cn/20201010203421.png" data-lightbox="roadtrip" target="_blank" rel="noopener"><br>        <a href="http://cdn.tigerb.cn/20201010203421.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20201010203421.png" width="100%"></a><br>    </a><br></p>
+</tbody></table>
+<p align="center">
+    <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201010203421.png" data-lightbox="roadtrip">
+        <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201010203421.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20201010203421.png" width="100%"></a>
+    </a>
+</p>
 
-<p>模块数据demo：<br><figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"address_module"</span>: &#123;</span><br><span class="line">        <span class="attr">"consignee"</span>: <span class="string">"收货人姓名"</span>,</span><br><span class="line">        <span class="attr">"email"</span>: <span class="string">"收货人邮箱(返回值用户名部分打码)"</span>,</span><br><span class="line">        <span class="attr">"mobile"</span>: <span class="string">"收货人手机号(返回值中间四位打码)"</span>,</span><br><span class="line">        <span class="attr">"country"</span>: &#123;</span><br><span class="line">            <span class="attr">"id"</span>: <span class="number">666</span>,</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"国家名称"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">"province"</span>: &#123;</span><br><span class="line">            <span class="attr">"id"</span>: <span class="number">12123</span>,</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"省名称"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">"city"</span>: &#123;</span><br><span class="line">            <span class="attr">"id"</span>: <span class="number">212333</span>,</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"市名称"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">"county"</span>: &#123;</span><br><span class="line">            <span class="attr">"id"</span>: <span class="number">1233222</span>,</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"区县名称"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">"street"</span>: &#123;</span><br><span class="line">            <span class="attr">"id"</span>: <span class="number">9989999</span>,</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"街道乡镇名称"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">"detailed_address"</span>: <span class="string">"详细地址(用户手填)"</span>,</span><br><span class="line">        <span class="attr">"postal_code"</span>: <span class="string">"邮编"</span>,</span><br><span class="line">        <span class="attr">"address_id"</span>: <span class="number">212399999393</span>,</span><br><span class="line">        <span class="attr">"is_default"</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">"label"</span>: <span class="string">"地址类型标签，家、公司等"</span>,</span><br><span class="line">        <span class="attr">"longitude"</span>: <span class="string">"经度"</span>,</span><br><span class="line">        <span class="attr">"latitude"</span>: <span class="string">"纬度"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>模块数据demo：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;address_module&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;consignee&quot;</span><span class="punctuation">:</span> <span class="string">&quot;收货人姓名&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;email&quot;</span><span class="punctuation">:</span> <span class="string">&quot;收货人邮箱(返回值用户名部分打码)&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;mobile&quot;</span><span class="punctuation">:</span> <span class="string">&quot;收货人手机号(返回值中间四位打码)&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;country&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="number">666</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;国家名称&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;province&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="number">12123</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;省名称&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;city&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="number">212333</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;市名称&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;county&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="number">1233222</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;区县名称&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;street&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="number">9989999</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;街道乡镇名称&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;detailed_address&quot;</span><span class="punctuation">:</span> <span class="string">&quot;详细地址(用户手填)&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;postal_code&quot;</span><span class="punctuation">:</span> <span class="string">&quot;邮编&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;address_id&quot;</span><span class="punctuation">:</span> <span class="number">212399999393</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;is_default&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;地址类型标签，家、公司等&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;longitude&quot;</span><span class="punctuation">:</span> <span class="string">&quot;经度&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;latitude&quot;</span><span class="punctuation">:</span> <span class="string">&quot;纬度&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="支付方式模块"><a href="#支付方式模块" class="headerlink" title="支付方式模块"></a>支付方式模块</h2><blockquote>
 <p>该订单支持的支付方式</p>
 </blockquote>
@@ -506,8 +538,7 @@
 <th>字段含义</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>pay_method_list</td>
 <td>array</td>
 <td>id</td>
@@ -528,11 +559,16 @@
 <td>string</td>
 <td>支付方式描述</td>
 </tr>
-</tbody>
-</table>
-<p align="center"><br>    <a href="http://cdn.tigerb.cn/20201010203818.png" data-lightbox="roadtrip" target="_blank" rel="noopener"><br>        <a href="http://cdn.tigerb.cn/20201010203818.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20201010203818.png" width="100%"></a><br>    </a><br></p>
+</tbody></table>
+<p align="center">
+    <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201010203818.png" data-lightbox="roadtrip">
+        <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201010203818.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20201010203818.png" width="100%"></a>
+    </a>
+</p>
 
-<p>模块数据demo：<br><figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"pay_method_module"</span>: &#123;</span><br><span class="line">        <span class="attr">"pay_method_list"</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">"id"</span>: <span class="number">1</span>,</span><br><span class="line">                <span class="attr">"name"</span>: <span class="string">"在线支付"</span>,</span><br><span class="line">                <span class="attr">"desc"</span>: <span class="string">"在线支付的描述"</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">"id"</span>: <span class="number">2</span>,</span><br><span class="line">                <span class="attr">"name"</span>: <span class="string">"货到付款"</span>,</span><br><span class="line">                <span class="attr">"desc"</span>: <span class="string">"货到付款的描述"</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>模块数据demo：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;pay_method_module&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;pay_method_list&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">            <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;在线支付&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;desc&quot;</span><span class="punctuation">:</span> <span class="string">&quot;在线支付的描述&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;货到付款&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;desc&quot;</span><span class="punctuation">:</span> <span class="string">&quot;货到付款的描述&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span>   </span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="店铺模块"><a href="#店铺模块" class="headerlink" title="店铺模块"></a>店铺模块</h2><blockquote>
 <p>包含店铺信息、商品信息、参与的优惠信息、可选的物流方式、商品售后信息等</p>
 </blockquote>
@@ -547,7 +583,11 @@
 <li>商品物流模块</li>
 <li>店铺商品总金额信息模块</li>
 </ul>
-<p align="center"><br>    <a href="http://cdn.tigerb.cn/20201014203138.png" data-lightbox="roadtrip" target="_blank" rel="noopener"><br>        <a href="http://cdn.tigerb.cn/20201014203138.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20201014203138.png" width="36%"></a><br>    </a><br></p>
+<p align="center">
+    <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201014203138.png" data-lightbox="roadtrip">
+        <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201014203138.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20201014203138.png" width="36%"></a>
+    </a>
+</p>
 
 <p>由于此处内容比较多我们之后再来单独分析。</p>
 <h2 id="发票模块"><a href="#发票模块" class="headerlink" title="发票模块"></a>发票模块</h2><blockquote>
@@ -568,8 +608,7 @@
 <th>字段含义</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>type_id</td>
 <td>int</td>
 <td>-</td>
@@ -590,11 +629,16 @@
 <td>-</td>
 <td>发票类型描述</td>
 </tr>
-</tbody>
-</table>
-<p align="center"><br>    <a href="http://cdn.tigerb.cn/20201015195856.png" data-lightbox="roadtrip" target="_blank" rel="noopener"><br>        <a href="http://cdn.tigerb.cn/20201015195856.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20201015195856.png" width="100%"></a><br>    </a><br></p>
+</tbody></table>
+<p align="center">
+    <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201015195856.png" data-lightbox="roadtrip">
+        <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201015195856.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20201015195856.png" width="100%"></a>
+    </a>
+</p>
 
-<p>模块数据demo：<br><figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"invoice_module"</span>: &#123;</span><br><span class="line">        <span class="attr">"type_list"</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">"type_id"</span>: <span class="number">1</span>,</span><br><span class="line">                <span class="attr">"type_name"</span>: <span class="string">"个人"</span>,</span><br><span class="line">                <span class="attr">"type_desc"</span>: <span class="string">"描述"</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">"type_id"</span>: <span class="number">2</span>,</span><br><span class="line">                <span class="attr">"type_name"</span>: <span class="string">"公司"</span>,</span><br><span class="line">                <span class="attr">"type_desc"</span>: <span class="string">"描述"</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>模块数据demo：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;invoice_module&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;type_list&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">            <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;type_id&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;type_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;个人&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;type_desc&quot;</span><span class="punctuation">:</span> <span class="string">&quot;描述&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;type_id&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;type_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;公司&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;type_desc&quot;</span><span class="punctuation">:</span> <span class="string">&quot;描述&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="优惠券模块"><a href="#优惠券模块" class="headerlink" title="优惠券模块"></a>优惠券模块</h2><blockquote>
 <p>返回该订单可以使用的优惠券列表，以及默认选择对于当前订单而言的最优优惠券</p>
 </blockquote>
@@ -616,8 +660,7 @@
 <th>字段含义</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>giftcard_list</td>
 <td>array</td>
 <td>id</td>
@@ -673,11 +716,16 @@
 <td>string</td>
 <td>礼品卡剩余金额-格式化后</td>
 </tr>
-</tbody>
-</table>
-<p align="center"><br>    <a href="http://cdn.tigerb.cn/20201026165855.png" data-lightbox="roadtrip" target="_blank" rel="noopener"><br>        <a href="http://cdn.tigerb.cn/20201026165855.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20201026165855.png" width="100%"></a><br>    </a><br></p>
+</tbody></table>
+<p align="center">
+    <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201026165855.png" data-lightbox="roadtrip">
+        <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201026165855.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20201026165855.png" width="100%"></a>
+    </a>
+</p>
 
-<p>模块数据demo：<br><figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"giftcard_module"</span>: &#123;</span><br><span class="line">        <span class="attr">"giftcard_list"</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">"id"</span>: <span class="number">341313121</span>,</span><br><span class="line">                <span class="attr">"name"</span>: <span class="string">"礼品卡名称"</span>,</span><br><span class="line">                <span class="attr">"desc"</span>: <span class="string">"礼品卡描述"</span>,</span><br><span class="line">                <span class="attr">"pic_url"</span>: <span class="string">"礼品卡图片"</span>,</span><br><span class="line">                <span class="attr">"total_amount"</span>: <span class="number">100.00</span>,</span><br><span class="line">                <span class="attr">"total_amount_txt"</span>: <span class="string">"100.00"</span>,</span><br><span class="line">                <span class="attr">"remaining_amount"</span>: <span class="number">21.00</span>,</span><br><span class="line">                <span class="attr">"remaining_amount_txt"</span>: <span class="string">"21.00"</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>模块数据demo：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;giftcard_module&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;giftcard_list&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">            <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="number">341313121</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;礼品卡名称&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;desc&quot;</span><span class="punctuation">:</span> <span class="string">&quot;礼品卡描述&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;pic_url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;礼品卡图片&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;total_amount&quot;</span><span class="punctuation">:</span> <span class="number">100.00</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;total_amount_txt&quot;</span><span class="punctuation">:</span> <span class="string">&quot;100.00&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;remaining_amount&quot;</span><span class="punctuation">:</span> <span class="number">21.00</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;remaining_amount_txt&quot;</span><span class="punctuation">:</span> <span class="string">&quot;21.00&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="平台积分模块"><a href="#平台积分模块" class="headerlink" title="平台积分模块"></a>平台积分模块</h2><blockquote>
 <p>用户可以使用积分抵现</p>
 </blockquote>
@@ -692,8 +740,7 @@
 <th>字段含义</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>order_amount_min</td>
 <td>float64</td>
 <td>-</td>
@@ -749,11 +796,16 @@
 <td>-</td>
 <td>该订单积分可抵扣金额-格式化后</td>
 </tr>
-</tbody>
-</table>
-<p align="center"><br>    <a href="http://cdn.tigerb.cn/20201015193559.png" data-lightbox="roadtrip" target="_blank" rel="noopener"><br>        <a href="http://cdn.tigerb.cn/20201015193559.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20201015193559.png" width="100%"></a><br>    </a><br></p>
+</tbody></table>
+<p align="center">
+    <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201015193559.png" data-lightbox="roadtrip">
+        <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201015193559.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20201015193559.png" width="100%"></a>
+    </a>
+</p>
 
-<p>模块数据demo：<br><figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"points_module"</span>: &#123;</span><br><span class="line">        <span class="attr">"order_amount_min"</span>: <span class="number">100.00</span>,</span><br><span class="line">        <span class="attr">"total_points"</span>: <span class="number">9999</span>,</span><br><span class="line">        <span class="attr">"can_use_points"</span>: <span class="number">9999</span>,</span><br><span class="line">        <span class="attr">"points2money_rate"</span>: <span class="number">100</span>,</span><br><span class="line">        <span class="attr">"points2money_min"</span>: <span class="number">1000</span>,</span><br><span class="line">        <span class="attr">"points2money_max"</span>: <span class="number">9999</span>,</span><br><span class="line">        <span class="attr">"points_amount"</span>: <span class="number">99.99</span>,</span><br><span class="line">        <span class="attr">"points_amount_txt"</span>: <span class="string">"99.99"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>模块数据demo：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;points_module&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;order_amount_min&quot;</span><span class="punctuation">:</span> <span class="number">100.00</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;total_points&quot;</span><span class="punctuation">:</span> <span class="number">9999</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;can_use_points&quot;</span><span class="punctuation">:</span> <span class="number">9999</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;points2money_rate&quot;</span><span class="punctuation">:</span> <span class="number">100</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;points2money_min&quot;</span><span class="punctuation">:</span> <span class="number">1000</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;points2money_max&quot;</span><span class="punctuation">:</span> <span class="number">9999</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;points_amount&quot;</span><span class="punctuation">:</span> <span class="number">99.99</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;points_amount_txt&quot;</span><span class="punctuation">:</span> <span class="string">&quot;99.99&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="订单金额信息模块"><a href="#订单金额信息模块" class="headerlink" title="订单金额信息模块"></a>订单金额信息模块</h2><blockquote>
 <p>包含该订单的金额明细</p>
 </blockquote>
@@ -767,8 +819,7 @@
 <th>字段含义</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>skus_amount</td>
 <td>float64</td>
 <td>-</td>
@@ -824,14 +875,20 @@
 <td>float64</td>
 <td>该订单积分抵扣金额</td>
 </tr>
-</tbody>
-</table>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">_txt字段略</span><br></pre></td></tr></table></figure>
-<p align="center"><br>    <a href="http://cdn.tigerb.cn/20201015200913.png" data-lightbox="roadtrip" target="_blank" rel="noopener"><br>        <a href="http://cdn.tigerb.cn/20201015200913.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20201015200913.png" width="100%"></a><br>    </a><br></p>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">_txt字段略</span><br></pre></td></tr></table></figure>
 
-<p>模块数据demo：<br><figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"order_amount_module"</span>: &#123;</span><br><span class="line">        <span class="attr">"skus_amount"</span>: <span class="number">99.99</span>,</span><br><span class="line">        <span class="attr">"skus_amount_txt"</span>: <span class="string">"99.99"</span>,</span><br><span class="line">        <span class="attr">"promotion_amount_total"</span>: <span class="number">10.00</span>,</span><br><span class="line">        <span class="attr">"promotion_amount_total_txt"</span>: <span class="string">"10.00"</span>,</span><br><span class="line">        <span class="attr">"freight_total"</span>: <span class="number">8.00</span>,</span><br><span class="line">        <span class="attr">"freight_total_txt"</span>: <span class="string">"8.00"</span>,</span><br><span class="line">        <span class="attr">"final_amount"</span>: <span class="number">97.99</span>,</span><br><span class="line">        <span class="attr">"final_amount_txt"</span>: <span class="string">"97.99"</span>,</span><br><span class="line">        <span class="attr">"promotion_detail"</span>: &#123;</span><br><span class="line">            <span class="attr">"coupon_amount"</span>: <span class="number">5.00</span>,</span><br><span class="line">            <span class="attr">"coupon_amount_txt"</span>: <span class="string">"5.00"</span>,</span><br><span class="line">            <span class="attr">"sales_activity_amount"</span>: <span class="number">5.00</span>,</span><br><span class="line">            <span class="attr">"sales_activity_amount_txt"</span>: <span class="string">"5.00"</span>,</span><br><span class="line">            <span class="attr">"giftcard_amount"</span>: <span class="number">0</span>,</span><br><span class="line">            <span class="attr">"giftcard_activity_amount_txt"</span>: <span class="string">"0"</span>,</span><br><span class="line">            <span class="attr">"points_amount"</span>: <span class="number">0</span>,</span><br><span class="line">            <span class="attr">"points_amount_txt"</span>: <span class="string">"0"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>如上，订单结算页面的内容基本介绍完毕了，有任何问题随时到我们的github项目下留言 <a href="https://github.com/skr-shop/manuals/issues" target="_blank" rel="noopener">https://github.com/skr-shop/manuals/issues</a>。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">关于我的常用画图软件：</span><br><span class="line"></span><br><span class="line">1. Balsamiq Mockups 3</span><br><span class="line">2. Processon</span><br></pre></td></tr></table></figure></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+<p align="center">
+    <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201015200913.png" data-lightbox="roadtrip">
+        <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201015200913.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20201015200913.png" width="100%"></a>
+    </a>
+</p>
+
+<p>模块数据demo：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;order_amount_module&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;skus_amount&quot;</span><span class="punctuation">:</span> <span class="number">99.99</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;skus_amount_txt&quot;</span><span class="punctuation">:</span> <span class="string">&quot;99.99&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;promotion_amount_total&quot;</span><span class="punctuation">:</span> <span class="number">10.00</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;promotion_amount_total_txt&quot;</span><span class="punctuation">:</span> <span class="string">&quot;10.00&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;freight_total&quot;</span><span class="punctuation">:</span> <span class="number">8.00</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;freight_total_txt&quot;</span><span class="punctuation">:</span> <span class="string">&quot;8.00&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;final_amount&quot;</span><span class="punctuation">:</span> <span class="number">97.99</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;final_amount_txt&quot;</span><span class="punctuation">:</span> <span class="string">&quot;97.99&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;promotion_detail&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;coupon_amount&quot;</span><span class="punctuation">:</span> <span class="number">5.00</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;coupon_amount_txt&quot;</span><span class="punctuation">:</span> <span class="string">&quot;5.00&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;sales_activity_amount&quot;</span><span class="punctuation">:</span> <span class="number">5.00</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;sales_activity_amount_txt&quot;</span><span class="punctuation">:</span> <span class="string">&quot;5.00&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;giftcard_amount&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;giftcard_activity_amount_txt&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;points_amount&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;points_amount_txt&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>如上，订单结算页面的内容基本介绍完毕了，有任何问题随时到我们的github项目下留言 <a target="_blank" rel="noopener" href="https://github.com/skr-shop/manuals/issues">https://github.com/skr-shop/manuals/issues</a>。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">关于我的常用画图软件：</span><br><span class="line"></span><br><span class="line">1. Balsamiq Mockups 3</span><br><span class="line">2. Processon</span><br></pre></td></tr></table></figure></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
         var options = {
             selector: '.gallery-item'
         };
@@ -871,7 +928,7 @@
         <section>
             <h2>About</h2>
             <div>
-                新一代轻量级「<a href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
             </div>
         </section>
         <section>
@@ -901,10 +958,10 @@
             <li>&copy; TIGERB.cn All right reserved. 津ICP备17006784号-2</li>
             <li><a href="https://juejin.im/user/5855e82d1b69e6006c9278b4" target="_blank">juejin</a></li>
             <li><a href="https://segmentfault.com/u/tigerb" target="_blank">Segmentfault</a></li>
-            <li><a href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
+            <li><a target="_blank" rel="noopener" href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
             <li><a href="http://tigerb.cn/go/#/patterns/">Go设计模式实战</a></li>
             <li><a href="http://tigerb.cn/go/#/kernal/">Go语言轻松进阶</a></li>
-            <li><a href="https://dayutalk.cn/">大愚Talk</a></li>
+            <li><a target="_blank" rel="noopener" href="https://dayutalk.cn/">大愚Talk</a></li>
         </ul>
     </div>
 </footer>
@@ -913,20 +970,30 @@
     <!-- After footer scripts -->
     
 <!-- jQuery -->
+
 <script src="/js/jquery.min.js"></script>
 
+
 <!-- skel -->
+
 <script src="/js/skel.min.js"></script>
 
+
 <!-- Custom Code -->
+
 <script src="/js/util.js"></script>
 
+
 <!--[if lte IE 8]>
+
 <script src="/js/ie/respond.min.js"></script>
+
 <![endif]-->
 
 <!-- Custom Code -->
+
 <script src="/js/main.js"></script>
+
 
 <!-- Gallery -->
 <script src="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>

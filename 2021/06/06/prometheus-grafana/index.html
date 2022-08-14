@@ -28,7 +28,7 @@
 
     <!--Page Cover-->
     
-        <meta property="og:image" content="undefined"/>
+        <meta property="og:image" content=""/>
     
 
     <!-- Title -->
@@ -36,18 +36,26 @@
     <title>Go服务监控搭建入门 - TIGERB</title>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/sass/main.css">
+    
+<link rel="stylesheet" href="/sass/main.css">
+
 
     <!--[if lt IE 8]>
-        <script src="/js/ie/html5shiv.js"></script>
+        
+<script src="/js/ie/html5shiv.js"></script>
+
     <![endif]-->
 
     <!--[if lt IE 8]>
-        <link rel="stylesheet" href="/sass/ie8.css">
+        
+<link rel="stylesheet" href="/sass/ie8.css">
+
     <![endif]-->
 
     <!--[if lt IE 9]>
-        <link rel="stylesheet" href="/sass/ie9.css">
+        
+<link rel="stylesheet" href="/sass/ie9.css">
+
     <![endif]-->
 
     <!-- Gallery -->
@@ -67,6 +75,7 @@
     })();
     </script>
 
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="TIGERB" type="application/atom+xml">
 </head>
 
 <body>
@@ -103,15 +112,15 @@
             </li>
         
             <li>
-                <a href="https://github.com/TIGERB">Github</a>
+                <a target="_blank" rel="noopener" href="https://github.com/TIGERB">Github</a>
             </li>
         
             <li>
-                <a href="https://segmentfault.com/u/tigerb">Segmentfault</a>
+                <a target="_blank" rel="noopener" href="https://segmentfault.com/u/tigerb">Segmentfault</a>
             </li>
         
             <li>
-                <a href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
+                <a target="_blank" rel="noopener" href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
             </li>
         
     </ul>
@@ -137,13 +146,15 @@
 
 
 <!-- Content -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <hr="">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"><hr>
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><hr>
 <p>一直以来都想知道现在「Go服务监控」是如何搭建和工作的，于是最近就抽了点时间去学习下这服务监控的搭建过程。</p>
 <p>我选用的技术栈是「prometheus + grafana」。</p>
 <h1 id="架构简介"><a href="#架构简介" class="headerlink" title="架构简介"></a>架构简介</h1><hr>
 <p>整体的简易架构如下：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210531132351.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210531132351.png" style="width:60%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210531132351.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210531132351.png" style="width:60%"></a>
+</p>
 
 <ul>
 <li>Grafana：作为UI，提供了丰富的监控面板。</li>
@@ -151,78 +162,134 @@
 <li>需要被监控的服务：需要被监控的服务按照标准提供一个<code>metrics</code>接口，Prometheus会去通过暴露的这个接口拉取数据。Go已经有封装好的包<code>github.com/prometheus/client_golang/prometheus</code>，我们直接采用就可以了。</li>
 </ul>
 <h1 id="准备镜像"><a href="#准备镜像" class="headerlink" title="准备镜像"></a>准备镜像</h1><hr>
-<p>选取Prometheus镜像，如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull bitnami/prometheus:2.26.0</span><br><span class="line">docker run -d -p 9090:9090 bitnami/prometheus:2.26.0</span><br></pre></td></tr></table></figure></p>
-<p>选取Grafana镜像，如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull bitnami/grafana:7.5.4</span><br><span class="line">docker run -d -p 3000:3000 bitnami/grafana:7.5.4</span><br></pre></td></tr></table></figure></p>
+<p>选取Prometheus镜像，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker pull bitnami/prometheus:2.26.0</span><br><span class="line">docker run -d -p 9090:9090 bitnami/prometheus:2.26.0</span><br></pre></td></tr></table></figure>
+
+<p>选取Grafana镜像，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker pull bitnami/grafana:7.5.4</span><br><span class="line">docker run -d -p 3000:3000 bitnami/grafana:7.5.4</span><br></pre></td></tr></table></figure>
+
 <p>Go服务demo代码镜像：</p>
-<p>首先我们选用现有封装好的代码包，如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 选用现有的prometheus包</span><br><span class="line">go get github.com/prometheus/client_golang/prometheus</span><br><span class="line">go get github.com/prometheus/client_golang/prometheus/promauto</span><br><span class="line">go get github.com/prometheus/client_golang/prometheus/promhttp</span><br></pre></td></tr></table></figure></p>
-<p>demo代码如下：<br><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"net/http"</span></span><br><span class="line"></span><br><span class="line">	<span class="string">"github.com/prometheus/client_golang/prometheus/promhttp"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 对外提供/metrics接口</span></span><br><span class="line">	http.Handle(<span class="string">"/metrics"</span>, promhttp.Handler())</span><br><span class="line">	http.ListenAndServe(<span class="string">":2112"</span>, <span class="literal">nil</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>首先我们选用现有封装好的代码包，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 选用现有的prometheus包</span><br><span class="line">go get github.com/prometheus/client_golang/prometheus</span><br><span class="line">go get github.com/prometheus/client_golang/prometheus/promauto</span><br><span class="line">go get github.com/prometheus/client_golang/prometheus/promhttp</span><br></pre></td></tr></table></figure>
+
+<p>demo代码如下：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;net/http&quot;</span></span><br><span class="line"></span><br><span class="line">	<span class="string">&quot;github.com/prometheus/client_golang/prometheus/promhttp&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 对外提供/metrics接口</span></span><br><span class="line">	http.Handle(<span class="string">&quot;/metrics&quot;</span>, promhttp.Handler())</span><br><span class="line">	http.ListenAndServe(<span class="string">&quot;:2112&quot;</span>, <span class="literal">nil</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>启动Go服务，curl请求接口：</p>
 <blockquote>
-<p>curl <a href="http://localhost:2112/metrics" target="_blank" rel="noopener">http://localhost:2112/metrics</a></p>
+<p>curl <a target="_blank" rel="noopener" href="http://localhost:2112/metrics">http://localhost:2112/metrics</a></p>
 </blockquote>
-<p>获取到监控指标数据如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># HELP go_gc_duration_seconds A summary of the pause duration of garbage collection cycles.</span><br><span class="line"># TYPE go_gc_duration_seconds summary</span><br><span class="line">go_gc_duration_seconds&#123;quantile=&quot;0&quot;&#125; 2.8697e-05</span><br><span class="line">go_gc_duration_seconds&#123;quantile=&quot;0.25&quot;&#125; 3.8094e-05</span><br><span class="line">go_gc_duration_seconds&#123;quantile=&quot;0.5&quot;&#125; 0.000125819</span><br><span class="line">go_gc_duration_seconds&#123;quantile=&quot;0.75&quot;&#125; 0.000190862</span><br><span class="line">go_gc_duration_seconds&#123;quantile=&quot;1&quot;&#125; 0.0098972</span><br><span class="line">go_gc_duration_seconds_sum 0.025042382</span><br><span class="line">go_gc_duration_seconds_count 45</span><br><span class="line">......略</span><br></pre></td></tr></table></figure></p>
+<p>获取到监控指标数据如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># HELP go_gc_duration_seconds A summary of the pause duration of garbage collection cycles.</span><br><span class="line"># TYPE go_gc_duration_seconds summary</span><br><span class="line">go_gc_duration_seconds&#123;quantile=&quot;0&quot;&#125; 2.8697e-05</span><br><span class="line">go_gc_duration_seconds&#123;quantile=&quot;0.25&quot;&#125; 3.8094e-05</span><br><span class="line">go_gc_duration_seconds&#123;quantile=&quot;0.5&quot;&#125; 0.000125819</span><br><span class="line">go_gc_duration_seconds&#123;quantile=&quot;0.75&quot;&#125; 0.000190862</span><br><span class="line">go_gc_duration_seconds&#123;quantile=&quot;1&quot;&#125; 0.0098972</span><br><span class="line">go_gc_duration_seconds_sum 0.025042382</span><br><span class="line">go_gc_duration_seconds_count 45</span><br><span class="line">......略</span><br></pre></td></tr></table></figure>
+
 <p>通过prometheus的配置文件<code>prometheus.yml</code>注册我们Go样例服务，如下</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 略...</span></span><br><span class="line"><span class="attr">scrape_configs:</span></span><br><span class="line">  <span class="comment"># prometheus自身的监控</span></span><br><span class="line"><span class="attr">  - job_name:</span> <span class="string">'prometheus'</span></span><br><span class="line"></span><br><span class="line"><span class="attr">    static_configs:</span></span><br><span class="line"><span class="attr">    - targets:</span> <span class="string">['prometheus:9090']</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 重点是这里 </span></span><br><span class="line">  <span class="comment"># 注册我们Go服务的job</span></span><br><span class="line"><span class="attr">  - job_name:</span> <span class="string">'go-demo'</span></span><br><span class="line"></span><br><span class="line"><span class="attr">    static_configs:</span></span><br><span class="line">	<span class="comment"># go服务的地址 IP:端口</span></span><br><span class="line"><span class="attr">    - targets:</span> <span class="string">['go-demo:2112']</span></span><br></pre></td></tr></table></figure>
-<p>编写Go服务的dockerfile，如下：<br><figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line"><span class="keyword">FROM</span> amd64/golang:<span class="number">1.16</span>.<span class="number">3</span>-alpine3.<span class="number">12</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span> mkdir -p /home/deploy/go-demo</span><br><span class="line"></span><br><span class="line">CMD ["/home/deploy/go-demo/run.sh"]</span><br></pre></td></tr></table></figure></p>
-<p>启动脚本<code>/home/deploy/go-demo/run.sh</code>，如下：<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /home/deploy/go-demo \</span><br><span class="line">    &amp;&amp; go run main.go \</span><br><span class="line">    &amp;&amp; sleep 100000</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 略...</span></span><br><span class="line"><span class="attr">scrape_configs:</span></span><br><span class="line">  <span class="comment"># prometheus自身的监控</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">job_name:</span> <span class="string">&#x27;prometheus&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">static_configs:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">targets:</span> [<span class="string">&#x27;prometheus:9090&#x27;</span>]</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 重点是这里 </span></span><br><span class="line">  <span class="comment"># 注册我们Go服务的job</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">job_name:</span> <span class="string">&#x27;go-demo&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">static_configs:</span></span><br><span class="line">	<span class="comment"># go服务的地址 IP:端口</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">targets:</span> [<span class="string">&#x27;go-demo:2112&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>编写Go服务的dockerfile，如下：</p>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line"><span class="keyword">FROM</span> amd64/golang:<span class="number">1.16</span>.<span class="number">3</span>-alpine3.<span class="number">12</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">mkdir</span> -p /home/deploy/go-demo</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [<span class="string">&quot;/home/deploy/go-demo/run.sh&quot;</span>]</span></span><br></pre></td></tr></table></figure>
+
+<p>启动脚本<code>/home/deploy/go-demo/run.sh</code>，如下：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /home/deploy/go-demo \</span><br><span class="line">    &amp;&amp; go run main.go \</span><br><span class="line">    &amp;&amp; <span class="built_in">sleep</span> 100000</span><br></pre></td></tr></table></figure>
+
 <h1 id="服务编排-docker-compose"><a href="#服务编排-docker-compose" class="headerlink" title="服务编排(docker-compose)"></a>服务编排(docker-compose)</h1><hr>
 <p>上面我们是单独启动每个容器来实现的，接着我们用docker-compose来编排服务。</p>
 <p>首先，创建network:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 创建network</span><br><span class="line">docker network create example_default</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 创建network</span><br><span class="line">docker network create example_default</span><br></pre></td></tr></table></figure>
+
 <p>接着，编写docker-compose.yaml文件如下：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">"3"</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  prometheus:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">bitnami/prometheus:2.26.0</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">prometheus</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">./prometheus/prometheus.yml:/opt/bitnami/prometheus/conf/prometheus.yml</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">"9090:9090"</span></span><br><span class="line"><span class="attr">    privileged:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    networks:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">default</span></span><br><span class="line"><span class="attr">  grafana:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">bitnami/grafana:7.5.4</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">grafana</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">"3000:3000"</span></span><br><span class="line"><span class="attr">    privileged:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    networks:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">default</span></span><br><span class="line"><span class="attr">  go-demo:</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">go-demo</span></span><br><span class="line"><span class="attr">    build:</span> <span class="string">./go-demo</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">./go-demo:/home/deploy/go-demo</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">"2112:2112"</span></span><br><span class="line"><span class="attr">    privileged:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    networks:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">default</span></span><br><span class="line"><span class="attr">networks:</span> </span><br><span class="line"><span class="attr">  default:</span></span><br><span class="line"><span class="attr">    external:</span> </span><br><span class="line"><span class="attr">      name:</span> <span class="string">example_default</span></span><br></pre></td></tr></table></figure>
-<p>最后，启动服务：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 启动服务</span><br><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">prometheus:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">bitnami/prometheus:2.26.0</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">prometheus</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./prometheus/prometheus.yml:/opt/bitnami/prometheus/conf/prometheus.yml</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;9090:9090&quot;</span></span><br><span class="line">    <span class="attr">privileged:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">networks:</span> </span><br><span class="line">      <span class="bullet">-</span> <span class="string">default</span></span><br><span class="line">  <span class="attr">grafana:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">bitnami/grafana:7.5.4</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">grafana</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;3000:3000&quot;</span></span><br><span class="line">    <span class="attr">privileged:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">networks:</span> </span><br><span class="line">      <span class="bullet">-</span> <span class="string">default</span></span><br><span class="line">  <span class="attr">go-demo:</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">go-demo</span></span><br><span class="line">    <span class="attr">build:</span> <span class="string">./go-demo</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./go-demo:/home/deploy/go-demo</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;2112:2112&quot;</span></span><br><span class="line">    <span class="attr">privileged:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">networks:</span> </span><br><span class="line">      <span class="bullet">-</span> <span class="string">default</span></span><br><span class="line"><span class="attr">networks:</span> </span><br><span class="line">  <span class="attr">default:</span></span><br><span class="line">    <span class="attr">external:</span> </span><br><span class="line">      <span class="attr">name:</span> <span class="string">example_default</span></span><br></pre></td></tr></table></figure>
+
+<p>最后，启动服务：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 启动服务</span><br><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+
 <h1 id="Grafana监控面板配置"><a href="#Grafana监控面板配置" class="headerlink" title="Grafana监控面板配置"></a>Grafana监控面板配置</h1><hr>
 <p>首先prometheus其实自己是有监控面板的，我们可以通过下面的地址访问：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">prometheus http://localhost:9090</span><br></pre></td></tr></table></figure>
-<p>举个例子，比如通过如下的操作，我们就可以看见我们Go服务的<code>Goroutines</code>监控。</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210529155608.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210529155608.png" style="width:60%"></a><br></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">prometheus http://localhost:9090</span><br></pre></td></tr></table></figure>
 
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210529160638.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210529160638.png" style="width:60%"></a><br></p>
+<p>举个例子，比如通过如下的操作，我们就可以看见我们Go服务的<code>Goroutines</code>监控。</p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210529155608.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210529155608.png" style="width:60%"></a>
+</p>
+
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210529160638.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210529160638.png" style="width:60%"></a>
+</p>
 
 <p>但是呢，Grafana提供了更丰富的监控面板，接着我们来搭建一个简单的Go服务监控。</p>
-<p>访问如下地址：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">使用grafana的UI</span><br><span class="line">grafana http://localhost:3000</span><br></pre></td></tr></table></figure></p>
-<p>初始账号密码：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">admin</span><br><span class="line">admin</span><br></pre></td></tr></table></figure></p>
+<p>访问如下地址：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">使用grafana的UI</span><br><span class="line">grafana http://localhost:3000</span><br></pre></td></tr></table></figure>
+
+<p>初始账号密码：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">admin</span><br><span class="line">admin</span><br></pre></td></tr></table></figure>
+
 <p>进入首页：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210529160749.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210529160749.png" style="width:60%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210529160749.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210529160749.png" style="width:60%"></a>
+</p>
 
 <p>添加数据源：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210529160803.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210529160803.png" style="width:60%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210529160803.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210529160803.png" style="width:60%"></a>
+</p>
 
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210529160812.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210529160812.png" style="width:60%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210529160812.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210529160812.png" style="width:60%"></a>
+</p>
 
 <p>选择数据源为Prometheus:</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210529160823.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210529160823.png" style="width:60%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210529160823.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210529160823.png" style="width:60%"></a>
+</p>
 
 <p>填写Prometheus服务的地址：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210529160842.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210529160842.png" style="width:60%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210529160842.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210529160842.png" style="width:60%"></a>
+</p>
 
 <p>点击添加：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210529160856.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210529160856.png" style="width:60%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210529160856.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210529160856.png" style="width:60%"></a>
+</p>
 
 <p>切换到Dashboards面板，选择导入一个面板：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210529160917.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210529160917.png" style="width:60%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210529160917.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210529160917.png" style="width:60%"></a>
+</p>
 
 <p>接着我们就可以看见一个已经存在的面板了，这个面板是Prometheus自身监控的面板。</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210529160925.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210529160925.png" style="width:60%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210529160925.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210529160925.png" style="width:60%"></a>
+</p>
 
 <p>接着，我们来创建一个我们自己Go服务的面板，首先创建一个Go服务的目录(保证隔离和可读性，相当于namespace)：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210529163049.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210529163049.png" style="width:60%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210529163049.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210529163049.png" style="width:60%"></a>
+</p>
 
 <p>创建一个Go服务的面板：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210529163058.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210529163058.png" style="width:60%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210529163058.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210529163058.png" style="width:60%"></a>
+</p>
 
 <p>创建一个指标视图：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210529163105.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210529163105.png" style="width:60%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210529163105.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210529163105.png" style="width:60%"></a>
+</p>
 
 <p>选择视图类型为折线统计图，选择数据指标为<code>go_gotoutines</code>:</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210529163114.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210529163114.png" style="width:60%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210529163114.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210529163114.png" style="width:60%"></a>
+</p>
 
 <p>只展示我们的Go样例服务数据，这里采用的是 语法：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210529163122.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210529163122.png" style="width:60%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210529163122.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210529163122.png" style="width:60%"></a>
+</p>
 
 <p>以此类推，我们就创建了一些列监控视图数据，比如goroutine数量、线程数量、heap内存数据、stack内存数据、mcache数据、mspan数据、GC数据等等，如下：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210529163131.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210529163131.png" style="width:60%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210529163131.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210529163131.png" style="width:60%"></a>
+</p>
 
 
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><hr>
@@ -271,7 +338,7 @@
         <section>
             <h2>About</h2>
             <div>
-                新一代轻量级「<a href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
             </div>
         </section>
         <section>
@@ -301,10 +368,10 @@
             <li>&copy; TIGERB.cn All right reserved. 津ICP备17006784号-2</li>
             <li><a href="https://juejin.im/user/5855e82d1b69e6006c9278b4" target="_blank">juejin</a></li>
             <li><a href="https://segmentfault.com/u/tigerb" target="_blank">Segmentfault</a></li>
-            <li><a href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
+            <li><a target="_blank" rel="noopener" href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
             <li><a href="http://tigerb.cn/go/#/patterns/">Go设计模式实战</a></li>
             <li><a href="http://tigerb.cn/go/#/kernal/">Go语言轻松进阶</a></li>
-            <li><a href="https://dayutalk.cn/">大愚Talk</a></li>
+            <li><a target="_blank" rel="noopener" href="https://dayutalk.cn/">大愚Talk</a></li>
         </ul>
     </div>
 </footer>
@@ -313,20 +380,30 @@
     <!-- After footer scripts -->
     
 <!-- jQuery -->
+
 <script src="/js/jquery.min.js"></script>
 
+
 <!-- skel -->
+
 <script src="/js/skel.min.js"></script>
 
+
 <!-- Custom Code -->
+
 <script src="/js/util.js"></script>
 
+
 <!--[if lte IE 8]>
+
 <script src="/js/ie/respond.min.js"></script>
+
 <![endif]-->
 
 <!-- Custom Code -->
+
 <script src="/js/main.js"></script>
+
 
 <!-- Gallery -->
 <script src="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>

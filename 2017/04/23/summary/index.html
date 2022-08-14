@@ -28,7 +28,7 @@
 
     <!--Page Cover-->
     
-        <meta property="og:image" content="undefined"/>
+        <meta property="og:image" content=""/>
     
 
     <!-- Title -->
@@ -36,18 +36,26 @@
     <title>PHPer的月工作总结之构建抽奖工具 - TIGERB</title>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/sass/main.css">
+    
+<link rel="stylesheet" href="/sass/main.css">
+
 
     <!--[if lt IE 8]>
-        <script src="/js/ie/html5shiv.js"></script>
+        
+<script src="/js/ie/html5shiv.js"></script>
+
     <![endif]-->
 
     <!--[if lt IE 8]>
-        <link rel="stylesheet" href="/sass/ie8.css">
+        
+<link rel="stylesheet" href="/sass/ie8.css">
+
     <![endif]-->
 
     <!--[if lt IE 9]>
-        <link rel="stylesheet" href="/sass/ie9.css">
+        
+<link rel="stylesheet" href="/sass/ie9.css">
+
     <![endif]-->
 
     <!-- Gallery -->
@@ -67,6 +75,7 @@
     })();
     </script>
 
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="TIGERB" type="application/atom+xml">
 </head>
 
 <body>
@@ -103,15 +112,15 @@
             </li>
         
             <li>
-                <a href="https://github.com/TIGERB">Github</a>
+                <a target="_blank" rel="noopener" href="https://github.com/TIGERB">Github</a>
             </li>
         
             <li>
-                <a href="https://segmentfault.com/u/tigerb">Segmentfault</a>
+                <a target="_blank" rel="noopener" href="https://segmentfault.com/u/tigerb">Segmentfault</a>
             </li>
         
             <li>
-                <a href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
+                <a target="_blank" rel="noopener" href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
             </li>
         
     </ul>
@@ -137,7 +146,7 @@
 
 
 <!-- Content -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <h2="" id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言<p>目标是每个月写一篇文章，对从事编程开发的基础知识做一个学习总结。这个月的计划本来是对基础的数据结构做一个沉淀，但是，但是，但是……这个月的的状态就是工作工作…既然这样就总结下这个月的工作吧。</p>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>目标是每个月写一篇文章，对从事编程开发的基础知识做一个学习总结。这个月的计划本来是对基础的数据结构做一个沉淀，但是，但是，但是……这个月的的状态就是工作工作…既然这样就总结下这个月的工作吧。</p>
 <h2 id="工作内容"><a href="#工作内容" class="headerlink" title="工作内容"></a>工作内容</h2><p>促销活动的抽奖工具，具备如下功能：</p>
 <ul>
 <li>根据不同的订单金额抽奖，可设置最高订单金额限制</li>
@@ -168,16 +177,19 @@
 <li>不同的逻辑: 不同抽奖实体类具体实现即可</li>
 </ul>
 <p>具体抽象类如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">abstract class LotteryAbstract</span><br><span class="line">&#123;</span><br><span class="line">    abstract protected function check();</span><br><span class="line"></span><br><span class="line">    protected function getRule()</span><br><span class="line">    &#123;</span><br><span class="line">        # code...</span><br><span class="line">    &#125;</span><br><span class="line">    abstract protected function getNodeByRule();</span><br><span class="line">    protected function checkTimes()</span><br><span class="line">    &#123;</span><br><span class="line">        # code...</span><br><span class="line">    &#125;</span><br><span class="line">    abstract protected function checkJoinLimit();</span><br><span class="line">    abstract protected function consumePoints();</span><br><span class="line">    protected function getPrize()</span><br><span class="line">    &#123;</span><br><span class="line">        # code...</span><br><span class="line">    &#125;</span><br><span class="line">    protected function draw()</span><br><span class="line">    &#123;</span><br><span class="line">        # code...</span><br><span class="line">    &#125;</span><br><span class="line">    protected function packagePrizeInfo()</span><br><span class="line">    &#123;</span><br><span class="line">        # code...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">abstract class LotteryAbstract</span><br><span class="line">&#123;</span><br><span class="line">    abstract protected function check();</span><br><span class="line"></span><br><span class="line">    protected function getRule()</span><br><span class="line">    &#123;</span><br><span class="line">        # code...</span><br><span class="line">    &#125;</span><br><span class="line">    abstract protected function getNodeByRule();</span><br><span class="line">    protected function checkTimes()</span><br><span class="line">    &#123;</span><br><span class="line">        # code...</span><br><span class="line">    &#125;</span><br><span class="line">    abstract protected function checkJoinLimit();</span><br><span class="line">    abstract protected function consumePoints();</span><br><span class="line">    protected function getPrize()</span><br><span class="line">    &#123;</span><br><span class="line">        # code...</span><br><span class="line">    &#125;</span><br><span class="line">    protected function draw()</span><br><span class="line">    &#123;</span><br><span class="line">        # code...</span><br><span class="line">    &#125;</span><br><span class="line">    protected function packagePrizeInfo()</span><br><span class="line">    &#123;</span><br><span class="line">        # code...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <p>接着我们发现其实不同的抽奖策略的抽奖流程基本一致，这样我们就联想到了设计模式的“模板模式”，我们对抽象类做些小的调整，我们把抽奖的算法调用流程实现在抽象类中，最后抽象类就构成了一个抽奖类的模板。以后我们增加新的抽象方式，只需要实现抽奖模板的抽象方法即可，变更后的抽象类如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">abstract class LotteryAbstract</span><br><span class="line">&#123;</span><br><span class="line">    /**</span><br><span class="line">     * 抽奖算法</span><br><span class="line">     */</span><br><span class="line">    public function run ()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;check();</span><br><span class="line">        $this-&gt;getRule();</span><br><span class="line">        $this-&gt;getNodeByRule();</span><br><span class="line">        $this-&gt;checkTimes();</span><br><span class="line">        $this-&gt;checkJoinLimit();</span><br><span class="line">        $this-&gt;consumePoints();</span><br><span class="line">        $this-&gt;getPrize();</span><br><span class="line">        $this-&gt;draw();</span><br><span class="line">        $this-&gt;packagePrizeInfo();</span><br><span class="line">    &#125;</span><br><span class="line">    abstract protected function check();</span><br><span class="line">    protected function getRule()</span><br><span class="line">    &#123;</span><br><span class="line">        # code...</span><br><span class="line">    &#125;</span><br><span class="line">    abstract protected function getNodeByRule();</span><br><span class="line">    protected function checkTimes()</span><br><span class="line">    &#123;</span><br><span class="line">        # code...</span><br><span class="line">    &#125;</span><br><span class="line">    abstract protected function checkJoinLimit();</span><br><span class="line">    abstract protected function consumePoints();</span><br><span class="line">    protected function getPrize()</span><br><span class="line">    &#123;</span><br><span class="line">        # code...</span><br><span class="line">    &#125;</span><br><span class="line">    protected function draw()</span><br><span class="line">    &#123;</span><br><span class="line">        # code...</span><br><span class="line">    &#125;</span><br><span class="line">    protected function packagePrizeInfo()</span><br><span class="line">    &#123;</span><br><span class="line">        # code...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">abstract class LotteryAbstract</span><br><span class="line">&#123;</span><br><span class="line">    /**</span><br><span class="line">     * 抽奖算法</span><br><span class="line">     */</span><br><span class="line">    public function run ()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;check();</span><br><span class="line">        $this-&gt;getRule();</span><br><span class="line">        $this-&gt;getNodeByRule();</span><br><span class="line">        $this-&gt;checkTimes();</span><br><span class="line">        $this-&gt;checkJoinLimit();</span><br><span class="line">        $this-&gt;consumePoints();</span><br><span class="line">        $this-&gt;getPrize();</span><br><span class="line">        $this-&gt;draw();</span><br><span class="line">        $this-&gt;packagePrizeInfo();</span><br><span class="line">    &#125;</span><br><span class="line">    abstract protected function check();</span><br><span class="line">    protected function getRule()</span><br><span class="line">    &#123;</span><br><span class="line">        # code...</span><br><span class="line">    &#125;</span><br><span class="line">    abstract protected function getNodeByRule();</span><br><span class="line">    protected function checkTimes()</span><br><span class="line">    &#123;</span><br><span class="line">        # code...</span><br><span class="line">    &#125;</span><br><span class="line">    abstract protected function checkJoinLimit();</span><br><span class="line">    abstract protected function consumePoints();</span><br><span class="line">    protected function getPrize()</span><br><span class="line">    &#123;</span><br><span class="line">        # code...</span><br><span class="line">    &#125;</span><br><span class="line">    protected function draw()</span><br><span class="line">    &#123;</span><br><span class="line">        # code...</span><br><span class="line">    &#125;</span><br><span class="line">    protected function packagePrizeInfo()</span><br><span class="line">    &#123;</span><br><span class="line">        # code...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <h2 id="并发"><a href="#并发" class="headerlink" title="并发"></a>并发</h2><p>建模完成后，还存一个并发的问题：并发下对奖品领取数量的变更问题。当然可能都会想到加锁，让并发的过程变成串行的过程，这样就不会存在问题了。一是使用mysql的悲观锁(for update),但是考虑到这个去抽奖的过程有在类似秒杀的场景中使用，所以我就考虑用redis的悲观锁实现，毕竟内存的io性能比磁盘要高的多，所以开始的方案一如下：</p>
 <ul>
-<li><a href="https://github.com/TIGERB/easy-tips/blob/master/redis/pessmistic-lock.php" target="_blank" rel="noopener">redis悲观锁</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/TIGERB/easy-tips/blob/master/redis/pessmistic-lock.php">redis悲观锁</a></li>
 </ul>
 <p>本地ab -c 100 -n 1000　压测正常。</p>
 <p>然后上线就出问题了，顺时redis大量的操作，远远的超过了以前的峰值。然后方案二出来了，抢不到锁，睡５毫秒，降低抢锁的频率，方案如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">伪代码：</span><br><span class="line"></span><br><span class="line">do &#123;</span><br><span class="line">    抢锁...</span><br><span class="line">    if (! 失败) &#123;</span><br><span class="line">        usleep(5000);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; while (! 失败);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">伪代码：</span><br><span class="line"></span><br><span class="line">do &#123;</span><br><span class="line">    抢锁...</span><br><span class="line">    if (! 失败) &#123;</span><br><span class="line">        usleep(5000);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; while (! 失败);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <p>上面的方案有效的降低了峰值，但是又造成了499的请求，接着方案三出来了，具体方案如下：</p>
 <ul>
 <li>由于redis是单线程的利用redis的decr自减，保证奖品库存的准确性</li>
@@ -236,7 +248,7 @@
 <li>项目完成后的总结和沉淀</li>
 </ul>
 <blockquote>
-<p><a href="http://easy-php.tigerb.cn" target="_blank" rel="noopener">Easy PHP：一个极速轻量级的PHP全栈框架</a></p>
+<p><a target="_blank" rel="noopener" href="http://easy-php.tigerb.cn/">Easy PHP：一个极速轻量级的PHP全栈框架</a></p>
 </blockquote>
 </div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
         var options = {
@@ -278,7 +290,7 @@
         <section>
             <h2>About</h2>
             <div>
-                新一代轻量级「<a href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
             </div>
         </section>
         <section>
@@ -308,10 +320,10 @@
             <li>&copy; TIGERB.cn All right reserved. 津ICP备17006784号-2</li>
             <li><a href="https://juejin.im/user/5855e82d1b69e6006c9278b4" target="_blank">juejin</a></li>
             <li><a href="https://segmentfault.com/u/tigerb" target="_blank">Segmentfault</a></li>
-            <li><a href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
+            <li><a target="_blank" rel="noopener" href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
             <li><a href="http://tigerb.cn/go/#/patterns/">Go设计模式实战</a></li>
             <li><a href="http://tigerb.cn/go/#/kernal/">Go语言轻松进阶</a></li>
-            <li><a href="https://dayutalk.cn/">大愚Talk</a></li>
+            <li><a target="_blank" rel="noopener" href="https://dayutalk.cn/">大愚Talk</a></li>
         </ul>
     </div>
 </footer>
@@ -320,20 +332,30 @@
     <!-- After footer scripts -->
     
 <!-- jQuery -->
+
 <script src="/js/jquery.min.js"></script>
 
+
 <!-- skel -->
+
 <script src="/js/skel.min.js"></script>
 
+
 <!-- Custom Code -->
+
 <script src="/js/util.js"></script>
 
+
 <!--[if lte IE 8]>
+
 <script src="/js/ie/respond.min.js"></script>
+
 <![endif]-->
 
 <!-- Custom Code -->
+
 <script src="/js/main.js"></script>
+
 
 <!-- Gallery -->
 <script src="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>

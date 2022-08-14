@@ -28,7 +28,7 @@
 
     <!--Page Cover-->
     
-        <meta property="og:image" content="undefined"/>
+        <meta property="og:image" content=""/>
     
 
     <!-- Title -->
@@ -36,18 +36,26 @@
     <title>线上服务负载异常排查 - TIGERB</title>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/sass/main.css">
+    
+<link rel="stylesheet" href="/sass/main.css">
+
 
     <!--[if lt IE 8]>
-        <script src="/js/ie/html5shiv.js"></script>
+        
+<script src="/js/ie/html5shiv.js"></script>
+
     <![endif]-->
 
     <!--[if lt IE 8]>
-        <link rel="stylesheet" href="/sass/ie8.css">
+        
+<link rel="stylesheet" href="/sass/ie8.css">
+
     <![endif]-->
 
     <!--[if lt IE 9]>
-        <link rel="stylesheet" href="/sass/ie9.css">
+        
+<link rel="stylesheet" href="/sass/ie9.css">
+
     <![endif]-->
 
     <!-- Gallery -->
@@ -67,6 +75,7 @@
     })();
     </script>
 
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="TIGERB" type="application/atom+xml">
 </head>
 
 <body>
@@ -103,15 +112,15 @@
             </li>
         
             <li>
-                <a href="https://github.com/TIGERB">Github</a>
+                <a target="_blank" rel="noopener" href="https://github.com/TIGERB">Github</a>
             </li>
         
             <li>
-                <a href="https://segmentfault.com/u/tigerb">Segmentfault</a>
+                <a target="_blank" rel="noopener" href="https://segmentfault.com/u/tigerb">Segmentfault</a>
             </li>
         
             <li>
-                <a href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
+                <a target="_blank" rel="noopener" href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
             </li>
         
     </ul>
@@ -137,7 +146,7 @@
 
 
 <!-- Content -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <h1="" id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言<p>除了解决业务Bug之外，工作中通常我们还会面临两类问题：</p>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>除了解决业务Bug之外，工作中通常我们还会面临两类问题：</p>
 <ul>
 <li>线上服务负载异常，比如CPU负载异常飙高</li>
 <li>线上服务内存持续增长，存在泄漏</li>
@@ -147,43 +156,60 @@
 <blockquote>
 <p>如何定位到是哪个具体的函数导致的服务负载异常呢？</p>
 </blockquote>
-<h1 id="介绍一个利器perf"><a href="#介绍一个利器perf" class="headerlink" title="介绍一个利器perf"></a>介绍一个利器<code>perf</code></h1><p>本文使用docker来演示<code>perf</code>的用法，可以直接使用我编排好的docker compose工程(一个模拟http服务调用grpc服务的演示项目)<a href="https://github.com/TIGERB/easy-tips/blob/master/docker/go/docker-compose.yaml" target="_blank" rel="noopener">https://github.com/TIGERB/easy-tips/blob/master/docker/go/docker-compose.yaml</a></p>
+<h1 id="介绍一个利器perf"><a href="#介绍一个利器perf" class="headerlink" title="介绍一个利器perf"></a>介绍一个利器<code>perf</code></h1><p>本文使用docker来演示<code>perf</code>的用法，可以直接使用我编排好的docker compose工程(一个模拟http服务调用grpc服务的演示项目)<a target="_blank" rel="noopener" href="https://github.com/TIGERB/easy-tips/blob/master/docker/go/docker-compose.yaml">https://github.com/TIGERB/easy-tips/blob/master/docker/go/docker-compose.yaml</a></p>
 <p>启动服务</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// -d daemon守护模式</span><br><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// -d daemon守护模式</span><br><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+
 <p>进入容器</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker exec -it http-demo sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker exec -it http-demo sh</span><br></pre></td></tr></table></figure>
+
 <p>安装<code>perf</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 因为我这里使用的alpine，所以用apk安装，centos安装方式 yum install perf</span><br><span class="line">apk add --update perf</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 因为我这里使用的alpine，所以用apk安装，centos安装方式 yum install perf</span><br><span class="line">apk add --update perf</span><br></pre></td></tr></table></figure>
+
 <p>模拟请求</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">siege -c 3 -t 30S &quot;http://localhost:6060/v1/demo&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">siege -c 3 -t 30S &quot;http://localhost:6060/v1/demo&quot;</span><br></pre></td></tr></table></figure>
+
 <p>采样进程(当前目录会生成一个perf.data文件)</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">perf record -F 99 -p 6 -g sleep 10</span><br><span class="line">释义：</span><br><span class="line">-F 频率 每秒采样多少次</span><br><span class="line">-p 进程 进程id</span><br><span class="line">-g 记录调用栈</span><br><span class="line">sleep 采样多少秒</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">perf record -F 99 -p 6 -g sleep 10</span><br><span class="line">释义：</span><br><span class="line">-F 频率 每秒采样多少次</span><br><span class="line">-p 进程 进程id</span><br><span class="line">-g 记录调用栈</span><br><span class="line">sleep 采样多少秒</span><br></pre></td></tr></table></figure>
+
 <p>分析CPU采样结果</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">perf report -n --stdio</span><br></pre></td></tr></table></figure>
-<p><br>    <a href="http://cdn.tigerb.cn/20220121152729.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20220121152729.png" width="100%"></a><br></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">perf report -n --stdio</span><br></pre></td></tr></table></figure>
+
+<p>
+    <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220121152729.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220121152729.png" width="100%"></a>
+</p>
 
 <p>除此之外，查看实时top函数</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">perf top -p 6</span><br></pre></td></tr></table></figure>
-<p><br>    <a href="http://cdn.tigerb.cn/20220121152934.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20220121152934.png" width="100%"></a><br></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">perf top -p 6</span><br></pre></td></tr></table></figure>
+
+<p>
+    <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220121152934.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220121152934.png" width="100%"></a>
+</p>
 
 <h2 id="生成火焰图"><a href="#生成火焰图" class="headerlink" title="生成火焰图"></a>生成火焰图</h2><p>如果上述的堆栈信息等还满足不了你，我们还可以基于采样过程生成的<code>perf.data</code>文件生成<strong>火焰图</strong>:</p>
 <ol>
 <li>使用<code>perf script</code>命令转换上一步得到的<code>perf.data</code>文件，为下面使用火焰图工具生成火焰图做准备：</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">perf script -i yourpath/perf.data &amp;&gt; yourpath/perf.script</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">perf script -i yourpath/perf.data &amp;&gt; yourpath/perf.script</span><br></pre></td></tr></table></figure>
+
 <ol start="2">
 <li>获取火焰图工具：</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone git@github.com:brendangregg/FlameGraph.git &amp;&amp; cd ./FlameGraph</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com:brendangregg/FlameGraph.git &amp;&amp; cd ./FlameGraph</span><br></pre></td></tr></table></figure>
+
 <ol start="3">
 <li>使用火焰图工具FlameGraph下的工具<code>stackcollapse-perf.pl</code>进一步处理<code>perf.script</code>文件：</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">./stackcollapse-perf.pl yourpath/perf.script &amp;&gt; yourpath/perf.stackcollapse</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./stackcollapse-perf.pl yourpath/perf.script &amp;&gt; yourpath/perf.stackcollapse</span><br></pre></td></tr></table></figure>
+
 <ol start="4">
 <li>生成最终的火焰图：</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">./flamegraph.pl yourpath/perf.stackcollapse &gt; yourpath/perf.svg</span><br></pre></td></tr></table></figure>
-<p><br>    <a href="http://cdn.tigerb.cn/20220122220117.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20220122220117.png" width="100%"></a><br></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./flamegraph.pl yourpath/perf.stackcollapse &gt; yourpath/perf.svg</span><br></pre></td></tr></table></figure>
+
+<p>
+    <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220122220117.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220122220117.png" width="100%"></a>
+</p>
 </div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
         var options = {
             selector: '.gallery-item'
@@ -224,7 +250,7 @@
         <section>
             <h2>About</h2>
             <div>
-                新一代轻量级「<a href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
             </div>
         </section>
         <section>
@@ -254,10 +280,10 @@
             <li>&copy; TIGERB.cn All right reserved. 津ICP备17006784号-2</li>
             <li><a href="https://juejin.im/user/5855e82d1b69e6006c9278b4" target="_blank">juejin</a></li>
             <li><a href="https://segmentfault.com/u/tigerb" target="_blank">Segmentfault</a></li>
-            <li><a href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
+            <li><a target="_blank" rel="noopener" href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
             <li><a href="http://tigerb.cn/go/#/patterns/">Go设计模式实战</a></li>
             <li><a href="http://tigerb.cn/go/#/kernal/">Go语言轻松进阶</a></li>
-            <li><a href="https://dayutalk.cn/">大愚Talk</a></li>
+            <li><a target="_blank" rel="noopener" href="https://dayutalk.cn/">大愚Talk</a></li>
         </ul>
     </div>
 </footer>
@@ -266,20 +292,30 @@
     <!-- After footer scripts -->
     
 <!-- jQuery -->
+
 <script src="/js/jquery.min.js"></script>
 
+
 <!-- skel -->
+
 <script src="/js/skel.min.js"></script>
 
+
 <!-- Custom Code -->
+
 <script src="/js/util.js"></script>
 
+
 <!--[if lte IE 8]>
+
 <script src="/js/ie/respond.min.js"></script>
+
 <![endif]-->
 
 <!-- Custom Code -->
+
 <script src="/js/main.js"></script>
+
 
 <!-- Gallery -->
 <script src="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>

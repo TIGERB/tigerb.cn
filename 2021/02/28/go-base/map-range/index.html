@@ -28,7 +28,7 @@
 
     <!--Page Cover-->
     
-        <meta property="og:image" content="undefined"/>
+        <meta property="og:image" content=""/>
     
 
     <!-- Title -->
@@ -36,18 +36,26 @@
     <title>为什么说Go的Map是无序的？ - TIGERB</title>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/sass/main.css">
+    
+<link rel="stylesheet" href="/sass/main.css">
+
 
     <!--[if lt IE 8]>
-        <script src="/js/ie/html5shiv.js"></script>
+        
+<script src="/js/ie/html5shiv.js"></script>
+
     <![endif]-->
 
     <!--[if lt IE 8]>
-        <link rel="stylesheet" href="/sass/ie8.css">
+        
+<link rel="stylesheet" href="/sass/ie8.css">
+
     <![endif]-->
 
     <!--[if lt IE 9]>
-        <link rel="stylesheet" href="/sass/ie9.css">
+        
+<link rel="stylesheet" href="/sass/ie9.css">
+
     <![endif]-->
 
     <!-- Gallery -->
@@ -67,6 +75,7 @@
     })();
     </script>
 
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="TIGERB" type="application/atom+xml">
 </head>
 
 <body>
@@ -103,15 +112,15 @@
             </li>
         
             <li>
-                <a href="https://github.com/TIGERB">Github</a>
+                <a target="_blank" rel="noopener" href="https://github.com/TIGERB">Github</a>
             </li>
         
             <li>
-                <a href="https://segmentfault.com/u/tigerb">Segmentfault</a>
+                <a target="_blank" rel="noopener" href="https://segmentfault.com/u/tigerb">Segmentfault</a>
             </li>
         
             <li>
-                <a href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
+                <a target="_blank" rel="noopener" href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
             </li>
         
     </ul>
@@ -137,7 +146,8 @@
 
 
 <!-- Content -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <p=""><span><p></p>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"><span>
+
 <blockquote>
 <p>Go源码版本1.13.8</p>
 </blockquote>
@@ -167,26 +177,37 @@
 <p>现象：Go语言里每次遍历Map输出元素的顺序并不一致，但是在PHP里却是稳定的。</p>
 </blockquote>
 <p>关于这个现象我就不过多赘述了，同时我相信大家应该都网上搜过相关的文章，这些文章大多都说明了原因：<strong>For … Range … 遍历Map的索引的起点是随机的</strong>，没错，就是下面这段代码。</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// versions/1.13.8/src/cmd/compile/internal/gc/range.go</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">walkrange</span><span class="params">(n *Node)</span> *<span class="title">Node</span></span> &#123;</span><br><span class="line">	</span><br><span class="line">    <span class="comment">// 略...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 遍历Map时</span></span><br><span class="line">	<span class="keyword">case</span> TMAP:</span><br><span class="line">		</span><br><span class="line">        <span class="comment">// 略...</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 调用mapiterinit mapiterinit函数见下方</span></span><br><span class="line">		fn := syslook(<span class="string">"mapiterinit"</span>)</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 略...</span></span><br><span class="line"></span><br><span class="line">		fn = syslook(<span class="string">"mapiternext"</span>)</span><br><span class="line">		</span><br><span class="line">        <span class="comment">// 略...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// versions/1.13.8/src/runtime/map.go</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">mapiterinit</span><span class="params">(t *maptype, h *hmap, it *hiter)</span></span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 略...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 对，就是这行代码</span></span><br><span class="line">    <span class="comment">// 随机一个索引值，作为遍历开始的地方</span></span><br><span class="line">	<span class="comment">// decide where to start</span></span><br><span class="line">	r := <span class="keyword">uintptr</span>(fastrand())</span><br><span class="line">	<span class="keyword">if</span> h.B &gt; <span class="number">31</span>-bucketCntBits &#123;</span><br><span class="line">		r += <span class="keyword">uintptr</span>(fastrand()) &lt;&lt; <span class="number">31</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">    <span class="comment">// 略...</span></span><br><span class="line"></span><br><span class="line">	mapiternext(it)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// versions/1.13.8/src/cmd/compile/internal/gc/range.go</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">walkrange</span><span class="params">(n *Node)</span></span> *Node &#123;</span><br><span class="line">	</span><br><span class="line">    <span class="comment">// 略...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 遍历Map时</span></span><br><span class="line">	<span class="keyword">case</span> TMAP:</span><br><span class="line">		</span><br><span class="line">        <span class="comment">// 略...</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 调用mapiterinit mapiterinit函数见下方</span></span><br><span class="line">		fn := syslook(<span class="string">&quot;mapiterinit&quot;</span>)</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 略...</span></span><br><span class="line"></span><br><span class="line">		fn = syslook(<span class="string">&quot;mapiternext&quot;</span>)</span><br><span class="line">		</span><br><span class="line">        <span class="comment">// 略...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// versions/1.13.8/src/runtime/map.go</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">mapiterinit</span><span class="params">(t *maptype, h *hmap, it *hiter)</span></span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 略...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 对，就是这行代码</span></span><br><span class="line">    <span class="comment">// 随机一个索引值，作为遍历开始的地方</span></span><br><span class="line">	<span class="comment">// decide where to start</span></span><br><span class="line">	r := <span class="type">uintptr</span>(fastrand())</span><br><span class="line">	<span class="keyword">if</span> h.B &gt; <span class="number">31</span>-bucketCntBits &#123;</span><br><span class="line">		r += <span class="type">uintptr</span>(fastrand()) &lt;&lt; <span class="number">31</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">    <span class="comment">// 略...</span></span><br><span class="line"></span><br><span class="line">	mapiternext(it)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>但是呢，有没有再推测过Go的作者们这么做背后的真正原因是什么？个人觉着因为：</p>
 <h1 id="Go的Map本质上是“无序的”"><a href="#Go的Map本质上是“无序的”" class="headerlink" title="Go的Map本质上是“无序的”"></a>Go的Map本质上是“无序的”</h1><hr>
 <blockquote>
 <p>Go的Map本质上是“无序的”，为什么这么说？</p>
 </blockquote>
 <h2 id="“无序”写入"><a href="#“无序”写入" class="headerlink" title="“无序”写入"></a>“无序”写入</h2><h3 id="1-正常写入-非哈希冲突写入-：是hash到某一个bucket上，而不是按buckets顺序写入。"><a href="#1-正常写入-非哈希冲突写入-：是hash到某一个bucket上，而不是按buckets顺序写入。" class="headerlink" title="1. 正常写入(非哈希冲突写入)：是hash到某一个bucket上，而不是按buckets顺序写入。"></a>1. 正常写入(非哈希冲突写入)：是hash到某一个bucket上，而不是按buckets顺序写入。</h3><p>虽然buckets是一块连续的内存，但是新写入的键值可能写到这个bucket：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210220201909.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210220201909.png" style="width:55%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210220201909.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210220201909.png" style="width:55%"></a>
+</p>
 
 <p>也可能写到这个bucket：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210220201917.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210220201917.png" style="width:55%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210220201917.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210220201917.png" style="width:55%"></a>
+</p>
 
 <h3 id="2-哈希冲突写入：如果存在hash冲突，会写到同一个bucket上。"><a href="#2-哈希冲突写入：如果存在hash冲突，会写到同一个bucket上。" class="headerlink" title="2. 哈希冲突写入：如果存在hash冲突，会写到同一个bucket上。"></a>2. 哈希冲突写入：如果存在hash冲突，会写到同一个bucket上。</h3><p>可能写到这个位置：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210221180849.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210221180849.png" style="width:50%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210221180849.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210221180849.png" style="width:50%"></a>
+</p>
 
 <p>极限情况，也可能写到这个位置：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210221181012.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210221181012.png" style="width:50%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210221181012.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210221181012.png" style="width:50%"></a>
+</p>
 
 <p>更有可能写到溢出桶去：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210220203705.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210220203705.png" style="width:36%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210220203705.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210220203705.png" style="width:36%"></a>
+</p>
 
 <p>所以，写数据时，<strong>并没有单独维护键值对的顺序</strong>。而PHP(version 5)语言通过一个全局链表维护了Map里元素的顺序。</p>
 <h2 id="扩容"><a href="#扩容" class="headerlink" title="扩容"></a>扩容</h2><p>Go的Map的扩容有两种：</p>
@@ -200,21 +221,26 @@
 <li>且该<code>map</code>当前有2个<code>bucket</code>(也就是2个<code>bmap结构</code>)</li>
 <li>键hash的过程这里简单用取模(便于理解)</li>
 </ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 以此map为例</span></span><br><span class="line"><span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">int</span>&#123;</span><br><span class="line">    <span class="number">1</span>:  <span class="number">1</span>,</span><br><span class="line">    <span class="number">2</span>:  <span class="number">2</span>,</span><br><span class="line">    <span class="number">3</span>:  <span class="number">3</span>,</span><br><span class="line">    <span class="number">4</span>:  <span class="number">4</span>,</span><br><span class="line">    <span class="number">5</span>:  <span class="number">5</span>,</span><br><span class="line">    <span class="number">6</span>:  <span class="number">6</span>,</span><br><span class="line">    <span class="number">7</span>:  <span class="number">7</span>,</span><br><span class="line">    <span class="number">8</span>:  <span class="number">8</span>,</span><br><span class="line">    <span class="number">9</span>:  <span class="number">9</span>,</span><br><span class="line">    <span class="number">10</span>: <span class="number">10</span>,</span><br><span class="line">    <span class="number">11</span>: <span class="number">11</span>,</span><br><span class="line">    <span class="number">12</span>: <span class="number">12</span>,</span><br><span class="line">    <span class="number">13</span>: <span class="number">13</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 以此map为例</span></span><br><span class="line"><span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>&#123;</span><br><span class="line">    <span class="number">1</span>:  <span class="number">1</span>,</span><br><span class="line">    <span class="number">2</span>:  <span class="number">2</span>,</span><br><span class="line">    <span class="number">3</span>:  <span class="number">3</span>,</span><br><span class="line">    <span class="number">4</span>:  <span class="number">4</span>,</span><br><span class="line">    <span class="number">5</span>:  <span class="number">5</span>,</span><br><span class="line">    <span class="number">6</span>:  <span class="number">6</span>,</span><br><span class="line">    <span class="number">7</span>:  <span class="number">7</span>,</span><br><span class="line">    <span class="number">8</span>:  <span class="number">8</span>,</span><br><span class="line">    <span class="number">9</span>:  <span class="number">9</span>,</span><br><span class="line">    <span class="number">10</span>: <span class="number">10</span>,</span><br><span class="line">    <span class="number">11</span>: <span class="number">11</span>,</span><br><span class="line">    <span class="number">12</span>: <span class="number">12</span>,</span><br><span class="line">    <span class="number">13</span>: <span class="number">13</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>同时根据如上的假设，我们得到此map对应的结构图示如下：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210223162655.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210223162655.png" style="width:70%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210223162655.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210223162655.png" style="width:70%"></a>
+</p>
 
 <blockquote>
 <p>什么时候触发<strong>成倍</strong>扩容？</p>
 </blockquote>
 <ul>
 <li>map写操作时</li>
-<li>(元素数量/bucket数量) &gt; 6.5时</li>
+<li>(元素数量&#x2F;bucket数量) &gt; 6.5时</li>
 </ul>
 <p>通过下面的代码分析可知：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// versions/1.13.8/src/runtime/map.go</span></span><br><span class="line"><span class="comment">// map写操作</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">mapassign</span><span class="params">(t *maptype, h *hmap, key unsafe.Pointer)</span> <span class="title">unsafe</span>.<span class="title">Pointer</span></span> &#123;</span><br><span class="line">	</span><br><span class="line">    <span class="comment">// 略...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 是否触发扩容校验</span></span><br><span class="line">	<span class="keyword">if</span> !h.growing() &amp;&amp; (overLoadFactor(h.count+<span class="number">1</span>, h.B) || tooManyOverflowBuckets(h.noverflow, h.B)) &#123;</span><br><span class="line">        <span class="comment">// 扩容</span></span><br><span class="line">		hashGrow(t, h)</span><br><span class="line">		<span class="keyword">goto</span> again</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 略...</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 触发扩容的装载因子临界值 = loadFactorNum/loadFactDen = 13/2 = 6.5</span></span><br><span class="line">loadFactorNum = <span class="number">13</span></span><br><span class="line">loadFactorDen = <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 超过装载因子校验</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">overLoadFactor</span><span class="params">(count <span class="keyword">int</span>, B <span class="keyword">uint8</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    <span class="comment">// 装换公式 uintptr(count) &gt; loadFactorNum*(bucketShift(B)/loadFactorDen)</span></span><br><span class="line">    <span class="comment">// 得到 uintptr(count)/bucketShift(B) &gt; loadFactorNum/loadFactorDen</span></span><br><span class="line">    <span class="comment">// 又有 loadFactorNum/loadFactDen = 13/2 = 6.5</span></span><br><span class="line">    <span class="comment">// 可得 uintptr(count)/bucketShift(B) &gt; 6.5 时触发成倍扩容</span></span><br><span class="line">	<span class="keyword">return</span> count &gt; bucketCnt &amp;&amp; <span class="keyword">uintptr</span>(count) &gt; loadFactorNum*(bucketShift(B)/loadFactorDen)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// versions/1.13.8/src/runtime/map.go</span></span><br><span class="line"><span class="comment">// map写操作</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">mapassign</span><span class="params">(t *maptype, h *hmap, key unsafe.Pointer)</span></span> unsafe.Pointer &#123;</span><br><span class="line">	</span><br><span class="line">    <span class="comment">// 略...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 是否触发扩容校验</span></span><br><span class="line">	<span class="keyword">if</span> !h.growing() &amp;&amp; (overLoadFactor(h.count+<span class="number">1</span>, h.B) || tooManyOverflowBuckets(h.noverflow, h.B)) &#123;</span><br><span class="line">        <span class="comment">// 扩容</span></span><br><span class="line">		hashGrow(t, h)</span><br><span class="line">		<span class="keyword">goto</span> again</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 略...</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 触发扩容的装载因子临界值 = loadFactorNum/loadFactDen = 13/2 = 6.5</span></span><br><span class="line">loadFactorNum = <span class="number">13</span></span><br><span class="line">loadFactorDen = <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 超过装载因子校验</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">overLoadFactor</span><span class="params">(count <span class="type">int</span>, B <span class="type">uint8</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">    <span class="comment">// 装换公式 uintptr(count) &gt; loadFactorNum*(bucketShift(B)/loadFactorDen)</span></span><br><span class="line">    <span class="comment">// 得到 uintptr(count)/bucketShift(B) &gt; loadFactorNum/loadFactorDen</span></span><br><span class="line">    <span class="comment">// 又有 loadFactorNum/loadFactDen = 13/2 = 6.5</span></span><br><span class="line">    <span class="comment">// 可得 uintptr(count)/bucketShift(B) &gt; 6.5 时触发成倍扩容</span></span><br><span class="line">	<span class="keyword">return</span> count &gt; bucketCnt &amp;&amp; <span class="type">uintptr</span>(count) &gt; loadFactorNum*(bucketShift(B)/loadFactorDen)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>上述Map，当写入键值<code>14:14</code>时，我们分析是否会触发成倍扩容：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">可知当前元素数量count：13</span><br><span class="line">bucket(正常桶bmap)的数量bucketShift(B)：2</span><br><span class="line"></span><br><span class="line">(13+1)/2 = 7 &gt; 6.5 </span><br><span class="line"></span><br><span class="line">所以，会触发成倍扩容。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">可知当前元素数量count：13</span><br><span class="line">bucket(正常桶bmap)的数量bucketShift(B)：2</span><br><span class="line"></span><br><span class="line">(13+1)/2 = 7 &gt; 6.5 </span><br><span class="line"></span><br><span class="line">所以，会触发成倍扩容。</span><br></pre></td></tr></table></figure>
+
 <p>成倍扩容的过程如下：</p>
 <ul>
 <li>原<code>buckets</code>被指向<code>oldbuckets</code></li>
@@ -224,21 +250,27 @@
 <li>原<code>bucket</code>(<code>bmap</code>)被分流到两个新的<code>bucket</code>(<code>bmap</code>)中</li>
 </ul>
 <p>过程如下图所示(标红部分为本次扩容的bucket)：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210223173949.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210223173949.png" style="width:70%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210223173949.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210223173949.png" style="width:70%"></a>
+</p>
 
 <p>之后随着键值<code>15:15</code>被写入，完成扩容过程，扩容后的图示如下：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210223162925.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210223162925.png" style="width:70%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210223162925.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210223162925.png" style="width:70%"></a>
+</p>
 
 <p>同时，通过上面的分析我们可以得到：<strong>成倍扩容迫使元素顺序变化</strong>。</p>
 <h3 id="2-等量扩容"><a href="#2-等量扩容" class="headerlink" title="2. 等量扩容"></a>2. 等量扩容</h3><blockquote>
 <p>什么时候触发<strong>等量</strong>扩容？</p>
 </blockquote>
 <p>答案见下面的代码：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 等量扩容判断</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">tooManyOverflowBuckets</span><span class="params">(noverflow <span class="keyword">uint16</span>, B <span class="keyword">uint8</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">	<span class="comment">// 复习下B的含义：count(buckets) = 2^B</span></span><br><span class="line">	<span class="keyword">if</span> B &gt; <span class="number">15</span> &#123;</span><br><span class="line">		B = <span class="number">15</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">    <span class="comment">// 溢出桶的数量大于等于 2*B时 触发等量扩容</span></span><br><span class="line">	<span class="keyword">return</span> noverflow &gt;= <span class="keyword">uint16</span>(<span class="number">1</span>)&lt;&lt;(B&amp;<span class="number">15</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 等量扩容判断</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">tooManyOverflowBuckets</span><span class="params">(noverflow <span class="type">uint16</span>, B <span class="type">uint8</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">	<span class="comment">// 复习下B的含义：count(buckets) = 2^B</span></span><br><span class="line">	<span class="keyword">if</span> B &gt; <span class="number">15</span> &#123;</span><br><span class="line">		B = <span class="number">15</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">    <span class="comment">// 溢出桶的数量大于等于 2*B时 触发等量扩容</span></span><br><span class="line">	<span class="keyword">return</span> noverflow &gt;= <span class="type">uint16</span>(<span class="number">1</span>)&lt;&lt;(B&amp;<span class="number">15</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>等量扩容的目的？</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">答：整理溢出桶，回收冗余的溢出桶。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">答：整理溢出桶，回收冗余的溢出桶。</span><br></pre></td></tr></table></figure>
+
 <p>同样，为了简化理解我们对「等量扩容」的理解，我们假设如下条件：</p>
 <ul>
 <li>有如下<code>map</code></li>
@@ -248,9 +280,12 @@
 <li>以索引为0的<code>bucket</code>(也就是<code>buckets</code>的第1个<code>bmap</code>)里的键值为例</li>
 <li>假设第一个<code>bmap</code>已经被写满(hash冲突所致)，且与之关联的溢出桶里的<code>bmap</code>也被写满，且与此溢出桶里的<code>bmap</code>关联的另一个溢出桶里的<code>bmap</code>写入了一个键值</li>
 </ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 以此map为例</span></span><br><span class="line"><span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">int</span>&#123;</span><br><span class="line">    <span class="number">1</span>:  <span class="number">1</span>,</span><br><span class="line">    <span class="number">2</span>:  <span class="number">2</span>,</span><br><span class="line">    <span class="number">3</span>:  <span class="number">3</span>,</span><br><span class="line">    <span class="number">4</span>:  <span class="number">4</span>,</span><br><span class="line">    <span class="number">5</span>:  <span class="number">5</span>,</span><br><span class="line">    <span class="number">6</span>:  <span class="number">6</span>,</span><br><span class="line">    <span class="comment">// ...略 连续值</span></span><br><span class="line">    <span class="number">34</span>: <span class="number">34</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 以此map为例</span></span><br><span class="line"><span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>&#123;</span><br><span class="line">    <span class="number">1</span>:  <span class="number">1</span>,</span><br><span class="line">    <span class="number">2</span>:  <span class="number">2</span>,</span><br><span class="line">    <span class="number">3</span>:  <span class="number">3</span>,</span><br><span class="line">    <span class="number">4</span>:  <span class="number">4</span>,</span><br><span class="line">    <span class="number">5</span>:  <span class="number">5</span>,</span><br><span class="line">    <span class="number">6</span>:  <span class="number">6</span>,</span><br><span class="line">    <span class="comment">// ...略 连续值</span></span><br><span class="line">    <span class="number">34</span>: <span class="number">34</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>同时根据如上的假设，我们得到此map对应的结构图示如下：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210223190741.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210223190741.png" style="width:70%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210223190741.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210223190741.png" style="width:70%"></a>
+</p>
 
 <p>为了说明「等量扩容」的作用，我们继续假设：</p>
 <ul>
@@ -259,14 +294,19 @@
 <li>删掉键值<code>30:30</code></li>
 </ul>
 <p>此时，得到此map对应的结构图示如下：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210223191015.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210223191015.png" style="width:70%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210223191015.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210223191015.png" style="width:70%"></a>
+</p>
 
 <blockquote>
 <p>基于上面的假设，我们写入键值<code>36:36</code>时是否会触发「等量扩容」？</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">答：</span><br><span class="line">条件1. 否会触发「等量扩容」的公式：noverflow &gt;= uint16(1)&lt;&lt;(B&amp;15)</span><br><span class="line">条件2. 上文我们已经假设：忽略索引为1的的`bucket`(也就是`buckets`的第2个`bmap`)，仅以索引为0的`bucket`(也就是`buckets`的第1个`bmap`)里的键值为例</span><br><span class="line"></span><br><span class="line">可得：</span><br><span class="line">noverflow = 2</span><br><span class="line">B = 1</span><br><span class="line"></span><br><span class="line">我们套入这个公式：</span><br><span class="line"></span><br><span class="line">2 &gt;= 1 &lt;&lt; (0001 &amp; 1111)</span><br><span class="line">2 &gt;= 1 &lt;&lt; 0001</span><br><span class="line">2 &gt;= 0010</span><br><span class="line">2 &gt;= 2</span><br><span class="line"></span><br><span class="line">得到结果：true</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">答：</span><br><span class="line">条件1. 否会触发「等量扩容」的公式：noverflow &gt;= uint16(1)&lt;&lt;(B&amp;15)</span><br><span class="line">条件2. 上文我们已经假设：忽略索引为1的的`bucket`(也就是`buckets`的第2个`bmap`)，仅以索引为0的`bucket`(也就是`buckets`的第1个`bmap`)里的键值为例</span><br><span class="line"></span><br><span class="line">可得：</span><br><span class="line">noverflow = 2</span><br><span class="line">B = 1</span><br><span class="line"></span><br><span class="line">我们套入这个公式：</span><br><span class="line"></span><br><span class="line">2 &gt;= 1 &lt;&lt; (0001 &amp; 1111)</span><br><span class="line">2 &gt;= 1 &lt;&lt; 0001</span><br><span class="line">2 &gt;= 0010</span><br><span class="line">2 &gt;= 2</span><br><span class="line"></span><br><span class="line">得到结果：true</span><br></pre></td></tr></table></figure>
+
 <p>结论：写入键值<code>36:36</code>时会触发「等量扩容」，等量扩容扩容后的结果如下图所示：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20210223191105.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20210223191105.png" style="width:70%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210223191105.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210223191105.png" style="width:70%"></a>
+</p>
 
 <p>从上图可以看出：</p>
 <ul>
@@ -288,7 +328,7 @@
 <li>了解了Map的写入过程</li>
 <li>了解了Map的「成倍扩容」和「等量扩容」的设计与目的</li>
 </ul>
-</span></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
         var options = {
             selector: '.gallery-item'
         };
@@ -328,7 +368,7 @@
         <section>
             <h2>About</h2>
             <div>
-                新一代轻量级「<a href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
             </div>
         </section>
         <section>
@@ -358,10 +398,10 @@
             <li>&copy; TIGERB.cn All right reserved. 津ICP备17006784号-2</li>
             <li><a href="https://juejin.im/user/5855e82d1b69e6006c9278b4" target="_blank">juejin</a></li>
             <li><a href="https://segmentfault.com/u/tigerb" target="_blank">Segmentfault</a></li>
-            <li><a href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
+            <li><a target="_blank" rel="noopener" href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
             <li><a href="http://tigerb.cn/go/#/patterns/">Go设计模式实战</a></li>
             <li><a href="http://tigerb.cn/go/#/kernal/">Go语言轻松进阶</a></li>
-            <li><a href="https://dayutalk.cn/">大愚Talk</a></li>
+            <li><a target="_blank" rel="noopener" href="https://dayutalk.cn/">大愚Talk</a></li>
         </ul>
     </div>
 </footer>
@@ -370,20 +410,30 @@
     <!-- After footer scripts -->
     
 <!-- jQuery -->
+
 <script src="/js/jquery.min.js"></script>
 
+
 <!-- skel -->
+
 <script src="/js/skel.min.js"></script>
 
+
 <!-- Custom Code -->
+
 <script src="/js/util.js"></script>
 
+
 <!--[if lte IE 8]>
+
 <script src="/js/ie/respond.min.js"></script>
+
 <![endif]-->
 
 <!-- Custom Code -->
+
 <script src="/js/main.js"></script>
+
 
 <!-- Gallery -->
 <script src="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>

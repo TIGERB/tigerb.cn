@@ -26,7 +26,7 @@
 
     <!--Page Cover-->
     
-        <meta property="og:image" content="undefined"/>
+        <meta property="og:image" content=""/>
     
 
     <!-- Title -->
@@ -34,18 +34,26 @@
     <title>TIGERB</title>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/sass/main.css">
+    
+<link rel="stylesheet" href="/sass/main.css">
+
 
     <!--[if lt IE 8]>
-        <script src="/js/ie/html5shiv.js"></script>
+        
+<script src="/js/ie/html5shiv.js"></script>
+
     <![endif]-->
 
     <!--[if lt IE 8]>
-        <link rel="stylesheet" href="/sass/ie8.css">
+        
+<link rel="stylesheet" href="/sass/ie8.css">
+
     <![endif]-->
 
     <!--[if lt IE 9]>
-        <link rel="stylesheet" href="/sass/ie9.css">
+        
+<link rel="stylesheet" href="/sass/ie9.css">
+
     <![endif]-->
 
     <!-- Gallery -->
@@ -65,6 +73,7 @@
     })();
     </script>
 
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="TIGERB" type="application/atom+xml">
 </head>
 
 <body>
@@ -101,15 +110,15 @@
             </li>
         
             <li>
-                <a href="https://github.com/TIGERB">Github</a>
+                <a target="_blank" rel="noopener" href="https://github.com/TIGERB">Github</a>
             </li>
         
             <li>
-                <a href="https://segmentfault.com/u/tigerb">Segmentfault</a>
+                <a target="_blank" rel="noopener" href="https://segmentfault.com/u/tigerb">Segmentfault</a>
             </li>
         
             <li>
-                <a href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
+                <a target="_blank" rel="noopener" href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
             </li>
         
     </ul>
@@ -135,7 +144,7 @@
 
 
 <!-- Content -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <h1="" id="面试记录"><a href="#面试记录" class="headerlink" title="面试记录"></a>面试记录<h3 id="2017-01"><a href="#2017-01" class="headerlink" title="2017-01"></a>2017-01</h3><ul>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"><h1 id="面试记录"><a href="#面试记录" class="headerlink" title="面试记录"></a>面试记录</h1><h3 id="2017-01"><a href="#2017-01" class="headerlink" title="2017-01"></a>2017-01</h3><ul>
 <li>小米<ul>
 <li>一面<ul>
 <li>js闭包</li>
@@ -149,7 +158,8 @@
 </ul>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function closure()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    var i = 0;</span><br><span class="line">    function incre()</span><br><span class="line">    &#123;</span><br><span class="line">        i++;</span><br><span class="line">        alert(i);</span><br><span class="line">    &#125;</span><br><span class="line">    return incre;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var res = closure();</span><br><span class="line">res();</span><br><span class="line">res();</span><br><span class="line"></span><br><span class="line">if (strpos($_SERVER[&apos;REQUEST_URI&apos;], &apos;?&apos;)) &#123;</span><br><span class="line">    preg_match_all(&apos;/^\/(.*)\?/&apos;, $_SERVER[&apos;REQUEST_URI&apos;], $uri);</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    preg_match_all(&apos;/^\/(.*)/&apos;, $_SERVER[&apos;REQUEST_URI&apos;], $uri);</span><br><span class="line">&#125;</span><br><span class="line">if (isset($uri[1][0]) &amp;&amp; (! empty($uri[1][0]))) &#123;</span><br><span class="line">    $uri = $uri[1][0];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">键值对</span><br><span class="line">host-only: js脚本无法读取cookie</span><br><span class="line">expires: cookie过去时间</span><br><span class="line">secure:　仅在https下才传输cookie </span><br><span class="line">domain: 只允许该域名读取cookie</span><br><span class="line">path: 指定cookie发送的目录范围</span><br><span class="line"></span><br><span class="line">awk &apos;&#123;print $3&#125;&apos; demo.log | sort -nr | head -n 10</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">function closure()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    var i = 0;</span><br><span class="line">    function incre()</span><br><span class="line">    &#123;</span><br><span class="line">        i++;</span><br><span class="line">        alert(i);</span><br><span class="line">    &#125;</span><br><span class="line">    return incre;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var res = closure();</span><br><span class="line">res();</span><br><span class="line">res();</span><br><span class="line"></span><br><span class="line">if (strpos($_SERVER[&#x27;REQUEST_URI&#x27;], &#x27;?&#x27;)) &#123;</span><br><span class="line">    preg_match_all(&#x27;/^\/(.*)\?/&#x27;, $_SERVER[&#x27;REQUEST_URI&#x27;], $uri);</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    preg_match_all(&#x27;/^\/(.*)/&#x27;, $_SERVER[&#x27;REQUEST_URI&#x27;], $uri);</span><br><span class="line">&#125;</span><br><span class="line">if (isset($uri[1][0]) &amp;&amp; (! empty($uri[1][0]))) &#123;</span><br><span class="line">    $uri = $uri[1][0];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">键值对</span><br><span class="line">host-only: js脚本无法读取cookie</span><br><span class="line">expires: cookie过去时间</span><br><span class="line">secure:　仅在https下才传输cookie </span><br><span class="line">domain: 只允许该域名读取cookie</span><br><span class="line">path: 指定cookie发送的目录范围</span><br><span class="line"></span><br><span class="line">awk &#x27;&#123;print $3&#125;&#x27; demo.log | sort -nr | head -n 10</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>360<ul>
 <li>笔试<ul>
@@ -157,7 +167,7 @@
 <li>keep-alive作用</li>
 <li>上亿数据找出某些符合规则的数据</li>
 <li>写个10进制转16进制</li>
-<li>shell多列排序找值（awk/seed/sort/wc/uniq/head）</li>
+<li>shell多列排序找值（awk&#x2F;seed&#x2F;sort&#x2F;wc&#x2F;uniq&#x2F;head）</li>
 <li>画一个搜索架构</li>
 </ul>
 </li>
@@ -173,13 +183,14 @@
 </ul>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">array_push</span><br><span class="line">array_multisort</span><br><span class="line">array_unshift</span><br><span class="line">array_column</span><br><span class="line">array_merge -&gt; 数字键名不会覆盖，字符串键名后覆盖前；＋保留前</span><br><span class="line">array_combine</span><br><span class="line">in_array</span><br><span class="line"></span><br><span class="line">tcp长连接,无一方主动断开链接则保持链接</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">client -syn-&gt; server</span><br><span class="line">client &lt;-ack/syn- server</span><br><span class="line">client -ack-&gt; server</span><br><span class="line"></span><br><span class="line">client -fin/ack-&gt; server</span><br><span class="line">client &lt;-ack- server</span><br><span class="line">client &lt;-fin/ack- server</span><br><span class="line">client -ack-&gt; server</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">array_push</span><br><span class="line">array_multisort</span><br><span class="line">array_unshift</span><br><span class="line">array_column</span><br><span class="line">array_merge -&gt; 数字键名不会覆盖，字符串键名后覆盖前；＋保留前</span><br><span class="line">array_combine</span><br><span class="line">in_array</span><br><span class="line"></span><br><span class="line">tcp长连接,无一方主动断开链接则保持链接</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">client -syn-&gt; server</span><br><span class="line">client &lt;-ack/syn- server</span><br><span class="line">client -ack-&gt; server</span><br><span class="line"></span><br><span class="line">client -fin/ack-&gt; server</span><br><span class="line">client &lt;-ack- server</span><br><span class="line">client &lt;-fin/ack- server</span><br><span class="line">client -ack-&gt; server</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <h3 id="2017-03"><a href="#2017-03" class="headerlink" title="2017-03"></a>2017-03</h3><ul>
 <li>链家<ul>
 <li>一面<ul>
 <li>php生命周期</li>
 <li>php垃圾回收机制</li>
-<li>isset/empty</li>
+<li>isset&#x2F;empty</li>
 <li>进程、线程的理解</li>
 <li>http status</li>
 </ul>
@@ -187,22 +198,23 @@
 </ul>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mint-&gt;rint-&gt;(语法分析、词法分析、抽象语法树ast)-&gt;rshutdown-&gt;mshutdown</span><br><span class="line"></span><br><span class="line">同步周期回收:</span><br><span class="line">数据、对象类的复合类型</span><br><span class="line"></span><br><span class="line">isset -&gt; null坑</span><br><span class="line">empty -&gt; 0 &apos;0&apos; 0.0 null [] $variable &apos;&apos; false坑</span><br><span class="line"></span><br><span class="line">进程　计算机资源分配的基本单位</span><br><span class="line">线程　资源调度</span><br><span class="line"></span><br><span class="line">200 ok</span><br><span class="line"></span><br><span class="line">301 永久重定向</span><br><span class="line">302 临时</span><br><span class="line">304 not modify</span><br><span class="line"></span><br><span class="line">400 bad request</span><br><span class="line">401 http auth</span><br><span class="line">403 forbidden</span><br><span class="line">404 not found</span><br><span class="line"></span><br><span class="line">500 internet server error</span><br><span class="line">501 not support method</span><br><span class="line">502 bad gateway</span><br><span class="line">503 service unavaliable</span><br><span class="line">504 gateway timeout</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mint-&gt;rint-&gt;(语法分析、词法分析、抽象语法树ast)-&gt;rshutdown-&gt;mshutdown</span><br><span class="line"></span><br><span class="line">同步周期回收:</span><br><span class="line">数据、对象类的复合类型</span><br><span class="line"></span><br><span class="line">isset -&gt; null坑</span><br><span class="line">empty -&gt; 0 &#x27;0&#x27; 0.0 null [] $variable &#x27;&#x27; false坑</span><br><span class="line"></span><br><span class="line">进程　计算机资源分配的基本单位</span><br><span class="line">线程　资源调度</span><br><span class="line"></span><br><span class="line">200 ok</span><br><span class="line"></span><br><span class="line">301 永久重定向</span><br><span class="line">302 临时</span><br><span class="line">304 not modify</span><br><span class="line"></span><br><span class="line">400 bad request</span><br><span class="line">401 http auth</span><br><span class="line">403 forbidden</span><br><span class="line">404 not found</span><br><span class="line"></span><br><span class="line">500 internet server error</span><br><span class="line">501 not support method</span><br><span class="line">502 bad gateway</span><br><span class="line">503 service unavaliable</span><br><span class="line">504 gateway timeout</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <h3 id="2017-07"><a href="#2017-07" class="headerlink" title="2017-07"></a>2017-07</h3><ul>
 <li>滴滴(平台技术)<ul>
 <li>一面 <ul>
-<li>elk/怎么写日志</li>
+<li>elk&#x2F;怎么写日志</li>
 <li>pcntl_fork多进程实现</li>
 <li>写一个zval结构</li>
 <li>画一个b+树</li>
-<li>myisam/innodb区别</li>
+<li>myisam&#x2F;innodb区别</li>
 <li>mysql最左匹配原则</li>
 <li>explain各个列的含义</li>
 </ul>
 </li>
 <li>二面<ul>
 <li>mysql最左匹配原则</li>
-<li>写了个sql　group by/having/unix_timestamp/from_unixtime</li>
+<li>写了个sql　group by&#x2F;having&#x2F;unix_timestamp&#x2F;from_unixtime</li>
 <li>算法：写了个数的递归</li>
 </ul>
 </li>
@@ -210,18 +222,19 @@
 <li>画了之前的项目架构</li>
 <li>问了qps</li>
 <li>你对于我们公司有什么优势</li>
-<li>算法：两个上亿长度的无序数组合并成一个有序数+ </li>
+<li>算法：两个上亿长度的无序数组合并成一个有序数+</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">error_log =&gt; 串行</span><br><span class="line"></span><br><span class="line">pcntl_fork =&gt; 大于0处于父进程上下文/0处于子进程上下文/小于0 fork失败 </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">4种标量类型：int、string、float、bool</span><br><span class="line">2种复合类型：array、object</span><br><span class="line">2种特殊类型: resource、null</span><br><span class="line"></span><br><span class="line">struct z_val&#123;</span><br><span class="line">    type</span><br><span class="line">    value</span><br><span class="line">    is_ref_gc</span><br><span class="line">    refcount_gc</span><br><span class="line">&#125; _zval_struct;</span><br><span class="line"></span><br><span class="line">myISAM =&gt; 表锁、非聚簇索引、不支持事务、不支持安全恢复</span><br><span class="line">InnoDB =&gt; 行锁、聚簇索引、事务</span><br><span class="line"></span><br><span class="line">从左往右匹配不到索引或者范围查询(between/&lt;/&gt;/like)为止</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">error_log =&gt; 串行</span><br><span class="line"></span><br><span class="line">pcntl_fork =&gt; 大于0处于父进程上下文/0处于子进程上下文/小于0 fork失败 </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">4种标量类型：int、string、float、bool</span><br><span class="line">2种复合类型：array、object</span><br><span class="line">2种特殊类型: resource、null</span><br><span class="line"></span><br><span class="line">struct z_val&#123;</span><br><span class="line">    type</span><br><span class="line">    value</span><br><span class="line">    is_ref_gc</span><br><span class="line">    refcount_gc</span><br><span class="line">&#125; _zval_struct;</span><br><span class="line"></span><br><span class="line">myISAM =&gt; 表锁、非聚簇索引、不支持事务、不支持安全恢复</span><br><span class="line">InnoDB =&gt; 行锁、聚簇索引、事务</span><br><span class="line"></span><br><span class="line">从左往右匹配不到索引或者范围查询(between/&lt;/&gt;/like)为止</span><br></pre></td></tr></table></figure>
+
 <h3 id="2017-12"><a href="#2017-12" class="headerlink" title="2017-12"></a>2017-12</h3><ul>
 <li>滴滴(顺风车)<ul>
 <li>一面<ul>
-<li>redis是单进程/单线程还是多</li>
-<li>nginx是单进程/单线程还是多</li>
+<li>redis是单进程&#x2F;单线程还是多</li>
+<li>nginx是单进程&#x2F;单线程还是多</li>
 <li>http结构</li>
 <li>http常见头字段</li>
 <li>nginx和php交互</li>
@@ -233,7 +246,7 @@
 <li>平常怎么获取知识+       </li>
 <li>git怎么避免冲突</li>
 <li>进程间通信方式</li>
-<li>epoll/poll/select差异</li>
+<li>epoll&#x2F;poll&#x2F;select差异</li>
 </ul>
 </li>
 <li>二面<ul>
@@ -335,7 +348,7 @@
 <li>三面　负责人面<ul>
 <li>http2的好处</li>
 <li>对rpc的理解</li>
-<li>算法　-&gt;　不同音轨匹配组合　-&gt;　图的遍历       </li>
+<li>算法　-&gt;　不同音轨匹配组合　-&gt;　图的遍历</li>
 </ul>
 </li>
 <li>四面　总监面<ul>
@@ -363,7 +376,7 @@
 <li>自我介绍</li>
 <li>介绍一个项目</li>
 <li>并行下的数据一直问题</li>
-<li>说说get/post的区别</li>
+<li>说说get&#x2F;post的区别</li>
 <li>算法<ul>
 <li>一个有序数里插入一个数</li>
 <li>1～９组成所有不重复的三位数</li>
@@ -383,7 +396,7 @@
 <li>一个系统上线后，你从那几个方面评估系统的好坏</li>
 <li>不同域名下，怎么能安全的共享cookie信息</li>
 <li>说说外观模式，与中介者模式＆适配器模式的区别</li>
-<li>m个大数　求top n    </li>
+<li>m个大数　求top n</li>
 </ul>
 </li>
 </ul>
@@ -429,7 +442,7 @@
 </li>
 <li>一面<ul>
 <li>讲项目</li>
-<li>网络编程　-&gt; select/epoll区别</li>
+<li>网络编程　-&gt; select&#x2F;epoll区别</li>
 <li>说说异步非阻塞</li>
 <li>讲下https</li>
 </ul>
@@ -442,7 +455,7 @@
 </ul>
 </li>
 <li>三面(HR面)  <ul>
-<li>聊了聊每段公司的经历和换公司原因   </li>
+<li>聊了聊每段公司的经历和换公司原因</li>
 </ul>
 </li>
 </ul>
@@ -462,7 +475,7 @@
 <li>项目经历</li>
 <li>mysql事务</li>
 <li>redis使用</li>
-<li>设计模式　什么时候使用适配器 </li>
+<li>设计模式　什么时候使用适配器</li>
 </ul>
 </li>
 <li>四面(HR面)<ul>
@@ -528,7 +541,7 @@
 </ul>
 </li>
 <li>五面(HR面)  <ul>
-<li>聊了聊换公司原因  </li>
+<li>聊了聊换公司原因</li>
 </ul>
 </li>
 </ul>
@@ -559,7 +572,7 @@
         <section>
             <h2>About</h2>
             <div>
-                新一代轻量级「<a href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
             </div>
         </section>
         <section>
@@ -589,10 +602,10 @@
             <li>&copy; TIGERB.cn All right reserved. 津ICP备17006784号-2</li>
             <li><a href="https://juejin.im/user/5855e82d1b69e6006c9278b4" target="_blank">juejin</a></li>
             <li><a href="https://segmentfault.com/u/tigerb" target="_blank">Segmentfault</a></li>
-            <li><a href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
+            <li><a target="_blank" rel="noopener" href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
             <li><a href="http://tigerb.cn/go/#/patterns/">Go设计模式实战</a></li>
             <li><a href="http://tigerb.cn/go/#/kernal/">Go语言轻松进阶</a></li>
-            <li><a href="https://dayutalk.cn/">大愚Talk</a></li>
+            <li><a target="_blank" rel="noopener" href="https://dayutalk.cn/">大愚Talk</a></li>
         </ul>
     </div>
 </footer>
@@ -601,20 +614,30 @@
     <!-- After footer scripts -->
     
 <!-- jQuery -->
+
 <script src="/js/jquery.min.js"></script>
 
+
 <!-- skel -->
+
 <script src="/js/skel.min.js"></script>
 
+
 <!-- Custom Code -->
+
 <script src="/js/util.js"></script>
 
+
 <!--[if lte IE 8]>
+
 <script src="/js/ie/respond.min.js"></script>
+
 <![endif]-->
 
 <!-- Custom Code -->
+
 <script src="/js/main.js"></script>
+
 
 <!-- Gallery -->
 <script src="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>

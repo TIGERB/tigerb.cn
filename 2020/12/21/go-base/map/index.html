@@ -28,7 +28,7 @@
 
     <!--Page Cover-->
     
-        <meta property="og:image" content="undefined"/>
+        <meta property="og:image" content=""/>
     
 
     <!-- Title -->
@@ -36,18 +36,26 @@
     <title>由浅到深，入门Go语言Map实现原理 - TIGERB</title>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/sass/main.css">
+    
+<link rel="stylesheet" href="/sass/main.css">
+
 
     <!--[if lt IE 8]>
-        <script src="/js/ie/html5shiv.js"></script>
+        
+<script src="/js/ie/html5shiv.js"></script>
+
     <![endif]-->
 
     <!--[if lt IE 8]>
-        <link rel="stylesheet" href="/sass/ie8.css">
+        
+<link rel="stylesheet" href="/sass/ie8.css">
+
     <![endif]-->
 
     <!--[if lt IE 9]>
-        <link rel="stylesheet" href="/sass/ie9.css">
+        
+<link rel="stylesheet" href="/sass/ie9.css">
+
     <![endif]-->
 
     <!-- Gallery -->
@@ -67,6 +75,7 @@
     })();
     </script>
 
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="TIGERB" type="application/atom+xml">
 </head>
 
 <body>
@@ -103,15 +112,15 @@
             </li>
         
             <li>
-                <a href="https://github.com/TIGERB">Github</a>
+                <a target="_blank" rel="noopener" href="https://github.com/TIGERB">Github</a>
             </li>
         
             <li>
-                <a href="https://segmentfault.com/u/tigerb">Segmentfault</a>
+                <a target="_blank" rel="noopener" href="https://segmentfault.com/u/tigerb">Segmentfault</a>
             </li>
         
             <li>
-                <a href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
+                <a target="_blank" rel="noopener" href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
             </li>
         
     </ul>
@@ -137,7 +146,8 @@
 
 
 <!-- Content -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <p=""><span><p></p>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"><span>
+
 <blockquote>
 <p>Go源码版本1.13.8</p>
 </blockquote>
@@ -167,8 +177,7 @@
 <th>掌握程度</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>收益1</td>
 <td><strong>大致</strong>对Go语言Map底层实现有一个了解</td>
 <td>必须掌握</td>
@@ -198,8 +207,7 @@
 <td><strong>熟悉</strong>Go语言Map是如何读取数据的</td>
 <td>可选</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>收益1和收益2是看了本篇文章希望大家<strong>必须掌握</strong>的知识点，其他的为可选项，如果你对此感兴趣或者已经掌握了收益1、2可以继续阅读此处的内容。</p>
 <p>对于本篇文章的结构主要按如下顺序开展：</p>
 <ul>
@@ -215,21 +223,29 @@
 <li>链表：目的解决hash冲突的问题，并存放键值</li>
 </ul>
 <p>大致结构如下：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20201216161128.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20201216161128.png" style="width:100%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201216161128.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20201216161128.png" style="width:100%"></a>
+</p>
 
 <p>读取一个key值的过程大致如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">                  key</span><br><span class="line">                   |</span><br><span class="line">                   v                 </span><br><span class="line">+------------------------------------+</span><br><span class="line">|      key通过hash函数得到key的hash    |</span><br><span class="line">+------------------+-----------------+</span><br><span class="line">                   |</span><br><span class="line">                   v</span><br><span class="line">+------------------------------------+</span><br><span class="line">|       key的hash通过取模或者位操作     |</span><br><span class="line">|          得到key在数组上的索引        |</span><br><span class="line">+------------------------------------+</span><br><span class="line">                   |</span><br><span class="line">                   v</span><br><span class="line">+------------------------------------+</span><br><span class="line">|         通过索引找到对应的链表         |</span><br><span class="line">+------------------+-----------------+</span><br><span class="line">                   |</span><br><span class="line">                   v</span><br><span class="line">+------------------------------------+</span><br><span class="line">|       遍历链表对比key和目标key        |</span><br><span class="line">+------------------+-----------------+</span><br><span class="line">                   |</span><br><span class="line">                   v</span><br><span class="line">+------------------------------------+</span><br><span class="line">|              相等则返回value         |</span><br><span class="line">+------------------+-----------------+</span><br><span class="line">                   |</span><br><span class="line">                   v                </span><br><span class="line">                 value</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">                  key</span><br><span class="line">                   |</span><br><span class="line">                   v                 </span><br><span class="line">+------------------------------------+</span><br><span class="line">|      key通过hash函数得到key的hash    |</span><br><span class="line">+------------------+-----------------+</span><br><span class="line">                   |</span><br><span class="line">                   v</span><br><span class="line">+------------------------------------+</span><br><span class="line">|       key的hash通过取模或者位操作     |</span><br><span class="line">|          得到key在数组上的索引        |</span><br><span class="line">+------------------------------------+</span><br><span class="line">                   |</span><br><span class="line">                   v</span><br><span class="line">+------------------------------------+</span><br><span class="line">|         通过索引找到对应的链表         |</span><br><span class="line">+------------------+-----------------+</span><br><span class="line">                   |</span><br><span class="line">                   v</span><br><span class="line">+------------------------------------+</span><br><span class="line">|       遍历链表对比key和目标key        |</span><br><span class="line">+------------------+-----------------+</span><br><span class="line">                   |</span><br><span class="line">                   v</span><br><span class="line">+------------------------------------+</span><br><span class="line">|              相等则返回value         |</span><br><span class="line">+------------------+-----------------+</span><br><span class="line">                   |</span><br><span class="line">                   v                </span><br><span class="line">                 value </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <p>接着我们来简单看看Go语言里Map的实现思路。</p>
 <h1 id="Go语言里Map的实现思路-入门程度"><a href="#Go语言里Map的实现思路-入门程度" class="headerlink" title="Go语言里Map的实现思路(入门程度)"></a>Go语言里Map的实现思路(入门程度)</h1><hr>
 <blockquote>
 <p>包含收益1、2</p>
 </blockquote>
 <p>Go语言解决hash冲突不是链表，实际<strong>主要</strong>用的数组(内存上的连续空间)，如下图所示：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">备注：后面我们会解释上面为啥用的“主要”两个字。</span><br></pre></td></tr></table></figure>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20201219202458.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20201219202458.png" style="width:60%"></a><br></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">备注：后面我们会解释上面为啥用的“主要”两个字。</span><br></pre></td></tr></table></figure>
+
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201219202458.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20201219202458.png" style="width:60%"></a>
+</p>
 
 <p>但是并不是只使用一个数组(连续内存空间)存放键和值，而是使用了两个数组分别存储键和值，图示如下：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20201217210507.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20201217210507.png" style="width:100%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201217210507.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20201217210507.png" style="width:100%"></a>
+</p>
 
 <p>上图中：</p>
 <ul>
@@ -237,7 +253,9 @@
 <li><code>bmap</code>里有两个数组分别存放key和value</li>
 </ul>
 <p>把上面简化的关系转换一下，其实就是这样的一个大致关系，如下图所示：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20201217210752.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20201217210752.png" style="width:100%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201217210752.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20201217210752.png" style="width:100%"></a>
+</p>
 
 <p>我们通过一次<code>读操作</code>为例，看看读取某个key的值的一个<strong>大致过程</strong>：</p>
 <table>
@@ -247,8 +265,7 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>①</td>
 <td>通过hash函数获取目标key的<strong>哈希</strong>，哈希和数组的长度通过位操作获取数组位置的<strong>索引</strong>(备注：获取索引值的方式一般有取模或位操作，位操作的性能好些)</td>
 </tr>
@@ -260,25 +277,29 @@
 <td>③</td>
 <td>根据<strong>key的索引</strong>通过计算偏移量，获取到对应value</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>读过程图示如下：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20201217210816.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20201217210816.png" style="width:100%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201217210816.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20201217210816.png" style="width:100%"></a>
+</p>
 
 <p>这么看起来是不是“很简单”、很清晰，所以读到这里，你是不是已经入门了<code>Go语言Map底层实现</code>并且：</p>
 <ul>
 <li><strong>大致</strong>对Go语言Map底层实现有一个了解(收益1)</li>
 <li><strong>大致知道</strong>Go语言Map是如何读取数据的(收益2)</li>
 </ul>
-<p>然而实际情况不止如此，我们再稍微深入的探索下，有兴趣的可以继续往下看，没兴趣可以不用继续往下看了(开玩笑=^_^=)，反正已经达到目的了，哈哈😏。</p>
+<p>然而实际情况不止如此，我们再稍微深入的探索下，有兴趣的可以继续往下看，没兴趣可以不用继续往下看了(开玩笑&#x3D;^_^&#x3D;)，反正已经达到目的了，哈哈😏。</p>
 <h1 id="Go语言里Map的实现思路-熟悉程度"><a href="#Go语言里Map的实现思路-熟悉程度" class="headerlink" title="Go语言里Map的实现思路(熟悉程度)"></a>Go语言里Map的实现思路(熟悉程度)</h1><hr>
 <blockquote>
 <p>包含收益3、4、5、6</p>
 </blockquote>
 <p>想要深入学习，首先得了解下上面提到了实现Map的两个核心结构体<code>hmap</code>和<code>bmap</code>。</p>
-<h2 id="核心结构体hmap"><a href="#核心结构体hmap" class="headerlink" title="核心结构体hmap"></a>核心结构体<code>hmap</code></h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">收益3: 熟悉Go语言Map底层核心结构体`hmap`</span><br></pre></td></tr></table></figure>
+<h2 id="核心结构体hmap"><a href="#核心结构体hmap" class="headerlink" title="核心结构体hmap"></a>核心结构体<code>hmap</code></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">收益3: 熟悉Go语言Map底层核心结构体`hmap`</span><br></pre></td></tr></table></figure>
+
 <p><code>hmap</code>的结构其实刚开始看起来其实还是比较复杂的，有不少的字段，具体字段如下图所示：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20201218132443.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20201218132443.png" style="width:20%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201218132443.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20201218132443.png" style="width:20%"></a>
+</p>
 
 <p>字段释义如下：</p>
 <table>
@@ -288,14 +309,13 @@
 <th>解释</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>count</td>
 <td>键值对的数量</td>
 </tr>
 <tr>
 <td>B</td>
-<td>2^B=len(buckets)</td>
+<td>2^B&#x3D;len(buckets)</td>
 </tr>
 <tr>
 <td>hash0</td>
@@ -325,18 +345,24 @@
 <td>flags</td>
 <td>状态标识，比如正在被写、buckets和oldbuckets在被遍历、等量扩容(Map扩容相关字段)</td>
 </tr>
-</tbody>
-</table>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">备注：本次内容不涉及Map的扩容逻辑。</span><br></pre></td></tr></table></figure>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">备注：本次内容不涉及Map的扩容逻辑。</span><br></pre></td></tr></table></figure>
+
 <p>重点看一些字段的含义和用处。</p>
-<h3 id="字段buckets"><a href="#字段buckets" class="headerlink" title="字段buckets"></a>字段<code>buckets</code></h3><p align="center"><br>  <a href="http://cdn.tigerb.cn/20201216202022.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20201216202022.png" style="width:66%"></a><br></p>
+<h3 id="字段buckets"><a href="#字段buckets" class="headerlink" title="字段buckets"></a>字段<code>buckets</code></h3><p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201216202022.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20201216202022.png" style="width:66%"></a>
+</p>
 
 <p><code>buckets</code>指向了一个数组(连续的内存空间)，数组的元素是<code>bmap</code>类型，这个字段我们称之为正常桶。</p>
 <p><code>hmap</code>的源码和地址如下：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// https://github.com/golang/go/blob/go1.13.8/src/runtime/map.go</span></span><br><span class="line"><span class="keyword">type</span> hmap <span class="keyword">struct</span> &#123;</span><br><span class="line">	count     <span class="keyword">int</span> </span><br><span class="line">	flags     <span class="keyword">uint8</span></span><br><span class="line">	B         <span class="keyword">uint8</span> </span><br><span class="line">	noverflow <span class="keyword">uint16</span> </span><br><span class="line">	hash0     <span class="keyword">uint32</span></span><br><span class="line">	buckets    unsafe.Pointer</span><br><span class="line">	oldbuckets unsafe.Pointer</span><br><span class="line">	nevacuate  <span class="keyword">uintptr</span> </span><br><span class="line">	extra *mapextra</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="核心结构体bmap"><a href="#核心结构体bmap" class="headerlink" title="核心结构体bmap"></a>核心结构体<code>bmap</code></h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">收益4: Go语言Map底层核心结构体`bmap`</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// https://github.com/golang/go/blob/go1.13.8/src/runtime/map.go</span></span><br><span class="line"><span class="keyword">type</span> hmap <span class="keyword">struct</span> &#123;</span><br><span class="line">	count     <span class="type">int</span> </span><br><span class="line">	flags     <span class="type">uint8</span></span><br><span class="line">	B         <span class="type">uint8</span> </span><br><span class="line">	noverflow <span class="type">uint16</span> </span><br><span class="line">	hash0     <span class="type">uint32</span></span><br><span class="line">	buckets    unsafe.Pointer</span><br><span class="line">	oldbuckets unsafe.Pointer</span><br><span class="line">	nevacuate  <span class="type">uintptr</span> </span><br><span class="line">	extra *mapextra</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="核心结构体bmap"><a href="#核心结构体bmap" class="headerlink" title="核心结构体bmap"></a>核心结构体<code>bmap</code></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">收益4: Go语言Map底层核心结构体`bmap`</span><br></pre></td></tr></table></figure>
+
 <p>正常桶<code>hmap.buckets</code>的元素是一个<code>bmap</code>结构。<code>bmap</code>的具体字段如下图所示：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20201216202114.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20201216202114.png" style="width:66%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201216202114.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20201216202114.png" style="width:66%"></a>
+</p>
 
 <p>字段释义如下：</p>
 <table>
@@ -346,8 +372,7 @@
 <th>解释</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>topbits</td>
 <td>长度为8的数组，[]uint8，元素为：key获取的hash的高8位，遍历时对比使用，提高性能。<strong>如下图所示</strong></td>
 </tr>
@@ -367,25 +392,32 @@
 <td>pad</td>
 <td>对齐内存使用的，不是每个bmap都有会这个字段，需要满足一定条件</td>
 </tr>
-</tbody>
-</table>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20201216202224.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20201216202224.png" style="width:60%"></a><br></p>
+</tbody></table>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201216202224.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20201216202224.png" style="width:60%"></a>
+</p>
 
 <p>推断出<code>bmap</code>结构字段的代码和位置如下：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// https://github.com/golang/go/blob/go1.13.8/src/cmd/compile/internal/gc/reflect.go</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">bmap</span><span class="params">(t *types.Type)</span> *<span class="title">types</span>.<span class="title">Type</span></span> &#123;</span><br><span class="line">  <span class="comment">// 略...</span></span><br><span class="line"></span><br><span class="line">  field := <span class="built_in">make</span>([]*types.Field, <span class="number">0</span>, <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">	field = <span class="built_in">append</span>(field, makefield(<span class="string">"topbits"</span>, arr))</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 略...</span></span><br><span class="line">  </span><br><span class="line">	keys := makefield(<span class="string">"keys"</span>, arr)</span><br><span class="line">	field = <span class="built_in">append</span>(field, keys)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 略...</span></span><br><span class="line">  </span><br><span class="line">	elems := makefield(<span class="string">"elems"</span>, arr)</span><br><span class="line">	field = <span class="built_in">append</span>(field, elems)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 略...</span></span><br><span class="line">  </span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">int</span>(elemtype.Align) &gt; Widthptr || <span class="keyword">int</span>(keytype.Align) &gt; Widthptr &#123;</span><br><span class="line">		field = <span class="built_in">append</span>(field, makefield(<span class="string">"pad"</span>, types.Types[TUINTPTR]))</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 略...</span></span><br><span class="line">  </span><br><span class="line">	overflow := makefield(<span class="string">"overflow"</span>, otyp)</span><br><span class="line">	field = <span class="built_in">append</span>(field, overflow)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 略...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// https://github.com/golang/go/blob/go1.13.8/src/cmd/compile/internal/gc/reflect.go</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">bmap</span><span class="params">(t *types.Type)</span></span> *types.Type &#123;</span><br><span class="line">  <span class="comment">// 略...</span></span><br><span class="line"></span><br><span class="line">  field := <span class="built_in">make</span>([]*types.Field, <span class="number">0</span>, <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">	field = <span class="built_in">append</span>(field, makefield(<span class="string">&quot;topbits&quot;</span>, arr))</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 略...</span></span><br><span class="line">  </span><br><span class="line">	keys := makefield(<span class="string">&quot;keys&quot;</span>, arr)</span><br><span class="line">	field = <span class="built_in">append</span>(field, keys)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 略...</span></span><br><span class="line">  </span><br><span class="line">	elems := makefield(<span class="string">&quot;elems&quot;</span>, arr)</span><br><span class="line">	field = <span class="built_in">append</span>(field, elems)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 略...</span></span><br><span class="line">  </span><br><span class="line">	<span class="keyword">if</span> <span class="type">int</span>(elemtype.Align) &gt; Widthptr || <span class="type">int</span>(keytype.Align) &gt; Widthptr &#123;</span><br><span class="line">		field = <span class="built_in">append</span>(field, makefield(<span class="string">&quot;pad&quot;</span>, types.Types[TUINTPTR]))</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 略...</span></span><br><span class="line">  </span><br><span class="line">	overflow := makefield(<span class="string">&quot;overflow&quot;</span>, otyp)</span><br><span class="line">	field = <span class="built_in">append</span>(field, overflow)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 略...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>结论：每个<code>bmap</code>结构最多存放8组键值对。</p>
 </blockquote>
 <h2 id="hmap和bmap的基本结构合起来"><a href="#hmap和bmap的基本结构合起来" class="headerlink" title="hmap和bmap的基本结构合起来"></a><code>hmap</code>和<code>bmap</code>的基本结构合起来</h2><p>分别了解了<code>hmap</code>和<code>bmap</code>的基本结构后，我们把上面的内容合并起来，就得到如下的Map结构图：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20201216202349.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20201216202349.png" style="width:90%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201216202349.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20201216202349.png" style="width:90%"></a>
+</p>
 
-<h2 id="溢出桶"><a href="#溢出桶" class="headerlink" title="溢出桶"></a>溢出桶</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">收益5: 熟悉Go语言Map底层里的溢出桶</span><br></pre></td></tr></table></figure>
+<h2 id="溢出桶"><a href="#溢出桶" class="headerlink" title="溢出桶"></a>溢出桶</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">收益5: 熟悉Go语言Map底层里的溢出桶</span><br></pre></td></tr></table></figure>
+
 <p>上面讲<code>bmap</code>的时候，我们不是得到了个结论么“每个<code>bmap</code>结构最多存放8组键值对。”，所以问题来了：</p>
 <blockquote>
 <p>正常桶里的<code>bmap</code>存满了怎么办?</p>
 </blockquote>
 <p>解决这个问题我们就要说到<code>hmap.extra</code>结构了，<code>hmap.extra</code>是个结构体，结构图示和字段释义如下：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20201216202608.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20201216202608.png" style="width:80%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201216202608.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20201216202608.png" style="width:80%"></a>
+</p>
 
 <table>
 <thead>
@@ -394,8 +426,7 @@
 <th>解释</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>overflow</td>
 <td>称之为<strong>溢出桶</strong>。和<code>hmap.buckets</code>的类型一样也是数组<code>[]bmap</code>，当正常桶<code>bmap</code>存满了的时候就使用<code>hmap.extra.overflow</code>的<code>bmap</code>。所以这里有个问题正常桶<code>hmap.buckets</code>里的<code>bmap</code>是怎么关联上溢出桶<code>hmap.extra.overflow</code>的<code>bmap</code>呢？我们下面说。</td>
 </tr>
@@ -407,34 +438,46 @@
 <td>nextoverflow</td>
 <td>指向溢出桶里下一个可以使用的<code>bmap</code></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>源码和地址如下：</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// https://github.com/golang/go/blob/go1.13.8/src/runtime/map.go</span></span><br><span class="line"><span class="keyword">type</span> mapextra <span class="keyword">struct</span> &#123;</span><br><span class="line">	overflow    *[]*bmap</span><br><span class="line">	oldoverflow *[]*bmap</span><br><span class="line">	nextOverflow *bmap</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>问题：正常桶<code>hmap.buckets</code>里的<code>bmap</code>是<strong>怎么关联上</strong>溢出桶<code>hmap.extra.overflow</code>的<code>bmap</code>呢？</p>
 </blockquote>
 <p>答：就是我们介绍<code>bmap</code>结构时里的<code>bmap.overflow</code>字段(如下图所示)。<code>bmap.overflow</code>是个指针类型，存放了对应使用的溢出桶<code>hmap.extra.overflow</code>里的<code>bmap</code>的地址。</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20201221131007.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20201221131007.png" style="width:30%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201221131007.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20201221131007.png" style="width:30%"></a>
+</p>
 
 <p><strong>问题又来了</strong>：</p>
 <blockquote>
 <p>问题：正常桶<code>hmap.buckets</code>里的<code>bmap</code>是<strong>什么时候关联上</strong>溢出桶<code>hmap.extra.overflow</code>的<code>bmap</code>呢？</p>
 </blockquote>
 <p>答：Map写操作的时候。这里直接看关键代码：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// https://github.com/golang/go/blob/go1.13.8/src/runtime/map.go</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">mapassign</span><span class="params">(t *maptype, h *hmap, key unsafe.Pointer)</span> <span class="title">unsafe</span>.<span class="title">Pointer</span></span> &#123;</span><br><span class="line">  <span class="comment">// 略</span></span><br><span class="line">again:</span><br><span class="line">	<span class="comment">// 略...</span></span><br><span class="line">	<span class="keyword">var</span> inserti *<span class="keyword">uint8</span></span><br><span class="line">  <span class="comment">// 略...</span></span><br><span class="line">bucketloop:</span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		<span class="keyword">for</span> i := <span class="keyword">uintptr</span>(<span class="number">0</span>); i &lt; bucketCnt; i++ &#123;</span><br><span class="line">      <span class="comment">// key的hash高8位不相等</span></span><br><span class="line">			<span class="keyword">if</span> b.tophash[i] != top &#123;</span><br><span class="line">        <span class="comment">// 当前位置bmap.tophash的元素为空且还没有写入的记录(inserti已经写入的标记为)</span></span><br><span class="line">				<span class="keyword">if</span> isEmpty(b.tophash[i]) &amp;&amp; inserti == <span class="literal">nil</span> &#123;</span><br><span class="line">          <span class="comment">// inserti赋值为当前的hash高8位 标记写入成功</span></span><br><span class="line">					inserti = &amp;b.tophash[i]</span><br><span class="line">					<span class="comment">// 略...</span></span><br><span class="line">				&#125;</span><br><span class="line">				<span class="comment">// 略...</span></span><br><span class="line">				<span class="keyword">continue</span></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">// 略...</span></span><br><span class="line">			<span class="keyword">goto</span> done</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 正常桶的bmap遍历完了 继续遍历溢出桶的bmap 如果有的话</span></span><br><span class="line">		ovf := b.overflow(t)</span><br><span class="line">		<span class="keyword">if</span> ovf == <span class="literal">nil</span> &#123;</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">		b = ovf</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 略...</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 没写入成功(包含正常桶的bmap、溢出桶的bmap(如果有的话))</span></span><br><span class="line">	<span class="keyword">if</span> inserti == <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="comment">// 分配新的bmap写</span></span><br><span class="line">    newb := h.newoverflow(t, b)</span><br><span class="line">    <span class="comment">// 略...</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 略...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 继续看h.newoverflow的代码</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *hmap)</span> <span class="title">newoverflow</span><span class="params">(t *maptype, b *bmap)</span> *<span class="title">bmap</span></span> &#123;</span><br><span class="line">  <span class="keyword">var</span> ovf *bmap</span><br><span class="line">  <span class="comment">// 如果hmap的存在溢出桶 且 溢出桶还没用完</span></span><br><span class="line">	<span class="keyword">if</span> h.extra != <span class="literal">nil</span> &amp;&amp; h.extra.nextOverflow != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="comment">// 使用溢出桶的bmap</span></span><br><span class="line">    ovf = h.extra.nextOverflow</span><br><span class="line">    <span class="comment">// 判断桶的bmap的overflow是不是空</span></span><br><span class="line">    <span class="comment">// 这里很巧妙。为啥？</span></span><br><span class="line">    <span class="comment">// 溢出桶初始化的时候会把最后一个bmap的overflow指向正常桶，值不为nil</span></span><br><span class="line">    <span class="comment">// 目的判断当前这个bmap是不是溢出桶里的最后一个</span></span><br><span class="line">		<span class="keyword">if</span> ovf.overflow(t) == <span class="literal">nil</span> &#123;</span><br><span class="line">      <span class="comment">// 是nil</span></span><br><span class="line">      <span class="comment">// 说明不是最后一个</span></span><br><span class="line">			h.extra.nextOverflow = (*bmap)(add(unsafe.Pointer(ovf), <span class="keyword">uintptr</span>(t.bucketsize)))</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 不是nil</span></span><br><span class="line">      <span class="comment">// 则重置当前bmap的overflow为空</span></span><br><span class="line">      ovf.setoverflow(t, <span class="literal">nil</span>)</span><br><span class="line">      <span class="comment">// 且 标记nextOverflow为nil 说明当前溢出桶用完了</span></span><br><span class="line">			h.extra.nextOverflow = <span class="literal">nil</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 没有溢出桶 或者 溢出桶用完了</span></span><br><span class="line">    <span class="comment">// 内存空间重新分配一个bmap</span></span><br><span class="line">		ovf = (*bmap)(newobject(t.bucket))</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 生成溢出桶bmap的计数器计数</span></span><br><span class="line">	h.incrnoverflow()</span><br><span class="line">  <span class="comment">// 略...</span></span><br><span class="line">  <span class="comment">// 这行代码就是上面问题我们要的答案:</span></span><br><span class="line">  <span class="comment">// 正常桶`hmap.buckets`里的`bmap`在这里关联上溢出桶`hmap.extra.overflow`的`bmap`</span></span><br><span class="line">	b.setoverflow(t, ovf)</span><br><span class="line">	<span class="keyword">return</span> ovf</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// setoverflow函数的源码</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b *bmap)</span> <span class="title">setoverflow</span><span class="params">(t *maptype, ovf *bmap)</span></span> &#123;</span><br><span class="line">  <span class="comment">// 这行代码的意思：通过偏移量计算找到了bmap.overflow，并把ovf这个bmap的地址赋值给了bmap.overflow</span></span><br><span class="line">	*(**bmap)(add(unsafe.Pointer(b), <span class="keyword">uintptr</span>(t.bucketsize)-sys.PtrSize)) = ovf</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>下面代码这段代码解释了，上面的源码中为何如此判断预分配溢出桶的<code>bmap</code>是最后一个的原因。<br><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// https://github.com/golang/go/blob/go1.13.8/src/runtime/map.go</span></span><br><span class="line"><span class="comment">// 创建hmap的正常桶</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">makeBucketArray</span><span class="params">(t *maptype, b <span class="keyword">uint8</span>, dirtyalloc unsafe.Pointer)</span> <span class="params">(buckets unsafe.Pointer, nextOverflow *bmap)</span></span> &#123;</span><br><span class="line">  <span class="comment">// 略...</span></span><br><span class="line">	<span class="keyword">if</span> base != nbuckets &#123;</span><br><span class="line">    <span class="comment">// 略...</span></span><br><span class="line">    last := (*bmap)(add(buckets, (nbuckets<span class="number">-1</span>)*<span class="keyword">uintptr</span>(t.bucketsize)))</span><br><span class="line">    <span class="comment">// 把溢出桶里 最后一个 `bmap`的`overflow`指先正常桶的第一个`bmap`</span></span><br><span class="line">    <span class="comment">// 获取预分配的溢出桶里`bmap`时，可以通过判断overflow是不是为nil判断是不是最后一个</span></span><br><span class="line">		last.setoverflow(t, (*bmap)(buckets))</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 略...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// https://github.com/golang/go/blob/go1.13.8/src/runtime/map.go</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">mapassign</span><span class="params">(t *maptype, h *hmap, key unsafe.Pointer)</span></span> unsafe.Pointer &#123;</span><br><span class="line">  <span class="comment">// 略</span></span><br><span class="line">again:</span><br><span class="line">	<span class="comment">// 略...</span></span><br><span class="line">	<span class="keyword">var</span> inserti *<span class="type">uint8</span></span><br><span class="line">  <span class="comment">// 略...</span></span><br><span class="line">bucketloop:</span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		<span class="keyword">for</span> i := <span class="type">uintptr</span>(<span class="number">0</span>); i &lt; bucketCnt; i++ &#123;</span><br><span class="line">      <span class="comment">// key的hash高8位不相等</span></span><br><span class="line">			<span class="keyword">if</span> b.tophash[i] != top &#123;</span><br><span class="line">        <span class="comment">// 当前位置bmap.tophash的元素为空且还没有写入的记录(inserti已经写入的标记为)</span></span><br><span class="line">				<span class="keyword">if</span> isEmpty(b.tophash[i]) &amp;&amp; inserti == <span class="literal">nil</span> &#123;</span><br><span class="line">          <span class="comment">// inserti赋值为当前的hash高8位 标记写入成功</span></span><br><span class="line">					inserti = &amp;b.tophash[i]</span><br><span class="line">					<span class="comment">// 略...</span></span><br><span class="line">				&#125;</span><br><span class="line">				<span class="comment">// 略...</span></span><br><span class="line">				<span class="keyword">continue</span></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">// 略...</span></span><br><span class="line">			<span class="keyword">goto</span> done</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 正常桶的bmap遍历完了 继续遍历溢出桶的bmap 如果有的话</span></span><br><span class="line">		ovf := b.overflow(t)</span><br><span class="line">		<span class="keyword">if</span> ovf == <span class="literal">nil</span> &#123;</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">		b = ovf</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 略...</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 没写入成功(包含正常桶的bmap、溢出桶的bmap(如果有的话))</span></span><br><span class="line">	<span class="keyword">if</span> inserti == <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="comment">// 分配新的bmap写</span></span><br><span class="line">    newb := h.newoverflow(t, b)</span><br><span class="line">    <span class="comment">// 略...</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 略...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 继续看h.newoverflow的代码</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *hmap)</span></span> newoverflow(t *maptype, b *bmap) *bmap &#123;</span><br><span class="line">  <span class="keyword">var</span> ovf *bmap</span><br><span class="line">  <span class="comment">// 如果hmap的存在溢出桶 且 溢出桶还没用完</span></span><br><span class="line">	<span class="keyword">if</span> h.extra != <span class="literal">nil</span> &amp;&amp; h.extra.nextOverflow != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="comment">// 使用溢出桶的bmap</span></span><br><span class="line">    ovf = h.extra.nextOverflow</span><br><span class="line">    <span class="comment">// 判断桶的bmap的overflow是不是空</span></span><br><span class="line">    <span class="comment">// 这里很巧妙。为啥？</span></span><br><span class="line">    <span class="comment">// 溢出桶初始化的时候会把最后一个bmap的overflow指向正常桶，值不为nil</span></span><br><span class="line">    <span class="comment">// 目的判断当前这个bmap是不是溢出桶里的最后一个</span></span><br><span class="line">		<span class="keyword">if</span> ovf.overflow(t) == <span class="literal">nil</span> &#123;</span><br><span class="line">      <span class="comment">// 是nil</span></span><br><span class="line">      <span class="comment">// 说明不是最后一个</span></span><br><span class="line">			h.extra.nextOverflow = (*bmap)(add(unsafe.Pointer(ovf), <span class="type">uintptr</span>(t.bucketsize)))</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 不是nil</span></span><br><span class="line">      <span class="comment">// 则重置当前bmap的overflow为空</span></span><br><span class="line">      ovf.setoverflow(t, <span class="literal">nil</span>)</span><br><span class="line">      <span class="comment">// 且 标记nextOverflow为nil 说明当前溢出桶用完了</span></span><br><span class="line">			h.extra.nextOverflow = <span class="literal">nil</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 没有溢出桶 或者 溢出桶用完了</span></span><br><span class="line">    <span class="comment">// 内存空间重新分配一个bmap</span></span><br><span class="line">		ovf = (*bmap)(newobject(t.bucket))</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 生成溢出桶bmap的计数器计数</span></span><br><span class="line">	h.incrnoverflow()</span><br><span class="line">  <span class="comment">// 略...</span></span><br><span class="line">  <span class="comment">// 这行代码就是上面问题我们要的答案:</span></span><br><span class="line">  <span class="comment">// 正常桶`hmap.buckets`里的`bmap`在这里关联上溢出桶`hmap.extra.overflow`的`bmap`</span></span><br><span class="line">	b.setoverflow(t, ovf)</span><br><span class="line">	<span class="keyword">return</span> ovf</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// setoverflow函数的源码</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b *bmap)</span></span> setoverflow(t *maptype, ovf *bmap) &#123;</span><br><span class="line">  <span class="comment">// 这行代码的意思：通过偏移量计算找到了bmap.overflow，并把ovf这个bmap的地址赋值给了bmap.overflow</span></span><br><span class="line">	*(**bmap)(add(unsafe.Pointer(b), <span class="type">uintptr</span>(t.bucketsize)-sys.PtrSize)) = ovf</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面代码这段代码解释了，上面的源码中为何如此判断预分配溢出桶的<code>bmap</code>是最后一个的原因。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// https://github.com/golang/go/blob/go1.13.8/src/runtime/map.go</span></span><br><span class="line"><span class="comment">// 创建hmap的正常桶</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">makeBucketArray</span><span class="params">(t *maptype, b <span class="type">uint8</span>, dirtyalloc unsafe.Pointer)</span></span> (buckets unsafe.Pointer, nextOverflow *bmap) &#123;</span><br><span class="line">  <span class="comment">// 略...</span></span><br><span class="line">	<span class="keyword">if</span> base != nbuckets &#123;</span><br><span class="line">    <span class="comment">// 略...</span></span><br><span class="line">    last := (*bmap)(add(buckets, (nbuckets<span class="number">-1</span>)*<span class="type">uintptr</span>(t.bucketsize)))</span><br><span class="line">    <span class="comment">// 把溢出桶里 最后一个 `bmap`的`overflow`指先正常桶的第一个`bmap`</span></span><br><span class="line">    <span class="comment">// 获取预分配的溢出桶里`bmap`时，可以通过判断overflow是不是为nil判断是不是最后一个</span></span><br><span class="line">		last.setoverflow(t, (*bmap)(buckets))</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 略...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p><strong>当<code>hmap</code>存在溢出桶时，且当前溢出桶只被使用了一个bmap</strong>时，我们可以得到如下的关系图：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20201217165310.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20201217165310.png" style="width:90%"></a><br></p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201217165310.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20201217165310.png" style="width:90%"></a>
+</p>
 
 <p>同时我们可以看出正常桶的<code>bmap</code>和溢出桶的<code>bmap</code>实际构成了链表关系，所以这也解释了开篇我们说到的“Go里面Map的实现<strong>主要</strong>用到了数组”，其次还用到了链表。</p>
-<h2 id="再次分析Map的读"><a href="#再次分析Map的读" class="headerlink" title="再次分析Map的读"></a>再次分析Map的读</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">收益6: 熟悉Go语言Map是如何读取数据的</span><br></pre></td></tr></table></figure>
-<p>通过上面的学习，我们再次通过一次读操作为例，看看读取某个key的值的一个大致过程：</p>
-<p align="center"><br>  <a href="http://cdn.tigerb.cn/20201217165551.png" class="gallery-item" target="_blank" rel="noopener"><img src="http://cdn.tigerb.cn/20201217165551.png" style="width:90%"></a><br></p>
+<h2 id="再次分析Map的读"><a href="#再次分析Map的读" class="headerlink" title="再次分析Map的读"></a>再次分析Map的读</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">收益6: 熟悉Go语言Map是如何读取数据的</span><br></pre></td></tr></table></figure>
 
-<p>结合代码分析下整个大体的过程：<br><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">mapaccess1</span><span class="params">(t *maptype, h *hmap, key unsafe.Pointer)</span> <span class="title">unsafe</span>.<span class="title">Pointer</span></span> &#123;</span><br><span class="line">    <span class="comment">// ...略</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ①通过hash函数获取当前key的哈希</span></span><br><span class="line">	hash := alg.hash(key, <span class="keyword">uintptr</span>(h.hash0))</span><br><span class="line">    m := bucketMask(h.B)</span><br><span class="line">    <span class="comment">// ②通过当前key的哈希获取到对应的bmap结构的b</span></span><br><span class="line">    <span class="comment">// 这里的b 我们称之为“正常桶的bmap”</span></span><br><span class="line">    <span class="comment">// “正常桶的bmap”可能会对应到溢出桶的bmap结构，我们称之为“溢出桶的bmap”</span></span><br><span class="line">    b := (*bmap)(add(h.buckets, (hash&amp;m)*<span class="keyword">uintptr</span>(t.bucketsize)))</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ...略</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 获取当前key的哈希的高8位</span></span><br><span class="line">	top := tophash(hash)</span><br><span class="line">bucketloop:</span><br><span class="line">    <span class="comment">// 下面的for循环是个简写，完整如下。</span></span><br><span class="line">    <span class="comment">// for b = b; b != nil; b = b.overflow(t) &#123;</span></span><br><span class="line">    <span class="comment">// 可以知道b的初始值为上面的“正常桶的bmap”，则：</span></span><br><span class="line">    <span class="comment">// 第一次遍历：遍历的是“正常桶的bmap”</span></span><br><span class="line">    <span class="comment">// 如果正常桶没找到，则</span></span><br><span class="line">    <span class="comment">// 绿色线条④ 继续遍历：如果当前“正常桶的bmap”中的overflow值不为nil(说明“正常桶的bmap”关联了“溢出桶的bmap”)，则遍历当前指向的“溢出桶的bmap”继续 蓝色线条的③④⑤步骤</span></span><br><span class="line">	<span class="keyword">for</span> ; b != <span class="literal">nil</span>; b = b.overflow(t) &#123;</span><br><span class="line">        <span class="comment">// 由于b的初始值为“正常桶的bmap”，第一次先遍历“正常桶的bmap”</span></span><br><span class="line">		<span class="keyword">for</span> i := <span class="keyword">uintptr</span>(<span class="number">0</span>); i &lt; bucketCnt; i++ &#123;</span><br><span class="line">            <span class="comment">// 蓝色线条③ 对比key哈希的高8位</span></span><br><span class="line">            <span class="comment">// 对比哈希的高8位目的是为了加速</span></span><br><span class="line">			<span class="keyword">if</span> b.tophash[i] != top &#123;</span><br><span class="line">                <span class="comment">// emptyRest 标志位：表示当前位置已经是末尾了；删除操作会设置此标志位</span></span><br><span class="line">				<span class="keyword">if</span> b.tophash[i] == emptyRest &#123;</span><br><span class="line">					<span class="keyword">break</span> bucketloop</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">continue</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 找到了相同的hash高8位，则：找到对应索引位置i的key</span></span><br><span class="line">			k := add(unsafe.Pointer(b), dataOffset+i*<span class="keyword">uintptr</span>(t.keysize))</span><br><span class="line">			<span class="keyword">if</span> t.indirectkey() &#123;</span><br><span class="line">				k = *((*unsafe.Pointer)(k))</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 蓝色线条④ 对比key是不是一致</span></span><br><span class="line">			<span class="keyword">if</span> alg.equal(key, k) &#123;</span><br><span class="line">                <span class="comment">// 蓝色线条⑤ key是一致，则：获取对应索引位置的值</span></span><br><span class="line">				e := add(unsafe.Pointer(b), dataOffset+bucketCnt*<span class="keyword">uintptr</span>(t.keysize)+i*<span class="keyword">uintptr</span>(t.elemsize))</span><br><span class="line">				<span class="keyword">if</span> t.indirectelem() &#123;</span><br><span class="line">					e = *((*unsafe.Pointer)(e))</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 返回找到的结果</span></span><br><span class="line">				<span class="keyword">return</span> e</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 正常桶、溢出桶都没找到则返回 “空值”</span></span><br><span class="line">	<span class="keyword">return</span> unsafe.Pointer(&amp;zeroVal[<span class="number">0</span>])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>通过上面的学习，我们再次通过一次读操作为例，看看读取某个key的值的一个大致过程：</p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20201217165551.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20201217165551.png" style="width:90%"></a>
+</p>
+
+<p>结合代码分析下整个大体的过程：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">mapaccess1</span><span class="params">(t *maptype, h *hmap, key unsafe.Pointer)</span></span> unsafe.Pointer &#123;</span><br><span class="line">    <span class="comment">// ...略</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ①通过hash函数获取当前key的哈希</span></span><br><span class="line">	hash := alg.hash(key, <span class="type">uintptr</span>(h.hash0))</span><br><span class="line">    m := bucketMask(h.B)</span><br><span class="line">    <span class="comment">// ②通过当前key的哈希获取到对应的bmap结构的b</span></span><br><span class="line">    <span class="comment">// 这里的b 我们称之为“正常桶的bmap”</span></span><br><span class="line">    <span class="comment">// “正常桶的bmap”可能会对应到溢出桶的bmap结构，我们称之为“溢出桶的bmap”</span></span><br><span class="line">    b := (*bmap)(add(h.buckets, (hash&amp;m)*<span class="type">uintptr</span>(t.bucketsize)))</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ...略</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 获取当前key的哈希的高8位</span></span><br><span class="line">	top := tophash(hash)</span><br><span class="line">bucketloop:</span><br><span class="line">    <span class="comment">// 下面的for循环是个简写，完整如下。</span></span><br><span class="line">    <span class="comment">// for b = b; b != nil; b = b.overflow(t) &#123;</span></span><br><span class="line">    <span class="comment">// 可以知道b的初始值为上面的“正常桶的bmap”，则：</span></span><br><span class="line">    <span class="comment">// 第一次遍历：遍历的是“正常桶的bmap”</span></span><br><span class="line">    <span class="comment">// 如果正常桶没找到，则</span></span><br><span class="line">    <span class="comment">// 绿色线条④ 继续遍历：如果当前“正常桶的bmap”中的overflow值不为nil(说明“正常桶的bmap”关联了“溢出桶的bmap”)，则遍历当前指向的“溢出桶的bmap”继续 蓝色线条的③④⑤步骤</span></span><br><span class="line">	<span class="keyword">for</span> ; b != <span class="literal">nil</span>; b = b.overflow(t) &#123;</span><br><span class="line">        <span class="comment">// 由于b的初始值为“正常桶的bmap”，第一次先遍历“正常桶的bmap”</span></span><br><span class="line">		<span class="keyword">for</span> i := <span class="type">uintptr</span>(<span class="number">0</span>); i &lt; bucketCnt; i++ &#123;</span><br><span class="line">            <span class="comment">// 蓝色线条③ 对比key哈希的高8位</span></span><br><span class="line">            <span class="comment">// 对比哈希的高8位目的是为了加速</span></span><br><span class="line">			<span class="keyword">if</span> b.tophash[i] != top &#123;</span><br><span class="line">                <span class="comment">// emptyRest 标志位：表示当前位置已经是末尾了；删除操作会设置此标志位</span></span><br><span class="line">				<span class="keyword">if</span> b.tophash[i] == emptyRest &#123;</span><br><span class="line">					<span class="keyword">break</span> bucketloop</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">continue</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 找到了相同的hash高8位，则：找到对应索引位置i的key</span></span><br><span class="line">			k := add(unsafe.Pointer(b), dataOffset+i*<span class="type">uintptr</span>(t.keysize))</span><br><span class="line">			<span class="keyword">if</span> t.indirectkey() &#123;</span><br><span class="line">				k = *((*unsafe.Pointer)(k))</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 蓝色线条④ 对比key是不是一致</span></span><br><span class="line">			<span class="keyword">if</span> alg.equal(key, k) &#123;</span><br><span class="line">                <span class="comment">// 蓝色线条⑤ key是一致，则：获取对应索引位置的值</span></span><br><span class="line">				e := add(unsafe.Pointer(b), dataOffset+bucketCnt*<span class="type">uintptr</span>(t.keysize)+i*<span class="type">uintptr</span>(t.elemsize))</span><br><span class="line">				<span class="keyword">if</span> t.indirectelem() &#123;</span><br><span class="line">					e = *((*unsafe.Pointer)(e))</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 返回找到的结果</span></span><br><span class="line">				<span class="keyword">return</span> e</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 正常桶、溢出桶都没找到则返回 “空值”</span></span><br><span class="line">	<span class="keyword">return</span> unsafe.Pointer(&amp;zeroVal[<span class="number">0</span>])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>原创不易，年底了，征一波稿费，1元就行，在此谢过大家。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">参考：</span><br><span class="line">1.《Go语言设计与实现》https://draveness.me/golang/docs/part2-foundation/ch03-datastructure/golang-hashmap/</span><br><span class="line">2. Go源码版本1.13.8 https://github.com/golang/go/tree/go1.13.8/src</span><br></pre></td></tr></table></figure></span></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">参考：</span><br><span class="line">1.《Go语言设计与实现》https://draveness.me/golang/docs/part2-foundation/ch03-datastructure/golang-hashmap/</span><br><span class="line">2. Go源码版本1.13.8 https://github.com/golang/go/tree/go1.13.8/src</span><br></pre></td></tr></table></figure></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
         var options = {
             selector: '.gallery-item'
         };
@@ -474,7 +517,7 @@
         <section>
             <h2>About</h2>
             <div>
-                新一代轻量级「<a href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
             </div>
         </section>
         <section>
@@ -504,10 +547,10 @@
             <li>&copy; TIGERB.cn All right reserved. 津ICP备17006784号-2</li>
             <li><a href="https://juejin.im/user/5855e82d1b69e6006c9278b4" target="_blank">juejin</a></li>
             <li><a href="https://segmentfault.com/u/tigerb" target="_blank">Segmentfault</a></li>
-            <li><a href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
+            <li><a target="_blank" rel="noopener" href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
             <li><a href="http://tigerb.cn/go/#/patterns/">Go设计模式实战</a></li>
             <li><a href="http://tigerb.cn/go/#/kernal/">Go语言轻松进阶</a></li>
-            <li><a href="https://dayutalk.cn/">大愚Talk</a></li>
+            <li><a target="_blank" rel="noopener" href="https://dayutalk.cn/">大愚Talk</a></li>
         </ul>
     </div>
 </footer>
@@ -516,20 +559,30 @@
     <!-- After footer scripts -->
     
 <!-- jQuery -->
+
 <script src="/js/jquery.min.js"></script>
 
+
 <!-- skel -->
+
 <script src="/js/skel.min.js"></script>
 
+
 <!-- Custom Code -->
+
 <script src="/js/util.js"></script>
 
+
 <!--[if lte IE 8]>
+
 <script src="/js/ie/respond.min.js"></script>
+
 <![endif]-->
 
 <!-- Custom Code -->
+
 <script src="/js/main.js"></script>
+
 
 <!-- Gallery -->
 <script src="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>

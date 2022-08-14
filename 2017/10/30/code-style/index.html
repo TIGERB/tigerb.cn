@@ -28,7 +28,7 @@
 
     <!--Page Cover-->
     
-        <meta property="og:image" content="undefined"/>
+        <meta property="og:image" content=""/>
     
 
     <!-- Title -->
@@ -36,18 +36,26 @@
     <title>这两年多我写PHP业务代码的方式是如何进化的 - TIGERB</title>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/sass/main.css">
+    
+<link rel="stylesheet" href="/sass/main.css">
+
 
     <!--[if lt IE 8]>
-        <script src="/js/ie/html5shiv.js"></script>
+        
+<script src="/js/ie/html5shiv.js"></script>
+
     <![endif]-->
 
     <!--[if lt IE 8]>
-        <link rel="stylesheet" href="/sass/ie8.css">
+        
+<link rel="stylesheet" href="/sass/ie8.css">
+
     <![endif]-->
 
     <!--[if lt IE 9]>
-        <link rel="stylesheet" href="/sass/ie9.css">
+        
+<link rel="stylesheet" href="/sass/ie9.css">
+
     <![endif]-->
 
     <!-- Gallery -->
@@ -67,6 +75,7 @@
     })();
     </script>
 
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="TIGERB" type="application/atom+xml">
 </head>
 
 <body>
@@ -103,15 +112,15 @@
             </li>
         
             <li>
-                <a href="https://github.com/TIGERB">Github</a>
+                <a target="_blank" rel="noopener" href="https://github.com/TIGERB">Github</a>
             </li>
         
             <li>
-                <a href="https://segmentfault.com/u/tigerb">Segmentfault</a>
+                <a target="_blank" rel="noopener" href="https://segmentfault.com/u/tigerb">Segmentfault</a>
             </li>
         
             <li>
-                <a href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
+                <a target="_blank" rel="noopener" href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
             </li>
         
     </ul>
@@ -137,7 +146,7 @@
 
 
 <!-- Content -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css"><div class=".article-gallery" <h1="" id="曾今"><a href="#曾今" class="headerlink" title="曾今"></a>曾今<p>谁都有过迷茫期，下面是我开始PHP开发中，不断改变的代码组织方式。</p>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"><h1 id="曾今"><a href="#曾今" class="headerlink" title="曾今"></a>曾今</h1><p>谁都有过迷茫期，下面是我开始PHP开发中，不断改变的代码组织方式。</p>
 <ul>
 <li>初期：所有代码一股脑控制器controller<ul>
 <li>曾今只是简单的理解MVC</li>
@@ -161,15 +170,15 @@
 <p>度的把握，凡事都是灵活的，也不都是这样，认为足够简单的逻辑还是“业务代码控制器，模型层只写db的curd方法”。</p>
 <h4 id="依赖注入，懒加载，前置中间件"><a href="#依赖注入，懒加载，前置中间件" class="headerlink" title="依赖注入，懒加载，前置中间件"></a>依赖注入，懒加载，前置中间件</h4><ul>
 <li>依赖注入容器很重要，配上懒加载，减少代码，解耦依赖，提升性能<ul>
-<li>关于容器可以参考我之前简单的实现<a href="http://easy-php.tigerb.cn/#/?id=service-container" target="_blank" rel="noopener">http://easy-php.tigerb.cn/#/?id=service-container</a></li>
+<li>关于容器可以参考我之前简单的实现<a target="_blank" rel="noopener" href="http://easy-php.tigerb.cn/#/?id=service-container">http://easy-php.tigerb.cn/#/?id=service-container</a></li>
 </ul>
 </li>
 <li>前置中间件注入我们依赖的类<ul>
-<li>我实现的简单的前置中间件,示例挂载了一个gateway到控制器之前<a href="http://easy-php.tigerb.cn/#/?id=mvc-to-mcl" target="_blank" rel="noopener">http://easy-php.tigerb.cn/#/?id=mvc-to-mcl</a></li>
+<li>我实现的简单的前置中间件,示例挂载了一个gateway到控制器之前<a target="_blank" rel="noopener" href="http://easy-php.tigerb.cn/#/?id=mvc-to-mcl">http://easy-php.tigerb.cn/#/?id=mvc-to-mcl</a></li>
 </ul>
 </li>
 </ul>
-<h4 id="组件化代码"><a href="#组件化代码" class="headerlink" title="组件化代码"></a>组件化代码</h4><p>首先我们需要利用composer来拆分和组件化我们的代码，业务中简单的<strong>composer require</strong>即可复用我们的业务代码。但是有一个问题如果使用 <a href="https://packagist.org" target="_blank" rel="noopener">https://packagist.org</a> 需要把代码开源出去，和业务无关的工具类还好说，而且开源还是个好事情，但是和业务相关比较敏感的组件就有问题了，所以我们需要搭建一个私有的<strong>packagist</strong>， 私有packagist示例：<a href="http://packagist.tigerb.cn/" target="_blank" rel="noopener">http://packagist.tigerb.cn/</a>，具体搭建步骤见文末。</p>
+<h4 id="组件化代码"><a href="#组件化代码" class="headerlink" title="组件化代码"></a>组件化代码</h4><p>首先我们需要利用composer来拆分和组件化我们的代码，业务中简单的<strong>composer require</strong>即可复用我们的业务代码。但是有一个问题如果使用 <a target="_blank" rel="noopener" href="https://packagist.org/">https://packagist.org</a> 需要把代码开源出去，和业务无关的工具类还好说，而且开源还是个好事情，但是和业务相关比较敏感的组件就有问题了，所以我们需要搭建一个私有的<strong>packagist</strong>， 私有packagist示例：<a target="_blank" rel="noopener" href="http://packagist.tigerb.cn/">http://packagist.tigerb.cn/</a>，具体搭建步骤见文末。</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>目前让我接手一个项目我会从如下几个方面去组织我的php代码：</p>
 <ul>
 <li>composer组件化代码，依赖开源或私有packagist</li>
@@ -191,25 +200,29 @@
 </ul>
 <h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>不足还有很多，在这里只是把自己的想法分享出来，好的大家可以借鉴，不好的希望大家多多指正。</p>
 <p>THX~</p>
-<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><p><a href="https://github.com/composer/satis" target="_blank" rel="noopener">Satis</a>搭建私有的packagist过程，安装步骤如下:</p>
+<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><p><a target="_blank" rel="noopener" href="https://github.com/composer/satis">Satis</a>搭建私有的packagist过程，安装步骤如下:</p>
 <p>step 1:</p>
 <blockquote>
-<p>composer create-project composer/satis:dev-master –keep-vcs &amp;&amp; cd satis</p>
+<p>composer create-project composer&#x2F;satis:dev-master –keep-vcs &amp;&amp; cd satis</p>
 </blockquote>
 <p>step 2:</p>
 <blockquote>
 <p>touch satis.json</p>
 </blockquote>
-<p>satis.json文件的内容如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;packaglist-tigerb&quot;,</span><br><span class="line">  &quot;homepage&quot;: &quot;http://packaglist.tigerb.cn&quot;,</span><br><span class="line">  &quot;repositories&quot;: [</span><br><span class="line">    &#123; &quot;type&quot;: &quot;vcs&quot;, &quot;url&quot;: &quot;http://github.com/tigerb/easy-mipush&quot; &#125;,</span><br><span class="line">    &#123; &quot;type&quot;: &quot;vcs&quot;, &quot;url&quot;: &quot;http://github.com/easy-framework/easy-router&quot;&#125;</span><br><span class="line">  ],</span><br><span class="line">  &quot;require-all&quot;: true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>satis.json文件的内容如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;packaglist-tigerb&quot;,</span><br><span class="line">  &quot;homepage&quot;: &quot;http://packaglist.tigerb.cn&quot;,</span><br><span class="line">  &quot;repositories&quot;: [</span><br><span class="line">    &#123; &quot;type&quot;: &quot;vcs&quot;, &quot;url&quot;: &quot;http://github.com/tigerb/easy-mipush&quot; &#125;,</span><br><span class="line">    &#123; &quot;type&quot;: &quot;vcs&quot;, &quot;url&quot;: &quot;http://github.com/easy-framework/easy-router&quot;&#125;</span><br><span class="line">  ],</span><br><span class="line">  &quot;require-all&quot;: true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>step 3:</p>
 <blockquote>
-<p>php bin/satis build ./satis.json &lt;你的web servser项目目录，比如我的路径/mnt/www&gt;</p>
+<p>php bin&#x2F;satis build .&#x2F;satis.json &lt;你的web servser项目目录，比如我的路径&#x2F;mnt&#x2F;www&gt;</p>
 </blockquote>
 <p>step 4:</p>
 <blockquote>
 <p>配置nginx server 配置，重启nginx即可</p>
 </blockquote>
-<h5 id="如何使用？"><a href="#如何使用？" class="headerlink" title="如何使用？"></a>如何使用？</h5><p>简单的配置composer.json即可，增加新的repositories地址，具体示例配置如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;name&quot;: &quot;tigerb/test&quot;,</span><br><span class="line">    &quot;authors&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;name&quot;: &quot;TIGERB&quot;,</span><br><span class="line">            &quot;email&quot;: &quot;tigerbcode@gmail.com&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    &quot;repositories&quot;:[</span><br><span class="line">        &#123;&quot;type&quot;:&quot;composer&quot;, &quot;url&quot;: &quot;http://packagist.tigerb.cn&quot;&#125;</span><br><span class="line">    ],</span><br><span class="line">    &quot;config&quot;: &#123;</span><br><span class="line">        &quot;secure-http&quot;: false</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;require&quot;: &#123;</span><br><span class="line">        &quot;tigerb/easy-mipush&quot;: &quot;^0.1.0&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h5 id="如何使用？"><a href="#如何使用？" class="headerlink" title="如何使用？"></a>如何使用？</h5><p>简单的配置composer.json即可，增加新的repositories地址，具体示例配置如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;name&quot;: &quot;tigerb/test&quot;,</span><br><span class="line">    &quot;authors&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;name&quot;: &quot;TIGERB&quot;,</span><br><span class="line">            &quot;email&quot;: &quot;tigerbcode@gmail.com&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    &quot;repositories&quot;:[</span><br><span class="line">        &#123;&quot;type&quot;:&quot;composer&quot;, &quot;url&quot;: &quot;http://packagist.tigerb.cn&quot;&#125;</span><br><span class="line">    ],</span><br><span class="line">    &quot;config&quot;: &#123;</span><br><span class="line">        &quot;secure-http&quot;: false</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;require&quot;: &#123;</span><br><span class="line">        &quot;tigerb/easy-mipush&quot;: &quot;^0.1.0&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 </div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
         var options = {
             selector: '.gallery-item'
@@ -250,7 +263,7 @@
         <section>
             <h2>About</h2>
             <div>
-                新一代轻量级「<a href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
             </div>
         </section>
         <section>
@@ -280,10 +293,10 @@
             <li>&copy; TIGERB.cn All right reserved. 津ICP备17006784号-2</li>
             <li><a href="https://juejin.im/user/5855e82d1b69e6006c9278b4" target="_blank">juejin</a></li>
             <li><a href="https://segmentfault.com/u/tigerb" target="_blank">Segmentfault</a></li>
-            <li><a href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
+            <li><a target="_blank" rel="noopener" href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
             <li><a href="http://tigerb.cn/go/#/patterns/">Go设计模式实战</a></li>
             <li><a href="http://tigerb.cn/go/#/kernal/">Go语言轻松进阶</a></li>
-            <li><a href="https://dayutalk.cn/">大愚Talk</a></li>
+            <li><a target="_blank" rel="noopener" href="https://dayutalk.cn/">大愚Talk</a></li>
         </ul>
     </div>
 </footer>
@@ -292,20 +305,30 @@
     <!-- After footer scripts -->
     
 <!-- jQuery -->
+
 <script src="/js/jquery.min.js"></script>
 
+
 <!-- skel -->
+
 <script src="/js/skel.min.js"></script>
 
+
 <!-- Custom Code -->
+
 <script src="/js/util.js"></script>
 
+
 <!--[if lte IE 8]>
+
 <script src="/js/ie/respond.min.js"></script>
+
 <![endif]-->
 
 <!-- Custom Code -->
+
 <script src="/js/main.js"></script>
+
 
 <!-- Gallery -->
 <script src="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
