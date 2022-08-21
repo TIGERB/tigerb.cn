@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Description-->
+    
+        <meta name="description" content="Trying to be the person you want to be.">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="TIGERB">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="彻底理解Go语言栈内存/堆内存"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="TIGERB"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content=""/>
+    
+
+    <!-- Title -->
+    
+    <title>彻底理解Go语言栈内存/堆内存 - TIGERB</title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/sass/main.css">
+
+
+    <!--[if lt IE 8]>
+        
+<script src="/js/ie/html5shiv.js"></script>
+
+    <![endif]-->
+
+    <!--[if lt IE 8]>
+        
+<link rel="stylesheet" href="/sass/ie8.css">
+
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+        
+<link rel="stylesheet" href="/sass/ie9.css">
+
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?30c7e7d53256334a8dc1cf524fcc77f6";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="TIGERB" type="application/atom+xml">
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Menu -->
+        <!-- Header -->
+<header id="header">
+    <div class="inner">
+
+        <!-- Logo -->
+        <a href="/" class="logo">
+            <span class="symbol"><img src="http://cdn.tigerb.cn/20190707142019.png" alt="" /></span><span class="title">TIGERB</span>
+        </a>
+
+        <!-- Nav -->
+        <nav>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+    <h2>Menu</h2>
+    <ul>
+        
+            <li>
+                <a href="/">首页</a>
+            </li>
+        
+            <li>
+                <a target="_blank" rel="noopener" href="https://github.com/TIGERB">Github</a>
+            </li>
+        
+            <li>
+                <a target="_blank" rel="noopener" href="https://segmentfault.com/u/tigerb">Segmentfault</a>
+            </li>
+        
+            <li>
+                <a target="_blank" rel="noopener" href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
+            </li>
+        
+    </ul>
+</nav>
+
+
+        <div id="main">
+            <div class="inner">
+
+                <!-- Main Content -->
+                
+
+    <h1 class="title">彻底理解Go语言栈内存/堆内存</h1>
+    <div class="meta">
+        2022-08-21
+    </div>
+
+
+    <span class="image main"><img src="No Code No Life" alt="" /></span>
+
+
+<!-- Gallery -->
+
+
+<!-- Content -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"><h1 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h1><p>本文将从如下6个方向层层递进，帮助大家彻底理解Go语言的栈内存和堆内存。</p>
+<ul>
+<li>计算机为什么需要内存？</li>
+<li>为什么需要栈内存？</li>
+<li>为什么需要堆内存？</li>
+<li>Go语言分配的是虚拟内存</li>
+<li>Go语言栈内存的分配</li>
+<li>Go语言堆内存的分配</li>
+</ul>
+<h1 id="计算机为什么需要内存？"><a href="#计算机为什么需要内存？" class="headerlink" title="计算机为什么需要内存？"></a>计算机为什么需要内存？</h1><p>计算机是运行自动化程序的载体，程序(或称之为进程)由可执行代码被执行后产生。那么计算机在运行程序的过程中为什么需要「内存」呢？为了轻松理解这个问题，我们先来简单看看：</p>
+<ul>
+<li>代码的本质</li>
+<li>可执行代码被执行后，程序的运行过程</li>
+</ul>
+<h2 id="代码的本质"><a href="#代码的本质" class="headerlink" title="代码的本质"></a>代码的本质</h2><p>简单来看代码主要包含两部分：</p>
+<ul>
+<li>指令部分：中央处理器CPU可执行的指令</li>
+<li>数据部分：常量等</li>
+</ul>
+<p>代码包含了指令，代码被转化为可执行二进制文件，被执行后加载到内存中，中央处理器CPU通过内存获取指令，图示如下：</p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220731175631.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220731175631.png" style="width:90%"></a>
+</p>
+
+<p>详细请移步历史文章<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/rUwXUammEJ2vkmN7CFxW9w">「回到本真，代码到底是什么？」</a></p>
+<h2 id="程序的运行过程"><a href="#程序的运行过程" class="headerlink" title="程序的运行过程"></a>程序的运行过程</h2><p>可执行代码文件被执行之后，代码中的待执行指令被加载到了内存当中。这时CPU就可以从内存中获取指令、并执行指令。</p>
+<p>CPU执行指令简易过程分为三步：</p>
+<ul>
+<li>取指：<strong>CPU控制单元</strong>从内存中获取指令</li>
+<li>译指：<strong>CPU控制单元</strong>解析从内存中获取指令</li>
+<li>执行：<strong>CPU运算单元</strong>负责执行具体的指令操作</li>
+</ul>
+<p>我们通过一个简易的时序图来看看CPU获取并执行指令的过程：</p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220807232114.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220807232114.png" style="width:100%"></a>
+</p>
+
+<p>详细请移步历史文章<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/w17lFYeYg9chHBi6x4o_5A">「回到本真，代码是如何运行的？」</a></p>
+<h2 id="内存的作用"><a href="#内存的作用" class="headerlink" title="内存的作用"></a>内存的作用</h2><p>通过以上我们可以基本看出「内存」在计算机中扮演的角色：</p>
+<ul>
+<li>暂存二进制可执行代码文件中的指令、预置数据(常量)等</li>
+<li>暂存指令执行过程中的中间数据</li>
+<li>等等</li>
+</ul>
+<p>至此我们基本明白了内存存在的意义。但是呢，我们又经常会听到关于「栈内存」、「堆内存」的概念，那「栈内存」和「堆内存」到底是什么呢？接下来我们继续来看看这个问题。</p>
+<h1 id="为什么需要栈内存？"><a href="#为什么需要栈内存？" class="headerlink" title="为什么需要栈内存？"></a>为什么需要栈内存？</h1><p>程序在使用内存的过程中，不仅仅只需要关注内存的分配问题，还需要关注到内存使用完毕的回收问题，这就是内存管理中面临的最大两个问题：</p>
+<ul>
+<li>内存的分配</li>
+<li>内存的回收</li>
+</ul>
+<blockquote>
+<p>有没有简单、高效、且通用的办法统一解决这个内存分配问题呢？</p>
+</blockquote>
+<p>答：最简单、高效地分配和回收方式就是对一段<strong>连续内存</strong>的「<strong>线性分配</strong>」，「栈内存」的分配就采用了这种方式。</p>
+<p>「栈内存」的简易管理过程：</p>
+<ol>
+<li>栈内存分配逻辑：current - alloc</li>
+</ol>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220807234036.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220807234036.png" style="width:80%"></a>
+</p>
+
+<ol start="2">
+<li>栈内存释放逻辑：current + alloc</li>
+</ol>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220807234046.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220807234046.png" style="width:80%"></a>
+</p>
+
+<p>通过利用「栈内存」，CPU在执行指令过程中可以高效的存储临时变量。其次：</p>
+<ul>
+<li>栈内存的分配过程：看起来像不像数据结构「栈」的入栈过程。</li>
+<li>栈内存的释放过程：看起来像不像数据结构「栈」的出栈过程。</li>
+</ul>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220807235914.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220807235914.png" style="width:100%"></a>
+</p>
+
+<p>所以同时你应该也理解了「为什么称之为栈内存？」。<strong>「栈内存」是计算机对连续内存的采取的「线性分配」管理方式，便于高效存储指令运行过程中的临时变量。</strong></p>
+<h1 id="为什么需要堆内存？"><a href="#为什么需要堆内存？" class="headerlink" title="为什么需要堆内存？"></a>为什么需要堆内存？</h1><p>假如函数A内变量是个指针且被函数B外的代码依赖，如果对应变量内存被回收，这个指针就成了野指针不安全。怎么解决这个问题呢？</p>
+<p>答：这就是「堆内存」存在的意义，Go语言会在代码编译期间通过「<strong>逃逸分析</strong>」把分配在「栈」上的变量分配到「堆」上去。</p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220808002156.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220808002156.png" style="width:80%"></a>
+</p>
+
+<blockquote>
+<p>「堆内存」如何回收呢？</p>
+</blockquote>
+<p>答：堆内存通过「垃圾回收器」回收，关于「垃圾回收器」后续我们详解。</p>
+<h1 id="Go语言分配的是虚拟内存"><a href="#Go语言分配的是虚拟内存" class="headerlink" title="Go语言分配的是虚拟内存"></a>Go语言分配的是虚拟内存</h1><p>通过以上我们了解了「内存」、「栈内存」、「堆内存」存在的意义。除此之外，还有一个重要的知识点：程序和操作系统实际操作的都是虚拟内存，最终由CPU通过<strong>内存管理单元MMU</strong>(Memory Manage Unit)把虚拟内存的地址转化为实际的物理内存地址。图示如下：</p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210129194928.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210129194928.png" style="width:80%"></a>
+</p>
+
+<p>使用虚拟内存的原因：</p>
+<ul>
+<li>对于我们的进程而言，可使用的内存是连续的</li>
+<li>安全，防止了进程直接对物理内存的操作(如果进程可以直接操作物理内存，那么存在某个进程篡改其他进程数据的可能)</li>
+<li>提升物理内存的利用率，当进程真正要使用物理内存时再分配</li>
+<li>虚拟内存和物理内存是通过MMU(管理单元内存Memory Management Unit)映射的</li>
+</ul>
+<p>所以，一个很重要的知识点：</p>
+<blockquote>
+<p>结论：Go语言源代码对「栈内存」和「堆内存」的分配、释放等操作，都是对虚拟内存的操作，最终中央处理器CPU会统一通过MMU(管理单元内存Memory Management Unit)转化为实际的物理内存。</p>
+</blockquote>
+<p>也就是说Go语言源代码中：</p>
+<ul>
+<li>「栈内存」的分配或释放都是对虚拟内存的操作</li>
+<li>「堆内存」的分配或释放都是对虚拟内存的操作</li>
+</ul>
+<p align="center">
+<a class="gallery-item"><img src="http://cdn.tigerb.cn/20220818132131.png
+" style="width:70%"></a>
+
+<p>接着我们分别通过<strong>分配时机</strong>、<strong>分配过程</strong>两部分，来看看Go语言栈内存和堆内存的分配。</p>
+<h1 id="Go语言栈内存的分配"><a href="#Go语言栈内存的分配" class="headerlink" title="Go语言栈内存的分配"></a>Go语言栈内存的分配</h1><h2 id="Go语言栈内存分配的时机"><a href="#Go语言栈内存分配的时机" class="headerlink" title="Go语言栈内存分配的时机"></a>Go语言栈内存分配的时机</h2><ol>
+<li>创建<code>Goroutinue</code>时<ul>
+<li>1.1 创建<code>g0</code></li>
+<li>1.2 创建<code>g</code></li>
+</ul>
+</li>
+<li>栈扩容时</li>
+</ol>
+<h3 id="栈内存分配时机-创建Goroutinue时"><a href="#栈内存分配时机-创建Goroutinue时" class="headerlink" title="栈内存分配时机-创建Goroutinue时"></a>栈内存分配时机-创建<code>Goroutinue</code>时</h3><p>创建<code>g0</code>函数代码片段：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// src/runtime/proc.go::1720</span></span><br><span class="line"><span class="comment">// 创建 m</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">allocm</span><span class="params">(_p_ *p, fn <span class="keyword">func</span>()</span></span>, id <span class="type">int64</span>) *m &#123;</span><br><span class="line">    <span class="comment">// ...略</span></span><br><span class="line">    <span class="keyword">if</span> iscgo || mStackIsSystemAllocated() &#123;</span><br><span class="line">		mp.g0 = malg(<span class="number">-1</span>)</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 创建g0 并申请8KB栈内存</span></span><br><span class="line">        <span class="comment">// 依赖的malg函数</span></span><br><span class="line">		mp.g0 = malg(<span class="number">8192</span> * sys.StackGuardMultiplier)</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">// ...略</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>创建<code>g</code>函数代码片段：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// src/runtime/proc.go::3999</span></span><br><span class="line"><span class="comment">// 创建一个带有任务fn的goroutine</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">newproc1</span><span class="params">(fn *funcval, argp unsafe.Pointer, narg <span class="type">int32</span>, callergp *g, callerpc <span class="type">uintptr</span>)</span></span> *g &#123;</span><br><span class="line">    <span class="comment">// ...略</span></span><br><span class="line">    newg := gfget(_p_)</span><br><span class="line">    <span class="keyword">if</span> newg == <span class="literal">nil</span> &#123;</span><br><span class="line">      <span class="comment">// 全局队列、本地队列找不到g 则 创建一个全新的goroutine</span></span><br><span class="line">      <span class="comment">// _StackMin = 2048</span></span><br><span class="line">      <span class="comment">// 申请2KB栈内存</span></span><br><span class="line">      <span class="comment">// 依赖的malg函数</span></span><br><span class="line">      newg = malg(_StackMin)</span><br><span class="line">      casgstatus(newg, _Gidle, _Gdead)</span><br><span class="line">      allgadd(newg)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// ...略</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上都依赖<code>malg</code>函数代码片段，其作用是创建一个全新<code>g</code>：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// src/runtime/proc.go::3943</span></span><br><span class="line"><span class="comment">// 创建一个指定栈内存的g</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">malg</span><span class="params">(stacksize <span class="type">int32</span>)</span></span> *g &#123;</span><br><span class="line">	newg := <span class="built_in">new</span>(g)</span><br><span class="line">	<span class="keyword">if</span> stacksize &gt;= <span class="number">0</span> &#123;</span><br><span class="line">		<span class="comment">// ...略</span></span><br><span class="line">		systemstack(<span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">            <span class="comment">// 分配栈内存</span></span><br><span class="line">			newg.stack = stackalloc(<span class="type">uint32</span>(stacksize))</span><br><span class="line">		&#125;)</span><br><span class="line">		<span class="comment">// ...略</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> newg</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">备注：</span><br><span class="line">为什么g0申请8KB栈内存而g申请2KB栈内存？</span><br><span class="line">不在本章节范围，后续Go的调度系列会介绍。</span><br></pre></td></tr></table></figure>
+
+<h3 id="栈内存分配时机-栈扩容"><a href="#栈内存分配时机-栈扩容" class="headerlink" title="栈内存分配时机-栈扩容"></a>栈内存分配时机-栈扩容</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// src/runtime/stack.go::838</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">copystack</span><span class="params">(gp *g, newsize <span class="type">uintptr</span>)</span></span> &#123;</span><br><span class="line">	<span class="comment">// ...略</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 分配新的栈空间</span></span><br><span class="line">	<span class="built_in">new</span> := stackalloc(<span class="type">uint32</span>(newsize))</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...略</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>结论：创建Goroutine和栈扩容时，栈内存的分配都是由函数<code>stackalloc</code>分配。</p>
+</blockquote>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220405133309.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220405133309.png" style="width:50%"></a>
+</p>
+
+<p>所以，我们通过分析<code>stackalloc</code>函数就可以知道栈内存的分配过程了，具体如下。</p>
+<h2 id="栈内存分配过程"><a href="#栈内存分配过程" class="headerlink" title="栈内存分配过程"></a>栈内存分配过程</h2><p>Go语言栈内存的分配按待分配的栈大小分为两大类：</p>
+<ul>
+<li>小于32KB的栈内存</li>
+<li>大于32KB的栈内存</li>
+</ul>
+<h3 id="小于32KB栈分配过程"><a href="#小于32KB栈分配过程" class="headerlink" title="小于32KB栈分配过程"></a>小于32KB栈分配过程</h3><ol>
+<li>先去<code>M</code>线程缓存<code>mcache</code>的栈内存缓存<code>stackcache</code>中分配：</li>
+</ol>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220819133249.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220819133249.png" style="width:90%"></a>
+</p>
+
+<ol start="2">
+<li>如果<code>stackcache</code>内存不足，则从全局栈内存缓存池<code>stackpool</code>中分配：</li>
+</ol>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220405234800.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220405234800.png" style="width:90%"></a>
+</p>
+
+<ol start="3">
+<li>如果<code>stackpool</code>内存不足，则从逻辑处理器结构<code>p</code>中的<code>p.pagecache</code>中分配：</li>
+</ol>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220819133321.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220819133321.png" style="width:90%"></a>
+</p>
+
+<ol start="4">
+<li>如果<code>p.pagecache</code>内存不足，则从堆<code>mheap</code>中分配：</li>
+</ol>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220819133338.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220819133338.png" style="width:90%"></a>
+</p>
+
+
+<h3 id="大于等于32KB栈分配过程"><a href="#大于等于32KB栈分配过程" class="headerlink" title="大于等于32KB栈分配过程"></a>大于等于32KB栈分配过程</h3><ol>
+<li>直接从全局栈内存缓存池<code>stackLarge</code>中分配：</li>
+</ol>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220405234822.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220405234822.png" style="width:90%"></a>
+</p>
+
+<ol start="2">
+<li>全局栈内存缓存池<code>stackLarge</code>不足，则从逻辑处理器结构<code>p</code>中的<code>p.pagecache</code>中分配，如果<code>p.pagecache</code>则去堆上<code>mheap</code>分配：</li>
+</ol>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220405234828.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220405234828.png" style="width:90%"></a>
+</p>
+
+<h1 id="Go语言堆内存的分配"><a href="#Go语言堆内存的分配" class="headerlink" title="Go语言堆内存的分配"></a>Go语言堆内存的分配</h1><p>想要更好的理解Go堆内存分配需要先了解Go的内存三层架构以及Go的内存管理单元<code>mspan</code>。历史文章请查看：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/oOcygiKsjvDkCCfHhC5ylw">「浅析Go内存管理架构」</a></li>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzA5MDEwMDYyOA==&mid=2454620147&idx=1&sn=0cf6b70a3dd47e8288701183d91649e8&chksm=87aae108b0dd681e46c2616958c0a6a8fecd9ebbd2b728ef3a1cd43e9f38e3ba5e27951e0dae#rd">「9张图轻松吃透Go内存管理单元」</a></li>
+</ul>
+<h2 id="Go语言堆内存分配时机"><a href="#Go语言堆内存分配时机" class="headerlink" title="Go语言堆内存分配时机"></a>Go语言堆内存分配时机</h2><p>判断一个变量是否应该分配到「堆内存」的关键点就是：代码编译阶段，编译器会通过<strong>逃逸分析</strong>判断并标记上该变量是否需要分配到堆上。</p>
+<p>通常我们在创建如下变量时，变量都有可能被分配到堆上：</p>
+<ul>
+<li>字节字符串<code>[]byte</code></li>
+<li>切片<code>Slice</code><ul>
+<li>创建切片时</li>
+<li>切片扩容时</li>
+<li>拷贝切片时</li>
+</ul>
+</li>
+<li>创建<code>Channel</code>时</li>
+<li><code>Map</code><ul>
+<li>创建<code>Map</code>时</li>
+<li><code>Map</code>扩容时</li>
+</ul>
+</li>
+<li>等等</li>
+</ul>
+<p>涉及相关数据类型的写操作函数整理如下：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>名称</th>
+<th>描述</th>
+<th>代码位置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>切片</td>
+<td><code>makeslice(et *_type, len, cap int) unsafe.Pointer</code></td>
+<td>创建切片</td>
+<td>src&#x2F;runtime&#x2F;slice.go::83</td>
+</tr>
+<tr>
+<td>切片</td>
+<td><code>growslice(et *_type, old slice, cap int) slice</code></td>
+<td>切片扩容</td>
+<td>src&#x2F;runtime&#x2F;slice.go::125</td>
+</tr>
+<tr>
+<td>切片</td>
+<td><code>makeslicecopy(et *_type, tolen int, fromlen int, from unsafe.Pointer) unsafe.Pointer</code></td>
+<td>copy切片</td>
+<td>src&#x2F;runtime&#x2F;slice.go::36</td>
+</tr>
+<tr>
+<td>字节字符串</td>
+<td><code>gobytes(p *byte, n int) (b []byte)</code></td>
+<td>转换字符串<code>string</code>为<code>[]byte</code>类型</td>
+<td>src&#x2F;runtime&#x2F;string.go::301</td>
+</tr>
+<tr>
+<td>字节字符串</td>
+<td><code>slicebytetostring(buf *tmpBuf, ptr *byte, n int) (str string)</code></td>
+<td>转换字节字符串<code>[]byte</code>为类型<code>string</code></td>
+<td>src&#x2F;runtime&#x2F;string.go::80</td>
+</tr>
+<tr>
+<td>字节字符串</td>
+<td><code>rawstring(size int) (s string, b []byte)</code></td>
+<td>按大小初始化一个新的<code>string</code>类型</td>
+<td>src&#x2F;runtime&#x2F;string.go::83</td>
+</tr>
+<tr>
+<td>字节字符串</td>
+<td><code>rawbyteslice(size int) (b []byte)</code></td>
+<td>按大小初始化一个新的<code>[]byte</code>类型</td>
+<td>src&#x2F;runtime&#x2F;string.go::83</td>
+</tr>
+<tr>
+<td>字节字符串</td>
+<td><code>rawruneslice(size int) (b []rune)</code></td>
+<td>按大小初始化一个新的<code>[]rune</code>类型</td>
+<td>src&#x2F;runtime&#x2F;string.go::83</td>
+</tr>
+<tr>
+<td>Channel</td>
+<td><code>makechan(t *chantype, size int) *hchan</code></td>
+<td>创建一个<code>chan</code></td>
+<td>src&#x2F;runtime&#x2F;chan.go::71</td>
+</tr>
+<tr>
+<td>数组</td>
+<td><code>func newarray(typ *_type, n int) unsafe.Pointer</code></td>
+<td>初始化一个数组</td>
+<td>src&#x2F;runtime&#x2F;malloc.go::1191</td>
+</tr>
+<tr>
+<td>Map</td>
+<td><code>mapassign(t *maptype, h *hmap, key unsafe.Pointer) unsafe.Pointer</code></td>
+<td>map申请内存</td>
+<td>src&#x2F;runtime&#x2F;map.go::571</td>
+</tr>
+<tr>
+<td>Map</td>
+<td><code>func (h *hmap) newoverflow(t *maptype, b *bmap) *bmap</code></td>
+<td>map申请溢出桶</td>
+<td>src&#x2F;runtime&#x2F;map.go::245</td>
+</tr>
+<tr>
+<td>等等</td>
+<td>…</td>
+<td>…</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>这里我们以初始化切片的源代码为例来看看切片何时被分配到堆上的逻辑判断：</p>
+<ul>
+<li>理论上直接分配到栈内存上</li>
+<li>编译器进行<strong>逃逸分析</strong>，判断并标记该变量是否需要分配到堆上<ul>
+<li>否：直接分配在栈上</li>
+<li>是：调用<code>src/runtime/slice.go::makeslice()</code>分配到堆上</li>
+</ul>
+</li>
+</ul>
+<p>切片分配过程源代码如下：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 代码位置：src/cmd/compile/internal/gc/walk.go::1316</span></span><br><span class="line"><span class="comment">// 初始化切片</span></span><br><span class="line"><span class="keyword">case</span> OMAKESLICE:</span><br><span class="line">    <span class="comment">// ...略...</span></span><br><span class="line">    <span class="comment">// 逃逸标识，是否需要逃逸到堆上</span></span><br><span class="line">    <span class="keyword">if</span> n.Esc == EscNone &#123;</span><br><span class="line">        <span class="comment">// ...略...</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 不需要逃逸</span></span><br><span class="line">        <span class="comment">// 直接栈上分配内存</span></span><br><span class="line">        t = types.NewArray(t.Elem(), i) <span class="comment">// [r]T</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// ...略...</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 需要内存逃逸到堆上</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// ...略...</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 默认使用makeslice64函数从堆上分配内存</span></span><br><span class="line">        fnname := <span class="string">&quot;makeslice64&quot;</span></span><br><span class="line">        argtype := types.Types[TINT64]</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ...略...</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">len</span>.Type.IsKind(TIDEAL) || maxintval[<span class="built_in">len</span>.Type.Etype].Cmp(maxintval[TUINT]) &lt;= <span class="number">0</span>) &amp;&amp;</span><br><span class="line">            (<span class="built_in">cap</span>.Type.IsKind(TIDEAL) || maxintval[<span class="built_in">cap</span>.Type.Etype].Cmp(maxintval[TUINT]) &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">// 校验通过，则</span></span><br><span class="line">            <span class="comment">// 使用makeslice函数从堆上分配内存</span></span><br><span class="line">            fnname = <span class="string">&quot;makeslice&quot;</span></span><br><span class="line">            argtype = types.Types[TINT]</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ...略...</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 调用上面指定的runtime函数</span></span><br><span class="line">        m.Left = mkcall1(fn, types.Types[TUNSAFEPTR], init, typename(t.Elem()), conv(<span class="built_in">len</span>, argtype), conv(<span class="built_in">cap</span>, argtype))</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ...略...</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>最终分配堆内存的地方都会依赖函数<code>mallocgc</code>，我们通过阅读<code>mallocgc</code>的代码就可以看到堆内存的分配过程。</p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220405235337.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220405235337.png" style="width:30%"></a>
+</p>
+
+<h2 id="Go语言堆内存分配过程"><a href="#Go语言堆内存分配过程" class="headerlink" title="Go语言堆内存分配过程"></a>Go语言堆内存分配过程</h2><p>堆内存的分配按对象的大小分，主要分为三大类：</p>
+<ul>
+<li>微对象 0 &lt; Micro Object &lt; 16B</li>
+<li>小对象 16B &#x3D;&lt; Small Object &lt;&#x3D; 32KB</li>
+<li>大对象 32KB &lt; Large Object</li>
+</ul>
+<p>「微对象」和「小对象」<strong>通常</strong>通过逻辑处理器结构<code>P</code>的线程缓存<code>mcache</code>分配，「大对象」直接从堆上<code>mheap</code>中分配，如下图所示：</p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220405235126.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220405235126.png" style="width:90%"></a>
+</p>
+
+<ul>
+<li>线程缓存<code>mcache</code>的<code>tiny</code>结构主要负责分配「微对象」</li>
+<li>线程缓存<code>mcache</code>的<code>alloc</code>结构主要负责分配「小对象」</li>
+</ul>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220405235250.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220405235250.png" style="width:90%"></a>
+</p>
+
+<h3 id="微对象的分配过程"><a href="#微对象的分配过程" class="headerlink" title="微对象的分配过程"></a>微对象的分配过程</h3><blockquote>
+<p>微对象 0 &lt; Micro Object &lt; 16B</p>
+</blockquote>
+<ol>
+<li>线程缓存<code>mcache</code>的<code>tiny</code>内存充足，则直接分配「微对象」所需内存，图示如下：</li>
+</ol>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220405234253.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220405234253.png" style="width:90%"></a>
+</p>
+
+<ol start="2">
+<li>线程缓存<code>mcache</code>的<code>tiny</code>内存不足，先去线程缓存<code>mcache</code>的<code>alloc</code>申请16B给<code>tiny</code>，再分配「微对象」所需内存，简易图示如下：</li>
+</ol>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220405234330.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220405234330.png" style="width:90%"></a>
+</p>
+
+<p>申请16B详细过程图示如下：</p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220405234341.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220405234341.png" style="width:90%"></a>
+</p>
+
+<h3 id="小对象的分配过程"><a href="#小对象的分配过程" class="headerlink" title="小对象的分配过程"></a>小对象的分配过程</h3><blockquote>
+<p>小对象 16B &#x3D;&lt; Small Object &lt;&#x3D; 32KB</p>
+</blockquote>
+<ol>
+<li>线程缓存<code>mcache</code>的<code>alloc</code>充足，则直接分配「小对象」所需内存，简易图示如下：</li>
+</ol>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220820172242.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220820172242.png" style="width:60%"></a>
+</p>
+
+<p>详细分配过程图示如下：</p>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220405234425.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220405234425.png" style="width:90%"></a>
+</p>
+
+<ol start="2">
+<li>线程缓存<code>mcache</code>的<code>alloc</code>不足，则去中央缓存<code>mcentral</code>获取一个<code>mspan</code>，再分配「小对象」所需内存，图示如下：</li>
+</ol>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220405234513.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220405234513.png" style="width:90%"></a>
+</p>
+
+<ol start="3">
+<li>线程缓存<code>mcache</code>的<code>alloc</code>不足，且中央缓存<code>mcentral</code>不足，则去逻辑处理器结构的<code>p.pagecache</code>分配，如果<code>pagecache</code>不足，直接去堆上<code>mheap</code>获取一个<code>mspan</code>，再分配「小对象」所需内存，图示如下：</li>
+</ol>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220405234521.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220405234521.png" style="width:90%"></a>
+</p>
+
+<h3 id="大对象的分配过程"><a href="#大对象的分配过程" class="headerlink" title="大对象的分配过程"></a>大对象的分配过程</h3><blockquote>
+<p>大对象 32KB &lt; Large Object</p>
+</blockquote>
+<ol>
+<li>逻辑处理器结构的<code>pagecache</code>充足，则直接分配「大对象」所需内存，图示如下：</li>
+</ol>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220405234609.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220405234609.png" style="width:60%"></a>
+</p>
+
+<ol start="2">
+<li>逻辑处理器结构的<code>pagecache</code>不足，则直接去堆上<code>mheap</code>分配「大对象」所需内存，图示如下：</li>
+</ol>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220405234616.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220405234616.png" style="width:60%"></a>
+</p>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li>Go语言源代码中「栈内存」和「堆内存」的分配都是虚拟内存，最终CPU的MMU会把虚拟内存转化为物理内存。</li>
+<li>Go语言编译期间会进行逃逸分析，判断并标记变量是否需要分配到堆上，比如创建一个<code>Map</code>、<code>Slice</code>时。</li>
+<li>栈内存分配<ul>
+<li>小于32KB的栈内存<ul>
+<li>来源优先级1：线程缓存<code>mcache</code></li>
+<li>来源优先级2：全局缓存<code>stackpool</code></li>
+<li>来源优先级3：逻辑处理器结构<code>p.pagecache</code></li>
+<li>来源优先级4：堆<code>mheap</code></li>
+</ul>
+</li>
+<li>大于等于32KB的栈内存<ul>
+<li>来源优先级1：全局缓存<code>stackLarge</code></li>
+<li>来源优先级2：逻辑处理器结构<code>p.pagecache</code></li>
+<li>来源优先级3：堆<code>mheap</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>堆内存分配<ul>
+<li>微对象 0 &lt; Micro Object &lt; 16B<ul>
+<li>来源优先级1：线程缓存<code>mcache.tiny</code></li>
+<li>来源优先级2：线程缓存<code>mcache.alloc</code></li>
+</ul>
+</li>
+<li>小对象 16B &#x3D;&lt; Small Object &lt;&#x3D; 32KB<ul>
+<li>来源优先级1：线程缓存<code>mcache.alloc</code></li>
+<li>来源优先级2：中央缓存<code>mcentral</code></li>
+<li>来源优先级3：逻辑处理器结构<code>p.pagecache</code></li>
+<li>来源优先级4：堆<code>mheap</code></li>
+</ul>
+</li>
+<li>大对象 32KB &lt; Large Object<ul>
+<li>来源优先级1：逻辑处理器结构<code>p.pagecache</code></li>
+<li>来源优先级2：堆<code>mheap</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>「栈内存」也来源于堆<code>mheap</code></li>
+</ul>
+<p align="center">
+  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20220503213918.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20220503213918.png" style="width:80%"></a>
+</p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+
+<!-- Tags -->
+
+
+
+<div class="tags">
+    <a href="/tags/Go/" class="button small">Go</a>
+</div>
+
+
+
+<!-- Qrcode -->
+<div width="100px">
+    <img src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg" alt="TIGERB" width="300px" style="display:block; margin: 30px auto 0px auto;">
+</div>
+
+<!-- Comments -->
+<div>
+    
+
+
+</div>
+
+
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+        <section>
+            <h2>About</h2>
+            <div>
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+            </div>
+        </section>
+        <section>
+            <h2>Follow</h2>
+            <ul class="icons">
+                
+                    <li><a href="https://twitter.com/CODERCOOKER" class="icon style2 fa-twitter" target="_blank" ><span class="label">Twitter</span></a></li>
+                
+                
+                
+                
+                
+                    <li><a href="https://github.com/TIGERB" class="icon style2 fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
+                
+                
+                
+                
+                
+                    <li><a href="mailto:tigerbcode@gmail.com" class="icon style2 fa-envelope-o" target="_blank" ><span class="label">Email</span></a></li>
+                
+                
+                    <li><a href="\atom.xml" class="icon style2 fa-rss" target="_blank" ><span class="label">RSS</span></a></li>
+                
+            </ul>
+        </section>
+        <ul class="copyright">
+            <li>&copy; TIGERB.cn All right reserved. 津ICP备17006784号-2</li>
+            <li><a href="https://juejin.im/user/5855e82d1b69e6006c9278b4" target="_blank">juejin</a></li>
+            <li><a href="https://segmentfault.com/u/tigerb" target="_blank">Segmentfault</a></li>
+            <li><a target="_blank" rel="noopener" href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
+            <li><a href="http://tigerb.cn/go/#/patterns/">Go设计模式实战</a></li>
+            <li><a href="http://tigerb.cn/go/#/kernal/">Go语言轻松进阶</a></li>
+            <li><a target="_blank" rel="noopener" href="https://dayutalk.cn/">大愚Talk</a></li>
+        </ul>
+    </div>
+</footer>
+    </div>
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- skel -->
+
+<script src="/js/skel.min.js"></script>
+
+
+<!-- Custom Code -->
+
+<script src="/js/util.js"></script>
+
+
+<!--[if lte IE 8]>
+
+<script src="/js/ie/respond.min.js"></script>
+
+<![endif]-->
+
+<!-- Custom Code -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Gallery -->
+<script src="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+</body>
+
+</html>
