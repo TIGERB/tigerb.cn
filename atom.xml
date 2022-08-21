@@ -6,7 +6,7 @@
   <link href="http://tigerb.cn/atom.xml" rel="self"/>
   
   <link href="http://tigerb.cn/"/>
-  <updated>2022-08-11T05:11:47.347Z</updated>
+  <updated>2022-08-21T10:02:50.499Z</updated>
   <id>http://tigerb.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>彻底理解Go语言栈内存/堆内存</title>
+    <link href="http://tigerb.cn/2022/08/21/go-base/memory-alloc/"/>
+    <id>http://tigerb.cn/2022/08/21/go-base/memory-alloc/</id>
+    <published>2022-08-21T09:20:11.000Z</published>
+    <updated>2022-08-21T10:02:50.499Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+    <category term="Go" scheme="http://tigerb.cn/tags/Go/"/>
+    
+  </entry>
   
   <entry>
     <title>回到本真，代码是如何运行的？</title>

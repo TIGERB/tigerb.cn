@@ -1,3 +1,4 @@
+http://tigerb.cn/2022/08/21/go-base/memory-alloc/
 http://tigerb.cn/2022/07/10/go-base/code/
 http://tigerb.cn/2022/07/10/go-base/code-execute/
 http://tigerb.cn/2022/07/10/go-base/computer/
