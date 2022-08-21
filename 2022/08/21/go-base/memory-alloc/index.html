@@ -555,8 +555,8 @@
 </p>
 
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
-<li>Go语言源代码中「栈内存」和「堆内存」的分配都是虚拟内存，最终CPU的MMU会把虚拟内存转化为物理内存。</li>
-<li>Go语言编译期间会进行逃逸分析，判断并标记变量是否需要分配到堆上，比如创建一个<code>Map</code>、<code>Slice</code>时。</li>
+<li>Go语言源代码中「栈内存」和「堆内存」的分配都是虚拟内存，最终CPU在执行指令过程中通过内部的MMU把虚拟内存转化为物理内存。</li>
+<li>Go语言编译期间会进行逃逸分析，判断并标记变量是否需要分配到堆上，比如创建<code>Map</code>、<code>Slice</code>时。</li>
 <li>栈内存分配<ul>
 <li>小于32KB的栈内存<ul>
 <li>来源优先级1：线程缓存<code>mcache</code></li>

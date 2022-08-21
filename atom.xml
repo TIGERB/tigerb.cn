@@ -6,7 +6,7 @@
   <link href="http://tigerb.cn/atom.xml" rel="self"/>
   
   <link href="http://tigerb.cn/"/>
-  <updated>2022-08-21T10:02:50.499Z</updated>
+  <updated>2022-08-21T10:57:09.960Z</updated>
   <id>http://tigerb.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://tigerb.cn/2022/08/21/go-base/memory-alloc/"/>
     <id>http://tigerb.cn/2022/08/21/go-base/memory-alloc/</id>
     <published>2022-08-21T09:20:11.000Z</published>
-    <updated>2022-08-21T10:02:50.499Z</updated>
+    <updated>2022-08-21T10:57:09.960Z</updated>
     
     
       
@@ -33,6 +33,8 @@
       
     
     
+    
+    <category term="go-base" scheme="http://tigerb.cn/categories/go-base/"/>
     
     
     <category term="Go" scheme="http://tigerb.cn/tags/Go/"/>
@@ -44,7 +46,7 @@
     <link href="http://tigerb.cn/2022/07/10/go-base/code-execute/"/>
     <id>http://tigerb.cn/2022/07/10/go-base/code-execute/</id>
     <published>2022-07-10T07:20:11.000Z</published>
-    <updated>2022-08-11T05:11:47.347Z</updated>
+    <updated>2022-08-21T10:44:57.232Z</updated>
     
     
       
@@ -56,6 +58,8 @@
       
     
     
+    
+    <category term="go-base" scheme="http://tigerb.cn/categories/go-base/"/>
     
     
     <category term="Go" scheme="http://tigerb.cn/tags/Go/"/>
@@ -69,7 +73,7 @@
     <link href="http://tigerb.cn/2022/07/10/go-base/code/"/>
     <id>http://tigerb.cn/2022/07/10/go-base/code/</id>
     <published>2022-07-10T07:20:11.000Z</published>
-    <updated>2022-08-11T05:12:01.858Z</updated>
+    <updated>2022-08-21T10:44:57.214Z</updated>
     
     
       
@@ -81,6 +85,8 @@
       
     
     
+    
+    <category term="go-base" scheme="http://tigerb.cn/categories/go-base/"/>
     
     
     <category term="Go" scheme="http://tigerb.cn/tags/Go/"/>
@@ -94,7 +100,7 @@
     <link href="http://tigerb.cn/2022/07/10/go-base/computer/"/>
     <id>http://tigerb.cn/2022/07/10/go-base/computer/</id>
     <published>2022-07-10T07:20:11.000Z</published>
-    <updated>2022-07-17T15:11:42.513Z</updated>
+    <updated>2022-08-21T10:44:57.231Z</updated>
     
     
       
@@ -106,6 +112,8 @@
       
     
     
+    
+    <category term="go-base" scheme="http://tigerb.cn/categories/go-base/"/>
     
     
     <category term="Go - 计算机原理" scheme="http://tigerb.cn/tags/Go-%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/"/>
@@ -117,7 +125,7 @@
     <link href="http://tigerb.cn/2022/04/23/go-base/memory-mspan/"/>
     <id>http://tigerb.cn/2022/04/23/go-base/memory-mspan/</id>
     <published>2022-04-23T15:32:10.000Z</published>
-    <updated>2022-04-23T15:35:40.515Z</updated>
+    <updated>2022-08-21T10:44:57.233Z</updated>
     
     
       
@@ -129,6 +137,8 @@
       
     
     
+    
+    <category term="go-base" scheme="http://tigerb.cn/categories/go-base/"/>
     
     
     <category term="Go" scheme="http://tigerb.cn/tags/Go/"/>
@@ -140,7 +150,7 @@
     <link href="http://tigerb.cn/2022/04/16/go-base/memory-mcache/"/>
     <id>http://tigerb.cn/2022/04/16/go-base/memory-mcache/</id>
     <published>2022-04-16T14:31:10.000Z</published>
-    <updated>2022-04-17T07:01:31.749Z</updated>
+    <updated>2022-08-21T10:44:57.232Z</updated>
     
     
       
@@ -152,6 +162,8 @@
       
     
     
+    
+    <category term="go-base" scheme="http://tigerb.cn/categories/go-base/"/>
     
     
     <category term="Go" scheme="http://tigerb.cn/tags/Go/"/>
@@ -163,7 +175,7 @@
     <link href="http://tigerb.cn/2022/04/10/go-base/memory-arch/"/>
     <id>http://tigerb.cn/2022/04/10/go-base/memory-arch/</id>
     <published>2022-04-10T08:33:11.000Z</published>
-    <updated>2022-04-10T08:36:47.785Z</updated>
+    <updated>2022-08-21T10:44:57.298Z</updated>
     
     
       
@@ -175,6 +187,8 @@
       
     
     
+    
+    <category term="go-base" scheme="http://tigerb.cn/categories/go-base/"/>
     
     
     <category term="Go" scheme="http://tigerb.cn/tags/Go/"/>
@@ -186,7 +200,7 @@
     <link href="http://tigerb.cn/2022/03/06/skrshop/search-tech/"/>
     <id>http://tigerb.cn/2022/03/06/skrshop/search-tech/</id>
     <published>2022-03-06T14:03:10.000Z</published>
-    <updated>2022-03-09T12:34:11.015Z</updated>
+    <updated>2022-08-21T10:44:57.350Z</updated>
     
     
       
@@ -198,6 +212,8 @@
       
     
     
+    
+    <category term="skrshop" scheme="http://tigerb.cn/categories/skrshop/"/>
     
     
     <category term="shop" scheme="http://tigerb.cn/tags/shop/"/>
@@ -211,7 +227,7 @@
     <link href="http://tigerb.cn/2022/03/06/skrshop/search-business/"/>
     <id>http://tigerb.cn/2022/03/06/skrshop/search-business/</id>
     <published>2022-03-06T13:22:11.000Z</published>
-    <updated>2022-03-07T14:29:33.686Z</updated>
+    <updated>2022-08-21T10:44:57.299Z</updated>
     
     
       
@@ -223,6 +239,8 @@
       
     
     
+    
+    <category term="skrshop" scheme="http://tigerb.cn/categories/skrshop/"/>
     
     
     <category term="shop" scheme="http://tigerb.cn/tags/shop/"/>
@@ -236,7 +254,7 @@
     <link href="http://tigerb.cn/2022/01/22/go/cpu-debug/"/>
     <id>http://tigerb.cn/2022/01/22/go/cpu-debug/</id>
     <published>2022-01-22T02:20:05.000Z</published>
-    <updated>2022-01-22T14:46:59.496Z</updated>
+    <updated>2022-08-21T10:44:57.232Z</updated>
     
     
       
@@ -248,6 +266,8 @@
       
     
     
+    
+    <category term="go" scheme="http://tigerb.cn/categories/go/"/>
     
     
     <category term="linux" scheme="http://tigerb.cn/tags/linux/"/>
@@ -282,7 +302,7 @@
     <link href="http://tigerb.cn/2021/07/18/go/php2go/"/>
     <id>http://tigerb.cn/2021/07/18/go/php2go/</id>
     <published>2021-07-18T14:00:11.000Z</published>
-    <updated>2021-07-18T05:55:59.695Z</updated>
+    <updated>2022-08-21T10:44:57.552Z</updated>
     
     
       
@@ -294,6 +314,8 @@
       
     
     
+    
+    <category term="go" scheme="http://tigerb.cn/categories/go/"/>
     
     
     <category term="Go" scheme="http://tigerb.cn/tags/Go/"/>
@@ -351,7 +373,7 @@
     <link href="http://tigerb.cn/2021/02/28/go-base/map-range/"/>
     <id>http://tigerb.cn/2021/02/28/go-base/map-range/</id>
     <published>2021-02-28T07:20:11.000Z</published>
-    <updated>2021-02-28T07:24:48.082Z</updated>
+    <updated>2022-08-21T10:44:57.232Z</updated>
     
     
       
@@ -363,6 +385,8 @@
       
     
     
+    
+    <category term="go-base" scheme="http://tigerb.cn/categories/go-base/"/>
     
     
     <category term="Go" scheme="http://tigerb.cn/tags/Go/"/>
@@ -374,7 +398,7 @@
     <link href="http://tigerb.cn/2021/01/31/go-base/tcmalloc/"/>
     <id>http://tigerb.cn/2021/01/31/go-base/tcmalloc/</id>
     <published>2021-01-31T14:00:11.000Z</published>
-    <updated>2021-01-31T15:05:27.965Z</updated>
+    <updated>2022-08-21T10:44:57.326Z</updated>
     
     
       
@@ -386,6 +410,8 @@
       
     
     
+    
+    <category term="go-base" scheme="http://tigerb.cn/categories/go-base/"/>
     
     
     <category term="Go" scheme="http://tigerb.cn/tags/Go/"/>
@@ -397,7 +423,7 @@
     <link href="http://tigerb.cn/2021/01/23/go-base/memory-pointer/"/>
     <id>http://tigerb.cn/2021/01/23/go-base/memory-pointer/</id>
     <published>2021-01-23T14:00:11.000Z</published>
-    <updated>2021-01-24T01:57:50.492Z</updated>
+    <updated>2022-08-21T10:44:57.297Z</updated>
     
     
       
@@ -409,6 +435,8 @@
       
     
     
+    
+    <category term="go-base" scheme="http://tigerb.cn/categories/go-base/"/>
     
     
     <category term="Go" scheme="http://tigerb.cn/tags/Go/"/>
@@ -443,7 +471,7 @@
     <link href="http://tigerb.cn/2020/12/21/go-base/map/"/>
     <id>http://tigerb.cn/2020/12/21/go-base/map/</id>
     <published>2020-12-21T13:55:11.000Z</published>
-    <updated>2021-01-24T01:50:41.085Z</updated>
+    <updated>2022-08-21T10:44:57.315Z</updated>
     
     
       
@@ -455,6 +483,8 @@
       
     
     
+    
+    <category term="go-base" scheme="http://tigerb.cn/categories/go-base/"/>
     
     
     <category term="Go" scheme="http://tigerb.cn/tags/Go/"/>
@@ -466,7 +496,7 @@
     <link href="http://tigerb.cn/2020/11/04/go-patterns/component-concurrency/"/>
     <id>http://tigerb.cn/2020/11/04/go-patterns/component-concurrency/</id>
     <published>2020-11-04T13:13:11.000Z</published>
-    <updated>2021-02-15T03:24:24.548Z</updated>
+    <updated>2022-08-21T10:44:57.552Z</updated>
     
     
       
@@ -478,6 +508,8 @@
       
     
     
+    
+    <category term="go-patterns" scheme="http://tigerb.cn/categories/go-patterns/"/>
     
     
     <category term="设计模式" scheme="http://tigerb.cn/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
@@ -491,7 +523,7 @@
     <link href="http://tigerb.cn/2020/10/31/skrshop/order-checkout/"/>
     <id>http://tigerb.cn/2020/10/31/skrshop/order-checkout/</id>
     <published>2020-10-31T12:30:00.000Z</published>
-    <updated>2020-10-26T12:14:45.587Z</updated>
+    <updated>2022-08-21T10:44:57.299Z</updated>
     
     
       
@@ -503,6 +535,8 @@
       
     
     
+    
+    <category term="skrshop" scheme="http://tigerb.cn/categories/skrshop/"/>
     
     
     <category term="shop" scheme="http://tigerb.cn/tags/shop/"/>
@@ -516,7 +550,7 @@
     <link href="http://tigerb.cn/2020/08/02/skrshop/seckill-business/"/>
     <id>http://tigerb.cn/2020/08/02/skrshop/seckill-business/</id>
     <published>2020-08-02T14:30:11.000Z</published>
-    <updated>2020-08-02T14:50:44.241Z</updated>
+    <updated>2022-08-21T10:44:57.298Z</updated>
     
     
       
@@ -528,6 +562,8 @@
       
     
     
+    
+    <category term="skrshop" scheme="http://tigerb.cn/categories/skrshop/"/>
     
     
     <category term="shop" scheme="http://tigerb.cn/tags/shop/"/>
@@ -541,7 +577,7 @@
     <link href="http://tigerb.cn/2020/06/27/skrshop/coupon/"/>
     <id>http://tigerb.cn/2020/06/27/skrshop/coupon/</id>
     <published>2020-06-27T12:22:11.000Z</published>
-    <updated>2020-06-29T12:44:29.140Z</updated>
+    <updated>2022-08-21T10:44:57.298Z</updated>
     
     
       
@@ -553,6 +589,8 @@
       
     
     
+    
+    <category term="skrshop" scheme="http://tigerb.cn/categories/skrshop/"/>
     
     
     <category term="shop" scheme="http://tigerb.cn/tags/shop/"/>
@@ -566,7 +604,7 @@
     <link href="http://tigerb.cn/2020/05/31/go-patterns/state/"/>
     <id>http://tigerb.cn/2020/05/31/go-patterns/state/</id>
     <published>2020-05-31T08:25:11.000Z</published>
-    <updated>2021-02-15T03:24:24.549Z</updated>
+    <updated>2022-08-21T10:44:57.297Z</updated>
     
     
       
@@ -578,6 +616,8 @@
       
     
     
+    
+    <category term="go-patterns" scheme="http://tigerb.cn/categories/go-patterns/"/>
     
     
     <category term="设计模式" scheme="http://tigerb.cn/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
@@ -591,7 +631,7 @@
     <link href="http://tigerb.cn/2020/05/05/skrshop/seckill/"/>
     <id>http://tigerb.cn/2020/05/05/skrshop/seckill/</id>
     <published>2020-05-05T04:22:11.000Z</published>
-    <updated>2020-05-06T12:03:01.843Z</updated>
+    <updated>2022-08-21T10:44:57.301Z</updated>
     
     
       
@@ -603,6 +643,8 @@
       
     
     
+    
+    <category term="skrshop" scheme="http://tigerb.cn/categories/skrshop/"/>
     
     
     <category term="shop" scheme="http://tigerb.cn/tags/shop/"/>
@@ -616,7 +658,7 @@
     <link href="http://tigerb.cn/2020/04/25/go-patterns/strategy/"/>
     <id>http://tigerb.cn/2020/04/25/go-patterns/strategy/</id>
     <published>2020-04-25T08:13:11.000Z</published>
-    <updated>2021-02-15T03:24:24.549Z</updated>
+    <updated>2022-08-21T10:44:57.297Z</updated>
     
     
       
@@ -628,6 +670,8 @@
       
     
     
+    
+    <category term="go-patterns" scheme="http://tigerb.cn/categories/go-patterns/"/>
     
     
     <category term="设计模式" scheme="http://tigerb.cn/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
@@ -641,7 +685,7 @@
     <link href="http://tigerb.cn/2020/04/21/go-base/tree-traverse/"/>
     <id>http://tigerb.cn/2020/04/21/go-base/tree-traverse/</id>
     <published>2020-04-21T14:22:11.000Z</published>
-    <updated>2020-04-26T04:59:21.820Z</updated>
+    <updated>2022-08-21T10:44:57.298Z</updated>
     
     
       
@@ -653,6 +697,8 @@
       
     
     
+    
+    <category term="go-base" scheme="http://tigerb.cn/categories/go-base/"/>
     
     
     <category term="Go" scheme="http://tigerb.cn/tags/Go/"/>
@@ -666,7 +712,7 @@
     <link href="http://tigerb.cn/2020/04/11/go-patterns/observer/"/>
     <id>http://tigerb.cn/2020/04/11/go-patterns/observer/</id>
     <published>2020-04-11T11:40:11.000Z</published>
-    <updated>2021-02-15T03:24:24.549Z</updated>
+    <updated>2022-08-21T10:44:57.327Z</updated>
     
     
       
@@ -678,6 +724,8 @@
       
     
     
+    
+    <category term="go-patterns" scheme="http://tigerb.cn/categories/go-patterns/"/>
     
     
     <category term="设计模式" scheme="http://tigerb.cn/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
@@ -691,7 +739,7 @@
     <link href="http://tigerb.cn/2020/04/06/go-patterns/component/"/>
     <id>http://tigerb.cn/2020/04/06/go-patterns/component/</id>
     <published>2020-04-06T08:13:11.000Z</published>
-    <updated>2021-02-15T03:24:24.548Z</updated>
+    <updated>2022-08-21T10:44:57.297Z</updated>
     
     
       
@@ -703,6 +751,8 @@
       
     
     
+    
+    <category term="go-patterns" scheme="http://tigerb.cn/categories/go-patterns/"/>
     
     
     <category term="设计模式" scheme="http://tigerb.cn/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
@@ -716,7 +766,7 @@
     <link href="http://tigerb.cn/2020/04/02/go-patterns/responsbility/"/>
     <id>http://tigerb.cn/2020/04/02/go-patterns/responsbility/</id>
     <published>2020-04-02T14:22:11.000Z</published>
-    <updated>2021-02-15T03:24:24.548Z</updated>
+    <updated>2022-08-21T10:44:57.297Z</updated>
     
     
       
@@ -728,6 +778,8 @@
       
     
     
+    
+    <category term="go-patterns" scheme="http://tigerb.cn/categories/go-patterns/"/>
     
     
     <category term="设计模式" scheme="http://tigerb.cn/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
@@ -741,7 +793,7 @@
     <link href="http://tigerb.cn/2020/03/30/go-patterns/template/"/>
     <id>http://tigerb.cn/2020/03/30/go-patterns/template/</id>
     <published>2020-03-30T14:22:11.000Z</published>
-    <updated>2021-02-15T03:24:24.549Z</updated>
+    <updated>2022-08-21T10:44:57.327Z</updated>
     
     
       
@@ -753,6 +805,8 @@
       
     
     
+    
+    <category term="go-patterns" scheme="http://tigerb.cn/categories/go-patterns/"/>
     
     
     <category term="设计模式" scheme="http://tigerb.cn/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
