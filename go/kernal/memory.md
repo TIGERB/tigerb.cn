@@ -34,13 +34,13 @@
 		* [内存分配过程](/kernal/tcmalloc?id=解密tcmalloc的内存分配过程)
 			- [简易版](/kernal/tcmalloc?id=简易版)
 			- [详细版](/kernal/tcmalloc?id=详细版)
-- [Go语言内存管理(更新中)](kernal/memory-arch)
+- [Go语言内存管理(已完结)](kernal/memory-arch)
 	+ [Go内存管理架构](kernal/memory-arch?id=go内存管理架构)
 		* `mcache`
 		* `mcentral`
 		* `mheap`
 	+ [为什么线程缓存`mcache`是被逻辑处理器`p`持有，而不是系统线程`m`?](kernal/memory-mcache)
-	+ Go内存管理单元`mspan`
+	+ [Go内存管理单元`mspan`](kernal/memory-mspan)
 		* `page`的概念
 		* `mspan`的概念
 		* `object`的概念
@@ -48,12 +48,19 @@
 		* `spanclass`的概念
 		* `heaparena`的概念
 		* `chunk`的概念
-	+ Go堆内存的分配
-		* 微对象分配
-		* 小对象分配
-		* 大对象分配
-	+ Go栈内存的分配
-		* 栈内存分配时机
-		* 小于32KB的栈分配
-		* 大于等于32KB的栈分配
+	* [计算机为什么需要内存？](kernal/memory-alloc?id=计算机为什么需要内存？)
+    * [为什么需要栈内存？](kernal/memory-alloc?id=为什么需要栈内存？)
+    * [为什么需要堆内存？](kernal/memory-alloc?id=为什么需要堆内存？)
+	* [分配的是虚拟内存](kernal/memory-alloc?id=分配的是虚拟内存)
+	+ [Go栈内存的分配](kernal/memory-alloc?id=栈内存的分配)
+		* 分配时机
+		* 分配过程
+			- 小于32KB的栈分配
+			- 大于等于32KB的栈分配
+	+ [Go堆内存的分配](kernal/memory-alloc?id=栈内存的分配)
+		* 分配时机
+		* 分配过程
+			- 微对象分配
+			- 小对象分配
+			- 大对象分配	
 - Go语言垃圾回收原理(未开始)
