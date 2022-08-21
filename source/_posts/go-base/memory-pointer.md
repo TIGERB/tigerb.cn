@@ -1,9 +1,12 @@
 ---
 title: 64位平台下，指针自身的大小为什么是8字节？
-date: 2021-1-23 22:00:11
-tags: 
-	- Go
-cover_index: "http://cdn.tigerb.cn/20210121194127.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
+tags:
+  - Go
+cover_index: >-
+  http://cdn.tigerb.cn/20210121194127.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+categories:
+  - go-base
+date: 2021-01-23 22:00:11
 ---
 
 <span>

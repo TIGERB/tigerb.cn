@@ -1,10 +1,13 @@
 ---
 title: 你想知道的优惠券业务，我来告诉你
+tags:
+  - shop
+  - 优惠券
+cover_index: >-
+  http://cdn.tigerb.cn/20200629204416.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+categories:
+  - skrshop
 date: 2020-06-27 20:22:11
-tags: 
-	- shop
-	- 优惠券
-cover_index: "http://cdn.tigerb.cn/20200629204416.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
 ---
 
 经过两年的更新「SkrShop」已经构成了下面的架构：

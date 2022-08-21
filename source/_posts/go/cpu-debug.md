@@ -1,9 +1,13 @@
 ---
 title: 线上服务负载异常排查
-date: 2022-01-22 10:20:05
 tags: linux
-cover_index: "http://cdn.tigerb.cn/20220122224224.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
-cover_detail: "http://cdn.tigerb.cn/20220122224224.jpg?imageMogr2/thumbnail/1500x1000!/format/webp/blur/1x0/quality/75|imageslim"
+cover_index: >-
+  http://cdn.tigerb.cn/20220122224224.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+cover_detail: >-
+  http://cdn.tigerb.cn/20220122224224.jpg?imageMogr2/thumbnail/1500x1000!/format/webp/blur/1x0/quality/75|imageslim
+categories:
+  - go
+date: 2022-01-22 10:20:05
 ---
 
 # 前言

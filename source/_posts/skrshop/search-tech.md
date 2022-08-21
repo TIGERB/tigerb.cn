@@ -1,11 +1,15 @@
 ---
 title: 由浅到深，入门搜索原理
+tags:
+  - shop
+  - 搜索
+cover_index: >-
+  http://cdn.tigerb.cn/20220307222723.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+cover_detail: >-
+  http://cdn.tigerb.cn/20220307222723.jpg?imageMogr2/thumbnail/1500x1000!/format/webp/blur/1x0/quality/75|imageslim
+categories:
+  - skrshop
 date: 2022-03-06 22:03:10
-tags: 
-	- shop
-	- 搜索
-cover_index: "http://cdn.tigerb.cn/20220307222723.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
-cover_detail: "http://cdn.tigerb.cn/20220307222723.jpg?imageMogr2/thumbnail/1500x1000!/format/webp/blur/1x0/quality/75|imageslim"
 ---
 
 本次带来电商搜索业务的介绍，电商搜索系列分为两篇文章：

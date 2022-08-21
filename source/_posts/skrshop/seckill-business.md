@@ -1,11 +1,15 @@
 ---
 title: 做电商还搞不清一元秒杀、常规秒杀、限时购？
+tags:
+  - shop
+  - 秒杀系统
+cover_index: >-
+  http://cdn.tigerb.cn/20200802225026.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+cover_detail: >-
+  http://cdn.tigerb.cn/20200802225026.jpg?imageMogr2/thumbnail/1500x1000!/format/webp/blur/1x0/quality/75|imageslim
+categories:
+  - skrshop
 date: 2020-08-02 22:30:11
-tags: 
-	- shop
-	- 秒杀系统
-cover_index: "http://cdn.tigerb.cn/20200802225026.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
-cover_detail: "http://cdn.tigerb.cn/20200802225026.jpg?imageMogr2/thumbnail/1500x1000!/format/webp/blur/1x0/quality/75|imageslim"
 ---
 
 ---

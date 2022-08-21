@@ -1,9 +1,12 @@
 ---
 title: Go内存架构，一个有趣的问题
-date: 2022-4-16 22:31:10
-tags: 
-	- Go
-cover_index: "http://cdn.tigerb.cn/20220416214452.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
+tags:
+  - Go
+cover_index: >-
+  http://cdn.tigerb.cn/20220416214452.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+categories:
+  - go-base
+date: 2022-04-16 22:31:10
 ---
 
 在学习Go语言内存管理部分过程中，发现了一个很有意思的问题，今天就借助这篇文章：

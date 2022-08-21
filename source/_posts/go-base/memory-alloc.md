@@ -1,9 +1,12 @@
 ---
 title: 彻底理解Go语言栈内存/堆内存
+tags:
+  - Go
+cover_index: >-
+  http://cdn.tigerb.cn/20220405234521.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+categories:
+  - go-base
 date: 2022-08-21 17:20:11
-tags: 
-	- Go
-cover_index: "http://cdn.tigerb.cn/20220405234521.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
 ---
 
 # 导读
@@ -480,8 +483,8 @@ case OMAKESLICE:
 
 # 总结
 
-- Go语言源代码中「栈内存」和「堆内存」的分配都是虚拟内存，最终CPU的MMU会把虚拟内存转化为物理内存。
-- Go语言编译期间会进行逃逸分析，判断并标记变量是否需要分配到堆上，比如创建一个`Map`、`Slice`时。
+- Go语言源代码中「栈内存」和「堆内存」的分配都是虚拟内存，最终CPU在执行指令过程中通过内部的MMU把虚拟内存转化为物理内存。
+- Go语言编译期间会进行逃逸分析，判断并标记变量是否需要分配到堆上，比如创建`Map`、`Slice`时。
 - 栈内存分配
 	+ 小于32KB的栈内存
 		* 来源优先级1：线程缓存`mcache`

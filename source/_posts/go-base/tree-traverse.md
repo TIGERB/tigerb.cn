@@ -1,11 +1,15 @@
 ---
 title: 二叉树的遍历 | Go基础
+tags:
+  - 算法
+  - Go
+cover_index: >-
+  http://cdn.tigerb.cn/20200421124528.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+cover_detail: >-
+  http://cdn.tigerb.cn/20200421124528.jpg?imageMogr2/thumbnail/1500x1000!/format/webp/blur/1x0/quality/75|imageslim
+categories:
+  - go-base
 date: 2020-04-21 22:22:11
-tags: 
-	- 算法
-	- Go
-cover_index: "http://cdn.tigerb.cn/20200421124528.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
-cover_detail: "http://cdn.tigerb.cn/20200421124528.jpg?imageMogr2/thumbnail/1500x1000!/format/webp/blur/1x0/quality/75|imageslim"
 ---
 
 <span>

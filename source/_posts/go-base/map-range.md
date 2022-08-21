@@ -1,9 +1,12 @@
 ---
 title: 为什么说Go的Map是无序的？
-date: 2021-2-28 15:20:11
-tags: 
-	- Go
-cover_index: "http://cdn.tigerb.cn/20210223191105.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
+tags:
+  - Go
+cover_index: >-
+  http://cdn.tigerb.cn/20210223191105.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+categories:
+  - go-base
+date: 2021-02-28 15:20:11
 ---
 
 <span>

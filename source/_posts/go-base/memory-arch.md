@@ -1,9 +1,12 @@
 ---
 title: 浅析Go内存管理架构
-date: 2022-4-10 16:33:11
-tags: 
-	- Go
-cover_index: "http://cdn.tigerb.cn/20220405234204.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
+tags:
+  - Go
+cover_index: >-
+  http://cdn.tigerb.cn/20220405234204.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+categories:
+  - go-base
+date: 2022-04-10 16:33:11
 ---
 
 ---

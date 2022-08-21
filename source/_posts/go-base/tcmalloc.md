@@ -1,9 +1,12 @@
 ---
 title: 18张图解密新时代内存分配器TCMalloc
-date: 2021-1-31 22:00:11
-tags: 
-	- Go
-cover_index: "http://cdn.tigerb.cn/20210125201952.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
+tags:
+  - Go
+cover_index: >-
+  http://cdn.tigerb.cn/20210125201952.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+categories:
+  - go-base
+date: 2021-01-31 22:00:11
 ---
 
 ---

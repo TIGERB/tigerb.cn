@@ -1,10 +1,13 @@
 ---
 title: 回到本真，代码是如何运行的？
-date: 2022-07-10 15:20:11
-tags: 
-	- Go
+tags:
+  - Go
   - 计算机原理
-cover_index: "http://cdn.tigerb.cn/20220807232114.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
+cover_index: >-
+  http://cdn.tigerb.cn/20220807232114.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+categories:
+  - go-base
+date: 2022-07-10 15:20:11
 ---
 
 > 本文特指Linux操作系统下和静态编译性语言，以及同步处理器

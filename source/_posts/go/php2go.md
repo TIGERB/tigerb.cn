@@ -1,9 +1,12 @@
 ---
 title: PHP到Go速转手册
-date: 2021-7-18 22:00:11
-tags: 
-	- Go
-cover_index: "http://cdn.tigerb.cn/20210718132238.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
+tags:
+  - Go
+cover_index: >-
+  http://cdn.tigerb.cn/20210718132238.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+categories:
+  - go
+date: 2021-07-18 22:00:11
 ---
 
 ---

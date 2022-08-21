@@ -1,11 +1,15 @@
 ---
 title: 一篇文章搞清电商订单结算页面设计？
+tags:
+  - shop
+  - 订单系统
+cover_index: >-
+  http://cdn.tigerb.cn/20201026201439.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+cover_detail: >-
+  http://cdn.tigerb.cn/20201026201439.jpg?imageMogr2/thumbnail/1500x1000!/format/webp/blur/1x0/quality/75|imageslim
+categories:
+  - skrshop
 date: 2020-10-31 20:30:00
-tags: 
-	- shop
-	- 订单系统
-cover_index: "http://cdn.tigerb.cn/20201026201439.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
-cover_detail: "http://cdn.tigerb.cn/20201026201439.jpg?imageMogr2/thumbnail/1500x1000!/format/webp/blur/1x0/quality/75|imageslim"
 ---
 
 ---

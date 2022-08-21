@@ -1,11 +1,15 @@
 ---
 title: 电商搜索业务介绍
+tags:
+  - shop
+  - 搜索
+cover_index: >-
+  http://cdn.tigerb.cn/20220307222015.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+cover_detail: >-
+  http://cdn.tigerb.cn/20220307222015.jpg?imageMogr2/thumbnail/1500x1000!/format/webp/blur/1x0/quality/75|imageslim
+categories:
+  - skrshop
 date: 2022-03-06 21:22:11
-tags: 
-	- shop
-	- 搜索
-cover_index: "http://cdn.tigerb.cn/20220307222015.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
-cover_detail: "http://cdn.tigerb.cn/20220307222015.jpg?imageMogr2/thumbnail/1500x1000!/format/webp/blur/1x0/quality/75|imageslim"
 ---
 
 

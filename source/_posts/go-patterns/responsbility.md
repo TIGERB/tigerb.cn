@@ -1,10 +1,13 @@
 ---
 title: 链式调用 | Go设计模式实战
+tags:
+  - 设计模式
+  - Go
+cover_index: >-
+  http://cdn.tigerb.cn/20200402213213.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+categories:
+  - go-patterns
 date: 2020-04-02 22:22:11
-tags: 
-	- 设计模式
-	- Go
-cover_index: "http://cdn.tigerb.cn/20200402213213.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
 ---
 
 > 嗯，Go设计模式实战系列，一个设计模式业务真实使用的golang系列。
