@@ -1,5 +1,5 @@
 <p align=center>
-	<img src="http://cdn.tigerb.cn/20210718132238.png" style="width:60%;">
+	<img src="http://rl24jdcif.bkt.clouddn.com/20210718132238.png" style="width:60%;">
 </p>
 
 # 版权声明
@@ -8,7 +8,7 @@
 - 未与任何第三方以任何形式合作。
 
 <p>
-    <img style="vertical-align:middle" width="25%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+    <img style="vertical-align:middle" width="25%" src="http://rl24jdcif.bkt.clouddn.com/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
 <p>
 
 # 前言
@@ -944,8 +944,8 @@ func BenchmarkDemo_NoPool(b *testing.B) {
 <p align="center">
 	<h5>不使用sync.Pool执行分析：火焰图&Top函数</h5>
 	<p>可以很明显看见GC过程消耗了大量的CPU。</p>
-	<img src="http://cdn.tigerb.cn/20210708235739.jpg" style="width:80%">
-	<img src="http://cdn.tigerb.cn/20210708152442.png" style="width:50%">
+	<img src="http://rl24jdcif.bkt.clouddn.com/20210708235739.jpg" style="width:80%">
+	<img src="http://rl24jdcif.bkt.clouddn.com/20210708152442.png" style="width:50%">
 </p>
 
 ## 5.2 使用sync.Pool代码示例
@@ -1027,8 +1027,8 @@ func BenchmarkDemo_Pool(b *testing.B) {
 <p align="center">
 	<h5>使用sync.Pool执行分析：火焰图&Top函数</h5>
 	<p>runtime.mallocgc 已经在top里面看不见了</p>
-	<img src="http://cdn.tigerb.cn/20210708151902.png" style="width:80%">
-	<img src="http://cdn.tigerb.cn/20210708152639.png" style="width:50%">
+	<img src="http://rl24jdcif.bkt.clouddn.com/20210708151902.png" style="width:80%">
+	<img src="http://rl24jdcif.bkt.clouddn.com/20210708152639.png" style="width:50%">
 </p>
 
 ```
@@ -1118,9 +1118,9 @@ func TestDemo_Singleflight(t *testing.T) {
 
 <p align="center">
 	<h5>没有使用Singleflight一共发起了3次请求</h5>
-	<img src="http://cdn.tigerb.cn/20210708212953.png" style="width:80%">
+	<img src="http://rl24jdcif.bkt.clouddn.com/20210708212953.png" style="width:80%">
 	<h5>使用Singleflight只发起了1次请求</h5>
-	<img src="http://cdn.tigerb.cn/20210708213004.png" style="width:80%">
+	<img src="http://rl24jdcif.bkt.clouddn.com/20210708213004.png" style="width:80%">
 </p>
 
 ## 7. Channel的使用
@@ -1501,13 +1501,13 @@ go help testflag
 
 <p align="center">
 	<h5>可视化选项菜单</h5>
-	<img src="http://cdn.tigerb.cn/20210710185849.png" style="width:30%">
+	<img src="http://rl24jdcif.bkt.clouddn.com/20210710185849.png" style="width:30%">
 	<h5>火焰图</h5>
-	<img src="http://cdn.tigerb.cn/20210710185947.png" style="width:80%">
+	<img src="http://rl24jdcif.bkt.clouddn.com/20210710185947.png" style="width:80%">
 	<h5>调用链路图</h5>
-	<img src="http://cdn.tigerb.cn/20210710190017.png" style="width:80%">
+	<img src="http://rl24jdcif.bkt.clouddn.com/20210710190017.png" style="width:80%">
 	<h5>Top函数</h5>
-	<img src="http://cdn.tigerb.cn/20210710190040.png" style="width:36%">
+	<img src="http://rl24jdcif.bkt.clouddn.com/20210710190040.png" style="width:36%">
 </p>
 
 
@@ -1551,7 +1551,7 @@ func main() {
 2. 访问链接 `http://localhost:8888/debug/pprof/`，可以看见相关profiles。
 
 <p align="center">
-	<img src="http://cdn.tigerb.cn/20210710195214.png" style="width:50%">
+	<img src="http://rl24jdcif.bkt.clouddn.com/20210710195214.png" style="width:50%">
 </p>
 
 3. 命令使用pprof工具，获取远程服务profile，命令如下：
@@ -1566,7 +1566,7 @@ func main() {
 同样，我们得到了这个熟悉的页面：
 
 <p align="center">
-	<img src="http://cdn.tigerb.cn/20210710200849.png" style="width:50%">
+	<img src="http://rl24jdcif.bkt.clouddn.com/20210710200849.png" style="width:50%">
 </p>
 
 ## 9.2 trace工具的使用
@@ -1588,14 +1588,14 @@ go tool trace -http=127.0.0.1:8000 trace.out
 
 <p align="center">
 	<h5>没使用sync.Pool</h5>
-	<img src="http://cdn.tigerb.cn/20210711180143.png" style="width:30%">
-	<img src="http://cdn.tigerb.cn/20210711175446.png" style="width:30%">
-	<img src="http://cdn.tigerb.cn/20210711175358.png" style="width:80%">
+	<img src="http://rl24jdcif.bkt.clouddn.com/20210711180143.png" style="width:30%">
+	<img src="http://rl24jdcif.bkt.clouddn.com/20210711175446.png" style="width:30%">
+	<img src="http://rl24jdcif.bkt.clouddn.com/20210711175358.png" style="width:80%">
 </p>
 
 <p align="center">
 	<h5>使用sync.Pool</h5>
-	<img src="http://cdn.tigerb.cn/20210711175727.png" style="width:80%">
+	<img src="http://rl24jdcif.bkt.clouddn.com/20210711175727.png" style="width:80%">
 </p>
 
 
@@ -1657,11 +1657,11 @@ e 右移
 ```
 
 <p>
-	<img src="http://cdn.tigerb.cn/20210711212814.png" style="width:80%">
-	<img src="http://cdn.tigerb.cn/20210711213345.png" style="width:80%">
-	<img src="http://cdn.tigerb.cn/20210711213416.png" style="width:30%">
-	<img src="http://cdn.tigerb.cn/20210711213519.png" style="width:80%">
-	<img src="http://cdn.tigerb.cn/20210711214610.png" style="width:80%">
+	<img src="http://rl24jdcif.bkt.clouddn.com/20210711212814.png" style="width:80%">
+	<img src="http://rl24jdcif.bkt.clouddn.com/20210711213345.png" style="width:80%">
+	<img src="http://rl24jdcif.bkt.clouddn.com/20210711213416.png" style="width:30%">
+	<img src="http://rl24jdcif.bkt.clouddn.com/20210711213519.png" style="width:80%">
+	<img src="http://rl24jdcif.bkt.clouddn.com/20210711214610.png" style="width:80%">
 </p>
 
 ## 9.3 dlv工具的使用
@@ -1725,11 +1725,11 @@ curl http://localhost:8080/ping
 ```
 
 <p align="center">
-	<img src="http://cdn.tigerb.cn/20210711164556.png" style="width:80%">
+	<img src="http://rl24jdcif.bkt.clouddn.com/20210711164556.png" style="width:80%">
 </p>
 
 <p align="center">
-	<img src="http://cdn.tigerb.cn/20210711172959.png" style="width:80%">
+	<img src="http://rl24jdcif.bkt.clouddn.com/20210711172959.png" style="width:80%">
 </p>
 
 ### 9.3.2 Web服务场景
@@ -1811,7 +1811,7 @@ dumped SSA to ./ssa.html <------- 生成的文件，浏览器打开此文件
 ```
 
 <p align="center">
-	<img src="http://cdn.tigerb.cn/20210714144240.png" style="width:100%">
+	<img src="http://rl24jdcif.bkt.clouddn.com/20210714144240.png" style="width:100%">
 </p>
 
 # 总结
