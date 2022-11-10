@@ -89,7 +89,7 @@
 
         <!-- Logo -->
         <a href="/" class="logo">
-            <span class="symbol"><img src="http://cdn.tigerb.cn/20190707142019.png" alt="" /></span><span class="title">TIGERB</span>
+            <span class="symbol"><img src="http://rl24jdcif.bkt.clouddn.com/20190707142019.png" alt="" /></span><span class="title">TIGERB</span>
         </a>
 
         <!-- Nav -->
@@ -178,7 +178,7 @@
 </blockquote>
 <p>是吧！之后nginx的角色就是负载均衡，其实过分点你自己也可以用php做负载均衡。</p>
 <h3 id="原生php实现TCP-Server"><a href="#原生php实现TCP-Server" class="headerlink" title="原生php实现TCP Server"></a>原生php实现TCP Server</h3><p>接着我们看看如何用php创建一个简单的TCP Server过程如下：</p>
-<a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/php-tcp-serve-2.png" class="gallery-item"><img src="http://cdn.tigerb.cn/php-tcp-serve-2.png" width="100%"></a>
+<a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/php-tcp-serve-2.png" class="gallery-item"><img src="http://rl24jdcif.bkt.clouddn.com/php-tcp-serve-2.png" width="100%"></a>
 
 <p>主要涉及的PHP函数如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">socket_create</span><br><span class="line"></span><br><span class="line">socket_listen</span><br><span class="line"></span><br><span class="line">socket_accept</span><br><span class="line"></span><br><span class="line">socket_recv || socket_read</span><br><span class="line"></span><br><span class="line">socket_write</span><br><span class="line"></span><br><span class="line">socket_close</span><br></pre></td></tr></table></figure>
@@ -191,7 +191,7 @@
 
 <p>没毛病，TCP Server起来了。</p>
 <h3 id="原生php实现HTTP协议"><a href="#原生php实现HTTP协议" class="headerlink" title="原生php实现HTTP协议"></a>原生php实现HTTP协议</h3><p>上面简单的TCP Server基本出来了，我们需要让php直接成为一个Web Server，想一想Web Server是基于HTTP协议的，HTTP协议又是基于TCP协议实现的。也就是说我们在上面的TCP Server基础上实现下HTTP协议即可。我们改进下流程图加入HTTP部分（橙黄色），如下</p>
-<a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/php-http-server.png" class="gallery-item"><img src="http://cdn.tigerb.cn/php-http-server.png" width="100%"></a>
+<a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/php-http-server.png" class="gallery-item"><img src="http://rl24jdcif.bkt.clouddn.com/php-http-server.png" width="100%"></a>
 
 <p>实现HTTP协议的过程其实就是：</p>
 <ol>
@@ -255,7 +255,7 @@
         <section>
             <h2>About</h2>
             <div>
-                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://rl24jdcif.bkt.clouddn.com/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
             </div>
         </section>
         <section>

@@ -89,7 +89,7 @@
 
         <!-- Logo -->
         <a href="/" class="logo">
-            <span class="symbol"><img src="http://cdn.tigerb.cn/20190707142019.png" alt="" /></span><span class="title">TIGERB</span>
+            <span class="symbol"><img src="http://rl24jdcif.bkt.clouddn.com/20190707142019.png" alt="" /></span><span class="title">TIGERB</span>
         </a>
 
         <!-- Nav -->
@@ -159,12 +159,12 @@
 </ul>
 <h1 id="架构设计"><a href="#架构设计" class="headerlink" title="架构设计"></a>架构设计</h1><h3 id="简单来看用户体系"><a href="#简单来看用户体系" class="headerlink" title="简单来看用户体系"></a>简单来看用户体系</h3><p>当你第一次接触和用户相关的互联网产品时，或者曾今在我眼里。<strong>用户体系</strong>无非就是“登录”和“注册”，“修改用户信息”这些，等。简单来做的话，无非我们需要一张表去记录用户的身份信息：注册时(insert操作)，往表里插入一个数据；登录时(select&amp;update操作)，通过用户标识(手机号、邮箱等)判断用户的密码是否正确；修改用户信息(select&amp;update操作)，就是直接update这个uid的用户信息(头像、昵称等)。</p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/skr-account-smaple-structure.png" class="gallery-item"><img src="http://cdn.tigerb.cn/skr-account-smaple-structure.png" style="width:20%"></a>
+  <a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/skr-account-smaple-structure.png" class="gallery-item"><img src="http://rl24jdcif.bkt.clouddn.com/skr-account-smaple-structure.png" style="width:20%"></a>
 </p>
 
 <p>这样设计的确没什么问题，很简单不是么。但是随着业务的发展，一方面我们需要提供统一的用户管理(高内聚)，又要提高系统的可扩展性，所以我想呈现出来的是我理解的<strong>一个基本用户体系应该有的东西</strong>。</p>
 <h3 id="一个基本用户体系应该有的东西"><a href="#一个基本用户体系应该有的东西" class="headerlink" title="一个基本用户体系应该有的东西"></a>一个基本用户体系应该有的东西</h3><p>首先我们对原有的用户表进行再一次的抽象(抽离用户注册、登录依赖的字段、第三方登陆) -&gt; <strong>账户表</strong>，为什么这么做？随着业务的发展，以前只维护一个产品，也许某一天又开发新的产品，这样我们就可以统一的维护我们公司所有产品的注册登录逻辑，不同的产品只维护该产品和用户相关的信息即可(具体依赖产品形态)。如下图所示：</p>
-<a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/skr-user-system-2.png" class="gallery-item"><img src="http://cdn.tigerb.cn/skr-user-system-2.png" style="width:80%"></a>
+<a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/skr-user-system-2.png" class="gallery-item"><img src="http://rl24jdcif.bkt.clouddn.com/skr-user-system-2.png" style="width:80%"></a>
 
 <p>上图中，还提到了第三方登陆&#x2F;员工表&#x2F;后台权限管理，这些都是一些用户体系基本必备的结构。</p>
 <p>第三方登录：第三方也是登陆方式的一种，我们也把它抽象到账户的一部分，如上图所示。其次，关于第三方登录这里存在一个交互方式设计存在的问题，后面交互设计时会提到。</p>
@@ -186,7 +186,7 @@
 <li>第二部分：用户(<strong>应用层</strong>，无限水平扩展)</li>
 <li>第三部分：员工(<strong>应用层</strong>，员工权限体系)</li>
 </ul>
-<a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/skr-account-structure.jpg" class="gallery-item"><img src="http://cdn.tigerb.cn/skr-account-structure.jpg" style="width:80%"></a>
+<a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/skr-account-structure.jpg" class="gallery-item"><img src="http://rl24jdcif.bkt.clouddn.com/skr-account-structure.jpg" style="width:80%"></a>
 
 
 <h1 id="数据模型设计"><a href="#数据模型设计" class="headerlink" title="数据模型设计"></a>数据模型设计</h1><p>对应上面的架构，我们很容易设计出我们的数据模型(这里假设我们目前只有一个对C端的应用)：</p>
@@ -202,7 +202,7 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">9. 第三方用户登陆表，记录不同第三方的用户标示</span><br></pre></td></tr></table></figure>
 
 <p>最最后就是上面的9张表了，具体的表结构和sql如下：</p>
-<a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/skr-account-model-2.png" class="gallery-item"><img src="http://cdn.tigerb.cn/skr-account-model-2.png" style="width:100%"></a>
+<a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/skr-account-model-2.png" class="gallery-item"><img src="http://rl24jdcif.bkt.clouddn.com/skr-account-model-2.png" style="width:100%"></a>
 
 
 <h3 id="表sql"><a href="#表sql" class="headerlink" title="表sql"></a>表sql</h3><p><strong>账户模型</strong></p>
@@ -293,7 +293,7 @@
         <section>
             <h2>About</h2>
             <div>
-                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://rl24jdcif.bkt.clouddn.com/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
             </div>
         </section>
         <section>

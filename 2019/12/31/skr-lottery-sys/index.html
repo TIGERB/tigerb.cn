@@ -89,7 +89,7 @@
 
         <!-- Logo -->
         <a href="/" class="logo">
-            <span class="symbol"><img src="http://cdn.tigerb.cn/20190707142019.png" alt="" /></span><span class="title">TIGERB</span>
+            <span class="symbol"><img src="http://rl24jdcif.bkt.clouddn.com/20190707142019.png" alt="" /></span><span class="title">TIGERB</span>
         </a>
 
         <!-- Nav -->
@@ -139,7 +139,7 @@
     </div>
 
 
-    <span class="image main"><img src="http://cdn.tigerb.cn/20191231223355.jpg?imageMogr2/thumbnail/1280x760!/format/webp/blur/1x0/quality/55|imageslim" alt="" /></span>
+    <span class="image main"><img src="http://rl24jdcif.bkt.clouddn.com/20191231223355.jpg?imageMogr2/thumbnail/1280x760!/format/webp/blur/1x0/quality/55|imageslim" alt="" /></span>
 
 
 <!-- Gallery -->
@@ -208,32 +208,32 @@
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 通用抽奖工具(万能胶Glue) glue_user_draw_record 用户抽奖记录表</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `glue_user_draw_record` (</span><br><span class="line">    `id` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT COMMENT <span class="string">&#x27;自增ID&#x27;</span>,</span><br><span class="line">    `activity_id` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;活动ID&#x27;</span>,</span><br><span class="line">    `session_id` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;场次ID&#x27;</span>,</span><br><span class="line">    `prize_type_id` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;奖品类型ID&#x27;</span>,</span><br><span class="line">    `user_id` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;创建人user_id&#x27;</span>,</span><br><span class="line">    `create_at` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;创建时间&#x27;</span>,</span><br><span class="line">    `update_at` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;更新时间&#x27;</span>,</span><br><span class="line">    `status` tinyint(<span class="number">1</span>)  <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;状态 -1:未中奖, 1:已中奖 , 2: 发奖失败 , 3: 已发奖&#x27;</span>,</span><br><span class="line">    `log` text COMMENT <span class="string">&#x27;操作信息等记录&#x27;</span>,</span><br><span class="line">    <span class="keyword">PRIMARY</span> KEY (`id`)</span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8mb4 COMMENT<span class="operator">=</span><span class="string">&#x27;用户抽奖记录表&#x27;</span>;</span><br></pre></td></tr></table></figure>
 
 <h2 id="配置后台设计"><a href="#配置后台设计" class="headerlink" title="配置后台设计"></a>配置后台设计</h2><h4 id="创建活动"><a href="#创建活动" class="headerlink" title="创建活动"></a>创建活动</h4><p align="center">
-    <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20191229224816.png?imageMogr2/thumbnail/1934x1567!/format/webp/blur/1x0/quality/75|imageslim" data-lightbox="roadtrip">
-        <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20191229224816.png?imageMogr2/thumbnail/1934x1567!/format/webp/blur/1x0/quality/75|imageslim" class="gallery-item"><img src="http://cdn.tigerb.cn/20191229224816.png?imageMogr2/thumbnail/1934x1567!/format/webp/blur/1x0/quality/75|imageslim" width="66%"></a>
+    <a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/20191229224816.png?imageMogr2/thumbnail/1934x1567!/format/webp/blur/1x0/quality/75|imageslim" data-lightbox="roadtrip">
+        <a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/20191229224816.png?imageMogr2/thumbnail/1934x1567!/format/webp/blur/1x0/quality/75|imageslim" class="gallery-item"><img src="http://rl24jdcif.bkt.clouddn.com/20191229224816.png?imageMogr2/thumbnail/1934x1567!/format/webp/blur/1x0/quality/75|imageslim" width="66%"></a>
     </a>
 </p>
 
 <h4 id="创建活动场次-按数额范围区间抽奖"><a href="#创建活动场次-按数额范围区间抽奖" class="headerlink" title="创建活动场次-按数额范围区间抽奖"></a>创建活动场次-按数额范围区间抽奖</h4><p align="center">
-    <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20191230081157.png?imageMogr2/thumbnail/971x2069!/format/webp/blur/1x0/quality/75%7Cimageslim" data-lightbox="roadtrip">
-        <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20191230081157.png?imageMogr2/thumbnail/971x2069!/format/webp/blur/1x0/quality/75%7Cimageslim" class="gallery-item"><img src="http://cdn.tigerb.cn/20191230081157.png?imageMogr2/thumbnail/971x2069!/format/webp/blur/1x0/quality/75%7Cimageslim" width="66%"></a>
+    <a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/20191230081157.png?imageMogr2/thumbnail/971x2069!/format/webp/blur/1x0/quality/75%7Cimageslim" data-lightbox="roadtrip">
+        <a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/20191230081157.png?imageMogr2/thumbnail/971x2069!/format/webp/blur/1x0/quality/75%7Cimageslim" class="gallery-item"><img src="http://rl24jdcif.bkt.clouddn.com/20191230081157.png?imageMogr2/thumbnail/971x2069!/format/webp/blur/1x0/quality/75%7Cimageslim" width="66%"></a>
     </a>
 </p>
 
 <p align="center">
-    <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20191229224543.png?imageMogr2/thumbnail/971x2214!/format/webp/blur/1x0/quality/75%7Cimageslim" data-lightbox="roadtrip">
-        <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20191229224543.png?imageMogr2/thumbnail/971x2214!/format/webp/blur/1x0/quality/75%7Cimageslim" class="gallery-item"><img src="http://cdn.tigerb.cn/20191229224543.png?imageMogr2/thumbnail/971x2214!/format/webp/blur/1x0/quality/75%7Cimageslim" width="66%"></a>
+    <a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/20191229224543.png?imageMogr2/thumbnail/971x2214!/format/webp/blur/1x0/quality/75%7Cimageslim" data-lightbox="roadtrip">
+        <a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/20191229224543.png?imageMogr2/thumbnail/971x2214!/format/webp/blur/1x0/quality/75%7Cimageslim" class="gallery-item"><img src="http://rl24jdcif.bkt.clouddn.com/20191229224543.png?imageMogr2/thumbnail/971x2214!/format/webp/blur/1x0/quality/75%7Cimageslim" width="66%"></a>
     </a>
 </p>
 
 <p align="center">
-    <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20191229224834.png?imageMogr2/thumbnail/971x1693!/format/webp/blur/1x0/quality/75%7Cimageslim" data-lightbox="roadtrip">
-        <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20191229224834.png?imageMogr2/thumbnail/971x1693!/format/webp/blur/1x0/quality/75%7Cimageslim" class="gallery-item"><img src="http://cdn.tigerb.cn/20191229224834.png?imageMogr2/thumbnail/971x1693!/format/webp/blur/1x0/quality/75%7Cimageslim" width="66%"></a>
+    <a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/20191229224834.png?imageMogr2/thumbnail/971x1693!/format/webp/blur/1x0/quality/75%7Cimageslim" data-lightbox="roadtrip">
+        <a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/20191229224834.png?imageMogr2/thumbnail/971x1693!/format/webp/blur/1x0/quality/75%7Cimageslim" class="gallery-item"><img src="http://rl24jdcif.bkt.clouddn.com/20191229224834.png?imageMogr2/thumbnail/971x1693!/format/webp/blur/1x0/quality/75%7Cimageslim" width="66%"></a>
     </a>
 </p>
 
 <h4 id="活动列表"><a href="#活动列表" class="headerlink" title="活动列表"></a>活动列表</h4><p align="center">
-    <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20191229223706.png?imageMogr2/thumbnail/1338x761!/format/webp/blur/1x0/quality/75%7Cimageslim" data-lightbox="roadtrip">
-        <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20191229223706.png?imageMogr2/thumbnail/1338x761!/format/webp/blur/1x0/quality/75%7Cimageslim" class="gallery-item"><img src="http://cdn.tigerb.cn/20191229223706.png?imageMogr2/thumbnail/1338x761!/format/webp/blur/1x0/quality/75%7Cimageslim" width="66%"></a>
+    <a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/20191229223706.png?imageMogr2/thumbnail/1338x761!/format/webp/blur/1x0/quality/75%7Cimageslim" data-lightbox="roadtrip">
+        <a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/20191229223706.png?imageMogr2/thumbnail/1338x761!/format/webp/blur/1x0/quality/75%7Cimageslim" class="gallery-item"><img src="http://rl24jdcif.bkt.clouddn.com/20191229223706.png?imageMogr2/thumbnail/1338x761!/format/webp/blur/1x0/quality/75%7Cimageslim" width="66%"></a>
     </a>
 </p>
 
@@ -334,7 +334,7 @@
         <section>
             <h2>About</h2>
             <div>
-                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://rl24jdcif.bkt.clouddn.com/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
             </div>
         </section>
         <section>

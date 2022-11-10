@@ -89,7 +89,7 @@
 
         <!-- Logo -->
         <a href="/" class="logo">
-            <span class="symbol"><img src="http://cdn.tigerb.cn/20190707142019.png" alt="" /></span><span class="title">TIGERB</span>
+            <span class="symbol"><img src="http://rl24jdcif.bkt.clouddn.com/20190707142019.png" alt="" /></span><span class="title">TIGERB</span>
         </a>
 
         <!-- Nav -->
@@ -159,18 +159,18 @@
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> demo</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">YourFunc</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 所有的逻辑代码一股脑写完......</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210307142850.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210307142850.png" style="width:30%"></a>
+  <a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/20210307142850.png" class="gallery-item"><img src="http://rl24jdcif.bkt.clouddn.com/20210307142850.png" style="width:30%"></a>
 </p>
 
 <h1 id="知道了拆分函数"><a href="#知道了拆分函数" class="headerlink" title="知道了拆分函数"></a>知道了拆分函数</h1><hr>
 <p>自然而然知道了需要合理拆分函数。</p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210307144448.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210307144448.png" style="width:30%"></a>
+  <a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/20210307144448.png" class="gallery-item"><img src="http://rl24jdcif.bkt.clouddn.com/20210307144448.png" style="width:30%"></a>
 </p>
 
 <p>然后把各个函数组织起来。</p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210307144536.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210307144536.png" style="width:30%"></a>
+  <a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/20210307144536.png" class="gallery-item"><img src="http://rl24jdcif.bkt.clouddn.com/20210307144536.png" style="width:30%"></a>
 </p>
 
 <h1 id="面临新的困境"><a href="#面临新的困境" class="headerlink" title="面临新的困境"></a>面临新的困境</h1><hr>
@@ -181,7 +181,7 @@
 <li>把变动的代码再提为两个新函数，一个绿色为老代码，一个蓝色为新场景代码？</li>
 </ol>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210307144547.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210307144547.png" style="width:36%"></a>
+  <a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/20210307144547.png" class="gallery-item"><img src="http://rl24jdcif.bkt.clouddn.com/20210307144547.png" style="width:36%"></a>
 </p>
 
 <p>上面这种解决问题的方式就是<strong>面向过程</strong>的编程思想。</p>
@@ -194,7 +194,7 @@
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> demo</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 面向对象编程</span></span><br><span class="line"><span class="comment">// 把不同的逻辑独立成一个对象</span></span><br><span class="line"><span class="keyword">type</span> DemoStruct <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(d *DemoStruct)</span></span> YourFunc() &#123;</span><br><span class="line">	<span class="comment">// ......</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210307144804.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210307144804.png" style="width:50%"></a>
+  <a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/20210307144804.png" class="gallery-item"><img src="http://rl24jdcif.bkt.clouddn.com/20210307144804.png" style="width:50%"></a>
 </p>
 
 <p>所以，我们如何用面向对象的思想组织上面的代码呢？</p>
@@ -204,14 +204,14 @@
 
 <p>定义一个父类，并把差异业务代码抽象为一个抽象函数，其他代码逻辑都实现在父类。</p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210307145232.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210307145232.png" style="width:50%"></a>
+  <a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/20210307145232.png" class="gallery-item"><img src="http://rl24jdcif.bkt.clouddn.com/20210307145232.png" style="width:50%"></a>
 </p>
 
 <p>不同的场景定义为不同的子类，子类继承父类，并实现抽象方法(也就是写差异代码)。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">灰色：父类</span><br><span class="line">绿色：场景一子类</span><br><span class="line">蓝色：场景二子类</span><br></pre></td></tr></table></figure>
 
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210307145349.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210307145349.png" style="width:50%"></a>
+  <a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/20210307145349.png" class="gallery-item"><img src="http://rl24jdcif.bkt.clouddn.com/20210307145349.png" style="width:50%"></a>
 </p>
 
 <p>是不是很优雅的解决上面的场景的问题。</p>
@@ -222,7 +222,7 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">灰色：父类</span><br><span class="line">绿色：场景一子类</span><br><span class="line">蓝色：场景二子类</span><br><span class="line">黄色：场景三子类</span><br></pre></td></tr></table></figure>
 
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210307145529.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210307145529.png" style="width:50%"></a>
+  <a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/20210307145529.png" class="gallery-item"><img src="http://rl24jdcif.bkt.clouddn.com/20210307145529.png" style="width:50%"></a>
 </p>
 
 <h2 id="这！就是策略模式"><a href="#这！就是策略模式" class="headerlink" title="这！就是策略模式"></a><strong>这！就是策略模式</strong></h2><p>我们把上面代码做些改动：</p>
@@ -236,7 +236,7 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">灰色：主业务类</span><br></pre></td></tr></table></figure>
 
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210307145602.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210307145602.png" style="width:60%"></a>
+  <a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/20210307145602.png" class="gallery-item"><img src="http://rl24jdcif.bkt.clouddn.com/20210307145602.png" style="width:60%"></a>
 </p>
 
 <ol start="4">
@@ -245,19 +245,19 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">灰色：主业务类</span><br><span class="line">绿色：场景一DemoInterface的具体实现类</span><br></pre></td></tr></table></figure>
 
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210307145616.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210307145616.png" style="width:60%"></a>
+  <a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/20210307145616.png" class="gallery-item"><img src="http://rl24jdcif.bkt.clouddn.com/20210307145616.png" style="width:60%"></a>
 </p>
 
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">灰色：主业务类</span><br><span class="line">绿色：场景一DemoInterface的具体实现类</span><br><span class="line">蓝色：场景二DemoInterface的具体实现类</span><br></pre></td></tr></table></figure>
 
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210307145642.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210307145642.png" style="width:60%"></a>
+  <a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/20210307145642.png" class="gallery-item"><img src="http://rl24jdcif.bkt.clouddn.com/20210307145642.png" style="width:60%"></a>
 </p>
 
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">灰色：主业务类</span><br><span class="line">绿色：场景一DemoInterface的具体实现类</span><br><span class="line">蓝色：场景二DemoInterface的具体实现类</span><br><span class="line">黄色：场景三DemoInterface的具体实现类</span><br></pre></td></tr></table></figure>
 
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210307145705.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210307145705.png" style="width:60%"></a>
+  <a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/20210307145705.png" class="gallery-item"><img src="http://rl24jdcif.bkt.clouddn.com/20210307145705.png" style="width:60%"></a>
 </p>
 
 <ol start="5">
@@ -269,7 +269,7 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">灰色(大)：主业务类</span><br><span class="line">灰色(小)：简单工厂类</span><br><span class="line">绿色：场景一DemoInterface的具体实现类</span><br><span class="line">蓝色：场景二DemoInterface的具体实现类</span><br><span class="line">黄色：场景三DemoInterface的具体实现类</span><br></pre></td></tr></table></figure>
 
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210307154154.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210307154154.png" style="width:60%"></a>
+  <a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/20210307154154.png" class="gallery-item"><img src="http://rl24jdcif.bkt.clouddn.com/20210307154154.png" style="width:60%"></a>
 </p>
 
 <h2 id="这！就是状态模式"><a href="#这！就是状态模式" class="headerlink" title="这！就是状态模式"></a><strong>这！就是状态模式</strong></h2><p>假设判断上面使用何种策略不是依赖外部，而是依赖内部状态，则我们调整下代码，则就变成了状态模式。</p>
@@ -278,7 +278,7 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">灰色(大)：主业务类</span><br><span class="line">灰色(小)：修改内部状态的函数</span><br><span class="line">绿色：场景一DemoInterface的具体实现类</span><br><span class="line">蓝色：场景二DemoInterface的具体实现类</span><br><span class="line">黄色：场景三DemoInterface的具体实现类</span><br></pre></td></tr></table></figure>
 
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20210307160512.png" class="gallery-item"><img src="http://cdn.tigerb.cn/20210307160512.png" style="width:60%"></a>
+  <a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/20210307160512.png" class="gallery-item"><img src="http://rl24jdcif.bkt.clouddn.com/20210307160512.png" style="width:60%"></a>
 </p>
 
 <h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><hr>
@@ -328,7 +328,7 @@
         <section>
             <h2>About</h2>
             <div>
-                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://rl24jdcif.bkt.clouddn.com/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
             </div>
         </section>
         <section>

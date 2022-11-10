@@ -89,7 +89,7 @@
 
         <!-- Logo -->
         <a href="/" class="logo">
-            <span class="symbol"><img src="http://cdn.tigerb.cn/20190707142019.png" alt="" /></span><span class="title">TIGERB</span>
+            <span class="symbol"><img src="http://rl24jdcif.bkt.clouddn.com/20190707142019.png" alt="" /></span><span class="title">TIGERB</span>
         </a>
 
         <!-- Nav -->
@@ -148,7 +148,7 @@
 <!-- Content -->
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>如果已经在LNMP架构下工作2-3年时间，这个阶段我们对自己常用的技术栈的工作原理一定需要有一个基本的认识。一方面，可以去学习这些优秀软件的设计思路，另一方面，可以为分析系统瓶颈和系统优化打好基础。今天我们就来看看php-fpm&#x2F;nginx&#x2F;redis&#x2F;mysql的进程模型。</p>
 <h1 id="php-fpm的进程模型"><a href="#php-fpm的进程模型" class="headerlink" title="php-fpm的进程模型"></a>php-fpm的进程模型</h1><p>php-fpm采用了master-worker多进程的模型，其次与php-cgi相比提供了更好的进程管理方式。php-fpm的进程模型示例图如下：</p>
-<a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/process-fpm-n.png" class="gallery-item"><img src="http://cdn.tigerb.cn/process-fpm-n.png" width="50%"></a>
+<a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/process-fpm-n.png" class="gallery-item"><img src="http://rl24jdcif.bkt.clouddn.com/process-fpm-n.png" width="50%"></a>
 
 <p>master主进程的主要任务：</p>
 <ul>
@@ -167,7 +167,7 @@
 <p>多进程(单线程)并发模型</p>
 </blockquote>
 <h1 id="nginx的进程模型"><a href="#nginx的进程模型" class="headerlink" title="nginx的进程模型"></a>nginx的进程模型</h1><p>同样，nginx也采用了master-worker多进程的模型，进程模型图如下所示：</p>
-<a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/process-nginx-n.png" class="gallery-item"><img src="http://cdn.tigerb.cn/process-nginx-n.png" width="50%"></a>
+<a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/process-nginx-n.png" class="gallery-item"><img src="http://rl24jdcif.bkt.clouddn.com/process-nginx-n.png" width="50%"></a>
 
 <p>但是与php-fpm主要的不同的是：</p>
 <ol>
@@ -181,16 +181,16 @@
 <p>多进程(单线程)和多路I&#x2F;O复用并发模型</p>
 </blockquote>
 <h1 id="redis的进程模型"><a href="#redis的进程模型" class="headerlink" title="redis的进程模型"></a>redis的进程模型</h1><p>redis采用的是单进程的模型，如下图所示：</p>
-<a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/process-redis-1.jpg" class="gallery-item"><img src="http://cdn.tigerb.cn/process-redis-1.jpg" width="50%"></a>
+<a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/process-redis-1.jpg" class="gallery-item"><img src="http://rl24jdcif.bkt.clouddn.com/process-redis-1.jpg" width="50%"></a>
 
 <p>但是，redis需要实现持久化，持久化的方式一般有两种RDB(写快照)&#x2F;AOF(写命令)，持久化的过程redis会fork一个子进程来完成，目的不阻塞master工作进程。如下图所示：</p>
-<a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/process-redis-n-2.png" class="gallery-item"><img src="http://cdn.tigerb.cn/process-redis-n-2.png" width="50%"></a>
+<a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/process-redis-n-2.png" class="gallery-item"><img src="http://rl24jdcif.bkt.clouddn.com/process-redis-n-2.png" width="50%"></a>
 
 <blockquote>
 <p>单进程(单线程)和多路I&#x2F;O复用并发模型</p>
 </blockquote>
 <h1 id="mysql的进程模型"><a href="#mysql的进程模型" class="headerlink" title="mysql的进程模型"></a>mysql的进程模型</h1><p>mysql谈进程模型其实还是不合适，mysql主要采用的是多线程的架构。</p>
-<a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/process-mysql.jpg" class="gallery-item"><img src="http://cdn.tigerb.cn/process-mysql.jpg" width="50%"></a>
+<a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/process-mysql.jpg" class="gallery-item"><img src="http://rl24jdcif.bkt.clouddn.com/process-mysql.jpg" width="50%"></a>
 
 <blockquote>
 <p>多线程并发模型</p>
@@ -287,7 +287,7 @@
         <section>
             <h2>About</h2>
             <div>
-                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://rl24jdcif.bkt.clouddn.com/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
             </div>
         </section>
         <section>

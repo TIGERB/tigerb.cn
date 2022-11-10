@@ -89,7 +89,7 @@
 
         <!-- Logo -->
         <a href="/" class="logo">
-            <span class="symbol"><img src="http://cdn.tigerb.cn/20190707142019.png" alt="" /></span><span class="title">TIGERB</span>
+            <span class="symbol"><img src="http://rl24jdcif.bkt.clouddn.com/20190707142019.png" alt="" /></span><span class="title">TIGERB</span>
         </a>
 
         <!-- Nav -->
@@ -139,7 +139,7 @@
     </div>
 
 
-    <span class="image main"><img src="http://cdn.tigerb.cn/20190720222404.jpg?/format/webp/blur/1x0/quality/10%7Cimageslim" alt="" /></span>
+    <span class="image main"><img src="http://rl24jdcif.bkt.clouddn.com/20190720222404.jpg?/format/webp/blur/1x0/quality/10%7Cimageslim" alt="" /></span>
 
 
 <!-- Gallery -->
@@ -204,7 +204,7 @@
 <p><strong>责任链模式的部分概念</strong>:把一系列<strong>处理对象</strong>构成一个链，传递<strong>被处理对象</strong>的设计。我们借鉴的就是这个设计。</p>
 <p>责任链模式的实现很简单，一个对象(Handler)执行(Run())完成自身的业务(Do())之后，判断是否存在下一个对象(nextHandler)，如果存在则执行下一个对象(nextHandler.Do())。除此之外我们这个Handler还应该拥有一个设置下一个对象的成员方法。所以，我们这个Handler的uml结构如下：</p>
 <p align="center">
-    <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20190720191330.jpg?/format/webp/blur/1x0/quality/10%7Cimageslim" class="gallery-item"><img src="http://cdn.tigerb.cn/20190720191330.jpg?/format/webp/blur/1x0/quality/10%7Cimageslim" style="width:50%;"></a>
+    <a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/20190720191330.jpg?/format/webp/blur/1x0/quality/10%7Cimageslim" class="gallery-item"><img src="http://rl24jdcif.bkt.clouddn.com/20190720191330.jpg?/format/webp/blur/1x0/quality/10%7Cimageslim" style="width:50%;"></a>
 </p>
 
 <table>
@@ -248,7 +248,7 @@
 </tbody></table>
 <p>理论上按照上面的建模过程，我们可以抽象出一个抽象类，具体的Handler继承这个抽象类，再实现具体的抽象方法<code>Do</code>即可，<strong>无需在再在业务代码中手动调用下一个对象</strong>(优雅、低接入成本)。但是由于go中没有继承的概念，又无法满足我们的需求，然而我们可以通过合成复用的方式来尽可能的实现(如果像看可以继承的实现的方式，可以看我的php代码实现<a target="_blank" rel="noopener" href="https://github.com/TIGERB/easy-tips/blob/master/patterns/chainOfResponsibility/test.php">https://github.com/TIGERB/easy-tips/blob/master/patterns/chainOfResponsibility/test.php</a>)，最终Go合成复用版本的uml图如下：</p>
 <p align="center">
-    <a target="_blank" rel="noopener" href="http://cdn.tigerb.cn/20190720182529.jpg?/format/webp/blur/1x0/quality/10%7Cimageslim" class="gallery-item"><img src="http://cdn.tigerb.cn/20190720182529.jpg?/format/webp/blur/1x0/quality/10%7Cimageslim" style="width:80%"></a>
+    <a target="_blank" rel="noopener" href="http://rl24jdcif.bkt.clouddn.com/20190720182529.jpg?/format/webp/blur/1x0/quality/10%7Cimageslim" class="gallery-item"><img src="http://rl24jdcif.bkt.clouddn.com/20190720182529.jpg?/format/webp/blur/1x0/quality/10%7Cimageslim" style="width:80%"></a>
 </p>
 
 <ol>
@@ -337,7 +337,7 @@
         <section>
             <h2>About</h2>
             <div>
-                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://cdn.tigerb.cn/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://rl24jdcif.bkt.clouddn.com/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
             </div>
         </section>
         <section>
