@@ -8,7 +8,7 @@
 今天我们开始拉开《Go语言轻松系列》第二章「内存与垃圾回收」的序幕。
 
 <p align="center">
-  <img src="http://rl24jdcif.bkt.clouddn.com/20210109200839.png" style="width:36%;box-shadow: 3px 3px 3px 3px #ddd;">
+  <img src="http://rmq67gta1.sabkt.gdipper.com/20210109200839.png" style="width:36%;box-shadow: 3px 3px 3px 3px #ddd;">
 </p>
 
 关于「内存与垃圾回收」章节，目录如下：

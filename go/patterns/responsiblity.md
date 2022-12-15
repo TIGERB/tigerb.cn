@@ -87,7 +87,7 @@ XX|以及未来会增加的逻辑...
 
 我们通过梳理的文本业务流程得到了如下的业务流程图：
 
-![](http://rl24jdcif.bkt.clouddn.com/20200327205310.png)
+![](http://rmq67gta1.sabkt.gdipper.com/20200327205310.png)
 
 #### 代码建模
 
@@ -168,7 +168,7 @@ XX|以及未来会增加的逻辑...
 
 同时得到了我们的UML图：
 
-![](http://rl24jdcif.bkt.clouddn.com/20200328220913.jpg)
+![](http://rmq67gta1.sabkt.gdipper.com/20200328220913.jpg)
 
 #### 代码demo
 
