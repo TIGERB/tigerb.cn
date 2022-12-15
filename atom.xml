@@ -6,7 +6,7 @@
   <link href="http://tigerb.cn/atom.xml" rel="self"/>
   
   <link href="http://tigerb.cn/"/>
-  <updated>2022-11-10T01:33:41.680Z</updated>
+  <updated>2022-12-15T01:04:59.356Z</updated>
   <id>http://tigerb.cn/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>100元实践k8s搭建过程</title>
+    <link href="http://tigerb.cn/2022/12/03/k8s/install/"/>
+    <id>http://tigerb.cn/2022/12/03/k8s/install/</id>
+    <published>2022-12-03T13:00:11.000Z</published>
+    <updated>2022-12-15T01:04:59.356Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="k8s" scheme="http://tigerb.cn/categories/k8s/"/>
+    
+    
+    <category term="Go" scheme="http://tigerb.cn/tags/Go/"/>
+    
+  </entry>
+  
+  <entry>
     <title>彻底理解Go语言栈内存/堆内存</title>
     <link href="http://tigerb.cn/2022/08/21/go-base/memory-alloc/"/>
     <id>http://tigerb.cn/2022/08/21/go-base/memory-alloc/</id>
     <published>2022-08-21T09:20:11.000Z</published>
-    <updated>2022-11-10T01:33:41.680Z</updated>
+    <updated>2022-12-15T01:08:53.624Z</updated>
     
     
       
@@ -46,7 +71,7 @@
     <link href="http://tigerb.cn/2022/07/10/go-base/code-execute/"/>
     <id>http://tigerb.cn/2022/07/10/go-base/code-execute/</id>
     <published>2022-07-10T07:20:11.000Z</published>
-    <updated>2022-11-10T01:33:41.679Z</updated>
+    <updated>2022-12-15T01:08:53.649Z</updated>
     
     
       
@@ -73,7 +98,7 @@
     <link href="http://tigerb.cn/2022/07/10/go-base/code/"/>
     <id>http://tigerb.cn/2022/07/10/go-base/code/</id>
     <published>2022-07-10T07:20:11.000Z</published>
-    <updated>2022-11-10T01:33:41.679Z</updated>
+    <updated>2022-12-15T01:08:53.622Z</updated>
     
     
       
@@ -125,7 +150,7 @@
     <link href="http://tigerb.cn/2022/04/23/go-base/memory-mspan/"/>
     <id>http://tigerb.cn/2022/04/23/go-base/memory-mspan/</id>
     <published>2022-04-23T15:32:10.000Z</published>
-    <updated>2022-11-10T01:33:41.680Z</updated>
+    <updated>2022-12-15T01:08:53.622Z</updated>
     
     
       
@@ -150,7 +175,7 @@
     <link href="http://tigerb.cn/2022/04/16/go-base/memory-mcache/"/>
     <id>http://tigerb.cn/2022/04/16/go-base/memory-mcache/</id>
     <published>2022-04-16T14:31:10.000Z</published>
-    <updated>2022-12-15T00:55:08.735Z</updated>
+    <updated>2022-12-15T01:08:53.622Z</updated>
     
     
       
@@ -175,7 +200,7 @@
     <link href="http://tigerb.cn/2022/04/10/go-base/memory-arch/"/>
     <id>http://tigerb.cn/2022/04/10/go-base/memory-arch/</id>
     <published>2022-04-10T08:33:11.000Z</published>
-    <updated>2022-11-10T01:33:41.680Z</updated>
+    <updated>2022-12-15T01:08:53.623Z</updated>
     
     
       
@@ -254,7 +279,7 @@
     <link href="http://tigerb.cn/2022/01/22/go/cpu-debug/"/>
     <id>http://tigerb.cn/2022/01/22/go/cpu-debug/</id>
     <published>2022-01-22T02:20:05.000Z</published>
-    <updated>2022-11-10T01:33:41.680Z</updated>
+    <updated>2022-12-15T01:08:53.623Z</updated>
     
     
       
@@ -302,7 +327,7 @@
     <link href="http://tigerb.cn/2021/07/18/go/php2go/"/>
     <id>http://tigerb.cn/2021/07/18/go/php2go/</id>
     <published>2021-07-18T14:00:11.000Z</published>
-    <updated>2022-11-10T01:33:41.682Z</updated>
+    <updated>2022-12-15T01:08:53.623Z</updated>
     
     
       
@@ -373,7 +398,7 @@
     <link href="http://tigerb.cn/2021/02/28/go-base/map-range/"/>
     <id>http://tigerb.cn/2021/02/28/go-base/map-range/</id>
     <published>2021-02-28T07:20:11.000Z</published>
-    <updated>2022-11-10T01:33:41.680Z</updated>
+    <updated>2022-12-15T01:08:53.626Z</updated>
     
     
       
@@ -398,7 +423,7 @@
     <link href="http://tigerb.cn/2021/01/31/go-base/tcmalloc/"/>
     <id>http://tigerb.cn/2021/01/31/go-base/tcmalloc/</id>
     <published>2021-01-31T14:00:11.000Z</published>
-    <updated>2022-11-10T01:33:41.680Z</updated>
+    <updated>2022-12-15T01:08:53.623Z</updated>
     
     
       
@@ -423,7 +448,7 @@
     <link href="http://tigerb.cn/2021/01/23/go-base/memory-pointer/"/>
     <id>http://tigerb.cn/2021/01/23/go-base/memory-pointer/</id>
     <published>2021-01-23T14:00:11.000Z</published>
-    <updated>2022-11-10T01:33:41.680Z</updated>
+    <updated>2022-12-15T01:08:53.622Z</updated>
     
     
       
@@ -471,7 +496,7 @@
     <link href="http://tigerb.cn/2020/12/21/go-base/map/"/>
     <id>http://tigerb.cn/2020/12/21/go-base/map/</id>
     <published>2020-12-21T13:55:11.000Z</published>
-    <updated>2022-11-10T01:33:41.680Z</updated>
+    <updated>2022-12-15T01:08:53.623Z</updated>
     
     
       
@@ -889,7 +914,7 @@
     <link href="http://tigerb.cn/2019/12/22/skr-marketing/"/>
     <id>http://tigerb.cn/2019/12/22/skr-marketing/</id>
     <published>2019-12-22T08:46:07.000Z</published>
-    <updated>2022-11-10T01:33:41.679Z</updated>
+    <updated>2022-12-15T01:08:53.621Z</updated>
     
     
       
@@ -912,7 +937,7 @@
     <link href="http://tigerb.cn/2019/10/11/oop/"/>
     <id>http://tigerb.cn/2019/10/11/oop/</id>
     <published>2019-10-11T12:44:39.000Z</published>
-    <updated>2022-11-10T01:33:41.679Z</updated>
+    <updated>2022-12-15T01:08:53.621Z</updated>
     
     
       
@@ -1004,7 +1029,7 @@
     <link href="http://tigerb.cn/2019/06/29/go-iris/"/>
     <id>http://tigerb.cn/2019/06/29/go-iris/</id>
     <published>2019-06-29T11:46:53.000Z</published>
-    <updated>2022-11-10T01:33:41.679Z</updated>
+    <updated>2022-12-15T01:08:53.563Z</updated>
     
     
       
@@ -1050,7 +1075,7 @@
     <link href="http://tigerb.cn/2019/03/31/cdn/"/>
     <id>http://tigerb.cn/2019/03/31/cdn/</id>
     <published>2019-03-31T11:10:15.000Z</published>
-    <updated>2022-11-10T01:33:41.679Z</updated>
+    <updated>2022-12-15T01:08:53.621Z</updated>
     
     
       
@@ -1073,7 +1098,7 @@
     <link href="http://tigerb.cn/2019/01/26/skr-product-base/"/>
     <id>http://tigerb.cn/2019/01/26/skr-product-base/</id>
     <published>2019-01-26T05:27:31.000Z</published>
-    <updated>2022-11-10T01:33:41.679Z</updated>
+    <updated>2022-12-15T01:08:53.620Z</updated>
     
     
       
@@ -1186,7 +1211,7 @@
     <link href="http://tigerb.cn/2018/11/24/php-network-programming/"/>
     <id>http://tigerb.cn/2018/11/24/php-network-programming/</id>
     <published>2018-11-24T13:54:11.000Z</published>
-    <updated>2022-11-10T01:33:41.679Z</updated>
+    <updated>2022-12-15T01:08:53.563Z</updated>
     
     
       
@@ -1209,7 +1234,7 @@
     <link href="http://tigerb.cn/2018/10/20/cli-command/"/>
     <id>http://tigerb.cn/2018/10/20/cli-command/</id>
     <published>2018-10-20T14:14:16.000Z</published>
-    <updated>2022-11-10T01:33:41.679Z</updated>
+    <updated>2022-12-15T01:08:53.566Z</updated>
     
     
       
@@ -1462,7 +1487,7 @@
     <link href="http://tigerb.cn/2017/11/30/naruto/"/>
     <id>http://tigerb.cn/2017/11/30/naruto/</id>
     <published>2017-11-30T14:03:33.000Z</published>
-    <updated>2022-11-10T01:33:41.683Z</updated>
+    <updated>2022-12-15T01:08:53.622Z</updated>
     
     
       
