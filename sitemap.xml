@@ -2,6 +2,195 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://tigerb.cn/2022/07/10/go-base/code-execute/</loc>
+    
+    <lastmod>2022-12-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tigerb.cn/2021/02/28/go-base/map-range/</loc>
+    
+    <lastmod>2022-12-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tigerb.cn/2022/08/21/go-base/memory-alloc/</loc>
+    
+    <lastmod>2022-12-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tigerb.cn/2022/01/22/go/cpu-debug/</loc>
+    
+    <lastmod>2022-12-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tigerb.cn/2022/04/10/go-base/memory-arch/</loc>
+    
+    <lastmod>2022-12-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tigerb.cn/2020/12/21/go-base/map/</loc>
+    
+    <lastmod>2022-12-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tigerb.cn/2021/01/31/go-base/tcmalloc/</loc>
+    
+    <lastmod>2022-12-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tigerb.cn/2021/07/18/go/php2go/</loc>
+    
+    <lastmod>2022-12-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tigerb.cn/2017/11/30/naruto/</loc>
+    
+    <lastmod>2022-12-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tigerb.cn/2022/07/10/go-base/code/</loc>
+    
+    <lastmod>2022-12-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tigerb.cn/2022/04/16/go-base/memory-mcache/</loc>
+    
+    <lastmod>2022-12-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tigerb.cn/2022/04/23/go-base/memory-mspan/</loc>
+    
+    <lastmod>2022-12-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tigerb.cn/2021/01/23/go-base/memory-pointer/</loc>
+    
+    <lastmod>2022-12-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tigerb.cn/2019/03/31/cdn/</loc>
+    
+    <lastmod>2022-12-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tigerb.cn/2019/10/11/oop/</loc>
+    
+    <lastmod>2022-12-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tigerb.cn/2019/12/22/skr-marketing/</loc>
+    
+    <lastmod>2022-12-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tigerb.cn/2019/01/26/skr-product-base/</loc>
+    
+    <lastmod>2022-12-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tigerb.cn/2018/10/20/cli-command/</loc>
+    
+    <lastmod>2022-12-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tigerb.cn/2019/06/29/go-iris/</loc>
+    
+    <lastmod>2022-12-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tigerb.cn/2018/11/24/php-network-programming/</loc>
+    
+    <lastmod>2022-12-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tigerb.cn/2022/12/03/k8s/install/</loc>
+    
+    <lastmod>2022-12-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://tigerb.cn/2020/04/06/go-patterns/component/</loc>
     
     <lastmod>2022-12-15</lastmod>
@@ -147,15 +336,6 @@
   
   <url>
     <loc>http://tigerb.cn/2022/07/10/go-base/computer/</loc>
-    
-    <lastmod>2022-12-15</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tigerb.cn/2022/04/16/go-base/memory-mcache/</loc>
     
     <lastmod>2022-12-15</lastmod>
     
@@ -320,177 +500,6 @@
     <loc>http://tigerb.cn/2019/04/18/top-qps-experience/</loc>
     
     <lastmod>2022-12-15</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tigerb.cn/2017/11/30/naruto/</loc>
-    
-    <lastmod>2022-11-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tigerb.cn/2021/07/18/go/php2go/</loc>
-    
-    <lastmod>2022-11-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tigerb.cn/2022/01/22/go/cpu-debug/</loc>
-    
-    <lastmod>2022-11-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tigerb.cn/2021/02/28/go-base/map-range/</loc>
-    
-    <lastmod>2022-11-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tigerb.cn/2022/04/10/go-base/memory-arch/</loc>
-    
-    <lastmod>2022-11-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tigerb.cn/2022/04/23/go-base/memory-mspan/</loc>
-    
-    <lastmod>2022-11-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tigerb.cn/2021/01/23/go-base/memory-pointer/</loc>
-    
-    <lastmod>2022-11-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tigerb.cn/2020/12/21/go-base/map/</loc>
-    
-    <lastmod>2022-11-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tigerb.cn/2022/08/21/go-base/memory-alloc/</loc>
-    
-    <lastmod>2022-11-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tigerb.cn/2021/01/31/go-base/tcmalloc/</loc>
-    
-    <lastmod>2022-11-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tigerb.cn/2019/03/31/cdn/</loc>
-    
-    <lastmod>2022-11-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tigerb.cn/2018/10/20/cli-command/</loc>
-    
-    <lastmod>2022-11-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tigerb.cn/2019/06/29/go-iris/</loc>
-    
-    <lastmod>2022-11-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tigerb.cn/2019/10/11/oop/</loc>
-    
-    <lastmod>2022-11-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tigerb.cn/2018/11/24/php-network-programming/</loc>
-    
-    <lastmod>2022-11-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tigerb.cn/2019/12/22/skr-marketing/</loc>
-    
-    <lastmod>2022-11-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tigerb.cn/2022/07/10/go-base/code-execute/</loc>
-    
-    <lastmod>2022-11-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tigerb.cn/2022/07/10/go-base/code/</loc>
-    
-    <lastmod>2022-11-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tigerb.cn/2019/01/26/skr-product-base/</loc>
-    
-    <lastmod>2022-11-10</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1026,6 +1035,13 @@
   
   <url>
     <loc>http://tigerb.cn/categories/skrshop/</loc>
+    <lastmod>2022-12-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://tigerb.cn/categories/k8s/</loc>
     <lastmod>2022-12-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
