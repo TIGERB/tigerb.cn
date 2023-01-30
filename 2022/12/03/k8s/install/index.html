@@ -89,7 +89,7 @@
 
         <!-- Logo -->
         <a href="/" class="logo">
-            <span class="symbol"><img src="http://rmq67gta1.sabkt.gdipper.com/20190707142019.png" alt="" /></span><span class="title">TIGERB</span>
+            <span class="symbol"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20190707142019.png" alt="" /></span><span class="title">TIGERB</span>
         </a>
 
         <!-- Nav -->
@@ -152,12 +152,12 @@
 <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h3 id="1-采购云主机"><a href="#1-采购云主机" class="headerlink" title="1.采购云主机"></a>1.采购云主机</h3><p>官方建议最低云主机配置<strong>2核4G</strong>，国内任意云厂商采购就行，作为K8S服务的宿主机。<strong>本教程操作系统为CentOS 8.2 64位</strong>。</p>
 <p><code>备注：官方文档标记最低配置内存要求2G，但是安装完dashboard、ingress等服务之后比较卡顿，所以为了流畅这里推荐4G内存。</code></p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://rmq67gta1.sabkt.gdipper.com/20221207092204.png" class="gallery-item"><img src="http://rmq67gta1.sabkt.gdipper.com/20221207092204.png" style="width:90%"></a>
+  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20221207092204.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20221207092204.png" style="width:90%"></a>
 </p>
 
 <h3 id="2-放开端口"><a href="#2-放开端口" class="headerlink" title="2.放开端口"></a>2.放开端口</h3><p>外网放开<code>30000</code>端口，后续浏览器登陆k8s dashboard看板使用。并检查ssh服务端口22是否正常开启。</p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://rmq67gta1.sabkt.gdipper.com/20221207091445.png" class="gallery-item"><img src="http://rmq67gta1.sabkt.gdipper.com/20221207091445.png" style="width:90%"></a>
+  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20221207091445.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20221207091445.png" style="width:90%"></a>
 </p>
 
 <p>使用ssh登陆云主机，开始配置。</p>
@@ -175,7 +175,7 @@
 
 <p>查看docker版本<code>docker version</code>：</p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://rmq67gta1.sabkt.gdipper.com/20221211200219.png" class="gallery-item"><img src="http://rmq67gta1.sabkt.gdipper.com/20221211200219.png" style="width:60%"></a>
+  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20221211200219.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20221211200219.png" style="width:60%"></a>
 </p>
 
 <h3 id="2-安装-kubectl-kubelet-kubeadm"><a href="#2-安装-kubectl-kubelet-kubeadm" class="headerlink" title="2.安装 kubectl kubelet kubeadm"></a>2.安装 kubectl kubelet kubeadm</h3><h4 id="2-1添加阿里源"><a href="#2-1添加阿里源" class="headerlink" title="2.1添加阿里源"></a>2.1添加阿里源</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat &lt;&lt;EOF &gt; /etc/yum.repos.d/kubernetes.repo</span><br><span class="line">[kubernetes]</span><br><span class="line">name=Kubernetes</span><br><span class="line">baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=1</span><br><span class="line">repo_gpgcheck=1</span><br><span class="line">gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
@@ -190,7 +190,7 @@
 
 <p>查看kubectl版本：</p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://rmq67gta1.sabkt.gdipper.com/20221211202333.png" class="gallery-item"><img src="http://rmq67gta1.sabkt.gdipper.com/20221211202333.png" style="width:90%"></a>
+  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20221211202333.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20221211202333.png" style="width:90%"></a>
 </p>
 
 <h4 id="2-3修改cgroupdriver"><a href="#2-3修改cgroupdriver" class="headerlink" title="2.3修改cgroupdriver"></a>2.3修改<code>cgroupdriver</code></h4><p>执行如下命令：</p>
@@ -217,7 +217,7 @@
 
 <p>通常会卡在这一步，如果大家按照本文的版本，理论不会报错，如果报错需要逐个搜索解决了。</p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://rmq67gta1.sabkt.gdipper.com/20221211205050.png" class="gallery-item"><img src="http://rmq67gta1.sabkt.gdipper.com/20221211205050.png" style="width:60%"></a>
+  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20221211205050.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20221211205050.png" style="width:60%"></a>
 </p>
 
 <p>如果初始化失败，执行如下命令后再重新初始化：</p>
@@ -233,7 +233,7 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">kubectl get pod --all-namespaces</span><br></pre></td></tr></table></figure>
 
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://rmq67gta1.sabkt.gdipper.com/20221211210014.png" class="gallery-item"><img src="http://rmq67gta1.sabkt.gdipper.com/20221211210014.png" style="width:90%"></a>
+  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20221211210014.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20221211210014.png" style="width:90%"></a>
 </p>
 
 
@@ -243,7 +243,7 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">kubectl get pod --all-namespaces</span><br></pre></td></tr></table></figure>
 
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://rmq67gta1.sabkt.gdipper.com/20221211211436.png" class="gallery-item"><img src="http://rmq67gta1.sabkt.gdipper.com/20221211211436.png" style="width:90%"></a>
+  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20221211211436.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20221211211436.png" style="width:90%"></a>
 </p>
 
 
@@ -251,7 +251,7 @@
 
 <h4 id="4-2-添加nodeport"><a href="#4-2-添加nodeport" class="headerlink" title="4.2 添加nodeport"></a>4.2 添加nodeport</h4><p>配置nodeport，外网访问dashboard：</p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://rmq67gta1.sabkt.gdipper.com/20221211212325.png" class="gallery-item"><img src="http://rmq67gta1.sabkt.gdipper.com/20221211212325.png" style="width:50%"></a>
+  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20221211212325.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20221211212325.png" style="width:50%"></a>
 </p>
 
 <h4 id="4-3-创建dashboard服务"><a href="#4-3-创建dashboard服务" class="headerlink" title="4.3 创建dashboard服务"></a>4.3 创建dashboard服务</h4><p>创建：</p>
@@ -261,17 +261,17 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">kubectl get pod -n kubernetes-dashboard</span><br></pre></td></tr></table></figure>
 
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://rmq67gta1.sabkt.gdipper.com/20221211212432.png" class="gallery-item"><img src="http://rmq67gta1.sabkt.gdipper.com/20221211212432.png" style="width:90%"></a>
+  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20221211212432.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20221211212432.png" style="width:90%"></a>
 </p>
 
 <h4 id="4-4-外网访问dashboard"><a href="#4-4-外网访问dashboard" class="headerlink" title="4.4 外网访问dashboard"></a>4.4 外网访问dashboard</h4><p>浏览器打开dashboard，地址：&lt;你的外网IP:30000&gt;</p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://rmq67gta1.sabkt.gdipper.com/20221208084417.png" class="gallery-item"><img src="http://rmq67gta1.sabkt.gdipper.com/20221208084417.png" style="width:90%"></a>
+  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20221208084417.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20221208084417.png" style="width:90%"></a>
 </p>
 
 <p>如上图所示，因为https的问题，浏览器会提示「您的连接不是私密连接」。推荐使用chrome浏览器，并在当前页面上任意位置点击，然后键盘输入「thisisunsafe」再点击回车健即可。</p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://rmq67gta1.sabkt.gdipper.com/20221208085817.png" class="gallery-item"><img src="http://rmq67gta1.sabkt.gdipper.com/20221208085817.png" style="width:90%"></a>
+  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20221208085817.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20221208085817.png" style="width:90%"></a>
 </p>
 
 <h4 id="4-5-获取token"><a href="#4-5-获取token" class="headerlink" title="4.5 获取token"></a>4.5 获取token</h4><p>创建用户。<code>dashboard-adminuser.yaml</code>配置文件示例，执行如下命令直接创建，参考官方教程创建示例用户 <code>https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md</code>：</p>
@@ -289,11 +289,11 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get sa/admin-user -o jsonpath=&quot;&#123;.secrets[0].name&#125;&quot;) -o go-template=&quot;&#123;&#123;.data.token | base64decode&#125;&#125;&quot;</span><br></pre></td></tr></table></figure>
 
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://rmq67gta1.sabkt.gdipper.com/20221213093543.png" class="gallery-item"><img src="http://rmq67gta1.sabkt.gdipper.com/20221213093543.png" style="width:90%"></a>
+  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20221213093543.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20221213093543.png" style="width:90%"></a>
 </p>
 
 <h4 id="4-6-复制token登陆dashboard"><a href="#4-6-复制token登陆dashboard" class="headerlink" title="4.6 复制token登陆dashboard"></a>4.6 复制token登陆dashboard</h4><p align="center">
-  <a target="_blank" rel="noopener" href="http://rmq67gta1.sabkt.gdipper.com/20221208091332.png" class="gallery-item"><img src="http://rmq67gta1.sabkt.gdipper.com/20221208091332.png" style="width:90%"></a>
+  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20221208091332.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20221208091332.png" style="width:90%"></a>
 </p>
 
 <p>到这里我们已经可以正常创建pod了，但是外网还不能直接访问到pod，虽然可以采用dashboard的<code>nodeport</code>的方案，但是<code>nodeport</code>只支持暴露30000-32767的端口，不适用于生产环境，接着我们就通过另一种方式<code>ingress</code>来对外暴露pod。</p>
@@ -312,7 +312,7 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">kubectl get pod --all-namespaces</span><br></pre></td></tr></table></figure>
 
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://rmq67gta1.sabkt.gdipper.com/20221211213756.png" class="gallery-item"><img src="http://rmq67gta1.sabkt.gdipper.com/20221211213756.png" style="width:90%"></a>
+  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20221211213756.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20221211213756.png" style="width:90%"></a>
 </p>
 
 <p>创建完成之后，查看ingress状态，为<code>pending</code>状态，原因是缺少LB，这里我们使用<code>metallb</code> 。</p>
@@ -320,7 +320,7 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.13.7/config/manifests/metallb-native.yaml</span><br></pre></td></tr></table></figure>
 
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://rmq67gta1.sabkt.gdipper.com/20221211214826.png" class="gallery-item"><img src="http://rmq67gta1.sabkt.gdipper.com/20221211214826.png" style="width:90%"></a>
+  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20221211214826.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20221211214826.png" style="width:90%"></a>
 </p>
 
 <p>创建secret：</p>
@@ -332,31 +332,31 @@
 <h4 id="5-4-绑定外网IP-EXTERNAL-IP"><a href="#5-4-绑定外网IP-EXTERNAL-IP" class="headerlink" title="5.4 绑定外网IP EXTERNAL-IP"></a>5.4 绑定外网IP <code>EXTERNAL-IP</code></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">kubectl get service ingress-nginx-controller --namespace=ingress-nginx</span><br></pre></td></tr></table></figure>
 
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://rmq67gta1.sabkt.gdipper.com/20221211222959.png" class="gallery-item"><img src="http://rmq67gta1.sabkt.gdipper.com/20221211222959.png" style="width:80%"></a>
+  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20221211222959.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20221211222959.png" style="width:80%"></a>
 </p>
 
 
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">kubectl edit service ingress-nginx-controller --namespace=ingress-nginx</span><br><span class="line"></span><br><span class="line">添加：</span><br><span class="line">externalIPs:</span><br><span class="line">  - 118.195.228.232</span><br></pre></td></tr></table></figure>
 
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://rmq67gta1.sabkt.gdipper.com/20221211223105.png" class="gallery-item"><img src="http://rmq67gta1.sabkt.gdipper.com/20221211223105.png" style="width:50%"></a>
+  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20221211223105.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20221211223105.png" style="width:50%"></a>
 </p>
 
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">kubectl get service ingress-nginx-controller --namespace=ingress-nginx</span><br></pre></td></tr></table></figure>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://rmq67gta1.sabkt.gdipper.com/20221211223220.png" class="gallery-item"><img src="http://rmq67gta1.sabkt.gdipper.com/20221211223220.png" style="width:80%"></a>
+  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20221211223220.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20221211223220.png" style="width:80%"></a>
 </p>
 
 <p>查看启动状态<code>kubectl get pod --all-namespaces</code>：</p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://rmq67gta1.sabkt.gdipper.com/20221211220300.png" class="gallery-item"><img src="http://rmq67gta1.sabkt.gdipper.com/20221211220300.png" style="width:80%"></a>
+  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20221211220300.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20221211220300.png" style="width:80%"></a>
 </p>
 
 <p>metalab和<code>ingress-nginx</code>的状态还是<code>pending</code>，查看原因：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">kubectl describe pod ingress-nginx-controller-6bfbdbdd64-jp7lw -n ingress-nginx</span><br></pre></td></tr></table></figure>
 
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://rmq67gta1.sabkt.gdipper.com/20221211221006.png" class="gallery-item"><img src="http://rmq67gta1.sabkt.gdipper.com/20221211221006.png" style="width:80%"></a>
+  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20221211221006.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20221211221006.png" style="width:80%"></a>
 </p>
 
 <p>原因是现在只有<code>master</code>节点，还没有<code>node</code>节点，未了节省成本，这里我们允许master参与调度，把master节点也当node使用。</p>
@@ -367,7 +367,7 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">kubectl get pod --all-namespaces</span><br></pre></td></tr></table></figure>
 
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://rmq67gta1.sabkt.gdipper.com/20221211221338.png" class="gallery-item"><img src="http://rmq67gta1.sabkt.gdipper.com/20221211221338.png" style="width:80%"></a>
+  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20221211221338.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20221211221338.png" style="width:80%"></a>
 </p>
 
 <p>pod均正常运行。到这里，一个基础的k8s服务基本安装完成。</p>
@@ -378,12 +378,12 @@
 
 <h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>查看ingress服务service的外网端口</p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://rmq67gta1.sabkt.gdipper.com/20221211224544.png" class="gallery-item"><img src="http://rmq67gta1.sabkt.gdipper.com/20221211224544.png" style="width:80%"></a>
+  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20221211224544.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20221211224544.png" style="width:80%"></a>
 </p>
 
 <p><code>demo</code>pod启动成功后访问<code>http://k8s.tigerb.cn:32374/</code>测试服务即可。</p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://rmq67gta1.sabkt.gdipper.com/20221211224105.png" class="gallery-item"><img src="http://rmq67gta1.sabkt.gdipper.com/20221211224105.png" style="width:80%"></a>
+  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20221211224105.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20221211224105.png" style="width:80%"></a>
 </p>
 
 <p>到此为止，我们就成功部署了一个k8s服务，使用dashborad就可以很轻松完成服务部署、扩容、缩容等。</p>
@@ -427,7 +427,7 @@
         <section>
             <h2>About</h2>
             <div>
-                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://rmq67gta1.sabkt.gdipper.com/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://ro98r0r1a.hb-bkt.clouddn.com/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
             </div>
         </section>
         <section>

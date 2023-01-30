@@ -89,7 +89,7 @@
 
         <!-- Logo -->
         <a href="/" class="logo">
-            <span class="symbol"><img src="http://rmq67gta1.sabkt.gdipper.com/20190707142019.png" alt="" /></span><span class="title">TIGERB</span>
+            <span class="symbol"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20190707142019.png" alt="" /></span><span class="title">TIGERB</span>
         </a>
 
         <!-- Nav -->
@@ -152,7 +152,7 @@
 
 <p>今天我们开始进入《Go语言轻松系列》第二章「内存与垃圾回收」第二部分「Go语言内存管理」。</p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://rmq67gta1.sabkt.gdipper.com/20210109200839.png" class="gallery-item"><img src="http://rmq67gta1.sabkt.gdipper.com/20210109200839.png" style="width:60%;box-shadow: 3px 3px 3px 3px #ddd;"></a>
+  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20210109200839.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210109200839.png" style="width:60%;box-shadow: 3px 3px 3px 3px #ddd;"></a>
 </p>
 
 <p>关于「内存与垃圾回收」章节，会从如下三大部分展开：</p>
@@ -247,7 +247,7 @@
 <li>最后，再从对应<code>SizeClass</code>的<code>PageHeap</code>中分配</li>
 </ul>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://rmq67gta1.sabkt.gdipper.com/20210120132244.png" class="gallery-item"><img src="http://rmq67gta1.sabkt.gdipper.com/20210120132244.png" style="width:66%"></a>
+  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20210120132244.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210120132244.png" style="width:66%"></a>
 </p>
 
 <h2 id="Go内存分配器的逻辑架构"><a href="#Go内存分配器的逻辑架构" class="headerlink" title="Go内存分配器的逻辑架构"></a><strong>Go内存分配器的逻辑架构</strong></h2><p>采用了和<code>TCMalloc</code>内存分配器一样的三层逻辑架构：</p>
@@ -257,14 +257,14 @@
 <li><code>mheap</code>：堆内存</li>
 </ul>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://rmq67gta1.sabkt.gdipper.com/20220405133623.png" class="gallery-item"><img src="http://rmq67gta1.sabkt.gdipper.com/20220405133623.png" style="width:60%"></a>
+  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20220405133623.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220405133623.png" style="width:60%"></a>
 </p>
 
 <p>实际中央缓存<code>central</code>是一个由136个<code>mcentral</code>类型元素的数组构成。</p>
 <p>除此之外需要特别注意的地方：<code>mcache</code>被逻辑处理器<code>p</code>持有，而并不是被真正的系统线程<code>m</code>持有。(这个设计很有意思，后续会有一篇文章来解释这个问题)</p>
 <p>我们更新下架构图如下：</p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://rmq67gta1.sabkt.gdipper.com/20220405224809.png" class="gallery-item"><img src="http://rmq67gta1.sabkt.gdipper.com/20220405224809.png" style="width:60%"></a>
+  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20220405224809.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220405224809.png" style="width:60%"></a>
 </p>
 
 <p>「Go内存分配器」把申请的内存对象按大小分为了三类：</p>
@@ -280,13 +280,13 @@
 <li>最后直接去堆上<code>mheap</code>分配一块内存</li>
 </ul>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://rmq67gta1.sabkt.gdipper.com/20220405224348.png" class="gallery-item"><img src="http://rmq67gta1.sabkt.gdipper.com/20220405224348.png" style="width:80%"></a>
+  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20220405224348.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220405224348.png" style="width:80%"></a>
 </p>
 
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><hr>
 <p>通过以上的分析可以看出Go内存分配器的设计和开源<code>TCMalloc</code>内存分配器的理念、思路基本一致。对比图如下：</p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://rmq67gta1.sabkt.gdipper.com/20220405225026.png" class="gallery-item"><img src="http://rmq67gta1.sabkt.gdipper.com/20220405225026.png" style="width:100%"></a>
+  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20220405225026.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220405225026.png" style="width:100%"></a>
 </p>
 
 <p>最后我们总结下：</p>
@@ -339,7 +339,7 @@
         <section>
             <h2>About</h2>
             <div>
-                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://rmq67gta1.sabkt.gdipper.com/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://ro98r0r1a.hb-bkt.clouddn.com/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
             </div>
         </section>
         <section>
