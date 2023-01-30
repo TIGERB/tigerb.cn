@@ -11,7 +11,7 @@
 > 嗯，Go设计模式实战系列，一个设计模式业务真实使用的golang系列。
 
 <p>
-    <img src="http://rmq67gta1.sabkt.gdipper.com/20210215112122.png" width="36%">
+    <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210215112122.png" width="36%">
 </p>
 
 ## 版权申明
@@ -19,7 +19,7 @@
 - 未经版权所有者事先授权，禁止将此作品及其衍生作品以标准（纸质）书籍形式发行。
 
 <p>
-    <img style="vertical-align:middle" width="20%" src="http://rmq67gta1.sabkt.gdipper.com/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+    <img style="vertical-align:middle" width="20%" src="http://ro98r0r1a.hb-bkt.clouddn.com/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
 <p>
 
 ## 目标

@@ -81,7 +81,7 @@
 
 我们通过梳理的文本业务流程得到了如下的业务流程图：
 
-![](http://rmq67gta1.sabkt.gdipper.com/20200325205347.png)
+![](http://ro98r0r1a.hb-bkt.clouddn.com/20200325205347.png)
 
 #### 代码建模
 
@@ -131,7 +131,7 @@
 
 同时得到了我们的UML图：
 
-![](http://rmq67gta1.sabkt.gdipper.com/20200326201327.jpg)
+![](http://ro98r0r1a.hb-bkt.clouddn.com/20200326201327.jpg)
 
 #### 代码demo
 

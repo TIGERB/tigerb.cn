@@ -176,7 +176,7 @@
 注：本文于单体架构背景探讨业务的实现过程，简单容易理解。
 ```
 
-![](http://rmq67gta1.sabkt.gdipper.com/20200410131427.png)
+![](http://ro98r0r1a.hb-bkt.clouddn.com/20200410131427.png)
 
 #### 代码建模
 
@@ -243,7 +243,7 @@
 
 同时得到了我们的UML图：
 
-![](http://rmq67gta1.sabkt.gdipper.com/20200411181215.jpg)
+![](http://ro98r0r1a.hb-bkt.clouddn.com/20200411181215.jpg)
 
 #### 代码demo
 
