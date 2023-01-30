@@ -3,7 +3,7 @@ title: 为什么说Go的Map是无序的？
 tags:
   - Go
 cover_index: >-
-  http://cdn.tigerb.cn/20210223191105.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+  http://ro98r0r1a.hb-bkt.clouddn.com/20210223191105.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
 categories:
   - go-base
 date: 2021-02-28 15:20:11
@@ -88,13 +88,13 @@ func mapiterinit(t *maptype, h *hmap, it *hiter) {
 
 虽然buckets是一块连续的内存，但是新写入的键值可能写到这个bucket：
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20210220201909.png" style="width:55%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210220201909.png" style="width:55%">
 </p>
 
 也可能写到这个bucket：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20210220201917.png" style="width:55%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210220201917.png" style="width:55%">
 </p>
 
 ### 2. 哈希冲突写入：如果存在hash冲突，会写到同一个bucket上。
@@ -102,19 +102,19 @@ func mapiterinit(t *maptype, h *hmap, it *hiter) {
 可能写到这个位置：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20210221180849.png" style="width:50%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210221180849.png" style="width:50%">
 </p>
 
 极限情况，也可能写到这个位置：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20210221181012.png" style="width:50%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210221181012.png" style="width:50%">
 </p>
 
 更有可能写到溢出桶去：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20210220203705.png" style="width:36%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210220203705.png" style="width:36%">
 </p>
 
 所以，写数据时，**并没有单独维护键值对的顺序**。而PHP(version 5)语言通过一个全局链表维护了Map里元素的顺序。
@@ -156,7 +156,7 @@ map[int]int{
 同时根据如上的假设，我们得到此map对应的结构图示如下：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20210223162655.png" style="width:70%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210223162655.png" style="width:70%">
 </p>
 
 > 什么时候触发**成倍**扩容？
@@ -220,13 +220,13 @@ bucket(正常桶bmap)的数量bucketShift(B)：2
 过程如下图所示(标红部分为本次扩容的bucket)：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20210223173949.png" style="width:70%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210223173949.png" style="width:70%">
 </p>
 
 之后随着键值`15:15`被写入，完成扩容过程，扩容后的图示如下：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20210223162925.png" style="width:70%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210223162925.png" style="width:70%">
 </p>
 
 同时，通过上面的分析我们可以得到：**成倍扩容迫使元素顺序变化**。
@@ -282,7 +282,7 @@ map[int]int{
 同时根据如上的假设，我们得到此map对应的结构图示如下：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20210223190741.png" style="width:70%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210223190741.png" style="width:70%">
 </p>
 
 为了说明「等量扩容」的作用，我们继续假设：
@@ -294,7 +294,7 @@ map[int]int{
 此时，得到此map对应的结构图示如下：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20210223191015.png" style="width:70%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210223191015.png" style="width:70%">
 </p>
 
 > 基于上面的假设，我们写入键值`36:36`时是否会触发「等量扩容」？
@@ -321,7 +321,7 @@ B = 1
 结论：写入键值`36:36`时会触发「等量扩容」，等量扩容扩容后的结果如下图所示：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20210223191105.png" style="width:70%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210223191105.png" style="width:70%">
 </p>
 
 从上图可以看出：

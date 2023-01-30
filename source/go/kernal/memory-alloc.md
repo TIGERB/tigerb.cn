@@ -15,7 +15,7 @@
 代码包含了指令，代码被转化为可执行二进制文件，被执行后加载到内存中，中央处理器CPU通过内存获取指令，图示如下：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20220731175631.png" style="width:90%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220731175631.png" style="width:90%">
 </p>
 
 详细请移步历史文章[「回到本真，代码到底是什么？」](https://mp.weixin.qq.com/s/rUwXUammEJ2vkmN7CFxW9w)
@@ -33,7 +33,7 @@ CPU执行指令简易过程分为三步：
 我们通过一个简易的时序图来看看CPU获取并执行指令的过程：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20220807232114.png" style="width:100%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220807232114.png" style="width:100%">
 </p>
 
 详细请移步历史文章[「回到本真，代码是如何运行的？」](https://mp.weixin.qq.com/s/w17lFYeYg9chHBi6x4o_5A)
@@ -63,13 +63,13 @@ CPU执行指令简易过程分为三步：
 1. 栈内存分配逻辑：current - alloc
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20220807234036.png" style="width:80%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220807234036.png" style="width:80%">
 </p>
 
 2. 栈内存释放逻辑：current + alloc
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20220807234046.png" style="width:80%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220807234046.png" style="width:80%">
 </p>
 
 通过利用「栈内存」，CPU在执行指令过程中可以高效的存储临时变量。其次：
@@ -78,7 +78,7 @@ CPU执行指令简易过程分为三步：
 - 栈内存的释放过程：看起来像不像数据结构「栈」的出栈过程。
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20220807235914.png" style="width:100%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220807235914.png" style="width:100%">
 </p>
 
 所以同时你应该也理解了「为什么称之为栈内存？」。**「栈内存」是计算机对连续内存的采取的「线性分配」管理方式，便于高效存储指令运行过程中的临时变量。**
@@ -90,7 +90,7 @@ CPU执行指令简易过程分为三步：
 答：这就是「堆内存」存在的意义，Go语言会在代码编译期间通过「**逃逸分析**」把分配在「栈」上的变量分配到「堆」上去。
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20220808002156.png" style="width:80%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220808002156.png" style="width:80%">
 </p>
 
 > 「堆内存」如何回收呢？
@@ -102,7 +102,7 @@ CPU执行指令简易过程分为三步：
 通过以上我们了解了「内存」、「栈内存」、「堆内存」存在的意义。除此之外，还有一个重要的知识点：程序和操作系统实际操作的都是虚拟内存，最终由CPU通过**内存管理单元MMU**(Memory Manage Unit)把虚拟内存的地址转化为实际的物理内存地址。图示如下：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20210129194928.png" style="width:80%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210129194928.png" style="width:80%">
 </p>
 
 使用虚拟内存的原因：
@@ -122,7 +122,7 @@ CPU执行指令简易过程分为三步：
 - 「堆内存」的分配或释放都是对虚拟内存的操作
 
 <p align="center">
-<img src="http://cdn.tigerb.cn/20220818132131.png
+<img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220818132131.png
 " style="width:70%">
 
 接着我们分别通过**分配时机**、**分配过程**两部分，来看看Go语言栈内存和堆内存的分配。
@@ -219,7 +219,7 @@ func copystack(gp *g, newsize uintptr) {
 > 结论：创建Goroutine和栈扩容时，栈内存的分配都是由函数`stackalloc`分配。
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20220405133309.png" style="width:50%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220405133309.png" style="width:50%">
 </p>
 
 所以，我们通过分析`stackalloc`函数就可以知道栈内存的分配过程了，具体如下。
@@ -236,25 +236,25 @@ Go语言栈内存的分配按待分配的栈大小分为两大类：
 1. 先去`M`线程缓存`mcache`的栈内存缓存`stackcache`中分配：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20220819133249.png" style="width:90%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220819133249.png" style="width:90%">
 </p>
 
 2. 如果`stackcache`内存不足，则从全局栈内存缓存池`stackpool`中分配：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20220405234800.png" style="width:90%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220405234800.png" style="width:90%">
 </p>
 
 3. 如果`stackpool`内存不足，则从逻辑处理器结构`p`中的`p.pagecache`中分配：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20220819133321.png" style="width:90%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220819133321.png" style="width:90%">
 </p>
 
 4. 如果`p.pagecache`内存不足，则从堆`mheap`中分配：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20220819133338.png" style="width:90%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220819133338.png" style="width:90%">
 </p>
 
 
@@ -263,13 +263,13 @@ Go语言栈内存的分配按待分配的栈大小分为两大类：
 1. 直接从全局栈内存缓存池`stackLarge`中分配：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20220405234822.png" style="width:90%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220405234822.png" style="width:90%">
 </p>
 
 2. 全局栈内存缓存池`stackLarge`不足，则从逻辑处理器结构`p`中的`p.pagecache`中分配，如果`p.pagecache`则去堆上`mheap`分配：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20220405234828.png" style="width:90%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220405234828.png" style="width:90%">
 </p>
 
 # 堆内存的分配
@@ -369,7 +369,7 @@ case OMAKESLICE:
 最终分配堆内存的地方都会依赖函数`mallocgc`，我们通过阅读`mallocgc`的代码就可以看到堆内存的分配过程。
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20220405235337.png" style="width:30%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220405235337.png" style="width:30%">
 </p>
 
 ## Go语言堆内存分配过程
@@ -383,14 +383,14 @@ case OMAKESLICE:
 「微对象」和「小对象」**通常**通过逻辑处理器结构`P`的线程缓存`mcache`分配，「大对象」直接从堆上`mheap`中分配，如下图所示：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20220405235126.png" style="width:90%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220405235126.png" style="width:90%">
 </p>
 
 - 线程缓存`mcache`的`tiny`结构主要负责分配「微对象」
 - 线程缓存`mcache`的`alloc`结构主要负责分配「小对象」
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20220405235250.png" style="width:90%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220405235250.png" style="width:90%">
 </p>
 
 ### 微对象的分配过程
@@ -400,19 +400,19 @@ case OMAKESLICE:
 1. 线程缓存`mcache`的`tiny`内存充足，则直接分配「微对象」所需内存，图示如下：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20220405234253.png" style="width:90%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220405234253.png" style="width:90%">
 </p>
 
 2. 线程缓存`mcache`的`tiny`内存不足，先去线程缓存`mcache`的`alloc`申请16B给`tiny`，再分配「微对象」所需内存，简易图示如下：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20220405234330.png" style="width:90%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220405234330.png" style="width:90%">
 </p>
 
 申请16B详细过程图示如下：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20220405234341.png" style="width:90%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220405234341.png" style="width:90%">
 </p>
 
 ### 小对象的分配过程
@@ -422,25 +422,25 @@ case OMAKESLICE:
 1. 线程缓存`mcache`的`alloc`充足，则直接分配「小对象」所需内存，简易图示如下：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20220820172242.png" style="width:60%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220820172242.png" style="width:60%">
 </p>
 
 详细分配过程图示如下：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20220405234425.png" style="width:90%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220405234425.png" style="width:90%">
 </p>
 
 2. 线程缓存`mcache`的`alloc`不足，则去中央缓存`mcentral`获取一个`mspan`，再分配「小对象」所需内存，图示如下：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20220405234513.png" style="width:90%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220405234513.png" style="width:90%">
 </p>
 
 3. 线程缓存`mcache`的`alloc`不足，且中央缓存`mcentral`不足，则去逻辑处理器结构的`p.pagecache`分配，如果`pagecache`不足，直接去堆上`mheap`获取一个`mspan`，再分配「小对象」所需内存，图示如下：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20220405234521.png" style="width:90%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220405234521.png" style="width:90%">
 </p>
 
 ### 大对象的分配过程
@@ -450,13 +450,13 @@ case OMAKESLICE:
 1. 逻辑处理器结构的`pagecache`充足，则直接分配「大对象」所需内存，图示如下：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20220405234609.png" style="width:60%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220405234609.png" style="width:60%">
 </p>
 
 2. 逻辑处理器结构的`pagecache`不足，则直接去堆上`mheap`分配「大对象」所需内存，图示如下：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20220405234616.png" style="width:60%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220405234616.png" style="width:60%">
 </p>
 
 # 总结
@@ -488,5 +488,5 @@ case OMAKESLICE:
 - 「栈内存」也来源于堆`mheap`
 		
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20220503213918.png" style="width:80%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220503213918.png" style="width:80%">
 </p>

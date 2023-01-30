@@ -2,7 +2,7 @@
 title: LNMP架构下的进程模型分析
 date: 2018-10-13 08:18:23
 tags: linux
-cover_index: "http://cdn.tigerb.cn/20190330182129.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
+cover_index: "http://ro98r0r1a.hb-bkt.clouddn.com/20190330182129.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
 ---
 
 # 前言
@@ -13,7 +13,7 @@ cover_index: "http://cdn.tigerb.cn/20190330182129.jpg?imageMogr2/thumbnail/640x4
 
 php-fpm采用了master-worker多进程的模型，其次与php-cgi相比提供了更好的进程管理方式。php-fpm的进程模型示例图如下：
 
-<img src="http://cdn.tigerb.cn/process-fpm-n.png" width="50%">
+<img src="http://ro98r0r1a.hb-bkt.clouddn.com/process-fpm-n.png" width="50%">
 
 master主进程的主要任务：
 - 监听socket(TCP/IP或者Unix Domain Socket)
@@ -43,7 +43,7 @@ worker工作进程的主要任务：
 
 同样，nginx也采用了master-worker多进程的模型，进程模型图如下所示：
 
-<img src="http://cdn.tigerb.cn/process-nginx-n.png" width="50%">
+<img src="http://ro98r0r1a.hb-bkt.clouddn.com/process-nginx-n.png" width="50%">
 
 但是与php-fpm主要的不同的是：
 1. master进程不负责监听端口
@@ -72,11 +72,11 @@ SIGUSR2 平滑升级信号
 
 redis采用的是单进程的模型，如下图所示：
 
-<img src="http://cdn.tigerb.cn/process-redis-1.jpg" width="50%">
+<img src="http://ro98r0r1a.hb-bkt.clouddn.com/process-redis-1.jpg" width="50%">
 
 但是，redis需要实现持久化，持久化的方式一般有两种RDB(写快照)/AOF(写命令)，持久化的过程redis会fork一个子进程来完成，目的不阻塞master工作进程。如下图所示：
 
-<img src="http://cdn.tigerb.cn/process-redis-n-2.png" width="50%">
+<img src="http://ro98r0r1a.hb-bkt.clouddn.com/process-redis-n-2.png" width="50%">
 
 > 单进程(单线程)和多路I/O复用并发模型
 
@@ -84,7 +84,7 @@ redis采用的是单进程的模型，如下图所示：
 
 mysql谈进程模型其实还是不合适，mysql主要采用的是多线程的架构。
 
-<img src="http://cdn.tigerb.cn/process-mysql.jpg" width="50%">
+<img src="http://ro98r0r1a.hb-bkt.clouddn.com/process-mysql.jpg" width="50%">
 
 > 多线程并发模型
 

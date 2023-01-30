@@ -2,8 +2,8 @@
 title: 通用抽奖工具之需求分析
 date: 2019-12-23 16:46:07
 tags: shop
-cover_index: "http://cdn.tigerb.cn/adrian-FlwhX4vtzt0-unsplash.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
-cover_detail: "http://cdn.tigerb.cn/adrian-FlwhX4vtzt0-unsplash.jpg?imageMogr2/thumbnail/1280x600!/format/webp/blur/1x0/quality/55|imageslim"
+cover_index: "http://ro98r0r1a.hb-bkt.clouddn.com/adrian-FlwhX4vtzt0-unsplash.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
+cover_detail: "http://ro98r0r1a.hb-bkt.clouddn.com/adrian-FlwhX4vtzt0-unsplash.jpg?imageMogr2/thumbnail/1280x600!/format/webp/blur/1x0/quality/55|imageslim"
 ---
 
 

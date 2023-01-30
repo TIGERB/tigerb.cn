@@ -45,7 +45,7 @@
 线性分配大致就是需要使用多少分配多少，“用到哪了标识到哪”，如下图所示：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20210124225714.png" style="width:100%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210124225714.png" style="width:100%">
 </p>
 
 线性分配有个问题：“已经分配的内存被释放了，我们如何再次分配？”。大家会想到用链表`LinkedList`，是的没错，但是内存管理中一般使用的是`FreeList`。
@@ -62,7 +62,7 @@
 如下图所示：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20210124224723.png" style="width:100%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210124224723.png" style="width:100%">
 </p>
 
 > 结论：`FreeList`里一个节点最小为8字节
@@ -77,7 +77,7 @@
 这里直说结论哈，我们的进程是运行在虚拟内存上的，图示如下：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20210129194928.png" style="width:90%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210129194928.png" style="width:90%">
 </p>
 
 - 对于我们的进程而言，可使用的内存是连续的
@@ -115,7 +115,7 @@
 ```
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20210120131944.png" style="width:100%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210120131944.png" style="width:100%">
 </p>
 
 ## Span和SpanList的概念
@@ -129,7 +129,7 @@
 如下图所示：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20210124225012.png" style="width:100%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210124225012.png" style="width:100%">
 </p>
 
 从图中可以看出，有：
@@ -141,7 +141,7 @@
 除此之外，`Span`和`Span`之间可以构成**双向链表**我们称之为`SpanList`，内存管理中通常将持有相同数量`Page`的`Span`构成一个双向链表，如下图所示(**N个持有1Page的`Span`构成的`SpanList`**)：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20210128131031.png" style="width:100%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210128131031.png" style="width:100%">
 </p>
 
 我们再来看`Span`的下代码，如下：
@@ -183,7 +183,7 @@ class Span : public SpanList::Elem {
 我们以持有`1Page`的`Span`为例，`Span`、`Page`、`Object`关系图示如下：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20210125201952.png" style="width:100%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210125201952.png" style="width:100%">
 </p>
 
 看完上面的图示，问题来了：
@@ -252,13 +252,13 @@ const SizeClassInfo SizeMap::kSizeClasses[SizeMap::kSizeClassesCount] = {
 图示如下：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20210120132020.png" style="width:60%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210120132020.png" style="width:60%">
 </p>
 
 但是呢，实际上`CentralFreeList`是被`TransferCacheManager`管理的，所以`Tcmalloc`的基本结构实际应该为下图所示：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20210120132031.png" style="width:80%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210120132031.png" style="width:80%">
 </p>
 
 > 接着，`ThreadCache`其实被线程持有，为什么呢？
@@ -271,7 +271,7 @@ const SizeClassInfo SizeMap::kSizeClasses[SizeMap::kSizeClassesCount] = {
 进一步得到简易的结构图：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20210120132037.png" style="width:80%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210120132037.png" style="width:80%">
 </p>
 
 # 解密PageHeap、CentralFreeList、ThreadCache的详细构成
@@ -319,7 +319,7 @@ kMaxPages|kMaxPages Pages
 图示如下：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20210129133136.png" style="width:100%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210129133136.png" style="width:100%">
 </p>
 
 但是呢，实际上从代码可知：数组元素的实际类型为`SpanListPair`，代码如下
@@ -357,7 +357,7 @@ class PageHeap final : public PageAllocatorInterface {
 根据这个结论我们修正下`PageHeap`结构图，如下：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20210129132903.png" style="width:100%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210129132903.png" style="width:100%">
 </p>
 
 又因为大于kMaxPages个Pages(大对象)的内存分配是从`large_`中分配的，代码如下：
@@ -379,7 +379,7 @@ class PageHeap final : public PageAllocatorInterface {
 所以我们再加上大对象的分配时的`large_`属性，得到`PageHeap`的结构图如下：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20210129132923.png" style="width:100%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210129132923.png" style="width:100%">
 </p>
 
 同时`PageHeap`核心的代码片段如下：
@@ -448,7 +448,7 @@ class CentralFreeList {
 如下图就展示了`kNumClasses`个`CentralFreeList`，其中我们以`size_class_`的值为`1`和`3`为例来展示下`CentralFreeList`的结构。
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20210120132206.png" style="width:100%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210120132206.png" style="width:100%">
 </p>
 
 ### 解密TransferCacheManager
@@ -475,7 +475,7 @@ class TransferCacheManager {
 ```
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20210120132218.png" style="width:100%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210120132218.png" style="width:100%">
 </p>
 
 
@@ -547,7 +547,7 @@ kNumClasses|kNumClasses Bytes
 ```
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20210120132229.png" style="width:100%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210120132229.png" style="width:100%">
 </p>
 
 # 解密Tcmalloc的内存分配过程
@@ -595,7 +595,7 @@ const SizeClassInfo SizeMap::kSizeClasses[SizeMap::kSizeClassesCount] = {
 当给非小对象分配内存时：`PageHeap.free_`和`PageHeap.large_`里获取。
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20210131211533.png" style="width:66%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210131211533.png" style="width:66%">
 </p>
 
 ## 详细版
@@ -603,7 +603,7 @@ const SizeClassInfo SizeMap::kSizeClasses[SizeMap::kSizeClassesCount] = {
 最后，我们以获取`6`字节的小对象为例(`SizeClass`的值为`1`)，看一下详细内存分配过程。
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20210131212110.png" style="width:100%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210131212110.png" style="width:100%">
 </p>
 
 

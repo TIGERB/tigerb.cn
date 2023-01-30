@@ -2,8 +2,8 @@
 title: 更优的框架中间件实现
 date: 2019-07-20 12:54:04
 tags: golang
-cover_index: "http://cdn.tigerb.cn/20190718194449.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
-cover_detail: "http://cdn.tigerb.cn/20190720222404.jpg?/format/webp/blur/1x0/quality/10%7Cimageslim"
+cover_index: "http://ro98r0r1a.hb-bkt.clouddn.com/20190718194449.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
+cover_detail: "http://ro98r0r1a.hb-bkt.clouddn.com/20190720222404.jpg?/format/webp/blur/1x0/quality/10%7Cimageslim"
 ---
 
 
@@ -265,7 +265,7 @@ func applyMiddleware(h HandlerFunc, middleware ...MiddlewareFunc) HandlerFunc {
 责任链模式的实现很简单，一个对象(Handler)执行(Run())完成自身的业务(Do())之后，判断是否存在下一个对象(nextHandler)，如果存在则执行下一个对象(nextHandler.Do())。除此之外我们这个Handler还应该拥有一个设置下一个对象的成员方法。所以，我们这个Handler的uml结构如下：
 
 <p align="center">
-	<img src="http://cdn.tigerb.cn/20190720191330.jpg?/format/webp/blur/1x0/quality/10%7Cimageslim" style="width:50%;">
+	<img src="http://ro98r0r1a.hb-bkt.clouddn.com/20190720191330.jpg?/format/webp/blur/1x0/quality/10%7Cimageslim" style="width:50%;">
 </p>
 
 建模成员|成员类型|含义|抽象程度|复用方式
@@ -278,7 +278,7 @@ Run|成员方法|执行当前&下一个对象|具体不变|统一定义复用，
 理论上按照上面的建模过程，我们可以抽象出一个抽象类，具体的Handler继承这个抽象类，再实现具体的抽象方法`Do`即可，**无需在再在业务代码中手动调用下一个对象**(优雅、低接入成本)。但是由于go中没有继承的概念，又无法满足我们的需求，然而我们可以通过合成复用的方式来尽可能的实现(如果像看可以继承的实现的方式，可以看我的php代码实现<https://github.com/TIGERB/easy-tips/blob/master/patterns/chainOfResponsibility/test.php>)，最终Go合成复用版本的uml图如下：
 
 <p align="center">
-	<img src="http://cdn.tigerb.cn/20190720182529.jpg?/format/webp/blur/1x0/quality/10%7Cimageslim" style="width:80%">
+	<img src="http://ro98r0r1a.hb-bkt.clouddn.com/20190720182529.jpg?/format/webp/blur/1x0/quality/10%7Cimageslim" style="width:80%">
 </p>
 
 1. 所有业务Handler实现Handler接口

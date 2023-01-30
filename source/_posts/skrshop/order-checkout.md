@@ -4,9 +4,9 @@ tags:
   - shop
   - 订单系统
 cover_index: >-
-  http://cdn.tigerb.cn/20201026201439.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+  http://ro98r0r1a.hb-bkt.clouddn.com/20201026201439.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
 cover_detail: >-
-  http://cdn.tigerb.cn/20201026201439.jpg?imageMogr2/thumbnail/1500x1000!/format/webp/blur/1x0/quality/75|imageslim
+  http://ro98r0r1a.hb-bkt.clouddn.com/20201026201439.jpg?imageMogr2/thumbnail/1500x1000!/format/webp/blur/1x0/quality/75|imageslim
 categories:
   - skrshop
 date: 2020-10-31 20:30:00
@@ -28,8 +28,8 @@ date: 2020-10-31 20:30:00
 今天我们准备开启一个新的篇章**订单中心**。
 
 <p align="center">
-    <a href="http://cdn.tigerb.cn/20201026131854.jpg" data-lightbox="roadtrip">
-        <img src="http://cdn.tigerb.cn/20201026131854.jpg" width="100%">
+    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20201026131854.jpg" data-lightbox="roadtrip">
+        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20201026131854.jpg" width="100%">
     </a>
 </p>
 
@@ -48,8 +48,8 @@ date: 2020-10-31 20:30:00
 首先，我们来回顾下用户平常在电商平台上的购物的一个简单过程，如下图所示：
 
 <p align="center">
-    <a href="http://cdn.tigerb.cn/20201015193036.png" data-lightbox="roadtrip">
-        <img src="http://cdn.tigerb.cn/20201015193036.png" width="80%">
+    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20201015193036.png" data-lightbox="roadtrip">
+        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20201015193036.png" width="80%">
     </a>
 </p>
 
@@ -65,16 +65,16 @@ date: 2020-10-31 20:30:00
 我们来看看某东的订单结算页面：
 
 <p align="center">
-    <a href="http://cdn.tigerb.cn/20200331124724.jpeg" data-lightbox="roadtrip">
-        <img src="http://cdn.tigerb.cn/20200331124724.jpeg" width="36%">
+    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20200331124724.jpeg" data-lightbox="roadtrip">
+        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20200331124724.jpeg" width="36%">
     </a>
 </p>
 
 再来看看某宝的订单结算页面：
 
 <p align="center">
-    <a href="http://cdn.tigerb.cn/20200929124345.jpeg" data-lightbox="roadtrip">
-        <img src="http://cdn.tigerb.cn/20200929124345.jpeg" width="36%">
+    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20200929124345.jpeg" data-lightbox="roadtrip">
+        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20200929124345.jpeg" width="36%">
     </a>
 </p>
 
@@ -100,8 +100,8 @@ date: 2020-10-31 20:30:00
 我们依据上面整理的内容，再通过以往的经验把**订单结算页面**进行模块化拆分和组合，得到如下订单结算页面的**模块化构成**:
 
 <p align="center">
-    <a href="http://cdn.tigerb.cn/20201026165711.png" data-lightbox="roadtrip">
-        <img src="http://cdn.tigerb.cn/20201026165711.png" width="38%">
+    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20201026165711.png" data-lightbox="roadtrip">
+        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20201026165711.png" width="38%">
     </a>
 </p>
 
@@ -159,8 +159,8 @@ longitude|string|-|-|经度
 latitude|string|-|-|纬度
 
 <p align="center">
-    <a href="http://cdn.tigerb.cn/20201010203421.png" data-lightbox="roadtrip">
-        <img src="http://cdn.tigerb.cn/20201010203421.png" width="100%">
+    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20201010203421.png" data-lightbox="roadtrip">
+        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20201010203421.png" width="100%">
     </a>
 </p>
 
@@ -219,8 +219,8 @@ pay_method_list|array|desc|string|支付方式描述
 
 
 <p align="center">
-    <a href="http://cdn.tigerb.cn/20201010203818.png" data-lightbox="roadtrip">
-        <img src="http://cdn.tigerb.cn/20201010203818.png" width="100%">
+    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20201010203818.png" data-lightbox="roadtrip">
+        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20201010203818.png" width="100%">
     </a>
 </p>
 
@@ -258,8 +258,8 @@ pay_method_list|array|desc|string|支付方式描述
 - 店铺商品总金额信息模块
 
 <p align="center">
-    <a href="http://cdn.tigerb.cn/20201014203138.png" data-lightbox="roadtrip">
-        <img src="http://cdn.tigerb.cn/20201014203138.png" width="36%">
+    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20201014203138.png" data-lightbox="roadtrip">
+        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20201014203138.png" width="36%">
     </a>
 </p>
 
@@ -282,8 +282,8 @@ type_desc|string|-|-|发票类型描述
 
 
 <p align="center">
-    <a href="http://cdn.tigerb.cn/20201015195856.png" data-lightbox="roadtrip">
-        <img src="http://cdn.tigerb.cn/20201015195856.png" width="100%">
+    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20201015195856.png" data-lightbox="roadtrip">
+        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20201015195856.png" width="100%">
     </a>
 </p>
 
@@ -333,8 +333,8 @@ giftcard_list|array|remaining_amount_txt|string|礼品卡剩余金额-格式化�
 
 
 <p align="center">
-    <a href="http://cdn.tigerb.cn/20201026165855.png" data-lightbox="roadtrip">
-        <img src="http://cdn.tigerb.cn/20201026165855.png" width="100%">
+    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20201026165855.png" data-lightbox="roadtrip">
+        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20201026165855.png" width="100%">
     </a>
 </p>
 
@@ -377,8 +377,8 @@ points_amount_txt|string|-|-|该订单积分可抵扣金额-格式化后
 
 
 <p align="center">
-    <a href="http://cdn.tigerb.cn/20201015193559.png" data-lightbox="roadtrip">
-        <img src="http://cdn.tigerb.cn/20201015193559.png" width="100%">
+    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20201015193559.png" data-lightbox="roadtrip">
+        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20201015193559.png" width="100%">
     </a>
 </p>
 
@@ -418,8 +418,8 @@ _txt字段略
 ```
 
 <p align="center">
-    <a href="http://cdn.tigerb.cn/20201015200913.png" data-lightbox="roadtrip">
-        <img src="http://cdn.tigerb.cn/20201015200913.png" width="100%">
+    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20201015200913.png" data-lightbox="roadtrip">
+        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20201015200913.png" width="100%">
     </a>
 </p>
 

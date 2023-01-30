@@ -3,7 +3,7 @@ title: Go内存架构，一个有趣的问题
 tags:
   - Go
 cover_index: >-
-  http://cdn.tigerb.cn/20220416214452.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+  http://ro98r0r1a.hb-bkt.clouddn.com/20220416214452.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
 categories:
   - go-base
 date: 2022-04-16 22:31:10
@@ -32,7 +32,7 @@ date: 2022-04-16 22:31:10
 简易架构图如下：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20210120132244.png" style="width:66%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210120132244.png" style="width:66%">
 </p>
 
 # 快速回顾「Go内存管理架构」
@@ -51,7 +51,7 @@ date: 2022-04-16 22:31:10
 简易架构图如下：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20220405224809.png" style="width:60%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220405224809.png" style="width:60%">
 </p>
 
 # 有趣的问题
@@ -82,7 +82,7 @@ date: 2022-04-16 22:31:10
 直接上入门级「Go的调度模型`GMP`」架构图：
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20220416214452.png" style="width:80%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220416214452.png" style="width:80%">
 </p>
 
 关于「Go的调度模型`GMP`」的原理，大家应该看了无数文章，我这里就不细说了，如果还有不熟悉可以自行搜索哈。
@@ -117,7 +117,7 @@ date: 2022-04-16 22:31:10
 - `m1`执行完成系统调用之后会被放到闲置`M`链表里
 
 <p align="center">
-  <img src="http://cdn.tigerb.cn/20220416223807.png" style="width:100%">
+  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220416223807.png" style="width:100%">
 </p>
 
 由于`m1`会被放进闲置链表，这是不是就意味着`m1`上的`mcache`当前就不能被复用，所以这样看起来是不是`mcache`绑定到`p1`上更合适。
