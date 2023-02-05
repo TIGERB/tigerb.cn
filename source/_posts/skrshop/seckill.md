@@ -4,9 +4,9 @@ tags:
   - shop
   - 秒杀系统
 cover_index: >-
-  http://ro98r0r1a.hb-bkt.clouddn.com/20200505124913.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+  http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200505124913.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
 cover_detail: >-
-  http://ro98r0r1a.hb-bkt.clouddn.com/20200505124913.jpg?imageMogr2/thumbnail/1500x1000!/format/webp/blur/1x0/quality/75|imageslim
+  http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200505124913.jpg?imageMogr2/thumbnail/1500x1000!/format/webp/blur/1x0/quality/75|imageslim
 categories:
   - skrshop
 date: 2020-05-05 12:22:11
@@ -27,8 +27,8 @@ date: 2020-05-05 12:22:11
 
 **图一**
 <p align="center">
-    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20200501175532.png">
-        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20200501175532.png" width="90%">
+    <a href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200501175532.png">
+        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200501175532.png" width="90%">
     </a>
 </p>
 
@@ -53,8 +53,8 @@ date: 2020-05-05 12:22:11
 
 **图二**
 <p align="center">
-    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20200501183037.png">
-        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20200501183037.png" width="90%">
+    <a href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200501183037.png">
+        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200501183037.png" width="90%">
     </a>
 </p>
 
@@ -81,8 +81,8 @@ date: 2020-05-05 12:22:11
 
 **图三**
 <p align="center">
-    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20200501200309.png">
-        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20200501200309.png" width="90%">
+    <a href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200501200309.png">
+        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200501200309.png" width="90%">
     </a>
 </p>
 
@@ -107,8 +107,8 @@ date: 2020-05-05 12:22:11
 
 **图四**
 <p align="center">
-    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20200501200846.png">
-        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20200501200846.png" width="90%">
+    <a href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200501200846.png">
+        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200501200846.png" width="90%">
     </a>
 </p>
 
@@ -134,8 +134,8 @@ date: 2020-05-05 12:22:11
 
 **图五**
 <p align="center">
-    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20200502195413.png">
-        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20200502195413.png" width="90%">
+    <a href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200502195413.png">
+        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200502195413.png" width="90%">
     </a>
 </p>
 
@@ -175,15 +175,15 @@ date: 2020-05-05 12:22:11
 
 **以前是这样**
 <p align="center">
-    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20200502195950.png">
-        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20200502195950.png" width="66%">
+    <a href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200502195950.png">
+        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200502195950.png" width="66%">
     </a>
 </p>
 
 **变成了这样**
 <p align="center">
-    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20200502200723.png">
-        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20200502200723.png" width="90%">
+    <a href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200502200723.png">
+        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200502200723.png" width="90%">
     </a>
 </p>
 

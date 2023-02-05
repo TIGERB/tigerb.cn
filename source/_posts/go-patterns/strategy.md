@@ -4,7 +4,7 @@ tags:
   - 设计模式
   - Go
 cover_index: >-
-  http://ro98r0r1a.hb-bkt.clouddn.com/20200425231447.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+  http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200425231447.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
 categories:
   - go-patterns
 date: 2020-04-25 16:13:11
@@ -13,7 +13,7 @@ date: 2020-04-25 16:13:11
 > 嗯，Go设计模式实战系列，一个设计模式业务真实使用的golang系列。
 
 <p>
-    <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210215112122.png" width="50%">
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210215112122.png" width="50%">
 </p>
 
 # **前言**
@@ -92,18 +92,18 @@ date: 2020-04-25 16:13:11
 - 支付宝支付(策略)
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20200424131625.png" style="width:30%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200424131625.png" style="width:30%">
 </p>
 
 用户决定使用美团支付下的银行卡支付方式的参数
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20200424132214.png" style="width:30%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200424132214.png" style="width:30%">
 </p>
 
 用户决定使用支付宝网页版支付方式的参数
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20200424132232.png" style="width:30%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200424132232.png" style="width:30%">
 </p>
 
 > 注：不一定完全准确。
@@ -114,7 +114,7 @@ date: 2020-04-25 16:13:11
 我们通过梳理的文本业务流程得到了如下的业务流程图：
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20200425192752.png" style="width:80%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200425192752.png" style="width:80%">
 </p>
 
 > 注：流程不一定完全准确。
@@ -156,7 +156,7 @@ date: 2020-04-25 16:13:11
 同时得到了我们的UML图：
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20200425151733.jpg" style="width:100%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200425151733.jpg" style="width:100%">
 </p>
 
 ## **代码demo**

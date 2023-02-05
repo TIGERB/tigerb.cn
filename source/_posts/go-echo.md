@@ -2,10 +2,10 @@
 title: Go框架解析:echo
 date: 2019-07-13 12:30:10
 tags: golang
-cover_index: "http://ro98r0r1a.hb-bkt.clouddn.com/20190714103845.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
+cover_index: "http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20190714103845.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
 ---
 
-<img src="http://ro98r0r1a.hb-bkt.clouddn.com/20190714103637.jpg?format/webp/blur/1x0/quality/75|imageslim" style="width:100%">
+<img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20190714103637.jpg?format/webp/blur/1x0/quality/75|imageslim" style="width:100%">
 
 ## 前言
 
@@ -91,12 +91,12 @@ func hello(c echo.Context) error {
 下图就是我对整个Echo框架生命周期的输出，由于图片过大存在平台压缩的可能，建议大家直接查看原图链接。
 
 <p>
-	<img src="http://ro98r0r1a.hb-bkt.clouddn.com/20190711122919.png" style="width:100%">
+	<img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20190711122919.png" style="width:100%">
 </p>
 
-> 访问图片源地址查看大图 http://ro98r0r1a.hb-bkt.clouddn.com/20190711122919.png
+> 访问图片源地址查看大图 http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20190711122919.png
 
-原图查看链接: <http://ro98r0r1a.hb-bkt.clouddn.com/20190711122919.png>
+原图查看链接: <http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20190711122919.png>
 
 ---
 
@@ -414,7 +414,7 @@ e.Logger.Fatal()
 最后我们再简单的回顾下上面的流程。
 
 <p align="center">
-    <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20190711125947.png" style="width:50%">
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20190711125947.png" style="width:50%">
 </p>
 
 ---

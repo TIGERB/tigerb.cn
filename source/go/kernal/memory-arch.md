@@ -97,7 +97,7 @@ Go的内存统一由内存管理器管理的，Go的内存管理器是基于Goog
 - 最后，再从对应`SizeClass`的`PageHeap`中分配
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210120132244.png" style="width:66%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210120132244.png" style="width:66%">
 </p>
 
 ## **Go内存分配器的逻辑架构**
@@ -109,7 +109,7 @@ Go的内存统一由内存管理器管理的，Go的内存管理器是基于Goog
 - `mheap`：堆内存
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220405133623.png" style="width:60%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220405133623.png" style="width:60%">
 </p>
 
 实际中央缓存`central`是一个由136个`mcentral`类型元素的数组构成。
@@ -119,7 +119,7 @@ Go的内存统一由内存管理器管理的，Go的内存管理器是基于Goog
 我们更新下架构图如下：
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220405224809.png" style="width:60%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220405224809.png" style="width:60%">
 </p>
 
 「Go内存分配器」把申请的内存对象按大小分为了三类：
@@ -136,7 +136,7 @@ Go的内存统一由内存管理器管理的，Go的内存管理器是基于Goog
 
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220405224348.png" style="width:80%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220405224348.png" style="width:80%">
 </p>
 
 # 架构总结
@@ -145,7 +145,7 @@ Go的内存统一由内存管理器管理的，Go的内存管理器是基于Goog
 通过以上的分析可以看出Go内存分配器的设计和开源`TCMalloc`内存分配器的理念、思路基本一致。对比图如下：
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220405225026.png" style="width:100%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220405225026.png" style="width:100%">
 </p>
 
 最后我们总结下：

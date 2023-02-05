@@ -119,7 +119,7 @@ The "r+" allows fopen to return immediately regardless of external  writer chann
 
 结论使用“r+”,同时我们又知道了使用`stream_set_blocking`防止紧接着的`fread`阻塞。接着我们用下图(1-2)来简单的总结和描述这个master-worker通信的方式。
 
-<p align="center"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/pipe.png" width="500px"></p>
+<p align="center"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/pipe.png" width="500px"></p>
 
 ### master接收信号
 
@@ -130,7 +130,7 @@ master接收信号 -> pcntl_signal注册对应信号的handler方法 -> pcntl_si
 
 如下图(1-3)所示，
 
-<p align="center"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/signal.png" width="500px"></p>
+<p align="center"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/signal.png" width="500px"></p>
 
 ### 其他
 
@@ -218,4 +218,4 @@ worker实体类MasterProcess
 
 THX~
 
-<p align="center"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/naruto-zsh.png" width="500px"></p>
+<p align="center"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/naruto-zsh.png" width="500px"></p>

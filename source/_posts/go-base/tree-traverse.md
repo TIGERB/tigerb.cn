@@ -4,9 +4,9 @@ tags:
   - 算法
   - Go
 cover_index: >-
-  http://ro98r0r1a.hb-bkt.clouddn.com/20200421124528.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+  http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200421124528.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
 cover_detail: >-
-  http://ro98r0r1a.hb-bkt.clouddn.com/20200421124528.jpg?imageMogr2/thumbnail/1500x1000!/format/webp/blur/1x0/quality/75|imageslim
+  http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200421124528.jpg?imageMogr2/thumbnail/1500x1000!/format/webp/blur/1x0/quality/75|imageslim
 categories:
   - go-base
 date: 2020-04-21 22:22:11

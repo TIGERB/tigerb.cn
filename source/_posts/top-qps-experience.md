@@ -2,11 +2,11 @@
 title: 处理高并发的一般思路 
 date: 2019-04-18 22:56:55
 tags: experience
-cover_index: "http://ro98r0r1a.hb-bkt.clouddn.com/prometey-sanchez-noskov-340992-unsplash.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
+cover_index: "http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/prometey-sanchez-noskov-340992-unsplash.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
 ---
 
 <p>
-    <img src="http://ro98r0r1a.hb-bkt.clouddn.com/prometey-sanchez-noskov-340992-unsplash.jpg?imageMogr2/thumbnail/1280x960!/format/webp/blur/1x0/quality/75|imageslim" width="100%">
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/prometey-sanchez-noskov-340992-unsplash.jpg?imageMogr2/thumbnail/1280x960!/format/webp/blur/1x0/quality/75|imageslim" width="100%">
 </p>
 
 # 前言

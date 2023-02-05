@@ -33,7 +33,7 @@ nginx                1.15-alpine           bc7fdec94612        4 weeks ago      
 
 # 初始化流程
 
-<p align="center"><img width="18%" src="http://ro98r0r1a.hb-bkt.clouddn.com/easy-env.png"></p>
+<p align="center"><img width="18%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/easy-env.png"></p>
 
 # 如何使用？
 
@@ -41,7 +41,7 @@ nginx                1.15-alpine           bc7fdec94612        4 weeks ago      
 
 > export EASY_PATH=$(pwd) && export PATH="$PATH:$EASY_PATH/bin"
 
-<p align="center"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/easy-env-gif.gif"></p>
+<p align="center"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/easy-env-gif.gif"></p>
 
 # 命令列表
 

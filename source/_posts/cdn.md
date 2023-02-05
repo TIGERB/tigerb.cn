@@ -2,7 +2,7 @@
 title: CDN静态加速Github Pages
 date: 2019-03-31 19:10:15
 tags: cdn
-cover_index: "http://ro98r0r1a.hb-bkt.clouddn.com/20190331201755.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
+cover_index: "http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20190331201755.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
 ---
 # 前言
 
@@ -19,17 +19,17 @@ cover_index: "http://ro98r0r1a.hb-bkt.clouddn.com/20190331201755.png?imageMogr2/
 #### CDN静态加速前
 
 <p align="center">
-    <img src="http://ro98r0r1a.hb-bkt.clouddn.com/WX20190331-133614@2x-nn.png" width="60%" />
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/WX20190331-133614@2x-nn.png" width="60%" />
 </p>
 
 #### CDN静态加速后
 
 <p align="center">
-    <img src="http://ro98r0r1a.hb-bkt.clouddn.com/WX20190331-133540@2x-n.png" width="60%" />
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/WX20190331-133540@2x-n.png" width="60%" />
 </p>
 
 <p align="center">
-    <img src="http://ro98r0r1a.hb-bkt.clouddn.com/Jietu20190331-192901.jpg" width="60%" />
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/Jietu20190331-192901.jpg" width="60%" />
 </p>
 
 基本上全绿了，响应时间基本全部 **<50ms** 。
@@ -41,19 +41,19 @@ cover_index: "http://ro98r0r1a.hb-bkt.clouddn.com/20190331201755.png?imageMogr2/
 ##### PC
 
 <p align="center">
-    <img src="http://ro98r0r1a.hb-bkt.clouddn.com/alex-knight-192782-unsplash.png" width="50%" />
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/alex-knight-192782-unsplash.png" width="50%" />
 </p>
 
 ##### Pad
 
 <p align="center">
-    <img src="http://ro98r0r1a.hb-bkt.clouddn.com/Jietu20190331-194810.jpg" width="50%" />
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/Jietu20190331-194810.jpg" width="50%" />
 </p>
 
 ##### Mobile
 
 <p align="center">
-    <img src="http://ro98r0r1a.hb-bkt.clouddn.com/Jietu20190331-194706.jpg" width="30%" />
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/Jietu20190331-194706.jpg" width="30%" />
 </p>
 
 用的klugjo哥 <https://github.com/klugjo> 的主题，值得推荐，上一个主题也是用的他的。

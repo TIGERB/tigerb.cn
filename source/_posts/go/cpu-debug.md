@@ -2,9 +2,9 @@
 title: 线上服务负载异常排查
 tags: linux
 cover_index: >-
-  http://ro98r0r1a.hb-bkt.clouddn.com/20220122224224.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+  http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220122224224.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
 cover_detail: >-
-  http://ro98r0r1a.hb-bkt.clouddn.com/20220122224224.jpg?imageMogr2/thumbnail/1500x1000!/format/webp/blur/1x0/quality/75|imageslim
+  http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220122224224.jpg?imageMogr2/thumbnail/1500x1000!/format/webp/blur/1x0/quality/75|imageslim
 categories:
   - go
 date: 2022-01-22 10:20:05
@@ -72,7 +72,7 @@ perf report -n --stdio
 ```
 
 <p>
-    <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220121152729.png" width="100%">
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220121152729.png" width="100%">
 </p>
 
 除此之外，查看实时top函数
@@ -82,7 +82,7 @@ perf top -p 6
 ```
 
 <p>
-    <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220121152934.png" width="100%">
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220121152934.png" width="100%">
 </p>
 
 ## 生成火焰图
@@ -114,5 +114,5 @@ git clone git@github.com:brendangregg/FlameGraph.git && cd ./FlameGraph
 ```
 
 <p>
-    <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220122220117.png" width="100%">
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220122220117.png" width="100%">
 </p>

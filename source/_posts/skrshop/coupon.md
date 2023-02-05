@@ -4,7 +4,7 @@ tags:
   - shop
   - 优惠券
 cover_index: >-
-  http://ro98r0r1a.hb-bkt.clouddn.com/20200629204416.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+  http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200629204416.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
 categories:
   - skrshop
 date: 2020-06-27 20:22:11
@@ -13,8 +13,8 @@ date: 2020-06-27 20:22:11
 经过两年的更新「SkrShop」已经构成了下面的架构：
 
 <p align="center">
-    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20200628125645.jpg">
-        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20200628125645.jpg" width="100%">
+    <a href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200628125645.jpg">
+        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200628125645.jpg" width="100%">
     </a>
 </p>
 
@@ -68,8 +68,8 @@ Issues如下：
 小结如下：
 
 <p align="center">
-    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20200629130013.png">
-        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20200629130013.png" width="100%">
+    <a href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200629130013.png">
+        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200629130013.png" width="100%">
     </a>
 </p>
 
@@ -107,8 +107,8 @@ All|以上所有
 小结如下：
 
 <p align="center">
-    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20200629130144.png">
-        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20200629130144.png" width="60%">
+    <a href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200629130144.png">
+        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200629130144.png" width="60%">
     </a>
 </p>
 
@@ -165,8 +165,8 @@ All|以上所有
 小结如下：
 
 <p align="center">
-    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20200628124934.jpg">
-        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20200628124934.jpg" width="60%">
+    <a href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200628124934.jpg">
+        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200628124934.jpg" width="60%">
     </a>
 </p>
 
@@ -216,8 +216,8 @@ All|以上所有
 小结如下：
 
 <p align="center">
-    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20200627192451.jpg">
-        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20200627192451.jpg" width="80%">
+    <a href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200627192451.jpg">
+        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200627192451.jpg" width="80%">
     </a>
 </p>
 
@@ -260,7 +260,7 @@ IP|每天使用某优惠券的个数限制
 优惠券尽量不要支持虚拟商品以防止可能被利用的不法活动。
 
 <p align="center">
-    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20200628133135.png">
-        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20200628133135.png" width="80%">
+    <a href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200628133135.png">
+        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200628133135.png" width="80%">
     </a>
 </p>

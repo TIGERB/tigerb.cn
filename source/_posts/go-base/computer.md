@@ -3,7 +3,7 @@ title: 回到本真，梦回计算机发展史
 tags:
   - Go - 计算机原理
 cover_index: >-
-  http://ro98r0r1a.hb-bkt.clouddn.com/20220717220428.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+  http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220717220428.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
 categories:
   - go-base
 date: 2022-07-10 15:20:11
@@ -207,7 +207,7 @@ A|B|C1|D|C
 上面诞生了硬件，也就是真正意义的计算机。问题是如何编写程序？我们的程序其实就是门电路中的晶体管不断的运行导通1和截止0两个状态之间，对应的文本代码其实就是数字0和1，所以早期的代码就是**直接编写0和1的代码**。但是对于人类阅读友好的永远是具备描述性的具备可读性的文本，于是诞生了更适合人们阅读和编写的汇编代码。
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220717220131.png" style="width:100%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220717220131.png" style="width:100%">
 </p>
 
 #### 汇编代码
@@ -225,7 +225,7 @@ A|B|C1|D|C
 同时人们发明了编译器自动把汇编代码转换为0和1组成的机器代码。
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220717220225.png" style="width:100%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220717220225.png" style="width:100%">
 </p>
 
 #### 子函数和函数库
@@ -251,7 +251,7 @@ A|B|C1|D|C
 最早工程师编写的程序是可以直接操作这些硬件设备的：
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220717184303.png" style="width:60%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220717184303.png" style="width:60%">
 </p>
 
 存在问题：每个编写程序的工程师都要实现对这些硬件的操作，存在大量重复的工作，以及安全性等等问题。
@@ -259,7 +259,7 @@ A|B|C1|D|C
 于是对硬件设备的操作进行统一的封装，比如对输入/输出设备的操作，对磁盘的操作等等 这样就形成了一系列统一的API以及应用程序，提升了开发效率也保证了安全等等。
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220717184227.png" style="width:60%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220717184227.png" style="width:60%">
 </p>
 
 **这就是操作系统：封装了一系列对计算机硬件设备操作的API和应用程序的集合。**
@@ -271,13 +271,13 @@ A|B|C1|D|C
 计算机简易的关键发展点：
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220717220342.png" style="width:60%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220717220342.png" style="width:60%">
 </p>
 
 编程语言的关键发展点：
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220717220428.png" style="width:100%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220717220428.png" style="width:100%">
 </p>
 
 本文从一些关键点回顾了计算机的发展史，为后面理解程序的运行打好基础。下篇文章我们就来看看：

@@ -3,7 +3,7 @@ title: 64位平台下，指针自身的大小为什么是8字节？
 tags:
   - Go
 cover_index: >-
-  http://ro98r0r1a.hb-bkt.clouddn.com/20210121194127.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+  http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210121194127.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
 categories:
   - go-base
 date: 2021-01-23 22:00:11
@@ -21,7 +21,7 @@ date: 2021-01-23 22:00:11
 今天我们开始拉开《Go语言轻松系列》第二章「内存与垃圾回收」的序幕。
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210109200839.png" style="width:30%;box-shadow: 3px 3px 3px 3px #ddd;">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210109200839.png" style="width:30%;box-shadow: 3px 3px 3px 3px #ddd;">
 </p>
 
 关于「内存与垃圾回收」章节，大体从如下三大部分展开：
@@ -51,7 +51,7 @@ date: 2021-01-23 22:00:11
 
 存储单元是存储器(本文指内存)的基本单位，每个存储单元是8bit，也就是1Byte，如下图所示：
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210121193201.png" style="width:70%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210121193201.png" style="width:70%">
 </p>
 
 同时从上图中我们可以看出，每个存储单元会被编号，这个编号又是什么呢？
@@ -84,7 +84,7 @@ CPU总线由系统总线、等等其他总线组成。
 内存的地址(存储单元的编号)是通过**地址总线**传递的，地址总线里的“每一根线”传递二进制`0`或`1`，如下图所示(实际不是这么简单，图示为了便于大家理解)。
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210121194127.png" style="width:70%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210121194127.png" style="width:70%">
 </p>
 
 地址总线的**宽度**决定了一次能传递多少个`0`或`1`，由于64位CPU每次可处理64位数据，所以理论上地址总线的宽度可以支持到最大64，也就是2^64种组合，可代表的数字范围为`0 ~ 2^64-1`。

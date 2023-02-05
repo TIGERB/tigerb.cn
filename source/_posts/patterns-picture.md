@@ -3,7 +3,7 @@ title: 图解设计模式
 date: 2021-03-07 13:20:30
 tags: 
 	- 设计模式
-cover_index: "http://ro98r0r1a.hb-bkt.clouddn.com/20210307223724.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
+cover_index: "http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210307223724.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
 ---
 
 
@@ -33,7 +33,7 @@ func YourFunc() {
 ```
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210307142850.png" style="width:30%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210307142850.png" style="width:30%">
 </p>
 
 # 知道了拆分函数
@@ -42,13 +42,13 @@ func YourFunc() {
 自然而然知道了需要合理拆分函数。
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210307144448.png" style="width:30%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210307144448.png" style="width:30%">
 </p>
 
 然后把各个函数组织起来。
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210307144536.png" style="width:30%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210307144536.png" style="width:30%">
 </p>
 
 # 面临新的困境
@@ -61,7 +61,7 @@ func YourFunc() {
 3. 把变动的代码再提为两个新函数，一个绿色为老代码，一个蓝色为新场景代码？
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210307144547.png" style="width:36%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210307144547.png" style="width:36%">
 </p>
 
 上面这种解决问题的方式就是**面向过程**的编程思想。
@@ -96,7 +96,7 @@ func (d *DemoStruct) YourFunc() {
 ```
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210307144804.png" style="width:50%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210307144804.png" style="width:50%">
 </p>
 
 所以，我们如何用面向对象的思想组织上面的代码呢？
@@ -114,7 +114,7 @@ func (d *DemoStruct) YourFunc() {
 
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210307145232.png" style="width:50%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210307145232.png" style="width:50%">
 </p>
 
 不同的场景定义为不同的子类，子类继承父类，并实现抽象方法(也就是写差异代码)。
@@ -126,7 +126,7 @@ func (d *DemoStruct) YourFunc() {
 ```
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210307145349.png" style="width:50%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210307145349.png" style="width:50%">
 </p>
 
 是不是很优雅的解决上面的场景的问题。
@@ -150,7 +150,7 @@ func (d *DemoStruct) YourFunc() {
 ```
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210307145529.png" style="width:50%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210307145529.png" style="width:50%">
 </p>
 
 ## **这！就是策略模式**
@@ -183,7 +183,7 @@ func Demo() {
 ```
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210307145602.png" style="width:60%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210307145602.png" style="width:60%">
 </p>
 
 4. 不同的场景定义为一个具体的类，且实现上面的interface。
@@ -194,7 +194,7 @@ func Demo() {
 ```
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210307145616.png" style="width:60%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210307145616.png" style="width:60%">
 </p>
 
 ```
@@ -204,7 +204,7 @@ func Demo() {
 ```
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210307145642.png" style="width:60%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210307145642.png" style="width:60%">
 </p>
 
 ```
@@ -215,7 +215,7 @@ func Demo() {
 ```
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210307145705.png" style="width:60%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210307145705.png" style="width:60%">
 </p>
 
 5. 最后我们判断不同的场景初始化不同的具体类，再调用即可。
@@ -269,7 +269,7 @@ func Demo() {
 ```
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210307154154.png" style="width:60%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210307154154.png" style="width:60%">
 </p>
 
 ## **这！就是状态模式**
@@ -334,7 +334,7 @@ func Demo() {
 ```
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210307160512.png" style="width:60%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210307160512.png" style="width:60%">
 </p>
 
 # 结语

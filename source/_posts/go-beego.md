@@ -2,7 +2,7 @@
 title: Go框架解析-beego
 date: 2018-12-06 20:27:19
 tags: golang
-cover_index: "http://ro98r0r1a.hb-bkt.clouddn.com/20190330182113.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
+cover_index: "http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20190330182113.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
 ---
 
 ## 前言
@@ -250,7 +250,7 @@ beego.Router()
 
 > 备注：go导入包相当于入栈过程，先import后执行init
 
-![http://ro98r0r1a.hb-bkt.clouddn.com/beego_2.png](http://ro98r0r1a.hb-bkt.clouddn.com/beego_2.png)
+![http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/beego_2.png](http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/beego_2.png)
 
 ---
 

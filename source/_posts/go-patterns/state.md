@@ -4,7 +4,7 @@ tags:
   - 设计模式
   - Go
 cover_index: >-
-  http://ro98r0r1a.hb-bkt.clouddn.com/20200531163250.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+  http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200531163250.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
 categories:
   - go-patterns
 date: 2020-05-31 16:25:11
@@ -13,7 +13,7 @@ date: 2020-05-31 16:25:11
 > 嗯，Go设计模式实战系列，一个设计模式业务真实使用的golang系列。
 
 <p>
-    <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210215112122.png" width="50%">
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210215112122.png" width="50%">
 </p>
 
 # **前言**
@@ -73,7 +73,7 @@ date: 2020-05-31 16:25:11
 先来看看一个短信验证码登录的界面。
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20200522131127.png" style="width:50%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200522131127.png" style="width:50%">
 </p>
 
 可以得到：
@@ -87,7 +87,7 @@ date: 2020-05-31 16:25:11
 我们通过梳理的文本业务流程得到了如下的业务流程图：
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20200522130715.png" style="width:100%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200522130715.png" style="width:100%">
 </p>
 
 ## **代码建模**
@@ -130,7 +130,7 @@ date: 2020-05-31 16:25:11
 同时得到了我们的UML图：
 
 <p align="center">
-  <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20200527141350.jpg" style="width:100%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200527141350.jpg" style="width:100%">
 </p>
 
 ## **代码demo**

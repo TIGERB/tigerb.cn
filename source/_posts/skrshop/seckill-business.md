@@ -4,9 +4,9 @@ tags:
   - shop
   - 秒杀系统
 cover_index: >-
-  http://ro98r0r1a.hb-bkt.clouddn.com/20200802225026.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+  http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200802225026.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
 cover_detail: >-
-  http://ro98r0r1a.hb-bkt.clouddn.com/20200802225026.jpg?imageMogr2/thumbnail/1500x1000!/format/webp/blur/1x0/quality/75|imageslim
+  http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200802225026.jpg?imageMogr2/thumbnail/1500x1000!/format/webp/blur/1x0/quality/75|imageslim
 categories:
   - skrshop
 date: 2020-08-02 22:30:11
@@ -32,14 +32,14 @@ date: 2020-08-02 22:30:11
 我们先来看如下京东、有品、拼多多的秒杀页面截图。
 
 <p align="center">
-    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20200712224532.jpeg">
-        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20200712224532.jpeg" width="30%">
+    <a href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200712224532.jpeg">
+        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200712224532.jpeg" width="30%">
     </a>
-    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20200712224556.jpeg">
-        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20200712224556.jpeg" width="30%">
+    <a href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200712224556.jpeg">
+        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200712224556.jpeg" width="30%">
     </a>
-    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20200712224606.jpeg">
-        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20200712224606.jpeg" width="30%">
+    <a href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200712224606.jpeg">
+        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200712224606.jpeg" width="30%">
     </a>
 </p>
 
@@ -93,24 +93,24 @@ date: 2020-08-02 22:30:11
 ## 首先，一元秒杀之类：白菜价+极少+(爆品或者非爆品)+限时
 
 <p align="center">
-    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20200718215320.png">
-        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20200718215320.png" width="80%">
+    <a href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200718215320.png">
+        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200718215320.png" width="80%">
     </a>
 </p>
 
 ## 其次，限时购(又称常规秒杀)：非白菜价+(极少或非极少)+(爆品或者非爆品)+限时
 
 <p align="center">
-    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20200718215411.png">
-        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20200718215411.png" width="80%">
+    <a href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200718215411.png">
+        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200718215411.png" width="80%">
     </a>
 </p>
 
 ## 接着，爆品抢购：非白菜价+(极少或非极少)+爆品+限时
 
 <p align="center">
-    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20200718215425.png">
-        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20200718215425.png" width="80%">
+    <a href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200718215425.png">
+        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200718215425.png" width="80%">
     </a>
 </p>
 
@@ -130,8 +130,8 @@ date: 2020-08-02 22:30:11
 完整流程主要涉及三个接口：
 
 <p align="center">
-    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20200718215732.png">
-        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20200718215732.png" width="80%">
+    <a href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200718215732.png">
+        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200718215732.png" width="80%">
     </a>
 </p>
 
@@ -144,8 +144,8 @@ date: 2020-08-02 22:30:11
 ## 补充完整流程方案②
 
 <p align="center">
-    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20200718215817.png">
-        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20200718215817.png" width="80%">
+    <a href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200718215817.png">
+        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200718215817.png" width="80%">
     </a>
 </p>
 
@@ -161,7 +161,7 @@ date: 2020-08-02 22:30:11
 图示：
 
 <p align="center">
-    <a href="http://ro98r0r1a.hb-bkt.clouddn.com/20200802220914.png">
-        <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20200802220914.png" width="50%">
+    <a href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200802220914.png">
+        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200802220914.png" width="50%">
     </a>
 </p>

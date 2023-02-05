@@ -2,7 +2,7 @@
 title: 差点被忽略的PHP命令行Commands
 date: 2018-10-20 22:14:16
 tags: php
-cover_index: "http://ro98r0r1a.hb-bkt.clouddn.com/20190330182509.jpeg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
+cover_index: "http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20190330182509.jpeg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
 ---
 
 # 前言
