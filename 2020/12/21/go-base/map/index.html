@@ -89,7 +89,7 @@
 
         <!-- Logo -->
         <a href="/" class="logo">
-            <span class="symbol"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20190707142019.png" alt="" /></span><span class="title">TIGERB</span>
+            <span class="symbol"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20190707142019.png" alt="" /></span><span class="title">TIGERB</span>
         </a>
 
         <!-- Nav -->
@@ -139,7 +139,7 @@
     </div>
 
 
-    <span class="image main"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20201220215334.jpg?imageMogr2/thumbnail/1500x1000!/format/webp/blur/1x0/quality/75|imageslim" alt="" /></span>
+    <span class="image main"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20201220215334.jpg?imageMogr2/thumbnail/1500x1000!/format/webp/blur/1x0/quality/75|imageslim" alt="" /></span>
 
 
 <!-- Gallery -->
@@ -224,7 +224,7 @@
 </ul>
 <p>大致结构如下：</p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20201216161128.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20201216161128.png" style="width:100%"></a>
+  <a target="_blank" rel="noopener" href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20201216161128.png" class="gallery-item"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20201216161128.png" style="width:100%"></a>
 </p>
 
 <p>读取一个key值的过程大致如下：</p>
@@ -239,12 +239,12 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">备注：后面我们会解释上面为啥用的“主要”两个字。</span><br></pre></td></tr></table></figure>
 
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20201219202458.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20201219202458.png" style="width:60%"></a>
+  <a target="_blank" rel="noopener" href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20201219202458.png" class="gallery-item"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20201219202458.png" style="width:60%"></a>
 </p>
 
 <p>但是并不是只使用一个数组(连续内存空间)存放键和值，而是使用了两个数组分别存储键和值，图示如下：</p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20201217210507.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20201217210507.png" style="width:100%"></a>
+  <a target="_blank" rel="noopener" href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20201217210507.png" class="gallery-item"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20201217210507.png" style="width:100%"></a>
 </p>
 
 <p>上图中：</p>
@@ -254,7 +254,7 @@
 </ul>
 <p>把上面简化的关系转换一下，其实就是这样的一个大致关系，如下图所示：</p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20201217210752.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20201217210752.png" style="width:100%"></a>
+  <a target="_blank" rel="noopener" href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20201217210752.png" class="gallery-item"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20201217210752.png" style="width:100%"></a>
 </p>
 
 <p>我们通过一次<code>读操作</code>为例，看看读取某个key的值的一个<strong>大致过程</strong>：</p>
@@ -280,7 +280,7 @@
 </tbody></table>
 <p>读过程图示如下：</p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20201217210816.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20201217210816.png" style="width:100%"></a>
+  <a target="_blank" rel="noopener" href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20201217210816.png" class="gallery-item"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20201217210816.png" style="width:100%"></a>
 </p>
 
 <p>这么看起来是不是“很简单”、很清晰，所以读到这里，你是不是已经入门了<code>Go语言Map底层实现</code>并且：</p>
@@ -298,7 +298,7 @@
 
 <p><code>hmap</code>的结构其实刚开始看起来其实还是比较复杂的，有不少的字段，具体字段如下图所示：</p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20201218132443.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20201218132443.png" style="width:20%"></a>
+  <a target="_blank" rel="noopener" href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20201218132443.png" class="gallery-item"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20201218132443.png" style="width:20%"></a>
 </p>
 
 <p>字段释义如下：</p>
@@ -350,7 +350,7 @@
 
 <p>重点看一些字段的含义和用处。</p>
 <h3 id="字段buckets"><a href="#字段buckets" class="headerlink" title="字段buckets"></a>字段<code>buckets</code></h3><p align="center">
-  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20201216202022.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20201216202022.png" style="width:66%"></a>
+  <a target="_blank" rel="noopener" href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20201216202022.png" class="gallery-item"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20201216202022.png" style="width:66%"></a>
 </p>
 
 <p><code>buckets</code>指向了一个数组(连续的内存空间)，数组的元素是<code>bmap</code>类型，这个字段我们称之为正常桶。</p>
@@ -361,7 +361,7 @@
 
 <p>正常桶<code>hmap.buckets</code>的元素是一个<code>bmap</code>结构。<code>bmap</code>的具体字段如下图所示：</p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20201216202114.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20201216202114.png" style="width:66%"></a>
+  <a target="_blank" rel="noopener" href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20201216202114.png" class="gallery-item"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20201216202114.png" style="width:66%"></a>
 </p>
 
 <p>字段释义如下：</p>
@@ -394,7 +394,7 @@
 </tr>
 </tbody></table>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20201216202224.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20201216202224.png" style="width:60%"></a>
+  <a target="_blank" rel="noopener" href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20201216202224.png" class="gallery-item"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20201216202224.png" style="width:60%"></a>
 </p>
 
 <p>推断出<code>bmap</code>结构字段的代码和位置如下：</p>
@@ -405,7 +405,7 @@
 </blockquote>
 <h2 id="hmap和bmap的基本结构合起来"><a href="#hmap和bmap的基本结构合起来" class="headerlink" title="hmap和bmap的基本结构合起来"></a><code>hmap</code>和<code>bmap</code>的基本结构合起来</h2><p>分别了解了<code>hmap</code>和<code>bmap</code>的基本结构后，我们把上面的内容合并起来，就得到如下的Map结构图：</p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20201216202349.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20201216202349.png" style="width:90%"></a>
+  <a target="_blank" rel="noopener" href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20201216202349.png" class="gallery-item"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20201216202349.png" style="width:90%"></a>
 </p>
 
 <h2 id="溢出桶"><a href="#溢出桶" class="headerlink" title="溢出桶"></a>溢出桶</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">收益5: 熟悉Go语言Map底层里的溢出桶</span><br></pre></td></tr></table></figure>
@@ -416,7 +416,7 @@
 </blockquote>
 <p>解决这个问题我们就要说到<code>hmap.extra</code>结构了，<code>hmap.extra</code>是个结构体，结构图示和字段释义如下：</p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20201216202608.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20201216202608.png" style="width:80%"></a>
+  <a target="_blank" rel="noopener" href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20201216202608.png" class="gallery-item"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20201216202608.png" style="width:80%"></a>
 </p>
 
 <table>
@@ -447,7 +447,7 @@
 </blockquote>
 <p>答：就是我们介绍<code>bmap</code>结构时里的<code>bmap.overflow</code>字段(如下图所示)。<code>bmap.overflow</code>是个指针类型，存放了对应使用的溢出桶<code>hmap.extra.overflow</code>里的<code>bmap</code>的地址。</p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20201221131007.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20201221131007.png" style="width:30%"></a>
+  <a target="_blank" rel="noopener" href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20201221131007.png" class="gallery-item"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20201221131007.png" style="width:30%"></a>
 </p>
 
 <p><strong>问题又来了</strong>：</p>
@@ -462,7 +462,7 @@
 
 <p><strong>当<code>hmap</code>存在溢出桶时，且当前溢出桶只被使用了一个bmap</strong>时，我们可以得到如下的关系图：</p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20201217165310.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20201217165310.png" style="width:90%"></a>
+  <a target="_blank" rel="noopener" href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20201217165310.png" class="gallery-item"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20201217165310.png" style="width:90%"></a>
 </p>
 
 <p>同时我们可以看出正常桶的<code>bmap</code>和溢出桶的<code>bmap</code>实际构成了链表关系，所以这也解释了开篇我们说到的“Go里面Map的实现<strong>主要</strong>用到了数组”，其次还用到了链表。</p>
@@ -470,7 +470,7 @@
 
 <p>通过上面的学习，我们再次通过一次读操作为例，看看读取某个key的值的一个大致过程：</p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20201217165551.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20201217165551.png" style="width:90%"></a>
+  <a target="_blank" rel="noopener" href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20201217165551.png" class="gallery-item"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20201217165551.png" style="width:90%"></a>
 </p>
 
 <p>结合代码分析下整个大体的过程：</p>
@@ -517,7 +517,7 @@
         <section>
             <h2>About</h2>
             <div>
-                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://ro98r0r1a.hb-bkt.clouddn.com/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
             </div>
         </section>
         <section>

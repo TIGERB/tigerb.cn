@@ -89,7 +89,7 @@
 
         <!-- Logo -->
         <a href="/" class="logo">
-            <span class="symbol"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20190707142019.png" alt="" /></span><span class="title">TIGERB</span>
+            <span class="symbol"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20190707142019.png" alt="" /></span><span class="title">TIGERB</span>
         </a>
 
         <!-- Nav -->
@@ -167,7 +167,7 @@
 </ol>
 <p>图示如下，详细请移步历史文章<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/hmy_ktuSBZvUqJtO5f_zZg">「回到本真，梦回计算机发展史」</a></p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20220807222555.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220807222555.png" style="width:50%"></a>
+  <a target="_blank" rel="noopener" href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220807222555.png" class="gallery-item"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220807222555.png" style="width:50%"></a>
 </p>
 
 <p>到此为止，我们了解了计算机自动运算的简易实现逻辑，接着问题来了：</p>
@@ -183,7 +183,7 @@
 </ul>
 <p>代码包含了指令，代码被转化为可执行二进制文件，被执行后加载到内存中，中央处理器CPU通过内存获取指令，图示如下。详细请移步历史文章<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/rUwXUammEJ2vkmN7CFxW9w">「回到本真，代码到底是什么？」</a></p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20220731175631.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220731175631.png" style="width:80%"></a>
+  <a target="_blank" rel="noopener" href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220731175631.png" class="gallery-item"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220731175631.png" style="width:80%"></a>
 </p>
 
 <p>到此为止，程序员把中央处理器CPU需要执行的指令，通过执行二进制代码文件加载到了内存中，接着问题来了：</p>
@@ -228,7 +228,7 @@
 </ul>
 <p>我们通过一个简易的时序图来看看CPU获取并执行指令的过程：</p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20220807232114.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220807232114.png" style="width:100%"></a>
+  <a target="_blank" rel="noopener" href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220807232114.png" class="gallery-item"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220807232114.png" style="width:100%"></a>
 </p>
 
 <p>通过上图其实我们可能会有一个问题：</p>
@@ -258,12 +258,12 @@
 <p>内存最简单、高效的分配回收方式就是对一段<strong>连续内存</strong>的「<strong>线性分配</strong>」，栈内存的分配就采用了这种方式。栈内存的管理过程：</p>
 <h4 id="栈内存的分配"><a href="#栈内存的分配" class="headerlink" title="栈内存的分配"></a>栈内存的分配</h4><p>栈内存分配逻辑：current - alloc</p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20220807234036.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220807234036.png" style="width:100%"></a>
+  <a target="_blank" rel="noopener" href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220807234036.png" class="gallery-item"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220807234036.png" style="width:100%"></a>
 </p>
 
 <h4 id="栈内存的释放"><a href="#栈内存的释放" class="headerlink" title="栈内存的释放"></a>栈内存的释放</h4><p>栈内存释放逻辑：current + alloc</p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20220807234046.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220807234046.png" style="width:100%"></a>
+  <a target="_blank" rel="noopener" href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220807234046.png" class="gallery-item"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220807234046.png" style="width:100%"></a>
 </p>
 
 <p>这样指令执行过程中的中间变量是不是就可以使用栈内存进行高效存储。其次通过如下图示可以看出：</p>
@@ -273,7 +273,7 @@
 </ul>
 <p>所以同时你应该也理解了「为什么称之为栈内存？」。<strong>栈内存是计算机对连续内存的采取的「线性分配」管理方式，便于高效存储指令运行过程中的临时变量。</strong></p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20220807235914.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220807235914.png" style="width:100%"></a>
+  <a target="_blank" rel="noopener" href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220807235914.png" class="gallery-item"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220807235914.png" style="width:100%"></a>
 </p>
 
 <h4 id="函数作用域内指令数据依赖"><a href="#函数作用域内指令数据依赖" class="headerlink" title="函数作用域内指令数据依赖"></a>函数作用域内指令数据依赖</h4><p>但是这样还存在别的问题：</p>
@@ -288,7 +288,7 @@
 <p>答：这就是「堆内存」的作用，比如Go语言在编译期会进行「逃逸分析」把分配在「栈」上的变量「分配到堆上去」。</p>
 <h3 id="堆内存"><a href="#堆内存" class="headerlink" title="堆内存"></a>堆内存</h3><p>「堆内存」的问题函数执行完成之后不会被自动回收，所以通常通过「垃圾回收器」进行内存回收。关于「堆内存」这里就不多说了，后续继续开启关于Go语言「栈内存和堆内存的」详细篇章。</p>
 <p align="center">
-  <a target="_blank" rel="noopener" href="http://ro98r0r1a.hb-bkt.clouddn.com/20220808002156.png" class="gallery-item"><img src="http://ro98r0r1a.hb-bkt.clouddn.com/20220808002156.png" style="width:100%"></a>
+  <a target="_blank" rel="noopener" href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220808002156.png" class="gallery-item"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220808002156.png" style="width:100%"></a>
 </p>
 
 <p>下篇文章我们就回归主线，来彻底看看Go语言的「栈内存&#x2F;堆内存」实现。</p>
@@ -332,7 +332,7 @@
         <section>
             <h2>About</h2>
             <div>
-                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://ro98r0r1a.hb-bkt.clouddn.com/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。拥有丰富的电商系统开发经验，现于小米集团从事后端研发工作。<br><br><img style="vertical-align:middle" width="30%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
             </div>
         </section>
         <section>
