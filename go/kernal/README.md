@@ -11,7 +11,7 @@
 > 嗯，Go语言轻松进阶，一个帮助深入学习Go语言的你，轻松进阶的系列。
 
 <p>
-    <img src="http://ro98r0r1a.hb-bkt.clouddn.com/20210109200839.png" width="36%" style="box-shadow: 3px 3px 3px 3px #ddd;">
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210109200839.png" width="36%" style="box-shadow: 3px 3px 3px 3px #ddd;">
 </p>
 
 ## 版权申明
@@ -20,7 +20,7 @@
 - 未经版权所有者事先授权，禁止将此作品及其衍生作品以标准（纸质）书籍形式发行。
 
 <p>
-    <img style="vertical-align:middle" width="25%" src="http://ro98r0r1a.hb-bkt.clouddn.com/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+    <img style="vertical-align:middle" width="25%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
 <p>
 
 ## 目标
