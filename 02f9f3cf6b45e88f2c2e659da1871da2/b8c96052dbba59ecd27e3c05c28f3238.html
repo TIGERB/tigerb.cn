@@ -133,7 +133,7 @@
 
     <h1 class="title">No Code No Life</h1>
     <div class="meta">
-        2023-02-05
+        2023-02-11
     </div>
 
 
@@ -147,17 +147,16 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"><h1 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h1><hr>
 <h1 id="个人资料"><a href="#个人资料" class="headerlink" title="个人资料"></a>个人资料</h1><ul>
 <li>姓名: 施展</li>
-<li>邮箱: <a href="mailto:&#x74;&#105;&#x67;&#x65;&#x72;&#98;&#x63;&#111;&#x64;&#x65;&#64;&#103;&#x6d;&#97;&#105;&#108;&#46;&#x63;&#x6f;&#109;">&#x74;&#105;&#x67;&#x65;&#x72;&#98;&#x63;&#111;&#x64;&#x65;&#64;&#103;&#x6d;&#97;&#105;&#108;&#46;&#x63;&#x6f;&#109;</a></li>
+<li>邮箱: <a href="mailto:&#116;&#x69;&#103;&#x65;&#114;&#98;&#x63;&#111;&#100;&#101;&#64;&#103;&#x6d;&#x61;&#105;&#108;&#46;&#99;&#x6f;&#109;">&#116;&#x69;&#103;&#x65;&#114;&#98;&#x63;&#111;&#100;&#101;&#64;&#103;&#x6d;&#x61;&#105;&#108;&#46;&#99;&#x6f;&#109;</a></li>
 <li>生日: 1991年3月</li>
-<li>年龄: 31</li>
-<li>QQ: 389657619</li>
+<li>年龄: 32</li>
 <li>手机号码:15522634982</li>
 <li>毕业学校: 天津师范大学(2010 - 2014)</li>
 <li>专业: 电子信息科学与技术</li>
 <li>GitHub: <a target="_blank" rel="noopener" href="https://github.com/TIGERB">https://github.com/TIGERB</a></li>
-<li>个人原创技术博客: <a href="http://tigerb.cn/">http://TIGERB.cn</a></li>
+<li>个人原创技术博客: <a href="https://tigerb.cn/">https://TIGERB.cn</a></li>
+<li>掘金社区账号：<a target="_blank" rel="noopener" href="https://juejin.cn/user/3685218704953896/posts">https://juejin.cn/user/3685218704953896/posts</a></li>
 <li>SF社区账号：<a target="_blank" rel="noopener" href="https://segmentfault.com/u/tigerb">https://segmentfault.com/u/tigerb</a></li>
-<li>掘金社区账号：<a target="_blank" rel="noopener" href="https://juejin.im/user/5855e82d1b69e6006c9278b4">https://juejin.im/user/5855e82d1b69e6006c9278b4</a></li>
 <li>个人技术公众号: <br></li>
 </ul>
 <p><a target="_blank" rel="noopener" href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/200x200!/format/webp/blur/1x0/quality/75%7Cimageslim" class="gallery-item"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/200x200!/format/webp/blur/1x0/quality/75%7Cimageslim"></a></p>
@@ -173,7 +172,7 @@
 <tbody><tr>
 <td>2018.3 - 至今</td>
 <td>北京小米移动软件有限公司</td>
-<td>小米网</td>
+<td>海外小米商城</td>
 <td>海外电商交易&amp;架构组负责人</td>
 </tr>
 <tr>
@@ -196,54 +195,101 @@
 </tr>
 </tbody></table>
 <h1 id="项目经验"><a href="#项目经验" class="headerlink" title="项目经验"></a>项目经验</h1><ol>
-<li>(***)核心购物流程重构项目</li>
+<li>(***)海外小米网重构项目</li>
 </ol>
 <ul>
-<li><p>时间：2020.03 – 至今</p>
+<li><p>时间：2021.10 – 至今</p>
 </li>
-<li><p>项目简述：</p>
+<li><p>项目简述：海外小米网业务基于多机房、多品牌、多站点的特点，经过多年的发展存在一下问题：</p>
+<ul>
+<li>研发效率维度<ul>
+<li>核心代码1000+的函数极其多，代码坏味道极高</li>
+<li>函数式编程不适合于当前复杂的业务场景，代码组织不合理，函数调用关系混乱，扩展的效率极低</li>
+<li>海外多机房、多地区共计20+B2C商城站点，差异化代码编写混乱，复用效率低</li>
+<li>单站点共计50+业务配置项，管理难度大</li>
+<li>无法贴近未来业务发展，以及实现自动化建站</li>
+<li>前后端不分离，拖累研发效率</li>
+</ul>
 </li>
-<li><p>个人职责:</p>
-<p>1.<br>2. </p>
-<ol start="3">
-<li></li>
+<li>交付质量维度<ul>
+<li>历史代码耦合高，代码变更风险极大</li>
+<li>无法接入更多监控报警手段，不支持接入全链路追踪&#x2F;不支持接入运行时监控&#x2F;不支持自定义指标监控与报警</li>
+</ul>
+</li>
+<li>业务架构维度<ul>
+<li>交易代码耦合的营销逻辑需要收敛到营销服务</li>
+<li>交易代码耦合的用户地址逻辑需要收敛到用户服务</li>
+<li>统一业务BFF层代码逻辑和代码逻辑需要合理下沉到订单服务</li>
+</ul>
+</li>
+<li>服务性能维度<ul>
+<li>PHP语言fpm模式性能不够好，使用Go重构后核心API平均响应时间提升50%</li>
+</ul>
+</li>
+<li>IDC成本维度<ul>
+<li>当前PHP版本服务对机器的要求远大于Go服务，使用Go语言日常节省IDC成本60%</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>个人职责:<br>作为项目负责人:</p>
+<ol>
+<li>负责整体重构项目进度跟进、风险跟踪、关键点决策、质量把控</li>
+<li>负责整体业务架构、基础架构方案设计，各模块代码建模以及技术评审</li>
+<li>负责核心技术点调研、方案设计</li>
+<li>负责核心基础包开发</li>
+<li>负责跨团队拉通，推进和集团人工智能平台技术团队合作，引入NLP能力支持优化搜索功能，并补全推荐能力。</li>
+</ol>
+</li>
+<li><p>项目收益：</p>
+<ol>
+<li>完成业务架构、基础架构路径规划，产出团队完整的业务架构演化图、基础架构演化图。提出并明确了“去、分、收、扩”四字演化方针(去：核心业务去PHP依赖，分：全站前后端分离，页面组件化，收：相同业务领域服务收敛、配置收敛、翻译收敛，扩：扩展点，各地区、各站点差异化功能插件化管理)。</li>
+<li>日常研发效率提升30%。海外小米网建站逐步实现自动化，截止目前建站效率已提升40%。</li>
+<li>下单转化提升30%，搜索空结果率降低75%</li>
+<li>沉淀20+篇技术文档+</li>
 </ol>
 </li>
 </ul>
 <ol start="2">
-<li>(***)开放购买系统(小米网)</li>
+<li>(***)小米网开放购买系统重构</li>
 </ol>
 <ul>
-<li><p>时间：2018.12 – 至今</p>
+<li><p>时间：2018.12 – 2019.6</p>
 </li>
 <li><p>项目简述：小米公司新品发售时，一般都会选择小米网作为新品的首次发售渠道。新品发售一般都是典型的高UV、高并发场景，所以如果把新品作为普通商品销售，会面临两个严峻的问题：1. 后端商城服务等可能随时会被打垮 2. 商品可能会大量超卖。为了解决这个问题出现了开放购买系统，开放购买系统本质上是一个和业务相关的限流服务，开放购买系统会给每位排队成功的用户下发令牌，成功获取令牌的用户才可以走购买流程。由于公司业务的不断扩张，为了满足海外的业务需求，出现了开放购买系统。</p>
 <ul>
-<li>其次随着时间的迁移、老旧的抢购系统暴露除了如下的问题：<ol>
-<li>服务太多且设计过度复杂，不利于维护</li>
-<li>一些服务存在单点问题</li>
-<li>技术栈过多，不利于维护</li>
-<li>单独的运营后台系统不利于维护，且不支持全球化</li>
+<li>随着时间的迁移、老旧的抢购系统暴露除了如下的问题：<ol>
+<li>服务太多、复杂度高、风险极大，老版本大秒共计由8个服务构成</li>
+<li>部分服务存在单点问题</li>
+<li>技术栈众多，研发维护成本高，运维维护成本高。语言涉及PHP、Go、Python，基础设施涉及MongoDB、Zookeeper、Redis、MySQL</li>
+<li>运营后台多，配置流程复杂，且不支持全球化</li>
 </ol>
 </li>
 <li>优化点<ol>
-<li>合并服务</li>
-<li>统一技术栈为Go、Redis、Mysql</li>
-<li>合并运营后台到统一的运营平台</li>
+<li>缩减服务数，由8个服务缩减到1～2个服务</li>
+<li>统一技术栈为Go、Redis、Mysql，由7个技术栈缩减到3个核心技术栈</li>
+<li>收敛运营后台，并支持国际化</li>
 </ol>
 </li>
 </ul>
 </li>
-<li><p>个人职责:</p>
+<li><p>个人职责:<br>作为项目发起者&amp;技术指导:</p>
 <ol>
-<li>负责开放购买系统的维护</li>
-<li>负责开放购买系统的优化    </li>
-<li>负责开放购买系统海外定制业务的开发</li>
-<li>负责开放购买系统的重构设计</li>
+<li>负责开放购买系统重构项目风险跟踪、关键点决策、质量把控</li>
+<li>指导组内同事完成技术方案设计和项目推进</li>
+</ol>
+</li>
+<li><p>项目收益：</p>
+<ol>
+<li>运营效率提升70%</li>
+<li>提升研发、运维效率，由日常维护8个服务到1-2个服务，技术栈完成去PHP、Python、MongoDB、zk依赖。。</li>
+<li>服务质量飞跃提升，无单点，从以往服务每月必出问题到季度几乎无问题</li>
+<li>IDC成本降低55%</li>
 </ol>
 </li>
 </ul>
 <ol start="2">
-<li>(***)通用抽奖工具(大v店APP) 待删除</li>
+<li>(***)通用抽奖工具(大v店APP)</li>
 </ol>
 <ul>
 <li><p>时间: 2017.2 – 2017.5</p>
@@ -266,11 +312,16 @@
 </li>
 </ol>
 </li>
-<li><p>个人职责:</p>
+<li><p>个人职责:<br>作为项目负责人:</p>
 <ol>
 <li>负责抽奖工具代码架构搭建，采用了设计模式的“模板模式”和“策略模式”，抽奖的算法调用流程实现在抽象类中，最后抽象类就构成了一个抽奖类的模板，后期增加新的抽象策略，只需要实现抽奖模板的抽象方法即可，方便代码扩展。</li>
 <li>负责抽奖工具接口服务开发，通过异步的方式降低主库高峰的写操作,通过redis的原子操作保证奖品库存不出现超发，从而保证高并发的场景服务的可用性和数据最终一致性。</li>
 <li>负责红包中心接口服务和后台开发，建立红包重发机制，保证红包发放成功。</li>
+</ol>
+</li>
+<li><p>项目收益：</p>
+<ol>
+<li>提升研发效率，新活动需求节省1个后端人力</li>
 </ol>
 </li>
 </ul>
@@ -283,22 +334,6 @@
 <li>项目url: <a target="_blank" rel="noopener" href="http://easy-php.tigerb.cn/">http://easy-php.tigerb.cn</a></li>
 </ul>
 <ol start="2">
-<li>(***)Skr Shop <a target="_blank" rel="noopener" href="https://img.shields.io/github/stars/skr-shop/manuals.svg?style=social&label=Star&maxAge=2592000" title="shield" class="gallery-item"><img src="https://img.shields.io/github/stars/skr-shop/manuals.svg?style=social&label=Star&maxAge=2592000" alt="shield"></a></li>
-</ol>
-<ul>
-<li>时间: 2018.8 – 至今</li>
-<li>项目简述: 电商设计手册</li>
-<li>项目url: <a target="_blank" rel="noopener" href="http://skrshop.tech/">http://skrshop.tech/</a></li>
-</ul>
-<ol start="3">
-<li>(***)Easy Tips <a target="_blank" rel="noopener" href="https://img.shields.io/github/stars/tigerb/easy-tips.svg?style=social&label=Star&maxAge=2592000" title="shield" class="gallery-item"><img src="https://img.shields.io/github/stars/tigerb/easy-tips.svg?style=social&label=Star&maxAge=2592000" alt="shield"></a></li>
-</ol>
-<ul>
-<li>时间: 2016.8 – 至今</li>
-<li>项目简述: Gopher、PHPer成长之路，记录个人学习成长过程，全原创内容。</li>
-<li>项目url: <a target="_blank" rel="noopener" href="http://tips.git.tigerb.cn/">http://tips.git.tigerb.cn</a></li>
-</ul>
-<ol start="4">
 <li>(***)Easy Vue <a target="_blank" rel="noopener" href="https://img.shields.io/github/stars/tigerb/easy-vue.svg?style=social&label=Star&maxAge=2592000" title="shield" class="gallery-item"><img src="https://img.shields.io/github/stars/tigerb/easy-vue.svg?style=social&label=Star&maxAge=2592000" alt="shield"></a></li>
 </ol>
 <ul>
@@ -306,7 +341,7 @@
 <li>项目简述: 基于vuejs和webpack的前端基础开发架构</li>
 <li>项目url: <a target="_blank" rel="noopener" href="http://vue.tigerb.cn/">http://vue.tigerb.cn</a></li>
 </ul>
-<ol start="5">
+<ol start="3">
 <li>(**)Naruto <a target="_blank" rel="noopener" href="https://img.shields.io/github/stars/tigerb/naruto.svg?style=social&label=Star&maxAge=2592000" title="shield" class="gallery-item"><img src="https://img.shields.io/github/stars/tigerb/naruto.svg?style=social&label=Star&maxAge=2592000" alt="shield"></a></li>
 </ol>
 <ul>
@@ -314,8 +349,27 @@
 <li>项目简述: 一个纯PHP实现的多进程管理工具</li>
 <li>项目url: <a target="_blank" rel="noopener" href="http://naruto.tigerb.cn/">http://naruto.tigerb.cn</a></li>
 </ul>
+<ol start="4">
+<li>(***)Skr Shop <a target="_blank" rel="noopener" href="https://img.shields.io/github/stars/skr-shop/manuals.svg?style=social&label=Star&maxAge=2592000" title="shield" class="gallery-item"><img src="https://img.shields.io/github/stars/skr-shop/manuals.svg?style=social&label=Star&maxAge=2592000" alt="shield"></a></li>
+</ol>
+<ul>
+<li>时间: 2018.8 – 至今</li>
+<li>项目简述: 电商设计手册</li>
+<li>项目url: <a target="_blank" rel="noopener" href="http://skrshop.tech/">http://skrshop.tech/</a></li>
+</ul>
+<ol start="5">
+<li>(***)Easy Tips <a target="_blank" rel="noopener" href="https://img.shields.io/github/stars/tigerb/easy-tips.svg?style=social&label=Star&maxAge=2592000" title="shield" class="gallery-item"><img src="https://img.shields.io/github/stars/tigerb/easy-tips.svg?style=social&label=Star&maxAge=2592000" alt="shield"></a></li>
+</ol>
+<ul>
+<li>时间: 2016.8 – 至今</li>
+<li>项目简述: Gopher、PHPer成长之路，记录个人学习成长过程，全原创内容。</li>
+<li>项目url: <a target="_blank" rel="noopener" href="http://tips.git.tigerb.cn/">http://tips.git.tigerb.cn</a></li>
+</ul>
 <h1 id="职业技能"><a href="#职业技能" class="headerlink" title="职业技能"></a>职业技能</h1><ul>
-<li>具备较为丰富的电商系统架构经验，主导过海外小米商城电商系统架构规划、设计与落地。</li>
+<li>2年技术团队管理经验(5~16人)，善于流程建设、技术体系搭建、人才培养</li>
+<li>具备较为丰富的电商系统架构经验，主导过海外小米商城电商系统架构规划、设计与落地</li>
+<li>善于团队协作沟通和项目推进，有多次50+人员项目团队的项目负责人经验</li>
+<li>自驱能力强，持续学习，善于思考总结，个人全原创技术博客<a href="https://tigerb.cn/">https://TIGERB.cn</a></li>
 <li>熟悉Go语言，对Go语言底层有一定学习，且有较为丰富的Go语言项目开发经验，参与并主导过抢购系统、抽奖系统、核心交易系统开发和重构工作</li>
 <li>熟悉主流Go开发框架，有Gin、Beego、Iris开发经验，熟悉框架加载流程，并具备独立开发一个Go框架能力</li>
 <li>熟悉主流PHP开发框架，有yii2&#x2F;laravel&#x2F;lumen&#x2F;ThinkPHP3&#x2F;ThinkPHP5开发经验，熟悉框架加载流程，并具备独立开发一个PHP框架能力</li>
@@ -327,13 +381,26 @@
 <li>掌握Docker的使用，掌握K8S使用。</li>
 <li>掌握基础的数据结构和算法</li>
 <li>熟悉http&#x2F;http2&#x2F;https&#x2F;websocket&#x2F;tcp&#x2F;ip等网络协议</li>
-<li>有较为丰富的前端开发经验，了解前端工程化，个人独立使用angularjs和vuejs+wepack和jquery+bootstrap开发过不同项目</li>
+<li>有较为丰富的前端开发经验，了解前端工程化，个人独立使用angularjs和vuejs+webpack和jquery+bootstrap开发过不同项目</li>
 <li>熟练使用Git进行版本控制, 熟悉git workflow工作流</li>
 </ul>
 <h1 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h1><ul>
-<li>个人荣誉：荣获2021年小米集团首批青年工程师，荣获2022年一级部门年度优秀员工“最佳纽带奖”，荣获2020年一级部门年度优秀员工“出类拔萃员工奖”，荣获2019年一级部门年度“金码奖”，荣获2018年一级部门季度优秀员工“后起之秀奖”，荣获2021年二级部门上半年“优秀分享人奖”，小米集团2021年青蓝导师。</li>
-<li>大型项目经验：善于团队协作沟通和项目推进，有多次50+人员项目团队的项目负责人经验。</li>
-<li>架构能力：拥有丰富的电商系统架构经验，具备一定电商系统的业务架构和基础架构能力。</li>
+<li>任职小米期间个人荣誉：<ul>
+<li>2022荣获年三级部门年度优秀员工“年度之星奖”</li>
+<li>2021荣获年小米集团首批“青年工程师”</li>
+<li>2021荣获年二级部门H1“优秀分享人奖”</li>
+<li>2020荣获年一级部门年度优秀员工“出类拔萃员工奖”</li>
+<li>2019荣获年一级部门年度“金码奖”</li>
+<li>2018荣获年一级部门季度优秀员工“后起之秀奖”</li>
+</ul>
+</li>
+<li>任职小米期间其他角色：<ul>
+<li>一级部门质量委成员</li>
+<li>一级部门架构委成员理事</li>
+<li>小米集团2021年“青蓝导师”</li>
+</ul>
+</li>
+<li>任职小米期间多篇文章入选部门技术专栏、以及多次参与部门技术分享</li>
 </ul>
 </div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
         var options = {
