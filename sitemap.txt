@@ -1,3 +1,4 @@
+http://tigerb.cn/2023/03/19/k8s/why-k8s/
 http://tigerb.cn/02f9f3cf6b45e88f2c2e659da1871da2/b8c96052dbba59ecd27e3c05c28f3238.html
 http://tigerb.cn/2020/03/30/go-patterns/template/
 http://tigerb.cn/2022/04/10/go-base/memory-arch/
