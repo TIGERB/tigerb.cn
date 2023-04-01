@@ -20,6 +20,33 @@
   </url>
   
   <url>
+    <loc>http://tigerb.cn/link/index.html</loc>
+    
+    <lastmod>2023-03-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tigerb.cn/about/record.html</loc>
+    
+    <lastmod>2023-03-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tigerb.cn/contact/index.html</loc>
+    
+    <lastmod>2023-03-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://tigerb.cn/2018/05/23/work-flow/</loc>
     
     <lastmod>2023-03-19</lastmod>
@@ -758,45 +785,18 @@
   </url>
   
   <url>
-    <loc>http://tigerb.cn/02f9f3cf6b45e88f2c2e659da1871da2/b8c96052dbba59ecd27e3c05c28f3238.html</loc>
-    
-    <lastmod>2023-02-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tigerb.cn/link/index.html</loc>
-    
-    <lastmod>2019-10-22</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tigerb.cn/about/record.html</loc>
-    
-    <lastmod>2019-10-22</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://tigerb.cn/contact/index.html</loc>
-    
-    <lastmod>2019-10-22</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://tigerb.cn/README.html</loc>
     
-    <lastmod>2019-10-22</lastmod>
+    <lastmod>2023-03-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://tigerb.cn/02f9f3cf6b45e88f2c2e659da1871da2/b8c96052dbba59ecd27e3c05c28f3238.html</loc>
+    
+    <lastmod>2023-03-19</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1038,6 +1038,13 @@
 
   
   <url>
+    <loc>http://tigerb.cn/categories/career/</loc>
+    <lastmod>2023-04-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://tigerb.cn/categories/go/</loc>
     <lastmod>2023-04-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -1059,13 +1066,6 @@
   </url>
   
   <url>
-    <loc>http://tigerb.cn/categories/skrshop/</loc>
-    <lastmod>2023-04-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://tigerb.cn/categories/k8s/</loc>
     <lastmod>2023-04-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -1073,7 +1073,7 @@
   </url>
   
   <url>
-    <loc>http://tigerb.cn/categories/career/</loc>
+    <loc>http://tigerb.cn/categories/skrshop/</loc>
     <lastmod>2023-04-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
