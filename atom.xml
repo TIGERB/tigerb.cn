@@ -6,7 +6,7 @@
   <link href="http://tigerb.cn/atom.xml" rel="self"/>
   
   <link href="http://tigerb.cn/"/>
-  <updated>2023-04-01T13:26:40.942Z</updated>
+  <updated>2023-05-28T16:05:03.019Z</updated>
   <id>http://tigerb.cn/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一探究竟新一代可观测标准OpenTelemetry</title>
+    <link href="http://tigerb.cn/2023/05/28/k8s/otel/"/>
+    <id>http://tigerb.cn/2023/05/28/k8s/otel/</id>
+    <published>2023-05-28T09:00:11.000Z</published>
+    <updated>2023-05-28T16:05:03.019Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="k8s" scheme="http://tigerb.cn/categories/k8s/"/>
+    
+    
+    <category term="Go" scheme="http://tigerb.cn/tags/Go/"/>
+    
+  </entry>
   
   <entry>
     <title>读一本好书｜奈飞文化手册</title>
