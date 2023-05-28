@@ -1,3 +1,5 @@
+http://tigerb.cn/2023/05/28/k8s/otel/
+http://tigerb.cn/02f9f3cf6b45e88f2c2e659da1871da2/b8c96052dbba59ecd27e3c05c28f3238.html
 http://tigerb.cn/2023/03/26/career/netflix/
 http://tigerb.cn/2023/03/19/k8s/why-k8s/
 http://tigerb.cn/link/index.html
@@ -86,7 +88,6 @@ http://tigerb.cn/2016/09/24/2016/
 http://tigerb.cn/2018/01/04/2017/
 http://tigerb.cn/2016/03/26/2015/
 http://tigerb.cn/README.html
-http://tigerb.cn/02f9f3cf6b45e88f2c2e659da1871da2/b8c96052dbba59ecd27e3c05c28f3238.html
 http://tigerb.cn/
 http://tigerb.cn/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/
 http://tigerb.cn/tags/API/
