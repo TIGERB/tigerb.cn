@@ -1,27 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>TIGERB</title>
+  <title>施展TIGERB</title>
   
   <subtitle>TIGERB&#39;s blog</subtitle>
   <link href="http://tigerb.cn/atom.xml" rel="self"/>
   
   <link href="http://tigerb.cn/"/>
-  <updated>2023-05-28T16:05:03.019Z</updated>
+  <updated>2023-08-27T11:31:11.096Z</updated>
   <id>http://tigerb.cn/</id>
   
   <author>
-    <name>TIGERB</name>
+    <name>施展</name>
     
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>初识协程栈</title>
+    <link href="http://tigerb.cn/2023/08/27/go-base/gc-what-stack/"/>
+    <id>http://tigerb.cn/2023/08/27/go-base/gc-what-stack/</id>
+    <published>2023-08-27T11:27:11.000Z</published>
+    <updated>2023-08-27T11:31:11.096Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="go-base" scheme="http://tigerb.cn/categories/go-base/"/>
+    
+    
+    <category term="Go" scheme="http://tigerb.cn/tags/Go/"/>
+    
+  </entry>
+  
+  <entry>
     <title>一探究竟新一代可观测标准OpenTelemetry</title>
     <link href="http://tigerb.cn/2023/05/28/k8s/otel/"/>
     <id>http://tigerb.cn/2023/05/28/k8s/otel/</id>
     <published>2023-05-28T09:00:11.000Z</published>
-    <updated>2023-05-28T16:05:03.019Z</updated>
+    <updated>2023-05-29T00:50:27.362Z</updated>
     
     
       
