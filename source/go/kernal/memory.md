@@ -48,10 +48,10 @@
 		* `spanclass`的概念
 		* `heaparena`的概念
 		* `chunk`的概念
-	* [计算机为什么需要内存？](kernal/memory-alloc?id=计算机为什么需要内存？)
-    * [为什么需要栈内存？](kernal/memory-alloc?id=为什么需要栈内存？)
-    * [为什么需要堆内存？](kernal/memory-alloc?id=为什么需要堆内存？)
-	* [分配的是虚拟内存](kernal/memory-alloc?id=分配的是虚拟内存)
+	+ [计算机为什么需要内存？](kernal/memory-alloc?id=计算机为什么需要内存？)
+    + [为什么需要栈内存？](kernal/memory-alloc?id=为什么需要栈内存？)
+    + [为什么需要堆内存？](kernal/memory-alloc?id=为什么需要堆内存？)
+	+ [分配的是虚拟内存](kernal/memory-alloc?id=分配的是虚拟内存)
 	+ [Go栈内存的分配](kernal/memory-alloc?id=栈内存的分配)
 		* 分配时机
 		* 分配过程
@@ -63,4 +63,4 @@
 			- 微对象分配
 			- 小对象分配
 			- 大对象分配	
-- Go语言垃圾回收原理(未开始)
+- Go语言垃圾回收原理(进行中)

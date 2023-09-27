@@ -119,7 +119,7 @@ demo_api_request_counter{doamin="127.0.0.1:6060",uri="/v1/demo"} 4
 "go.opentelemetry.io/otel/attribute"
 "go.opentelemetry.io/otel/exporters/prometheus"
 "go.opentelemetry.io/otel/metric"
-metricsdk "go.opentelemetry.io/otel/sdk/metric"
+"go.opentelemetry.io/otel/sdk/metric"
 ```
 
 相对于原生prome只使用两个包，引入的包多几个：
@@ -201,9 +201,9 @@ demo_api_request_counter_total{domain="127.0.0.1:6060",otel_scope_name="http-dem
 
 主要依赖的包:
 ```
-grpc_opentracing "github.com/grpc-ecosystem/go-grpc-middleware/tracing/opentracing"
-opentracing "github.com/opentracing/opentracing-go"
-jaeger "github.com/uber/jaeger-client-go"
+"github.com/grpc-ecosystem/go-grpc-middleware/tracing/opentracing"
+"github.com/opentracing/opentracing-go"
+"github.com/uber/jaeger-client-go"
 "github.com/uber/jaeger-client-go/transport"
 ```
 
@@ -299,16 +299,14 @@ func demoGrpcReq() (string, error) {
 
 主要依赖的包:
 ```
-elemetry.io/contrib/instrumentation/net/http/otelhttp"
-"google.golang.org/grpc"
-
+"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 "go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 "go.opentelemetry.io/otel"
 "go.opentelemetry.io/otel/exporters/jaeger"
 "go.opentelemetry.io/otel/propagation"
 "go.opentelemetry.io/otel/sdk/resource"
-tracesdk "go.opentelemetry.io/otel/sdk/trace"
-semconv "go.opentelemet
+"go.opentelemetry.io/otel/sdk/trace"
+"go.opentelemetry.io/otel/semconv/v1.17.0"
 ```
 
 使用方式：
@@ -420,3 +418,16 @@ func demoGrpcReq() (string, error) {
 <p align="center">
   <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/infra%2Fjaeger-otel.png" style="width:80%">
 </p>
+
+# 总结
+
+
+可观测|接入方式|Go版本|export方式|自定义标签
+------|------|------|------|------
+指标|原生promethues方式接入|支持范围广，本文用的1.14|`promhttp`包|`github.com/prometheus/client_golang/prometheus`包，`WithLabelValues`
+指标|基于opentelemtry的promethues方式接入|版本太低报错，本文用的1.19|`promhttp`包|`go.opentelemetry.io/otel/exporters/prometheus`包，`WithAttributes`
+
+可观测|接入方式|Go版本|主要依赖包|grpc中间件
+------|------|------|------|------
+追踪|原生jaeger方式接入|本文用的1.18|`github.com/uber/jaeger-client-go`包，`github.com/opentracing/opentracing-go`|`github.com/grpc-ecosystem/go-grpc-middleware/tracing/opentracing`包，`UnaryClientInterceptor`、`WithTracer`
+追踪|基于opentelemtry的jaeger方式接入|版本太低报错，本文用的1.19|`go.opentelemetry.io/otel/exporters/jaeger`包，`go.opentelemetry.io/otel`包|`go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc`包，`UnaryClientInterceptor`、`StreamClientInterceptor`
