@@ -6,7 +6,7 @@
   <link href="http://tigerb.cn/atom.xml" rel="self"/>
   
   <link href="http://tigerb.cn/"/>
-  <updated>2023-08-27T11:31:11.096Z</updated>
+  <updated>2023-09-30T15:15:00.831Z</updated>
   <id>http://tigerb.cn/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>读一本好书｜领导梯队</title>
+    <link href="http://tigerb.cn/2023/09/30/career/leader/"/>
+    <id>http://tigerb.cn/2023/09/30/career/leader/</id>
+    <published>2023-09-30T13:00:11.000Z</published>
+    <updated>2023-09-30T15:15:00.831Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="career" scheme="http://tigerb.cn/categories/career/"/>
+    
+    
+    <category term="职场软技能" scheme="http://tigerb.cn/tags/%E8%81%8C%E5%9C%BA%E8%BD%AF%E6%8A%80%E8%83%BD/"/>
+    
+  </entry>
   
   <entry>
     <title>初识协程栈</title>
