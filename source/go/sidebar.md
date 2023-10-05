@@ -13,7 +13,7 @@
 
 * Go语言轻松进阶
   * [前言](kernal/)
-  * [1.0 Map的设计与实现](kernal/map)
+  * [**1.0 Map的设计与实现**](kernal/map)
     * [1.1 本章导读](kernal/map?id=导读)
     * [1.2 一般map的实现思路](/kernal/map?id=一般map的实现思路)
     * [1.3 入门Go语言里map的实现](/kernal/map?id=go语言里map的实现思路入门程度)
@@ -23,7 +23,7 @@
       <!-- * [1.5.2 为什么读不到key时没有Panic?]() -->
       <!-- * [1.5.3 为什么并发写操作会Panic?]() -->
 
-  * [2.0 内存与垃圾回收](kernal/memory)
+  * [**2.0 内存与垃圾回收**](kernal/memory)
     * [2.1 本章导读](kernal/memory?id=导读)
     * [2.2 指针的大小](kernal/memory-pointer)
     * [2.3 内存的线性分配](kernal/tcmalloc?id=内存的线性分配)
@@ -42,8 +42,12 @@
       * [2.7.6 为什么需要栈内存？](kernal/memory-alloc?id=为什么需要栈内存？)
       * [2.7.7 为什么需要堆内存？](kernal/memory-alloc?id=为什么需要堆内存？)
       * [2.7.8 分配的是虚拟内存](kernal/memory-alloc?id=分配的是虚拟内存)
-      * [2.7.9 栈内存的分配](kernal/memory-alloc?id=栈内存的分配)
-      * [2.7.10 堆内存的分配](kernal/memory-alloc?id=堆内存的分配)
+      * [2.7.9 什么是进程栈？](kernal/gc-what-stack?id=进程栈)
+      * [2.7.10 什么是线程栈？](kernal/gc-what-stack?id=线程栈)
+      * [2.7.11 什么是协程栈？](kernal/gc-what-stack?id=协程栈)
+      * [2.7.12 栈内存(协程栈)的分配](kernal/memory-alloc?id=栈内存的分配)
+      * [2.7.13 堆内存的分配](kernal/memory-alloc?id=堆内存的分配)
     * [2.8 垃圾回收](kernal/memory-gc)
+      * 2023Q4更新
       
   * ...
