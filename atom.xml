@@ -6,7 +6,7 @@
   <link href="http://tigerb.cn/atom.xml" rel="self"/>
   
   <link href="http://tigerb.cn/"/>
-  <updated>2023-10-05T15:24:18.163Z</updated>
+  <updated>2024-01-01T02:21:57.557Z</updated>
   <id>http://tigerb.cn/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>一套不成熟自我进化体系</title>
-    <link href="http://tigerb.cn/2023/10/05/career/self-upgrade/"/>
-    <id>http://tigerb.cn/2023/10/05/career/self-upgrade/</id>
-    <published>2023-10-05T03:05:00.000Z</published>
-    <updated>2023-10-05T15:24:18.163Z</updated>
+    <title>程序员需要具备经营意识吗？</title>
+    <link href="http://tigerb.cn/2023/11/19/business/dev-know-bu/"/>
+    <id>http://tigerb.cn/2023/11/19/business/dev-know-bu/</id>
+    <published>2023-11-19T02:20:11.000Z</published>
+    <updated>2024-01-01T02:21:57.557Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="business" scheme="http://tigerb.cn/categories/business/"/>
+    
+    
+    <category term="经营管理" scheme="http://tigerb.cn/tags/%E7%BB%8F%E8%90%A5%E7%AE%A1%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>从新手到一线主管</title>
+    <link href="http://tigerb.cn/2023/11/05/career/self-upgrade/"/>
+    <id>http://tigerb.cn/2023/11/05/career/self-upgrade/</id>
+    <published>2023-11-05T03:05:00.000Z</published>
+    <updated>2024-01-01T02:20:13.973Z</updated>
     
     
       
@@ -37,7 +62,7 @@
     <category term="career" scheme="http://tigerb.cn/categories/career/"/>
     
     
-    <category term="职场软技能" scheme="http://tigerb.cn/tags/%E8%81%8C%E5%9C%BA%E8%BD%AF%E6%8A%80%E8%83%BD/"/>
+    <category term="经营管理" scheme="http://tigerb.cn/tags/%E7%BB%8F%E8%90%A5%E7%AE%A1%E7%90%86/"/>
     
   </entry>
   
