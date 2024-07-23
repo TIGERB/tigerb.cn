@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Description-->
+    
+        <meta name="description" content="Trying to be the person you want to be.">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="施展">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="PHP到Go速转手册"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="施展TIGERB"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content=""/>
+    
+
+    <!-- Title -->
+    
+    <title>PHP到Go速转手册 - 施展TIGERB</title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/sass/main.css">
+
+
+    <!--[if lt IE 8]>
+        
+<script src="/js/ie/html5shiv.js"></script>
+
+    <![endif]-->
+
+    <!--[if lt IE 8]>
+        
+<link rel="stylesheet" href="/sass/ie8.css">
+
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+        
+<link rel="stylesheet" href="/sass/ie9.css">
+
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?30c7e7d53256334a8dc1cf524fcc77f6";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Menu -->
+        <!-- Header -->
+<header id="header">
+    <div class="inner">
+
+        <!-- Logo -->
+        <a href="/" class="logo">
+            <span class="symbol"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20190707142019.png" alt="" /></span><span class="title">施展TIGERB</span>
+        </a>
+
+        <!-- Nav -->
+        <nav>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+    <h2>Menu</h2>
+    <ul>
+        
+            <li>
+                <a href="/">首页</a>
+            </li>
+        
+            <li>
+                <a target="_blank" rel="noopener" href="https://github.com/TIGERB">Github</a>
+            </li>
+        
+            <li>
+                <a target="_blank" rel="noopener" href="https://segmentfault.com/u/tigerb">Segmentfault</a>
+            </li>
+        
+            <li>
+                <a target="_blank" rel="noopener" href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
+            </li>
+        
+    </ul>
+</nav>
+
+
+        <div id="main">
+            <div class="inner">
+
+                <!-- Main Content -->
+                
+
+    <h1 class="title">PHP到Go速转手册</h1>
+    <div class="meta">
+        2021-07-18
+    </div>
+
+
+    <span class="image main"><img src="No Code No Life" alt="" /></span>
+
+
+<!-- Gallery -->
+
+
+<!-- Content -->
+<hr>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><hr>
+<p>最近由于组内有不少的同学是刚PHP转Go的，所以整理了一份简要的手册，帮助大家高效的上手Go语言，主要是通过对比PHP和Go的不同点来强化理解，内容主要分为以下四部分：</p>
+<ul>
+<li>语言层面差异</li>
+<li>基础语法差异</li>
+<li>避坑指南</li>
+<li>进阶使用</li>
+</ul>
+<h1 id="语言层面差异"><a href="#语言层面差异" class="headerlink" title="语言层面差异"></a>语言层面差异</h1><hr>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">备注：下文基于PHP主流php-fpm模式。</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>PHP</th>
+<th>Go</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>字符串表示</td>
+<td>单引号(PSR)</td>
+<td>双引号</td>
+</tr>
+<tr>
+<td>拼接字符串</td>
+<td>.</td>
+<td>+</td>
+</tr>
+<tr>
+<td>语言版本兼容性</td>
+<td>不好</td>
+<td>向下兼容</td>
+</tr>
+<tr>
+<td>代码风格</td>
+<td>无官方标准，社区标准起步晚</td>
+<td>自始至今官方统一标准，且提供工具</td>
+</tr>
+<tr>
+<td>脚本语言</td>
+<td>是</td>
+<td>不是</td>
+</tr>
+<tr>
+<td>强类型语言</td>
+<td>不是(PHP7支持严格模式)</td>
+<td>是</td>
+</tr>
+<tr>
+<td>是否支持垃圾回收</td>
+<td>是</td>
+<td>是</td>
+</tr>
+<tr>
+<td>面向对象语言(OOP)</td>
+<td>神似</td>
+<td>部分支持，核心是合成复用</td>
+</tr>
+<tr>
+<td>是否支持继承</td>
+<td>是</td>
+<td>否(有合成复用)</td>
+</tr>
+<tr>
+<td>是否支持interface</td>
+<td>是</td>
+<td>是</td>
+</tr>
+<tr>
+<td>是否支持try…catch…</td>
+<td>是</td>
+<td>否</td>
+</tr>
+<tr>
+<td>是否支持包管理</td>
+<td>是</td>
+<td>是</td>
+</tr>
+<tr>
+<td>是否支持跨平台</td>
+<td>是</td>
+<td>是</td>
+</tr>
+<tr>
+<td>环境搭建成本</td>
+<td>高</td>
+<td>低</td>
+</tr>
+<tr>
+<td>执行方式</td>
+<td>cli命令行模式、php-fpm模式(①)</td>
+<td>二进制</td>
+</tr>
+<tr>
+<td>进程模型</td>
+<td>多进程</td>
+<td>单进程</td>
+</tr>
+<tr>
+<td>原生是否支持创建TCP&#x2F;UDP服务</td>
+<td>是(支持不好，生产不可用)</td>
+<td>是</td>
+</tr>
+<tr>
+<td>原生是否支持创建HTTP服务</td>
+<td>是(支持不好，生产不可用)</td>
+<td>是</td>
+</tr>
+<tr>
+<td>进程阻塞性</td>
+<td>是</td>
+<td>否</td>
+</tr>
+<tr>
+<td>是否支持协程</td>
+<td>否(②)</td>
+<td>是</td>
+</tr>
+<tr>
+<td>并发能力(③)</td>
+<td>弱</td>
+<td>极强</td>
+</tr>
+<tr>
+<td>是否常驻内存运行</td>
+<td>不是(④)</td>
+<td>是</td>
+</tr>
+<tr>
+<td>引入文件方式</td>
+<td><code>require</code>或者<code>include</code>对应文件</td>
+<td><code>import</code>导入包</td>
+</tr>
+<tr>
+<td>是否支持单元测试</td>
+<td>是</td>
+<td>是</td>
+</tr>
+<tr>
+<td>是否支持基准测试(benchmark)</td>
+<td>否</td>
+<td>是</td>
+</tr>
+<tr>
+<td>是否支持性能分析</td>
+<td>支持(xhprof&#x2F;tideways)</td>
+<td>支持(pprof&#x2F;dlv)</td>
+</tr>
+<tr>
+<td>性能分析工具使用成本</td>
+<td>高(装扩展成本高)</td>
+<td>极低</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">①其他模式还有swoole等</span><br><span class="line">②PHP的swoole协程框架等支持协程</span><br><span class="line">③此处不考虑I/O多路复用，PHP的swoole协程框架等也支持协程并发</span><br><span class="line">④PHP的swoole协程框架是常驻内存，cli命令行模式也可以常驻内存等</span><br></pre></td></tr></table></figure>
+
+<p>刚开始由PHP语言转Go语言的过程，重点是编程意识的转变，尤其是以下几点：</p>
+<ul>
+<li>强类型</li>
+<li>常驻内存运行</li>
+<li>理解和使用指针</li>
+<li>并发安全</li>
+<li>资源及时释放或返还</li>
+</ul>
+<h1 id="基础语法差异"><a href="#基础语法差异" class="headerlink" title="基础语法差异"></a>基础语法差异</h1><hr>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">备注：下文基于PHP5.4+版本</span><br></pre></td></tr></table></figure>
+<h2 id="常用基本类型对比"><a href="#常用基本类型对比" class="headerlink" title="常用基本类型对比"></a>常用基本类型对比</h2><hr>
+<p>PHP类型比较少和简单，PHP常用数据类型有boolean布尔值、string字符串、int整型、float浮点型、array数组、object对象。</p>
+<p>PHP常用数据类型和Go语言对应或者类似的类型做个对比，如下：</p>
+<table>
+<thead>
+<tr>
+<th>语言\类型</th>
+<th>boolean</th>
+<th>string</th>
+<th>int</th>
+<th>float</th>
+<th>array</th>
+<th>object</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PHP</td>
+<td>bool</td>
+<td>string</td>
+<td>int</td>
+<td>float</td>
+<td>array(1,2,3)索引数组、array(‘1’ &#x3D;&gt; 1, ‘2’ &#x3D;&gt; 2, ‘3’ &#x3D;&gt; 3)关联数组</td>
+<td>实例化类class</td>
+</tr>
+<tr>
+<td>Go</td>
+<td>bool</td>
+<td>string</td>
+<td>int、int8、int16、int32、int64、uint、uint8、uint16、uint32、uint64</td>
+<td>float32、float64</td>
+<td>[length]type</td>
+<td>比较像struct</td>
+</tr>
+</tbody></table>
+<p>除此之外Go还支持更丰富的类型：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>slice切片(相当于PHP的索引数组)</td>
+</tr>
+<tr>
+<td>map(相当于PHP的关联数组)</td>
+</tr>
+<tr>
+<td>channel(管道，通过通信共享，不要通过共享来通信)</td>
+</tr>
+<tr>
+<td>指针(Go语言的值类型都有对应的指针类型)</td>
+</tr>
+<tr>
+<td>byte(字节，对应uint8别名，可以表示Ascaii码)</td>
+</tr>
+<tr>
+<td>rune(对应int32，可以表示unicode)</td>
+</tr>
+<tr>
+<td>等等</td>
+</tr>
+<tr>
+<td>自定义类型，例如<code>type userDefinedType int32</code></td>
+</tr>
+</tbody></table>
+<h2 id="常用基本类型初始化方式对比"><a href="#常用基本类型初始化方式对比" class="headerlink" title="常用基本类型初始化方式对比"></a>常用基本类型初始化方式对比</h2><hr>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>PHP</th>
+<th>Go(定义变量带<code>var</code>关键字，或者不带直接使用语法糖<code>:=</code>)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>boolean</td>
+<td><code>$varStr = true;</code></td>
+<td><code>var varStr bool = true</code><br>或者 <code>var varStr = true</code><br>或者 <code>varStr := true</code></td>
+</tr>
+<tr>
+<td>string</td>
+<td><code>$varStr = &#39;demo&#39;;</code></td>
+<td><code>var varStr string = &quot;&quot;</code><br>或者 <code>varStr := &quot;&quot;</code>(:&#x3D;写法下面省略)</td>
+</tr>
+<tr>
+<td>int32</td>
+<td><code>$varNum = 0;</code></td>
+<td><code>var varInt32 int32 = 0</code></td>
+</tr>
+<tr>
+<td>int64</td>
+<td>同上</td>
+<td><code>var varInt64 int64 = 0</code></td>
+</tr>
+<tr>
+<td>float32</td>
+<td><code>$varNum = 0.01;</code></td>
+<td><code>var varFloat32 float32 = 0</code></td>
+</tr>
+<tr>
+<td>float64</td>
+<td>同上</td>
+<td><code>var varFloat64 float64 = 0</code></td>
+</tr>
+<tr>
+<td>array</td>
+<td><code>$varArray = array();</code><br>或者语法糖<code>$varArray = [];</code></td>
+<td><code>var varArray [6]int32 = [6]int32&#123;&#125;</code></td>
+</tr>
+<tr>
+<td>slice(切片)</td>
+<td>同上，PHP叫索引数据</td>
+<td><code>var varSlice []int32 = []int32&#123;&#125;</code>切片相对于数据会自动扩容</td>
+</tr>
+<tr>
+<td>map</td>
+<td><code>$varMap = array(&#39;key&#39; =&gt; &#39;value&#39;);</code></td>
+<td><code>var varMap map[string]int32 = map[string]int32&#123;&#125;</code></td>
+</tr>
+<tr>
+<td>closure(闭包)</td>
+<td><code>$varClosure = function() &#123;&#125;;</code></td>
+<td><code>var varClosure func() = func() &#123;&#125;</code></td>
+</tr>
+<tr>
+<td>channel</td>
+<td>无</td>
+<td><code>var varChannel chan string = make(chan string)</code> 无缓存channel；<br><code>var varChannelBuffer chan string = make(chan string, 6)</code>有缓存channel</td>
+</tr>
+</tbody></table>
+<h2 id="PHP类的实例化和Go结构体的初始化的对比"><a href="#PHP类的实例化和Go结构体的初始化的对比" class="headerlink" title="PHP类的实例化和Go结构体的初始化的对比"></a>PHP类的实例化和Go结构体的初始化的对比</h2><hr>
+<p>PHP类的实例化</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">定义class</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassDemo</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 私有属性</span></span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$privateVar</span> = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="comment">// 公有属性</span></span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$publicVar</span> = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="comment">// 构造函数</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 实例化类时执行</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 私有方法</span></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">privateFun</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 公有方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">publicFun</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 实例化类ClassDemo 获取类ClassDemo的对象</span></span><br><span class="line"><span class="variable">$varObject</span> = <span class="keyword">new</span> <span class="title class_">ClassDemo</span>(); <span class="comment">// 对象(类)</span></span><br></pre></td></tr></table></figure>
+
+<p>Go结构体的初始化</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 包初始化时执行</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> StructDemo <span class="keyword">struct</span>&#123;</span><br><span class="line">    <span class="comment">// 小写开头驼峰表示私有属性</span></span><br><span class="line">    <span class="comment">// 不可导出</span></span><br><span class="line">    privateVar <span class="type">string</span></span><br><span class="line">    <span class="comment">// 大写开头驼峰表示公有属性</span></span><br><span class="line">    <span class="comment">// 可导出</span></span><br><span class="line">    PublicVar <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 小写开头驼峰表示私有方法</span></span><br><span class="line"><span class="comment">// 结构体StructDemo的私有方法</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(demo *StructDemo)</span></span> privateFun() <span class="type">error</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 大写开头驼峰表示公有属性</span></span><br><span class="line"><span class="comment">// 结构体StructDemo的公有方法</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(demo *StructDemo)</span></span> PublicFun() <span class="type">error</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化结构体StructDemo</span></span><br><span class="line"><span class="comment">// structDemo := &amp;StructDemo&#123;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="常用函数对比"><a href="#常用函数对比" class="headerlink" title="常用函数对比"></a>常用函数对比</h2><hr>
+<table>
+<thead>
+<tr>
+<th>常用函数描述</th>
+<th>PHP</th>
+<th>Go</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数组长度</td>
+<td>count()</td>
+<td>len()</td>
+</tr>
+<tr>
+<td>分割字符串为数组</td>
+<td>explode()</td>
+<td>strings.Split(s string, sep string) []string</td>
+</tr>
+<tr>
+<td>转大写</td>
+<td>strtoupper()</td>
+<td>strings.ToUpper(s string) string</td>
+</tr>
+<tr>
+<td>转小写</td>
+<td>strtolower()</td>
+<td>strings.ToLower(s string) string</td>
+</tr>
+<tr>
+<td>去除空格</td>
+<td>trim()</td>
+<td>strings.Trim(s, cutset string) string</td>
+</tr>
+<tr>
+<td>json序列化</td>
+<td>json_encode()</td>
+<td>json.Marshal(v interface{}) ([]byte, error)</td>
+</tr>
+<tr>
+<td>json反序列化</td>
+<td>json_decode()</td>
+<td>json.Unmarshal(data []byte, v interface{}) error</td>
+</tr>
+<tr>
+<td>序列化(不再建议使用)</td>
+<td>serialize()、unserialize()</td>
+<td>包<a target="_blank" rel="noopener" href="https://github.com/wulijun/go-php-serialize">https://github.com/wulijun/go-php-serialize</a></td>
+</tr>
+<tr>
+<td>md5</td>
+<td>md5()</td>
+<td>包crypto&#x2F;md5</td>
+</tr>
+<tr>
+<td>终端输出</td>
+<td>echo、var_dump等</td>
+<td>fmt.Println(a …interface{})</td>
+</tr>
+<tr>
+<td>各种类型互转</td>
+<td>intval()等</td>
+<td>包strconv</td>
+</tr>
+</tbody></table>
+<h1 id="避坑指南"><a href="#避坑指南" class="headerlink" title="避坑指南"></a>避坑指南</h1><hr>
+<ol>
+<li>谨慎使用全局变量，全局变量不会像PHP一样，在完成一次请求之后被销毁</li>
+<li>形参是<code>slice</code>、<code>map</code>类型的参数，注意值可被全局修改</li>
+<li>资源使用完毕，记得释放资源或回收资源</li>
+<li>不要依赖map遍历的顺序</li>
+<li>不要并发写map</li>
+<li>注意判断指针类型不为空<code>nil</code>，再操作</li>
+<li>Go语言不支持继承，但是有合成复用</li>
+</ol>
+<h2 id="1-谨慎使用全局变量，全局变量不会像PHP一样，在完成一次请求之后被销毁"><a href="#1-谨慎使用全局变量，全局变量不会像PHP一样，在完成一次请求之后被销毁" class="headerlink" title="1.谨慎使用全局变量，全局变量不会像PHP一样，在完成一次请求之后被销毁"></a>1.谨慎使用全局变量，全局变量不会像PHP一样，在完成一次请求之后被销毁</h2><hr>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;github.com/gin-gonic/gin&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 全局变量不会像PHP一样，在完成一次请求之后被销毁</span></span><br><span class="line"><span class="keyword">var</span> GlobalVarDemo <span class="type">int32</span> = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 模拟接口逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	r := gin.Default()</span><br><span class="line">	r.GET(<span class="string">&quot;/ping&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">		GlobalVarDemo++</span><br><span class="line">		c.JSON(<span class="number">200</span>, gin.H&#123;</span><br><span class="line">			<span class="string">&quot;message&quot;</span>: GlobalVarDemo,</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;)</span><br><span class="line">	r.Run()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 我们多次请求接口，可以很明显发现：全局变量不会像PHP一样，在完成一次请求之后被销毁。</span></span><br><span class="line"><span class="comment">// 但是PHP不一样，全局变量在完成一次请求之后会被自动销毁。</span></span><br><span class="line"><span class="comment">// curl &quot;127.0.0.1:8080/ping&quot; </span></span><br><span class="line"><span class="comment">// &#123;&quot;message&quot;:1&#125;                                                                     </span></span><br><span class="line"><span class="comment">// curl &quot;127.0.0.1:8080/ping&quot;</span></span><br><span class="line"><span class="comment">// &#123;&quot;message&quot;:2&#125; &lt;------- 值在递增</span></span><br><span class="line"><span class="comment">// curl &quot;127.0.0.1:8080/ping&quot;</span></span><br><span class="line"><span class="comment">// &#123;&quot;message&quot;:3&#125; &lt;------- 值在递增</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-形参是slice、map类型的参数，注意值可被全局修改"><a href="#2-形参是slice、map类型的参数，注意值可被全局修改" class="headerlink" title="2.形参是slice、map类型的参数，注意值可被全局修改"></a>2.形参是<code>slice</code>、<code>map</code>类型的参数，注意值可被全局修改</h2><hr>
+<blockquote>
+<p>类似PHP的引用传递，Go里面都是值传递，具体原因下面说。</p>
+</blockquote>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 切片</span></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	paramDemo := []<span class="type">int32</span>&#123;<span class="number">1</span>&#125;</span><br><span class="line">	fmt.Printf(<span class="string">&quot;main.paramDemo 1 %v, pointer: %p \n&quot;</span>, paramDemo, &amp;paramDemo)</span><br><span class="line">	<span class="comment">// 浅拷贝</span></span><br><span class="line">	demo(paramDemo)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;main.paramDemo 2 %v, pointer: %p \n&quot;</span>, paramDemo, &amp;paramDemo)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">demo</span><span class="params">(paramDemo []<span class="type">int32</span>)</span></span> ([]<span class="type">int32</span>, <span class="type">error</span>) &#123;</span><br><span class="line">	fmt.Printf(<span class="string">&quot;main.demo.paramDemo pointer: %p \n&quot;</span>, &amp;paramDemo)</span><br><span class="line">	paramDemo[<span class="number">0</span>] = <span class="number">2</span></span><br><span class="line">	<span class="keyword">return</span> paramDemo, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// main.paramDemo 1 [1], pointer: 0xc00000c048</span></span><br><span class="line"><span class="comment">// main.demo.paramDemo pointer: 0xc00000c078 &lt;------- 内存地址不一样，发生了值拷贝</span></span><br><span class="line"><span class="comment">// main.paramDemo 2 [2] &lt;------- 原值被修改</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// main.paramDemo 1 [1], pointer: 0xc0000a6030</span></span><br><span class="line"><span class="comment">// main.demo.paramDemo pointer: 0xc0000a6060 &lt;------- 内存地址不一样，发生了值拷贝</span></span><br><span class="line"><span class="comment">// main.paramDemo 2 [2], pointer: 0xc0000a6030 &lt;------- 原值还是被修改了</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//===========数组就没有这个问题===========</span></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	paramDemo := [<span class="number">1</span>]<span class="type">int32</span>&#123;<span class="number">1</span>&#125;</span><br><span class="line">	fmt.Println(<span class="string">&quot;main.paramDemo 1&quot;</span>, paramDemo)</span><br><span class="line">	demo(paramDemo)</span><br><span class="line">	fmt.Println(<span class="string">&quot;main.paramDemo 2&quot;</span>, paramDemo)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">demo</span><span class="params">(paramDemo [1]<span class="type">int32</span>)</span></span> ([<span class="number">1</span>]<span class="type">int32</span>, <span class="type">error</span>) &#123;</span><br><span class="line">	paramDemo[<span class="number">0</span>] = <span class="number">2</span></span><br><span class="line">	<span class="keyword">return</span> paramDemo, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// [Running] go run &quot;.../demo/main.go&quot;</span></span><br><span class="line"><span class="comment">// main.paramDemo 1 [1]</span></span><br><span class="line"><span class="comment">// main.paramDemo 2 [1] &lt;------- 值未被修改</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//===========Map同样有这个问题===========</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	paramDemo := <span class="keyword">map</span>[<span class="type">string</span>]<span class="type">string</span>&#123;</span><br><span class="line">		<span class="string">&quot;a&quot;</span>: <span class="string">&quot;a&quot;</span>,</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println(<span class="string">&quot;main.paramDemo 1&quot;</span>, paramDemo)</span><br><span class="line">	demo(paramDemo)</span><br><span class="line">	fmt.Println(<span class="string">&quot;main.paramDemo 2&quot;</span>, paramDemo)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">demo</span><span class="params">(paramDemo <span class="keyword">map</span>[<span class="type">string</span>]<span class="type">string</span>)</span></span> (<span class="keyword">map</span>[<span class="type">string</span>]<span class="type">string</span>, <span class="type">error</span>) &#123;</span><br><span class="line">	paramDemo[<span class="string">&quot;a&quot;</span>] = <span class="string">&quot;b&quot;</span></span><br><span class="line">	<span class="keyword">return</span> paramDemo, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// [Running] go run &quot;.../demo/main.go&quot;</span></span><br><span class="line"><span class="comment">// main.paramDemo 1 map[a:a]</span></span><br><span class="line"><span class="comment">// main.paramDemo 2 map[a:b] &lt;------- 值被修改</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>为什么？</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">答：Go语言都是值传递，浅复制过程，slice和map底层的类型是个结构体，实际存储值的类型是个指针。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// versions/1.13.8/src/runtime/slice.go</span></span><br><span class="line"><span class="comment">// slice源码结构体</span></span><br><span class="line"><span class="keyword">type</span> slice <span class="keyword">struct</span> &#123;</span><br><span class="line">    array unsafe.Pointer <span class="comment">// 实际存储值的类型是个指针</span></span><br><span class="line">    <span class="built_in">len</span>   <span class="type">int</span></span><br><span class="line">    <span class="built_in">cap</span>   <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// versions/1.13.8/src/runtime/map.go</span></span><br><span class="line"><span class="comment">// map源码结构体</span></span><br><span class="line"><span class="keyword">type</span> hmap <span class="keyword">struct</span> &#123;</span><br><span class="line">    count     <span class="type">int</span></span><br><span class="line">    flags     <span class="type">uint8</span></span><br><span class="line">    B         <span class="type">uint8</span></span><br><span class="line">    noverflow <span class="type">uint16</span></span><br><span class="line">    hash0     <span class="type">uint32</span></span><br><span class="line"></span><br><span class="line">    buckets    unsafe.Pointer <span class="comment">// 实际存储值的类型是个指针</span></span><br><span class="line">    oldbuckets unsafe.Pointer</span><br><span class="line">    nevacuate  <span class="type">uintptr</span>  </span><br><span class="line"></span><br><span class="line">    extra *mapextra</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>怎么办？</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">答：深拷贝，开辟一块新内存，指针指向新内存地址，并把原有的值复制过去。如下：</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	paramDemo := []<span class="type">int32</span>&#123;<span class="number">1</span>&#125;</span><br><span class="line">	fmt.Println(<span class="string">&quot;main.paramDemo 1&quot;</span>, paramDemo)</span><br><span class="line">	<span class="comment">// 初始化新空间</span></span><br><span class="line">	paramDemoCopy := <span class="built_in">make</span>([]<span class="type">int32</span>, <span class="built_in">len</span>(paramDemo))</span><br><span class="line">	<span class="comment">// 深拷贝</span></span><br><span class="line">	<span class="built_in">copy</span>(paramDemoCopy, paramDemo)</span><br><span class="line">	demo(paramDemoCopy)</span><br><span class="line">	fmt.Println(<span class="string">&quot;main.paramDemo 2&quot;</span>, paramDemo)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">demo</span><span class="params">(paramDemo []<span class="type">int32</span>)</span></span> ([]<span class="type">int32</span>, <span class="type">error</span>) &#123;</span><br><span class="line">	paramDemo[<span class="number">0</span>] = <span class="number">2</span></span><br><span class="line">	<span class="keyword">return</span> paramDemo, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// [Running] go run &quot;.../demo/main.go&quot;</span></span><br><span class="line"><span class="comment">// main.paramDemo 1 [1]</span></span><br><span class="line"><span class="comment">// main.paramDemo 2 [1]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-资源使用完毕，记得释放资源或回收资源"><a href="#3-资源使用完毕，记得释放资源或回收资源" class="headerlink" title="3.资源使用完毕，记得释放资源或回收资源"></a>3.资源使用完毕，记得释放资源或回收资源</h2><hr>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;github.com/gomodule/redigo/redis&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> RedisPool *redis.Pool</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</span><br><span class="line">	RedisPool = NewRedisPool()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	redisConn := RedisPool.Get()</span><br><span class="line">	<span class="comment">// 记得defer释放资源</span></span><br><span class="line">	<span class="keyword">defer</span> redisConn.Close()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewRedisPool</span><span class="params">()</span></span> *redis.Pool &#123;</span><br><span class="line">	<span class="comment">// 略...</span></span><br><span class="line">	<span class="keyword">return</span> &amp;redis.Pool&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>为什么？</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">答：避免资源被无效的持有，浪费资源和增加了资源的连接数。其次如果是归还连接池也减少新建资源的开销。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>资源连接数线性增长</li>
+<li>如果一直持有，资源服务端也有超时时间</li>
+</ul>
+<h2 id="4-不要依赖map遍历的顺序"><a href="#4-不要依赖map遍历的顺序" class="headerlink" title="4.不要依赖map遍历的顺序"></a>4.不要依赖map遍历的顺序</h2><hr>
+<p>以往PHP的”Map“(关联数组)不管遍历多少次，元素的顺序都是稳定不变的，如下：</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$demoMap</span> = <span class="keyword">array</span>(</span><br><span class="line">    <span class="string">&#x27;a&#x27;</span> =&gt; <span class="string">&#x27;a&#x27;</span>,</span><br><span class="line">	<span class="string">&#x27;b&#x27;</span> =&gt; <span class="string">&#x27;b&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;c&#x27;</span> =&gt; <span class="string">&#x27;c&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;d&#x27;</span> =&gt; <span class="string">&#x27;d&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;e&#x27;</span> =&gt; <span class="string">&#x27;e&#x27;</span>,</span><br><span class="line">);</span><br><span class="line"><span class="keyword">foreach</span> (<span class="variable">$demoMap</span> <span class="keyword">as</span> <span class="variable">$v</span>) &#123;</span><br><span class="line">    <span class="title function_ invoke__">var_dump</span>(<span class="string">&quot;v <span class="subst">&#123;$v&#125;</span>&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第一次执行</span></span><br><span class="line">[Running] php <span class="string">&quot;.../php/demo.php&quot;</span></span><br><span class="line"><span class="keyword">string</span>(<span class="number">3</span>) <span class="string">&quot;v a&quot;</span></span><br><span class="line"><span class="keyword">string</span>(<span class="number">3</span>) <span class="string">&quot;v b&quot;</span></span><br><span class="line"><span class="keyword">string</span>(<span class="number">3</span>) <span class="string">&quot;v c&quot;</span></span><br><span class="line"><span class="keyword">string</span>(<span class="number">3</span>) <span class="string">&quot;v d&quot;</span></span><br><span class="line"><span class="keyword">string</span>(<span class="number">3</span>) <span class="string">&quot;v e&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第N次执行</span></span><br><span class="line"><span class="comment">// 遍历结果的顺序都是稳定不变的</span></span><br><span class="line">[Running] php <span class="string">&quot;.../php/demo.php&quot;</span></span><br><span class="line"><span class="keyword">string</span>(<span class="number">3</span>) <span class="string">&quot;v a&quot;</span></span><br><span class="line"><span class="keyword">string</span>(<span class="number">3</span>) <span class="string">&quot;v b&quot;</span></span><br><span class="line"><span class="keyword">string</span>(<span class="number">3</span>) <span class="string">&quot;v c&quot;</span></span><br><span class="line"><span class="keyword">string</span>(<span class="number">3</span>) <span class="string">&quot;v d&quot;</span></span><br><span class="line"><span class="keyword">string</span>(<span class="number">3</span>) <span class="string">&quot;v e&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>但是Go语言里就不一样了，如下：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> demoMap <span class="keyword">map</span>[<span class="type">string</span>]<span class="type">string</span> = <span class="keyword">map</span>[<span class="type">string</span>]<span class="type">string</span>&#123;</span><br><span class="line">		<span class="string">&quot;a&quot;</span>: <span class="string">&quot;a&quot;</span>,</span><br><span class="line">		<span class="string">&quot;b&quot;</span>: <span class="string">&quot;b&quot;</span>,</span><br><span class="line">		<span class="string">&quot;c&quot;</span>: <span class="string">&quot;c&quot;</span>,</span><br><span class="line">		<span class="string">&quot;d&quot;</span>: <span class="string">&quot;d&quot;</span>,</span><br><span class="line">		<span class="string">&quot;e&quot;</span>: <span class="string">&quot;e&quot;</span>,</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> _, v := <span class="keyword">range</span> demoMap &#123;</span><br><span class="line">		fmt.Println(<span class="string">&quot;v&quot;</span>, v)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第一次执行</span></span><br><span class="line"><span class="comment">// [Running] go run &quot;.../demo/main.go&quot;</span></span><br><span class="line"><span class="comment">// v a</span></span><br><span class="line"><span class="comment">// v b</span></span><br><span class="line"><span class="comment">// v c</span></span><br><span class="line"><span class="comment">// v d</span></span><br><span class="line"><span class="comment">// v e</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第二次执行</span></span><br><span class="line"><span class="comment">// 遍历结果，元素顺序发生了改变</span></span><br><span class="line"><span class="comment">// [Running] go run &quot;.../demo/main.go&quot;</span></span><br><span class="line"><span class="comment">// v e</span></span><br><span class="line"><span class="comment">// v a</span></span><br><span class="line"><span class="comment">// v b</span></span><br><span class="line"><span class="comment">// v c</span></span><br><span class="line"><span class="comment">// v d</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>为什么？</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">答：底层实现都是数组+类似拉链法。</span><br><span class="line">1. hash函数无序写入</span><br><span class="line">2. 成倍扩容</span><br><span class="line">3. 等量扩容</span><br><span class="line">都决定了map本来就是无序的，所以Go语言为了避免开发者依赖元素顺序，每次遍历的时候都是随机了一个索引起始值。然后PHP通过额外的内存空间维护了map元素的顺序。</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-不要并发写map"><a href="#5-不要并发写map" class="headerlink" title="5.不要并发写map"></a>5.不要并发写map</h2><hr>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;testing&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BenchmarkDemo</span><span class="params">(b *testing.B)</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> demoMap <span class="keyword">map</span>[<span class="type">string</span>]<span class="type">string</span> = <span class="keyword">map</span>[<span class="type">string</span>]<span class="type">string</span>&#123;</span><br><span class="line">		<span class="string">&quot;a&quot;</span>: <span class="string">&quot;a&quot;</span>,</span><br><span class="line">		<span class="string">&quot;b&quot;</span>: <span class="string">&quot;b&quot;</span>,</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 模拟并发写map</span></span><br><span class="line">	b.RunParallel(<span class="function"><span class="keyword">func</span><span class="params">(pb *testing.PB)</span></span> &#123;</span><br><span class="line">		<span class="keyword">for</span> pb.Next() &#123;</span><br><span class="line">			demoMap[<span class="string">&quot;a&quot;</span>] = <span class="string">&quot;aa&quot;</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// BenchmarkDemo</span></span><br><span class="line"><span class="comment">// fatal error: concurrent map writes</span></span><br><span class="line"><span class="comment">// fatal error: concurrent map writes</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>为什么？</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">答：并发不安全，触发panic：“fatal error: concurrent map writes”。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// go version 1.13.8源码</span></span><br><span class="line"><span class="comment">// hashWriting 值为 4</span></span><br><span class="line"><span class="keyword">if</span> h.flags&amp;hashWriting != <span class="number">0</span> &#123;</span><br><span class="line">	throw(<span class="string">&quot;concurrent map read and map write&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-注意判断指针类型不为空nil，再操作"><a href="#6-注意判断指针类型不为空nil，再操作" class="headerlink" title="6.注意判断指针类型不为空nil，再操作"></a>6.注意判断指针类型不为空<code>nil</code>，再操作</h2><hr>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;log&quot;</span></span><br><span class="line">	<span class="string">&quot;net/http&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	resp, err := http.Get(<span class="string">&quot;https://www.example.com&quot;</span>)</span><br><span class="line">	<span class="keyword">if</span> resp.StatusCode != http.StatusOK || err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="comment">// 当 resp为nil时 会触发panic</span></span><br><span class="line">		<span class="comment">// 当 resp.StatusCode != http.StatusOK 时err可能为nil 触发panic</span></span><br><span class="line">		log.Printf(<span class="string">&quot;err: %s&quot;</span>, err.Error())</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// [Running] go run &quot;.../demo/main.go&quot;</span></span><br><span class="line"><span class="comment">// panic: runtime error: invalid memory address or nil pointer dereference</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;log&quot;</span></span><br><span class="line">	<span class="string">&quot;net/http&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 模拟请求业务code</span></span><br><span class="line">	resp, err := http.Get(<span class="string">&quot;https://www.example.com&quot;</span>)</span><br><span class="line">	fmt.Println(resp, err)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="comment">// 报错并记录异常日志</span></span><br><span class="line">		log.Printf(<span class="string">&quot;err: %s&quot;</span>, err.Error())</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 模拟业务code不为成功的code</span></span><br><span class="line">	<span class="keyword">if</span> resp != <span class="literal">nil</span> &amp;&amp; resp.StatusCode != http.StatusOK &#123;</span><br><span class="line">		<span class="comment">// 报错并记录异常日志</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-Go语言不支持继承，但是有合成复用"><a href="#7-Go语言不支持继承，但是有合成复用" class="headerlink" title="7. Go语言不支持继承，但是有合成复用"></a>7. Go语言不支持继承，但是有合成复用</h2><hr>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractClassDemo</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 抽象方法</span></span><br><span class="line">    <span class="keyword">abstract</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">demoFun</span>(<span class="params"></span>)</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 公有方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">publicFun</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">demoFun</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassDemo</span> <span class="keyword">extends</span> <span class="title">AbstractClassDemo</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">demoFun</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="title function_ invoke__">var_dump</span>(<span class="string">&quot;Demo&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(<span class="keyword">new</span> <span class="title class_">ClassDemo</span>())-&gt;<span class="title function_ invoke__">demoFun</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// [Running] php &quot;.../php/demo.php&quot;</span></span><br><span class="line"><span class="comment">// string(4) &quot;Demo&quot;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">//基础结构体</span></span><br><span class="line"><span class="keyword">type</span> Base <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Base的DemoFun</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b *Base)</span></span> DemoFun() &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;Base&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b *Base)</span></span> PublicFun() &#123;</span><br><span class="line">	b.DemoFun()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Demo <span class="keyword">struct</span> &#123;</span><br><span class="line">	<span class="comment">// 合成复用Base</span></span><br><span class="line">	Base</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Demo的DemoFun</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(d *Demo)</span></span> DemoFun() &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;Demo&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 执行</span></span><br><span class="line">	(&amp;Demo&#123;&#125;).PublicFun()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// [Running] go run &quot;.../demo/main.go&quot;</span></span><br><span class="line"><span class="comment">// Base &lt;------ 注意此处执行的是被合成复用的结构体的方法</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="进阶使用"><a href="#进阶使用" class="headerlink" title="进阶使用"></a>进阶使用</h1><hr>
+<ol>
+<li>热加载工具bee</li>
+<li>Goroutine并发控制之<code>sync.WaitGroup</code>包的使用</li>
+<li>子Goroutine超时控制之<code>context.Context</code>包的使用</li>
+<li>并发安全的map之<code>sync.Map</code>包的使用</li>
+<li>减少GC压力之<code>sync.Pool</code>包的使用</li>
+<li>减少缓存穿透利器之<code>singleflight</code>包的使用</li>
+<li>Channel的使用</li>
+<li>单元测试&amp;基准测试</li>
+<li>性能分析</li>
+</ol>
+<h2 id="1-热加载工具bee"><a href="#1-热加载工具bee" class="headerlink" title="1.热加载工具bee"></a>1.热加载工具bee</h2><hr>
+<blockquote>
+<p>作用：以热加载方式运行Go代码，会监视代码的变动重新运行代码，提高开发效率。</p>
+</blockquote>
+<p>使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">安装</span><br><span class="line">go get github.com/beego/bee/v2</span><br><span class="line"></span><br><span class="line">热加载方式启动项目</span><br><span class="line">SOAAGENT=10.40.24.126 bee run -main=main.go -runargs=&quot;start&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-Goroutine并发控制之sync-WaitGroup包的使用"><a href="#2-Goroutine并发控制之sync-WaitGroup包的使用" class="headerlink" title="2.Goroutine并发控制之sync.WaitGroup包的使用"></a>2.Goroutine并发控制之<code>sync.WaitGroup</code>包的使用</h2><hr>
+<blockquote>
+<p>作用：Goroutine可以等待，直到当前Goroutine派生的子Goroutine执行完成。</p>
+</blockquote>
+<p>使用：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;sync&quot;</span></span><br><span class="line">	<span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	wg := &amp;sync.WaitGroup&#123;&#125;</span><br><span class="line"></span><br><span class="line">	wg.Add(<span class="number">1</span>)</span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(wg *sync.WaitGroup)</span></span> &#123;</span><br><span class="line">		<span class="keyword">defer</span> wg.Done()</span><br><span class="line">		fmt.Println(<span class="string">&quot;子a 开始执行&quot;</span>)</span><br><span class="line">		time.Sleep(<span class="number">5</span> * time.Second)</span><br><span class="line">		fmt.Println(<span class="string">&quot;子a 执行完毕&quot;</span>)</span><br><span class="line">	&#125;(wg)</span><br><span class="line"></span><br><span class="line">	wg.Add(<span class="number">1</span>)</span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(wg *sync.WaitGroup)</span></span> &#123;</span><br><span class="line">		<span class="keyword">defer</span> wg.Done()</span><br><span class="line">		fmt.Println(<span class="string">&quot;子b 开始执行&quot;</span>)</span><br><span class="line">		time.Sleep(<span class="number">5</span> * time.Second)</span><br><span class="line">		fmt.Println(<span class="string">&quot;子b 执行完毕&quot;</span>)</span><br><span class="line">	&#125;(wg)</span><br><span class="line"></span><br><span class="line">	wg.Add(<span class="number">1</span>)</span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(wg *sync.WaitGroup)</span></span> &#123;</span><br><span class="line">		<span class="keyword">defer</span> wg.Done()</span><br><span class="line">		fmt.Println(<span class="string">&quot;子c 开始执行&quot;</span>)</span><br><span class="line">		time.Sleep(<span class="number">5</span> * time.Second)</span><br><span class="line">		fmt.Println(<span class="string">&quot;子c 执行完毕&quot;</span>)</span><br><span class="line">	&#125;(wg)</span><br><span class="line"></span><br><span class="line">	fmt.Println(<span class="string">&quot;主 等待&quot;</span>)</span><br><span class="line">	wg.Wait()</span><br><span class="line">	fmt.Println(<span class="string">&quot;主 退出&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第一次执行</span></span><br><span class="line"><span class="comment">// [Running] go run &quot;.../demo/main.go&quot;</span></span><br><span class="line"><span class="comment">// 子a 开始执行</span></span><br><span class="line"><span class="comment">// 子c 开始执行</span></span><br><span class="line"><span class="comment">// 子b 开始执行</span></span><br><span class="line"><span class="comment">// 主 等待 &lt;------ 注意这里和下面打印的位置不一样，因为当前代码并发执行是没有保障执行顺序的</span></span><br><span class="line"><span class="comment">// 子b 执行完毕</span></span><br><span class="line"><span class="comment">// 子a 执行完毕</span></span><br><span class="line"><span class="comment">// 子c 执行完毕</span></span><br><span class="line"><span class="comment">// 主 退出</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第一次执行</span></span><br><span class="line"><span class="comment">// [Running] go run &quot;.../demo/main.go&quot;</span></span><br><span class="line"><span class="comment">// 主 等待 &lt;------ 注意这里和上面打印的位置不一样，因为当前代码并发执行是没有保障执行顺序的</span></span><br><span class="line"><span class="comment">// 子a 开始执行</span></span><br><span class="line"><span class="comment">// 子c 开始执行</span></span><br><span class="line"><span class="comment">// 子b 开始执行</span></span><br><span class="line"><span class="comment">// 子b 执行完毕</span></span><br><span class="line"><span class="comment">// 子c 执行完毕</span></span><br><span class="line"><span class="comment">// 子a 执行完毕</span></span><br><span class="line"><span class="comment">// 主 退出 &lt;------ 主Goroutine一直等待直到子Goroutine都执行完毕</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-子Goroutine超时控制之context-Context包的使用"><a href="#3-子Goroutine超时控制之context-Context包的使用" class="headerlink" title="3.子Goroutine超时控制之context.Context包的使用"></a>3.子Goroutine超时控制之<code>context.Context</code>包的使用</h2><hr>
+<blockquote>
+<p>作用：Go语言第一形参通常都为context.Context类型，1. 传递上下文 2. 控制子Goroutine超时退出 3. 控制子Goroutine定时退出</p>
+</blockquote>
+<p>使用：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;context&quot;</span></span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	ctx, cancel := context.WithTimeout(context.TODO(), <span class="number">5</span>*time.Second)</span><br><span class="line">	<span class="keyword">defer</span> cancel()</span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(ctx context.Context)</span></span> &#123;</span><br><span class="line">		execResult := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">bool</span>)</span><br><span class="line">		<span class="comment">// 模拟业务逻辑</span></span><br><span class="line">		<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(execResult <span class="keyword">chan</span>&lt;- <span class="type">bool</span>)</span></span> &#123;</span><br><span class="line">			<span class="comment">// 模拟处理超时</span></span><br><span class="line">			time.Sleep(<span class="number">6</span> * time.Second)</span><br><span class="line">			execResult &lt;- <span class="literal">true</span></span><br><span class="line">		&#125;(execResult)</span><br><span class="line">		<span class="comment">// 等待结果</span></span><br><span class="line">		<span class="keyword">select</span> &#123;</span><br><span class="line">		<span class="keyword">case</span> &lt;-ctx.Done():</span><br><span class="line">			fmt.Println(<span class="string">&quot;超时退出&quot;</span>)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		<span class="keyword">case</span> &lt;-execResult:</span><br><span class="line">			fmt.Println(<span class="string">&quot;处理完成&quot;</span>)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;(ctx)</span><br><span class="line"></span><br><span class="line">	time.Sleep(<span class="number">10</span> * time.Second)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// [Running] go run &quot;.../demo/main.go&quot;</span></span><br><span class="line"><span class="comment">// 超时退出</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-并发安全的map之sync-Map包的使用"><a href="#4-并发安全的map之sync-Map包的使用" class="headerlink" title="4.并发安全的map之sync.Map包的使用"></a>4.并发安全的map之<code>sync.Map</code>包的使用</h2><hr>
+<blockquote>
+<p>作用：并发安全的map，支持并发写。读多写少场景的性能好。</p>
+</blockquote>
+<p>使用：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;sync&quot;</span></span><br><span class="line">	<span class="string">&quot;testing&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BenchmarkDemo</span><span class="params">(b *testing.B)</span></span> &#123;</span><br><span class="line">	demoMap := &amp;sync.Map&#123;&#125;</span><br><span class="line">	demoMap.Store(<span class="string">&quot;a&quot;</span>, <span class="string">&quot;a&quot;</span>)</span><br><span class="line">	demoMap.Store(<span class="string">&quot;b&quot;</span>, <span class="string">&quot;b&quot;</span>)</span><br><span class="line">	b.RunParallel(<span class="function"><span class="keyword">func</span><span class="params">(pb *testing.PB)</span></span> &#123;</span><br><span class="line">		<span class="keyword">for</span> pb.Next() &#123;</span><br><span class="line">			demoMap.Store(<span class="string">&quot;a&quot;</span>, <span class="string">&quot;aa&quot;</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// BenchmarkDemo</span></span><br><span class="line"><span class="comment">// BenchmarkDemo-4   	 6334993	       203.8 ns/op	      16 B/op	       1 allocs/op</span></span><br><span class="line"><span class="comment">// PASS</span></span><br><span class="line"><span class="comment">// 没有panic</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="5-减少GC压力之sync-Pool包的使用"><a href="#5-减少GC压力之sync-Pool包的使用" class="headerlink" title="5.减少GC压力之sync.Pool包的使用"></a>5.减少GC压力之<code>sync.Pool</code>包的使用</h2><hr>
+<blockquote>
+<p>作用：复用对象，减少垃圾回收GC压力。</p>
+</blockquote>
+<p>使用：</p>
+<h3 id="5-1-不使用sync-Pool代码示例"><a href="#5-1-不使用sync-Pool代码示例" class="headerlink" title="5.1 不使用sync.Pool代码示例"></a>5.1 不使用sync.Pool代码示例</h3><hr>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;sync&quot;</span></span><br><span class="line">	<span class="string">&quot;testing&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Country <span class="keyword">struct</span> &#123;</span><br><span class="line">	ID   <span class="type">int</span>    <span class="string">`json:&quot;id&quot;`</span></span><br><span class="line">	Name <span class="type">string</span> <span class="string">`json:&quot;name&quot;`</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> Province <span class="keyword">struct</span> &#123;</span><br><span class="line">	ID   <span class="type">int</span>    <span class="string">`json:&quot;id&quot;`</span></span><br><span class="line">	Name <span class="type">string</span> <span class="string">`json:&quot;name&quot;`</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> City <span class="keyword">struct</span> &#123;</span><br><span class="line">	ID   <span class="type">int</span>    <span class="string">`json:&quot;id&quot;`</span></span><br><span class="line">	Name <span class="type">string</span> <span class="string">`json:&quot;name&quot;`</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> County <span class="keyword">struct</span> &#123;</span><br><span class="line">	ID   <span class="type">int</span>    <span class="string">`json:&quot;id&quot;`</span></span><br><span class="line">	Name <span class="type">string</span> <span class="string">`json:&quot;name&quot;`</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> Street <span class="keyword">struct</span> &#123;</span><br><span class="line">	ID   <span class="type">int</span>    <span class="string">`json:&quot;id&quot;`</span></span><br><span class="line">	Name <span class="type">string</span> <span class="string">`json:&quot;name&quot;`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 模拟数据</span></span><br><span class="line"><span class="comment">// 地址信息对象</span></span><br><span class="line"><span class="keyword">type</span> AddressModule <span class="keyword">struct</span> &#123;</span><br><span class="line">	Consignee       <span class="type">string</span>    <span class="string">`json:&quot;consignee&quot;`</span></span><br><span class="line">	Email           <span class="type">string</span>    <span class="string">`json:&quot;email&quot;`</span></span><br><span class="line">	Mobile          <span class="type">int64</span>     <span class="string">`json:&quot;mobile&quot;`</span></span><br><span class="line">	Country         *Country  <span class="string">`json:&quot;country&quot;`</span></span><br><span class="line">	Province        *Province <span class="string">`json:&quot;province&quot;`</span></span><br><span class="line">	City            *City     <span class="string">`json:&quot;city&quot;`</span></span><br><span class="line">	County          *County   <span class="string">`json:&quot;county&quot;`</span></span><br><span class="line">	Street          *Street   <span class="string">`json:&quot;street&quot;`</span></span><br><span class="line">	DetailedAddress <span class="type">string</span>    <span class="string">`json:&quot;detailed_address&quot;`</span></span><br><span class="line">	PostalCode      <span class="type">string</span>    <span class="string">`json:&quot;postal_code&quot;`</span></span><br><span class="line">	AddressID       <span class="type">int64</span>     <span class="string">`json:&quot;address_id&quot;`</span></span><br><span class="line">	IsDefault       <span class="type">bool</span>      <span class="string">`json:&quot;is_default&quot;`</span></span><br><span class="line">	Label           <span class="type">string</span>    <span class="string">`json:&quot;label&quot;`</span></span><br><span class="line">	Longitude       <span class="type">string</span>    <span class="string">`json:&quot;longitude&quot;`</span></span><br><span class="line">	Latitude        <span class="type">string</span>    <span class="string">`json:&quot;latitude&quot;`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不使用sync.Pool</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BenchmarkDemo_NoPool</span><span class="params">(b *testing.B)</span></span> &#123;</span><br><span class="line">	b.RunParallel(<span class="function"><span class="keyword">func</span><span class="params">(pb *testing.PB)</span></span> &#123;</span><br><span class="line">		<span class="keyword">for</span> pb.Next() &#123;</span><br><span class="line">			<span class="comment">// 直接初始化</span></span><br><span class="line">			addressModule := &amp;AddressModule&#123;&#125;</span><br><span class="line">			addressModule.Consignee = <span class="string">&quot;&quot;</span></span><br><span class="line">			addressModule.Email = <span class="string">&quot;&quot;</span></span><br><span class="line">			addressModule.Mobile = <span class="number">0</span></span><br><span class="line">			addressModule.Country = &amp;Country&#123;</span><br><span class="line">				ID:   <span class="number">0</span>,</span><br><span class="line">				Name: <span class="string">&quot;&quot;</span>,</span><br><span class="line">			&#125;</span><br><span class="line">			addressModule.Province = &amp;Province&#123;</span><br><span class="line">				ID:   <span class="number">0</span>,</span><br><span class="line">				Name: <span class="string">&quot;&quot;</span>,</span><br><span class="line">			&#125;</span><br><span class="line">			addressModule.City = &amp;City&#123;</span><br><span class="line">				ID:   <span class="number">0</span>,</span><br><span class="line">				Name: <span class="string">&quot;&quot;</span>,</span><br><span class="line">			&#125;</span><br><span class="line">			addressModule.County = &amp;County&#123;</span><br><span class="line">				ID:   <span class="number">0</span>,</span><br><span class="line">				Name: <span class="string">&quot;&quot;</span>,</span><br><span class="line">			&#125;</span><br><span class="line">			addressModule.Street = &amp;Street&#123;</span><br><span class="line">				ID:   <span class="number">0</span>,</span><br><span class="line">				Name: <span class="string">&quot;&quot;</span>,</span><br><span class="line">			&#125;</span><br><span class="line">			addressModule.DetailedAddress = <span class="string">&quot;&quot;</span></span><br><span class="line">			addressModule.PostalCode = <span class="string">&quot;&quot;</span></span><br><span class="line">			addressModule.IsDefault = <span class="literal">false</span></span><br><span class="line">			addressModule.Label = <span class="string">&quot;&quot;</span></span><br><span class="line">			addressModule.Longitude = <span class="string">&quot;&quot;</span></span><br><span class="line">			addressModule.Latitude = <span class="string">&quot;&quot;</span></span><br><span class="line">			<span class="comment">// 下面这段代码没意义 只是为了不报语法错误</span></span><br><span class="line">			<span class="keyword">if</span> addressModule == <span class="literal">nil</span> &#123;</span><br><span class="line">				<span class="keyword">return</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不使用sync.Pool执行结果</span></span><br><span class="line"><span class="comment">// goos: darwin</span></span><br><span class="line"><span class="comment">// goarch: amd64</span></span><br><span class="line"><span class="comment">// pkg: demo</span></span><br><span class="line"><span class="comment">// cpu: Intel(R) Core(TM) i5-7360U CPU @ 2.30GHz</span></span><br><span class="line"><span class="comment">// BenchmarkDemo_NoPool-4   	144146564	        84.62 ns/op	     120 B/op	       5 allocs/op</span></span><br><span class="line"><span class="comment">// PASS</span></span><br><span class="line"><span class="comment">// ok  	demo	21.782s</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p align="center">
+    <h5>不使用sync.Pool执行分析：火焰图&Top函数</h5>
+    <p>可以很明显看见GC过程消耗了大量的CPU。</p>
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210708235739.jpg" style="width:80%">
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210708152442.png" style="width:50%">
+</p>
+
+<h3 id="5-2-使用sync-Pool代码示例"><a href="#5-2-使用sync-Pool代码示例" class="headerlink" title="5.2 使用sync.Pool代码示例"></a>5.2 使用sync.Pool代码示例</h3><hr>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 使用sync.Pool</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BenchmarkDemo_Pool</span><span class="params">(b *testing.B)</span></span> &#123;</span><br><span class="line">	<span class="comment">// 使用缓存池sync.Pool</span></span><br><span class="line">	demoPool := &amp;sync.Pool&#123;</span><br><span class="line">		<span class="comment">// 定义初始化结构体的匿名函数</span></span><br><span class="line">		New: <span class="function"><span class="keyword">func</span><span class="params">()</span></span> <span class="keyword">interface</span>&#123;&#125; &#123;</span><br><span class="line">			<span class="keyword">return</span> &amp;AddressModule&#123;</span><br><span class="line">				Country: &amp;Country&#123;</span><br><span class="line">					ID:   <span class="number">0</span>,</span><br><span class="line">					Name: <span class="string">&quot;&quot;</span>,</span><br><span class="line">				&#125;,</span><br><span class="line">				Province: &amp;Province&#123;</span><br><span class="line">					ID:   <span class="number">0</span>,</span><br><span class="line">					Name: <span class="string">&quot;&quot;</span>,</span><br><span class="line">				&#125;,</span><br><span class="line">				City: &amp;City&#123;</span><br><span class="line">					ID:   <span class="number">0</span>,</span><br><span class="line">					Name: <span class="string">&quot;&quot;</span>,</span><br><span class="line">				&#125;,</span><br><span class="line">				County: &amp;County&#123;</span><br><span class="line">					ID:   <span class="number">0</span>,</span><br><span class="line">					Name: <span class="string">&quot;&quot;</span>,</span><br><span class="line">				&#125;,</span><br><span class="line">				Street: &amp;Street&#123;</span><br><span class="line">					ID:   <span class="number">0</span>,</span><br><span class="line">					Name: <span class="string">&quot;&quot;</span>,</span><br><span class="line">				&#125;,</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;</span><br><span class="line">	b.RunParallel(<span class="function"><span class="keyword">func</span><span class="params">(pb *testing.PB)</span></span> &#123;</span><br><span class="line">		<span class="keyword">for</span> pb.Next() &#123;</span><br><span class="line">			<span class="comment">// 从缓存池中获取对象</span></span><br><span class="line">			addressModule, _ := (demoPool.Get()).(*AddressModule)</span><br><span class="line">			<span class="comment">// 下面这段代码没意义 只是为了不报语法错误</span></span><br><span class="line">			<span class="keyword">if</span> addressModule == <span class="literal">nil</span> &#123;</span><br><span class="line">				<span class="keyword">return</span></span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 重置对象 准备归还对象到缓存池</span></span><br><span class="line">			addressModule.Consignee = <span class="string">&quot;&quot;</span></span><br><span class="line">			addressModule.Email = <span class="string">&quot;&quot;</span></span><br><span class="line">			addressModule.Mobile = <span class="number">0</span></span><br><span class="line">			addressModule.Country.ID = <span class="number">0</span></span><br><span class="line">			addressModule.Country.Name = <span class="string">&quot;&quot;</span></span><br><span class="line">			addressModule.Province.ID = <span class="number">0</span></span><br><span class="line">			addressModule.Province.Name = <span class="string">&quot;&quot;</span></span><br><span class="line">			addressModule.County.ID = <span class="number">0</span></span><br><span class="line">			addressModule.County.Name = <span class="string">&quot;&quot;</span></span><br><span class="line">			addressModule.Street.ID = <span class="number">0</span></span><br><span class="line">			addressModule.Street.Name = <span class="string">&quot;&quot;</span></span><br><span class="line">			addressModule.DetailedAddress = <span class="string">&quot;&quot;</span></span><br><span class="line">			addressModule.PostalCode = <span class="string">&quot;&quot;</span></span><br><span class="line">			addressModule.IsDefault = <span class="literal">false</span></span><br><span class="line">			addressModule.Label = <span class="string">&quot;&quot;</span></span><br><span class="line">			addressModule.Longitude = <span class="string">&quot;&quot;</span></span><br><span class="line">			addressModule.Latitude = <span class="string">&quot;&quot;</span></span><br><span class="line">			<span class="comment">// 还对象到缓存池</span></span><br><span class="line">			demoPool.Put(addressModule)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用sync.Pool执行结果</span></span><br><span class="line"><span class="comment">// goos: darwin</span></span><br><span class="line"><span class="comment">// goarch: amd64</span></span><br><span class="line"><span class="comment">// pkg: demo</span></span><br><span class="line"><span class="comment">// cpu: Intel(R) Core(TM) i5-7360U CPU @ 2.30GHz</span></span><br><span class="line"><span class="comment">// BenchmarkDemo_Pool-4   	988550808	        12.41 ns/op	       0 B/op	       0 allocs/op</span></span><br><span class="line"><span class="comment">// PASS</span></span><br><span class="line"><span class="comment">// ok  	demo	14.215s</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p align="center">
+    <h5>使用sync.Pool执行分析：火焰图&Top函数</h5>
+    <p>runtime.mallocgc 已经在top里面看不见了</p>
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210708151902.png" style="width:80%">
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210708152639.png" style="width:50%">
+</p>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">关于火焰图和Top函数的使用下面会讲到。</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-减少缓存穿透利器之singleflight包的使用"><a href="#6-减少缓存穿透利器之singleflight包的使用" class="headerlink" title="6.减少缓存穿透利器之singleflight包的使用"></a>6.减少缓存穿透利器之<code>singleflight</code>包的使用</h2><hr>
+<blockquote>
+<p>作用：缓存等穿透时减少请求数。</p>
+</blockquote>
+<p>使用：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;io/ioutil&quot;</span></span><br><span class="line">	<span class="string">&quot;net/http&quot;</span></span><br><span class="line">	<span class="string">&quot;sync&quot;</span></span><br><span class="line">	<span class="string">&quot;testing&quot;</span></span><br><span class="line"></span><br><span class="line">	<span class="string">&quot;golang.org/x/sync/singleflight&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 没有使用singleflight的代码示例</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestDemo_NoSingleflight</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">	t.Parallel()</span><br><span class="line">	wg := sync.WaitGroup&#123;&#125;</span><br><span class="line">	<span class="comment">// 模拟并发远程调用</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">3</span>; i++ &#123;</span><br><span class="line">		wg.Add(<span class="number">1</span>)</span><br><span class="line">		<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">			<span class="keyword">defer</span> wg.Done()</span><br><span class="line">			resp, err := http.Get(<span class="string">&quot;http://example.com&quot;</span>)</span><br><span class="line">			<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">				t.Error(err)</span><br><span class="line">				<span class="keyword">return</span></span><br><span class="line">			&#125;</span><br><span class="line">			_, err = ioutil.ReadAll(resp.Body)</span><br><span class="line">			<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">				t.Error(err)</span><br><span class="line">				<span class="keyword">return</span></span><br><span class="line">			&#125;</span><br><span class="line">			t.Log(<span class="string">&quot;log&quot;</span>)</span><br><span class="line">		&#125;()</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	wg.Wait()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用singleflight的代码示例</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestDemo_Singleflight</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">	t.Parallel()</span><br><span class="line">	singleGroup := singleflight.Group&#123;&#125;</span><br><span class="line">	wg := sync.WaitGroup&#123;&#125;</span><br><span class="line">	<span class="comment">// 模拟并发远程调用</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">3</span>; i++ &#123;</span><br><span class="line">		wg.Add(<span class="number">1</span>)</span><br><span class="line">		<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">			<span class="keyword">defer</span> wg.Done()</span><br><span class="line">			<span class="comment">// 使用singleflight</span></span><br><span class="line">			res, err, shared := singleGroup.Do(<span class="string">&quot;cache_key&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">()</span></span> (<span class="keyword">interface</span>&#123;&#125;, <span class="type">error</span>) &#123;</span><br><span class="line">				resp, err := http.Get(<span class="string">&quot;http://example.com&quot;</span>)</span><br><span class="line">				<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">					<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">				&#125;</span><br><span class="line">				body, err := ioutil.ReadAll(resp.Body)</span><br><span class="line">				<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">					<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">return</span> body, <span class="literal">nil</span></span><br><span class="line">			&#125;)</span><br><span class="line">			<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">				t.Error(err)</span><br><span class="line">				<span class="keyword">return</span></span><br><span class="line">			&#125;</span><br><span class="line">			_, _ = res.([]<span class="type">byte</span>)</span><br><span class="line">			t.Log(<span class="string">&quot;log&quot;</span>, shared, err)</span><br><span class="line">		&#125;()</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	wg.Wait()</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>抓包域名example.com的请求：tcpdump host example.com</p>
+</blockquote>
+<p align="center">
+    <h5>没有使用Singleflight一共发起了3次请求</h5>
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210708212953.png" style="width:80%">
+    <h5>使用Singleflight只发起了1次请求</h5>
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210708213004.png" style="width:80%">
+</p>
+
+<h2 id="7-Channel的使用"><a href="#7-Channel的使用" class="headerlink" title="7. Channel的使用"></a>7. Channel的使用</h2><hr>
+<blockquote>
+<p>作用：不要通过共享内存来通信，要通过通信来实现共享内存。相当于管道。</p>
+</blockquote>
+<p>使用：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 响应公共结构体</span></span><br><span class="line"><span class="keyword">type</span> APIBase <span class="keyword">struct</span> &#123;</span><br><span class="line">	Code    <span class="type">int32</span>  <span class="string">`json:&quot;code&quot;`</span></span><br><span class="line">	Message <span class="type">string</span> <span class="string">`json:&quot;message&quot;`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 模拟接口A的响应结构体</span></span><br><span class="line"><span class="keyword">type</span> APIDemoA <span class="keyword">struct</span> &#123;</span><br><span class="line">	APIBase</span><br><span class="line">	Data APIDemoAData <span class="string">`json:&quot;data&quot;`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> APIDemoAData <span class="keyword">struct</span> &#123;</span><br><span class="line">	Title <span class="type">string</span> <span class="string">`json:&quot;title&quot;`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 模拟接口B的响应结构体</span></span><br><span class="line"><span class="keyword">type</span> APIDemoB <span class="keyword">struct</span> &#123;</span><br><span class="line">	APIBase</span><br><span class="line">	Data APIDemoBData <span class="string">`json:&quot;data&quot;`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> APIDemoBData <span class="keyword">struct</span> &#123;</span><br><span class="line">	SkuList []<span class="type">int64</span> <span class="string">`json:&quot;sku_list&quot;`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 模拟接口逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 创建接口A传输结果的通道</span></span><br><span class="line">	execAResult := <span class="built_in">make</span>(<span class="keyword">chan</span> APIDemoA)</span><br><span class="line">	<span class="comment">// 创建接口B传输结果的通道</span></span><br><span class="line">	execBResult := <span class="built_in">make</span>(<span class="keyword">chan</span> APIDemoB)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 并发调用接口A</span></span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(execAResult <span class="keyword">chan</span>&lt;- APIDemoA)</span></span> &#123;</span><br><span class="line">		<span class="comment">// 模拟接口A远程调用过程</span></span><br><span class="line">		time.Sleep(<span class="number">2</span> * time.Second)</span><br><span class="line">		execAResult &lt;- APIDemoA&#123;&#125;</span><br><span class="line">	&#125;(execAResult)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 并发调用接口B</span></span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(execBResult <span class="keyword">chan</span>&lt;- APIDemoB)</span></span> &#123;</span><br><span class="line">		<span class="comment">// 模拟接口B远程调用过程</span></span><br><span class="line">		time.Sleep(<span class="number">1</span> * time.Second)</span><br><span class="line">		execBResult &lt;- APIDemoB&#123;&#125;</span><br><span class="line">	&#125;(execBResult)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> resultA APIDemoA</span><br><span class="line">	<span class="keyword">var</span> resultB APIDemoB</span><br><span class="line">	i := <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> i &gt;= <span class="number">2</span> &#123;</span><br><span class="line">			fmt.Println(<span class="string">&quot;退出&quot;</span>)</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">select</span> &#123;</span><br><span class="line">		<span class="keyword">case</span> resultA = &lt;-execAResult: <span class="comment">// 等待接口A的响应结果</span></span><br><span class="line">			i++</span><br><span class="line">			fmt.Println(<span class="string">&quot;resultA&quot;</span>, resultA)</span><br><span class="line">		<span class="keyword">case</span> resultB = &lt;-execBResult: <span class="comment">// 等待接口B的响应结果</span></span><br><span class="line">			i++</span><br><span class="line">			fmt.Println(<span class="string">&quot;resultB&quot;</span>, resultB)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// [Running] go run &quot;.../demo/main.go&quot;</span></span><br><span class="line"><span class="comment">// resultB &#123;&#123;0 &#125; &#123;[]&#125;&#125;</span></span><br><span class="line"><span class="comment">// resultA &#123;&#123;0 &#125; &#123;&#125;&#125;</span></span><br><span class="line"><span class="comment">// 退出</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="8-单元测试-基准测试"><a href="#8-单元测试-基准测试" class="headerlink" title="8. 单元测试&amp;基准测试"></a>8. 单元测试&amp;基准测试</h2><hr>
+<blockquote>
+<p>作用：开发阶段调试代码块、接口；对代码块、接口做基准测试，分析性能问题，包含CPU使用、内存使用等。可做对比测试。ci阶段检测代码质量减少bug。</p>
+</blockquote>
+<p>使用：</p>
+<h3 id="8-1-单元测试"><a href="#8-1-单元测试" class="headerlink" title="8.1 单元测试"></a>8.1 单元测试</h3><hr>
+<p>一个很简单的单元测试示例：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;io/ioutil&quot;</span></span><br><span class="line">	<span class="string">&quot;net/http&quot;</span></span><br><span class="line">	<span class="string">&quot;testing&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestDemo</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">	t.Parallel()</span><br><span class="line">	<span class="comment">// 模拟调用接口</span></span><br><span class="line">	resp, err := http.Get(<span class="string">&quot;http://example.com?user_id=121212&quot;</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		t.Error(err)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	body, err := ioutil.ReadAll(resp.Body)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		t.Error(err)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	t.Log(<span class="string">&quot;body&quot;</span>, <span class="type">string</span>(body))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 执行</span></span><br><span class="line"><span class="comment">// go test -timeout 30s -run ^TestDemo$ demo -v -count=1</span></span><br><span class="line"><span class="comment">// === RUN   TestDemo</span></span><br><span class="line"><span class="comment">// === PAUSE TestDemo</span></span><br><span class="line"><span class="comment">// === CONT  TestDemo</span></span><br><span class="line"><span class="comment">// ......</span></span><br><span class="line"><span class="comment">// --- PASS: TestDemo (0.45s)</span></span><br><span class="line"><span class="comment">// PASS</span></span><br><span class="line"><span class="comment">// ok      demo    1.130s</span></span><br></pre></td></tr></table></figure>
+
+<p>多个测试用例的单元测试示例：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;io/ioutil&quot;</span></span><br><span class="line">	<span class="string">&quot;net/http&quot;</span></span><br><span class="line">	<span class="string">&quot;testing&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Req <span class="keyword">struct</span> &#123;</span><br><span class="line">	UserID <span class="type">int64</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestDemo</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">	t.Parallel()</span><br><span class="line">	tests := []<span class="keyword">struct</span> &#123;</span><br><span class="line">		TestName <span class="type">string</span></span><br><span class="line">		*Req</span><br><span class="line">	&#125;&#123;</span><br><span class="line">		&#123;</span><br><span class="line">			TestName: <span class="string">&quot;测试用例1&quot;</span>,</span><br><span class="line">			Req: &amp;Req&#123;</span><br><span class="line">				UserID: <span class="number">12121212</span>,</span><br><span class="line">			&#125;,</span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			TestName: <span class="string">&quot;测试用例2&quot;</span>,</span><br><span class="line">			Req: &amp;Req&#123;</span><br><span class="line">				UserID: <span class="number">829066</span>,</span><br><span class="line">			&#125;,</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> _, v := <span class="keyword">range</span> tests &#123;</span><br><span class="line">		t.Run(v.TestName, <span class="function"><span class="keyword">func</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">			<span class="comment">// 模拟调用接口</span></span><br><span class="line">			url := fmt.Sprintf(<span class="string">&quot;http://example.com?user_id=%d&quot;</span>, v.UserID)</span><br><span class="line">			resp, err := http.Get(url)</span><br><span class="line">			<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">				t.Error(err)</span><br><span class="line">				<span class="keyword">return</span></span><br><span class="line">			&#125;</span><br><span class="line">			body, err := ioutil.ReadAll(resp.Body)</span><br><span class="line">			<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">				t.Error(err)</span><br><span class="line">				<span class="keyword">return</span></span><br><span class="line">			&#125;</span><br><span class="line">			t.Log(<span class="string">&quot;body&quot;</span>, <span class="type">string</span>(body), url)</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 执行</span></span><br><span class="line"><span class="comment">// go test -timeout 30s -run ^TestDemo$ demo -v -count=1</span></span><br><span class="line"><span class="comment">// === RUN   TestDemo</span></span><br><span class="line"><span class="comment">// === PAUSE TestDemo</span></span><br><span class="line"><span class="comment">// === CONT  TestDemo</span></span><br><span class="line"><span class="comment">// === RUN   TestDemo/测试用例1</span></span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"><span class="comment">// === RUN   TestDemo/测试用例2</span></span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"><span class="comment">// --- PASS: TestDemo (7.34s)</span></span><br><span class="line"><span class="comment">//     --- PASS: TestDemo/测试用例1 (7.13s)</span></span><br><span class="line"><span class="comment">//     --- PASS: TestDemo/测试用例2 (0.21s)</span></span><br><span class="line"><span class="comment">// PASS</span></span><br><span class="line"><span class="comment">// ok  	demo	7.984s</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="8-2-基准测试"><a href="#8-2-基准测试" class="headerlink" title="8.2 基准测试"></a>8.2 基准测试</h3><hr>
+<p>简单的基准测试：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;sync&quot;</span></span><br><span class="line">	<span class="string">&quot;testing&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 压力测试sync.Map</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BenchmarkSyncMap</span><span class="params">(b *testing.B)</span></span> &#123;</span><br><span class="line">	demoMap := &amp;sync.Map&#123;&#125;</span><br><span class="line">	b.RunParallel(<span class="function"><span class="keyword">func</span><span class="params">(pb *testing.PB)</span></span> &#123;</span><br><span class="line">		<span class="keyword">for</span> pb.Next() &#123;</span><br><span class="line">			demoMap.Store(<span class="string">&quot;a&quot;</span>, <span class="string">&quot;a&quot;</span>)</span><br><span class="line">			<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">1000</span>; i++ &#123;</span><br><span class="line">				demoMap.Load(<span class="string">&quot;a&quot;</span>)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// go test -benchmem -run=^$ -bench ^(BenchmarkSyncMap)$ demo -v -count=1 -cpuprofile=cpu.profile -memprofile=mem.profile -benchtime=10s</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// goos: darwin</span></span><br><span class="line"><span class="comment">// goarch: amd64</span></span><br><span class="line"><span class="comment">// pkg: demo</span></span><br><span class="line"><span class="comment">// BenchmarkSyncMap</span></span><br><span class="line"><span class="comment">// BenchmarkSyncMap-4</span></span><br><span class="line"><span class="comment">//   570206	     23047 ns/op	      16 B/op	       1 allocs/op</span></span><br><span class="line"><span class="comment">// PASS</span></span><br><span class="line"><span class="comment">// ok  	demo	13.623s</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="对比基准测试：-9-性能分析"><a href="#对比基准测试：-9-性能分析" class="headerlink" title="对比基准测试：## 9.性能分析"></a>对比基准测试：<br><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;sync&quot;</span></span><br><span class="line">	<span class="string">&quot;testing&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 压力测试sync.Map</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BenchmarkSyncMap</span><span class="params">(b *testing.B)</span></span> &#123;</span><br><span class="line">	demoMap := &amp;sync.Map&#123;&#125;</span><br><span class="line">	b.RunParallel(<span class="function"><span class="keyword">func</span><span class="params">(pb *testing.PB)</span></span> &#123;</span><br><span class="line">		<span class="keyword">for</span> pb.Next() &#123;</span><br><span class="line">			demoMap.Store(<span class="string">&quot;a&quot;</span>, <span class="string">&quot;a&quot;</span>)</span><br><span class="line">			<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">1000</span>; i++ &#123;</span><br><span class="line">				demoMap.Load(<span class="string">&quot;a&quot;</span>)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 用读写锁实现一个并发map</span></span><br><span class="line"><span class="keyword">type</span> ConcurrentMap <span class="keyword">struct</span> &#123;</span><br><span class="line">	value <span class="keyword">map</span>[<span class="type">string</span>]<span class="type">string</span></span><br><span class="line">	mutex sync.RWMutex</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 写</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c *ConcurrentMap)</span></span> Store(key <span class="type">string</span>, val <span class="type">string</span>) &#123;</span><br><span class="line">	c.mutex.Lock()</span><br><span class="line">	<span class="keyword">defer</span> c.mutex.Unlock()</span><br><span class="line">	<span class="keyword">if</span> c.value == <span class="literal">nil</span> &#123;</span><br><span class="line">		c.value = <span class="keyword">map</span>[<span class="type">string</span>]<span class="type">string</span>&#123;&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	c.value[key] = val</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 读</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c *ConcurrentMap)</span></span> Load(key <span class="type">string</span>) <span class="type">string</span> &#123;</span><br><span class="line">	c.mutex.Lock()</span><br><span class="line">	<span class="keyword">defer</span> c.mutex.Unlock()</span><br><span class="line">	<span class="keyword">return</span> c.value[key]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 压力测试并发map</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BenchmarkConcurrentMap</span><span class="params">(b *testing.B)</span></span> &#123;</span><br><span class="line">	demoMap := &amp;ConcurrentMap&#123;&#125;</span><br><span class="line">	b.RunParallel(<span class="function"><span class="keyword">func</span><span class="params">(pb *testing.PB)</span></span> &#123;</span><br><span class="line">		<span class="keyword">for</span> pb.Next() &#123;</span><br><span class="line">			demoMap.Store(<span class="string">&quot;a&quot;</span>, <span class="string">&quot;a&quot;</span>)</span><br><span class="line">			<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">1000</span>; i++ &#123;</span><br><span class="line">				demoMap.Load(<span class="string">&quot;a&quot;</span>)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// go test -benchmem -run=^$ -bench . demo -v -count=1 -cpuprofile=cpu.profile -memprofile=mem.profile -benchtime=10s</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// goos: darwin</span></span><br><span class="line"><span class="comment">// goarch: amd64</span></span><br><span class="line"><span class="comment">// pkg: demo</span></span><br><span class="line"><span class="comment">// BenchmarkSyncMap</span></span><br><span class="line"><span class="comment">// BenchmarkSyncMap-4   	  668082	     15818 ns/op	      16 B/op	       1 allocs/op</span></span><br><span class="line"><span class="comment">// BenchmarkConcurrentMap</span></span><br><span class="line"><span class="comment">// BenchmarkConcurrentMap-4       	  171730	     67888 ns/op	       0 B/op	       0 allocs/op</span></span><br><span class="line"><span class="comment">// PASS</span></span><br><span class="line"><span class="comment">// coverage: 0.0% of statements</span></span><br><span class="line"><span class="comment">// ok  	demo	23.823s</span></span><br><span class="line"></span><br></pre></td></tr></table></figure><br>## 9.性能分析</h2><blockquote>
+<p>作用：CPU分析、内存分析。通过可视化调用链路、可视化火焰图、TOP函数等快速定位代码问题、提升代码性能。</p>
+</blockquote>
+<ul>
+<li>pprof</li>
+<li>trace</li>
+<li>dlv</li>
+</ul>
+<p>使用：</p>
+<h3 id="9-1-pprof的使用"><a href="#9-1-pprof的使用" class="headerlink" title="9.1 pprof的使用"></a>9.1 pprof的使用</h3><hr>
+<h4 id="9-1-1-基准测试场景"><a href="#9-1-1-基准测试场景" class="headerlink" title="9.1.1 基准测试场景"></a>9.1.1 基准测试场景</h4><hr>
+<ol>
+<li><p>首先编写基准测试用例，复用上面<code>sync.Map</code>的用例：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;sync&quot;</span></span><br><span class="line">	<span class="string">&quot;testing&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 压力测试sync.Map</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BenchmarkSyncMap</span><span class="params">(b *testing.B)</span></span> &#123;</span><br><span class="line">	demoMap := &amp;sync.Map&#123;&#125;</span><br><span class="line">	b.RunParallel(<span class="function"><span class="keyword">func</span><span class="params">(pb *testing.PB)</span></span> &#123;</span><br><span class="line">		<span class="keyword">for</span> pb.Next() &#123;</span><br><span class="line">			demoMap.Store(<span class="string">&quot;a&quot;</span>, <span class="string">&quot;a&quot;</span>)</span><br><span class="line">			<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">1000</span>; i++ &#123;</span><br><span class="line">				demoMap.Load(<span class="string">&quot;a&quot;</span>)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行基准测试，生成<code>cpu.profile</code>文件和<code>mem.profile </code>文件。命令如下</p>
+</li>
+</ol>
+<blockquote>
+<p>go test -benchmem -run&#x3D;^$ -bench ^BenchmarkSyncMap$ demo -v -count&#x3D;1 -cpuprofile&#x3D;cpu.profile -memprofile&#x3D;mem.profile -benchtime&#x3D;10s</p>
+</blockquote>
+<p>常用参数解释：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-benchmem: 输出内存指标</span><br><span class="line">-run: 正则，指定需要test的方法</span><br><span class="line">-bench: 正则，指定需要benchmark的方法</span><br><span class="line">-v: 即使成功也输出打印结果和日志</span><br><span class="line">-count: 执行次数</span><br><span class="line">-cpuprofile: 输出cpu的profile文件</span><br><span class="line">-memprofile: 输出内存的profile文件</span><br><span class="line">-benchtime: 执行时间</span><br><span class="line"></span><br><span class="line">更多参数请查看：</span><br><span class="line">go help testflag</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>使用<code>go tool</code>自带的pprof工具分析测试结果。命令如下：</li>
+</ol>
+<blockquote>
+<p>go tool pprof -http&#x3D;:8000 cpu.profile </p>
+</blockquote>
+<p>常用参数解释：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-http: 指定ip:port，启动web服务可视化查看分析，浏览器会自动打开页面 http://localhost:8000/ui/</span><br></pre></td></tr></table></figure>
+
+<p align="center">
+    <h5>可视化选项菜单</h5>
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210710185849.png" style="width:30%">
+    <h5>火焰图</h5>
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210710185947.png" style="width:80%">
+    <h5>调用链路图</h5>
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210710190017.png" style="width:80%">
+    <h5>Top函数</h5>
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210710190040.png" style="width:36%">
+</p>
+
+
+<h4 id="9-1-2-Web服务场景"><a href="#9-1-2-Web服务场景" class="headerlink" title="9.1.2 Web服务场景"></a>9.1.2 Web服务场景</h4><hr>
+<ol>
+<li>使用上面全局变量的代码示例，引入<code>net/http/pprof</code>包，并单独注册各端口获取pprof数据。</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;net/http&quot;</span></span><br><span class="line">	<span class="comment">// 引入pprof包</span></span><br><span class="line">	<span class="comment">// _代表只执行包内的init函数</span></span><br><span class="line">	_ <span class="string">&quot;net/http/pprof&quot;</span></span><br><span class="line"></span><br><span class="line">	<span class="string">&quot;github.com/gin-gonic/gin&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 全局变量不会像PHP一样，在完成一次请求之后被销毁</span></span><br><span class="line"><span class="keyword">var</span> GlobalVarDemo <span class="type">int32</span> = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 模拟接口逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	r := gin.Default()</span><br><span class="line">	r.GET(<span class="string">&quot;/ping&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">		GlobalVarDemo++</span><br><span class="line">		c.JSON(<span class="number">200</span>, gin.H&#123;</span><br><span class="line">			<span class="string">&quot;message&quot;</span>: GlobalVarDemo,</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="comment">// 再开启一个端口获取pprof数据</span></span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		http.ListenAndServe(<span class="string">&quot;:8888&quot;</span>, <span class="literal">nil</span>)</span><br><span class="line">	&#125;()</span><br><span class="line">	<span class="comment">// 启动web服务</span></span><br><span class="line">	r.Run()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>访问链接 <code>http://localhost:8888/debug/pprof/</code>，可以看见相关profiles。</li>
+</ol>
+<p align="center">
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210710195214.png" style="width:50%">
+</p>
+
+<ol start="3">
+<li>命令使用pprof工具，获取远程服务profile，命令如下：</li>
+</ol>
+<blockquote>
+<p>go tool pprof -http&#x3D;:8000 <a target="_blank" rel="noopener" href="http://localhost:8888/debug/pprof/profile?seconds=5">http://localhost:8888/debug/pprof/profile?seconds=5</a></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">备注：</span><br><span class="line">执行上面命令的时候，可以使用压测工具模拟流量，比如命令：siege -c 50 -t 100 &quot;http://localhost:8080/ping&quot;</span><br></pre></td></tr></table></figure>
+
+<p>同样，我们得到了这个熟悉的页面：</p>
+<p align="center">
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210710200849.png" style="width:50%">
+</p>
+
+<h3 id="9-2-trace工具的使用"><a href="#9-2-trace工具的使用" class="headerlink" title="9.2 trace工具的使用"></a>9.2 trace工具的使用</h3><hr>
+<p>作用：清晰查看每个逻辑处理器中Goroutine的执行过程，可以很直观看出Goroutine的阻塞消耗，包含网络阻塞、同步阻塞(锁)、系统调用阻塞、调度等待、GC执行耗时、GC STW(Stop The World)耗时。</p>
+<h4 id="9-2-1-基准测试场景"><a href="#9-2-1-基准测试场景" class="headerlink" title="9.2.1 基准测试场景"></a>9.2.1 基准测试场景</h4><hr>
+<p>使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">生成trace.out文件命令：</span><br><span class="line">go test -benchmem -run=^$ -bench ^BenchmarkDemo_NoPool$ demo -v -count=1 -trace=trace.out </span><br><span class="line">go test -benchmem -run=^$ -bench ^BenchmarkDemo_Pool$ demo -v -count=1 -trace=trace.out </span><br><span class="line"></span><br><span class="line">分析trace.out文件命令：</span><br><span class="line">go tool trace -http=127.0.0.1:8000 trace.out</span><br></pre></td></tr></table></figure>
+
+<p align="center">
+    <h5>没使用sync.Pool</h5>
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210711180143.png" style="width:30%">
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210711175446.png" style="width:30%">
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210711175358.png" style="width:80%">
+</p>
+
+<p align="center">
+    <h5>使用sync.Pool</h5>
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210711175727.png" style="width:80%">
+</p>
+
+
+<h4 id="9-2-2-Web服务场景"><a href="#9-2-2-Web服务场景" class="headerlink" title="9.2.2 Web服务场景"></a>9.2.2 Web服务场景</h4><hr>
+<p>使用：</p>
+<p>同样引入包<code>net/http/pprof</code></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;net/http&quot;</span></span><br><span class="line">	<span class="comment">// 引入pprof包</span></span><br><span class="line">	<span class="comment">// _代表只执行包内的init函数</span></span><br><span class="line">	_ <span class="string">&quot;net/http/pprof&quot;</span></span><br><span class="line"></span><br><span class="line">	<span class="string">&quot;github.com/gin-gonic/gin&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 全局变量不会像PHP一样，在完成一次请求之后被销毁</span></span><br><span class="line"><span class="keyword">var</span> GlobalVarDemo <span class="type">int32</span> = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 模拟接口逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	r := gin.Default()</span><br><span class="line">	r.GET(<span class="string">&quot;/ping&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">		GlobalVarDemo++</span><br><span class="line">		c.JSON(<span class="number">200</span>, gin.H&#123;</span><br><span class="line">			<span class="string">&quot;message&quot;</span>: GlobalVarDemo,</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="comment">// 再开启一个端口获取pprof数据</span></span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		http.ListenAndServe(<span class="string">&quot;:8888&quot;</span>, <span class="literal">nil</span>)</span><br><span class="line">	&#125;()</span><br><span class="line">	<span class="comment">// 启动web服务</span></span><br><span class="line">	r.Run()</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>启动服务后执行如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. </span><br><span class="line">生成trace.out文件命令：</span><br><span class="line">curl http://localhost:8888/debug/pprof/trace?seconds=20 &gt; trace.out</span><br><span class="line"></span><br><span class="line">和上面命令同时执行，模拟请求，也可以用ab：</span><br><span class="line">siege -c 50 -t 100 &quot;http://localhost:8080/ping&quot;</span><br><span class="line"></span><br><span class="line">2. 分析trace.out文件命令：</span><br><span class="line">go tool trace -http=127.0.0.1:8000 trace.out</span><br><span class="line"></span><br><span class="line">快捷健：</span><br><span class="line">w 放大</span><br><span class="line">e 右移</span><br></pre></td></tr></table></figure>
+
+<p>
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210711212814.png" style="width:80%">
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210711213345.png" style="width:80%">
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210711213416.png" style="width:30%">
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210711213519.png" style="width:80%">
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210711214610.png" style="width:80%">
+</p>
+
+<h3 id="9-3-dlv工具的使用"><a href="#9-3-dlv工具的使用" class="headerlink" title="9.3 dlv工具的使用"></a>9.3 dlv工具的使用</h3><hr>
+<h4 id="9-3-1-基准测试场景"><a href="#9-3-1-基准测试场景" class="headerlink" title="9.3.1 基准测试场景"></a>9.3.1 基准测试场景</h4><hr>
+<p>作用：断点调试等。</p>
+<p>安装：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">go install github.com/go-delve/delve/cmd/dlv@latest</span><br></pre></td></tr></table></figure>
+
+<p>使用：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	_ <span class="string">&quot;net/http/pprof&quot;</span></span><br><span class="line"></span><br><span class="line">	<span class="string">&quot;github.com/gin-gonic/gin&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 全局变量不会像PHP一样，在完成一次请求之后被销毁</span></span><br><span class="line"><span class="keyword">var</span> GlobalVarDemo <span class="type">int32</span> = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 模拟接口逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	r := gin.Default()</span><br><span class="line">	r.GET(<span class="string">&quot;/ping&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">		GlobalVarDemo++</span><br><span class="line">		c.JSON(<span class="number">200</span>, gin.H&#123;</span><br><span class="line">			<span class="string">&quot;message&quot;</span>: GlobalVarDemo,</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;)</span><br><span class="line">	r.Run()</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>命令行执行命令:</p>
+<blockquote>
+<p>dlv debug main.go</p>
+</blockquote>
+<p>进入调试，常用调试命令：</p>
+<ul>
+<li>（list或l：输出代码）：list main.go:16</li>
+<li>（break或b：断点命令）：执行 <code>break main.go:16</code> 给行 <code>GlobalVarDemo++</code>打断点</li>
+<li>（continue或c：继续执行）：continue</li>
+<li>（print或p：打印变量）：<code>print GlobalVarDemo</code></li>
+<li>（step或s：可以进入函数）：step</li>
+</ul>
+<p>更多命令请执行 <code>help</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">模拟请求：</span><br><span class="line">curl http://localhost:8080/ping</span><br></pre></td></tr></table></figure>
+
+<p align="center">
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210711164556.png" style="width:80%">
+</p>
+
+<p align="center">
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210711172959.png" style="width:80%">
+</p>
+
+<h4 id="9-3-2-Web服务场景"><a href="#9-3-2-Web服务场景" class="headerlink" title="9.3.2 Web服务场景"></a>9.3.2 Web服务场景</h4><hr>
+<p>还是这个demo</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;github.com/gin-gonic/gin&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 全局变量不会像PHP一样，在完成一次请求之后被销毁</span></span><br><span class="line"><span class="keyword">var</span> GlobalVarDemo <span class="type">int32</span> = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 模拟接口逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	r := gin.Default()</span><br><span class="line">	r.GET(<span class="string">&quot;/ping&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">		GlobalVarDemo++</span><br><span class="line">		c.JSON(<span class="number">200</span>, gin.H&#123;</span><br><span class="line">			<span class="string">&quot;message&quot;</span>: GlobalVarDemo,</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="comment">// 启动web服务</span></span><br><span class="line">	r.Run()</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>找到服务进程ID <code>lsof -i :8080</code></li>
+<li>dlv调试进程 <code>dlv attach 36968</code></li>
+<li>进入调试模式，调试代码（和上面一样）</li>
+</ul>
+<h3 id="9-4-扩展-逃逸分析"><a href="#9-4-扩展-逃逸分析" class="headerlink" title="9.4(扩展) 逃逸分析"></a>9.4(扩展) 逃逸分析</h3><hr>
+<blockquote>
+<p>逃逸分析命令：go build -gcflags “-m -l” *.go</p>
+</blockquote>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Demo <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	DemoFun()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">DemoFun</span><span class="params">()</span></span> *Demo &#123;</span><br><span class="line">	demo := &amp;Demo&#123;&#125;</span><br><span class="line">	<span class="keyword">return</span> demo</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// # command-line-arguments</span></span><br><span class="line"><span class="comment">// ./main.go:11:10: &amp;Demo literal escapes to heap &lt;------- 局部变量内存被分配到堆上</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="9-5-扩展-汇编代码"><a href="#9-5-扩展-汇编代码" class="headerlink" title="9.5(扩展) 汇编代码"></a>9.5(扩展) 汇编代码</h3><hr>
+<blockquote>
+<p>直接生成汇编代码命令：go run -gcflags -S main.go</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># command-line-arguments</span><br><span class="line">&quot;&quot;.main STEXT nosplit size=1 args=0x0 locals=0x0</span><br><span class="line">        0x0000 00000 (.../demo/main.go:6)  TEXT    &quot;&quot;.main(SB), NOSPLIT|ABIInternal, $0-0</span><br><span class="line">        0x0000 00000 (.../demo/main.go:6)  FUNCDATA        $0, gclocals·33cdeccccebe80329f1fdbee7f5874cb(SB)</span><br><span class="line">        0x0000 00000 (.../demo/main.go:6)  FUNCDATA        $1, gclocals·33cdeccccebe80329f1fdbee7f5874cb(SB)</span><br><span class="line">        0x0000 00000 (.../demo/main.go:6)  FUNCDATA        $2, gclocals·33cdeccccebe80329f1fdbee7f5874cb(SB)</span><br><span class="line">        0x0000 00000 (&lt;unknown line number&gt;)    RET</span><br><span class="line">        0x0000 c3       </span><br><span class="line">		略......                              </span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>获取生成汇编代码整个优化过程：GOSSAFUNC&#x3D;main go build main.go</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dumped SSA to ./ssa.html &lt;------- 生成的文件，浏览器打开此文件</span><br></pre></td></tr></table></figure>
+
+<p align="center">
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210714144240.png" style="width:100%">
+</p>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><hr>
+<p>最后我们再总结下，从PHPer到Gopher的过程，我们重点需要关注的几点如下：</p>
+<ul>
+<li>PHP和Go常用代码块的对应关系</li>
+<li>常驻内存<ul>
+<li>全局变量使用</li>
+<li>资源<ul>
+<li>复用</li>
+<li>释放</li>
+<li>返还</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>指针</li>
+<li>并发<ul>
+<li>并发安全</li>
+<li>并发控制</li>
+<li>超时控制</li>
+</ul>
+</li>
+<li>单元测试&amp;基准测试</li>
+<li>性能分析</li>
+</ul>
+
+
+<!-- Tags -->
+
+
+
+<div class="tags">
+    <a href="/tags/Go/" class="button small">Go</a>
+</div>
+
+
+
+<!-- Qrcode -->
+<div width="100px">
+    <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg" alt="TIGERB" width="300px" style="display:block; margin: 30px auto 0px auto;">
+</div>
+
+<!-- Comments -->
+<div>
+    
+
+
+</div>
+
+
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+        <section>
+            <h2>About</h2>
+            <div>
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。现世界500强技术经理，拥有丰富的架构、电商系统设计、高并发、体系流程建设和管理经验。<br><br><img style="vertical-align:middle" width="30%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+            </div>
+        </section>
+        <section>
+            <h2>Follow</h2>
+            <ul class="icons">
+                
+                    <li><a href="https://twitter.com/CODERCOOKER" class="icon style2 fa-twitter" target="_blank" ><span class="label">Twitter</span></a></li>
+                
+                
+                
+                
+                
+                    <li><a href="https://github.com/TIGERB" class="icon style2 fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
+                
+                
+                
+                
+                
+                    <li><a href="mailto:tigerbcode@gmail.com" class="icon style2 fa-envelope-o" target="_blank" ><span class="label">Email</span></a></li>
+                
+                
+                    <li><a href="\atom.xml" class="icon style2 fa-rss" target="_blank" ><span class="label">RSS</span></a></li>
+                
+            </ul>
+        </section>
+        <ul class="copyright">
+            <li>&copy; TIGERB.cn All right reserved. 津ICP备17006784号-2</li>
+            <li><a href="https://juejin.im/user/5855e82d1b69e6006c9278b4" target="_blank">juejin</a></li>
+            <li><a href="https://segmentfault.com/u/tigerb" target="_blank">Segmentfault</a></li>
+            <li><a target="_blank" rel="noopener" href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
+            <li><a href="http://tigerb.cn/go/#/patterns/">Go设计模式实战</a></li>
+            <li><a href="http://tigerb.cn/go/#/kernal/">Go语言轻松进阶</a></li>
+            <li><a target="_blank" rel="noopener" href="https://dayutalk.cn/">大愚Talk</a></li>
+        </ul>
+    </div>
+</footer>
+    </div>
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- skel -->
+
+<script src="/js/skel.min.js"></script>
+
+
+<!-- Custom Code -->
+
+<script src="/js/util.js"></script>
+
+
+<!--[if lte IE 8]>
+
+<script src="/js/ie/respond.min.js"></script>
+
+<![endif]-->
+
+<!-- Custom Code -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Gallery -->
+<script src="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+</body>
+
+</html>

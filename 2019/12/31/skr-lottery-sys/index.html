@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Description-->
+    
+        <meta name="description" content="Trying to be the person you want to be.">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="施展">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="通用抽奖工具之系统设计"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="施展TIGERB"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content=""/>
+    
+
+    <!-- Title -->
+    
+    <title>通用抽奖工具之系统设计 - 施展TIGERB</title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/sass/main.css">
+
+
+    <!--[if lt IE 8]>
+        
+<script src="/js/ie/html5shiv.js"></script>
+
+    <![endif]-->
+
+    <!--[if lt IE 8]>
+        
+<link rel="stylesheet" href="/sass/ie8.css">
+
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+        
+<link rel="stylesheet" href="/sass/ie9.css">
+
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?30c7e7d53256334a8dc1cf524fcc77f6";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Menu -->
+        <!-- Header -->
+<header id="header">
+    <div class="inner">
+
+        <!-- Logo -->
+        <a href="/" class="logo">
+            <span class="symbol"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20190707142019.png" alt="" /></span><span class="title">施展TIGERB</span>
+        </a>
+
+        <!-- Nav -->
+        <nav>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+    <h2>Menu</h2>
+    <ul>
+        
+            <li>
+                <a href="/">首页</a>
+            </li>
+        
+            <li>
+                <a target="_blank" rel="noopener" href="https://github.com/TIGERB">Github</a>
+            </li>
+        
+            <li>
+                <a target="_blank" rel="noopener" href="https://segmentfault.com/u/tigerb">Segmentfault</a>
+            </li>
+        
+            <li>
+                <a target="_blank" rel="noopener" href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
+            </li>
+        
+    </ul>
+</nav>
+
+
+        <div id="main">
+            <div class="inner">
+
+                <!-- Main Content -->
+                
+
+    <h1 class="title">通用抽奖工具之系统设计</h1>
+    <div class="meta">
+        2019-12-31
+    </div>
+
+
+    <span class="image main"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20191231223355.jpg?imageMogr2/thumbnail/1280x760!/format/webp/blur/1x0/quality/55|imageslim" alt="" /></span>
+
+
+<!-- Gallery -->
+
+
+<!-- Content -->
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上篇文章<a href="http://tigerb.cn/2019/12/23/skr-lottery/">《SkrShop通用抽奖工具之需求分析》</a>我们已经通过一些常见的抽奖场景，得到了符合这些抽奖场景的抽奖工具五要素：</p>
+<table>
+<thead>
+<tr>
+<th>抽奖五要素</th>
+<th>要素名称</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第一要素</td>
+<td>活动</td>
+</tr>
+<tr>
+<td>第二要素</td>
+<td>场次</td>
+</tr>
+<tr>
+<td>第三要素</td>
+<td>奖品</td>
+</tr>
+<tr>
+<td>第四要素</td>
+<td>中奖概率</td>
+</tr>
+<tr>
+<td>第五要素</td>
+<td>均匀投奖</td>
+</tr>
+</tbody></table>
+<p>以及创建一个抽奖活动的5个基本步骤，如下：</p>
+<ol>
+<li>活动配置</li>
+<li>场次配置</li>
+<li>奖品配置</li>
+<li>奖品中奖概率配置</li>
+<li>奖品投奖配置</li>
+</ol>
+<blockquote>
+<p>上篇文章回顾 <a href="http://tigerb.cn/2019/12/23/skr-lottery/">《Skr-Shop通用抽奖工具之需求分析》</a></p>
+</blockquote>
+<p>需求已经分析完了，今天我们就来看看这通用抽奖工具具体的设计，分为如下三个部分：</p>
+<ul>
+<li>DB设计</li>
+<li>配置后台设计</li>
+<li>接口设计</li>
+</ul>
+<h2 id="DB设计"><a href="#DB设计" class="headerlink" title="DB设计"></a>DB设计</h2><p>第一要素<code>活动配置</code>的<code>抽奖活动表</code>：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 通用抽奖工具(万能胶Glue) glue_activity 抽奖活动表</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `glue_activity` (</span><br><span class="line">    `id` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT COMMENT <span class="string">&#x27;活动ID&#x27;</span>,</span><br><span class="line">    `serial_no` <span class="type">char</span>(<span class="number">16</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;&#x27;</span> COMMENT <span class="string">&#x27;活动编号(md5值中间16位)&#x27;</span>,</span><br><span class="line">    `name` <span class="type">varchar</span>(<span class="number">255</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;&#x27;</span> COMMENT <span class="string">&#x27;活动名称&#x27;</span>,</span><br><span class="line">    `description` <span class="type">varchar</span>(<span class="number">255</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;&#x27;</span> COMMENT <span class="string">&#x27;活动描述&#x27;</span>,</span><br><span class="line">    `activity_type` tinyint(<span class="number">1</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;1&#x27;</span> COMMENT <span class="string">&#x27;活动抽奖类型1: 按时间抽奖 2: 按抽奖次数抽奖 3:按数额范围区间抽奖&#x27;</span>,</span><br><span class="line">    `probability_type` tinyint(<span class="number">1</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;1&#x27;</span> COMMENT <span class="string">&#x27;中奖概率类型1: static 2: dynamic&#x27;</span>,</span><br><span class="line">    `times_limit` tinyint(<span class="number">3</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;抽奖次数限制，0默认不限制&#x27;</span>,</span><br><span class="line">    `start_at` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;活动开始时间&#x27;</span>,</span><br><span class="line">    `end_at` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;活动结束时间&#x27;</span>,</span><br><span class="line">    `create_at` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;创建时间&#x27;</span>,</span><br><span class="line">    `create_by` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;创建人staff_id&#x27;</span>,</span><br><span class="line">    `update_at` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;更新时间&#x27;</span>,</span><br><span class="line">    `update_by` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;修改人staff_id&#x27;</span>,</span><br><span class="line">    `status` tinyint(<span class="number">1</span>)  <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;状态 -1:deleted, 0:disable, 1:enable&#x27;</span>,</span><br><span class="line">    <span class="keyword">PRIMARY</span> KEY (`id`)</span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8mb4 COMMENT<span class="operator">=</span><span class="string">&#x27;抽奖活动表&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>第二要素<code>场次配置</code>的<code>抽奖场次表</code>：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 通用抽奖工具(万能胶Glue) glue_session 抽奖场次表</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `glue_session` (</span><br><span class="line">    `id` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT COMMENT <span class="string">&#x27;场次ID&#x27;</span>,</span><br><span class="line">    `activity_id` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;活动ID&#x27;</span>,</span><br><span class="line">    `times_limit` tinyint(<span class="number">3</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;抽奖次数限制，0默认不限制&#x27;</span>,</span><br><span class="line">    `start_at` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;场次开始时间&#x27;</span>,</span><br><span class="line">    `end_at` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;场次结束时间&#x27;</span>,</span><br><span class="line">    `create_at` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;创建时间&#x27;</span>,</span><br><span class="line">    `create_by` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;创建人staff_id&#x27;</span>,</span><br><span class="line">    `update_at` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;更新时间&#x27;</span>,</span><br><span class="line">    `update_by` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;修改人staff_id&#x27;</span>,</span><br><span class="line">    `status` tinyint(<span class="number">1</span>)  <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;状态 -1:deleted, 0:disable, 1:enable&#x27;</span>,</span><br><span class="line">    <span class="keyword">PRIMARY</span> KEY (`id`)</span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8mb4 COMMENT<span class="operator">=</span><span class="string">&#x27;抽奖场次表&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>第三、四要素<code>奖品配置</code>的<code>抽奖场次奖品表</code>：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 通用抽奖工具(万能胶Glue) glue_session_prizes 抽奖场次奖品表</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `glue_session_prizes` (</span><br><span class="line">    `id` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT COMMENT <span class="string">&#x27;自增ID&#x27;</span>,</span><br><span class="line">    `session_id` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;场次ID&#x27;</span>,</span><br><span class="line">    `node` <span class="type">varchar</span>(<span class="number">255</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;&#x27;</span> COMMENT <span class="string">&#x27;节点标识 按时间抽奖: 空值, 按抽奖次数抽奖: 第几次参与值, 按数额范围区间抽奖: 数额区间上限值&#x27;</span>,</span><br><span class="line">    `prize_type` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;奖品类型 1:优惠券, 2:积分, 3:实物, 4:空奖 ...&#x27;</span>,</span><br><span class="line">    `name` <span class="type">varchar</span>(<span class="number">255</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;&#x27;</span> COMMENT <span class="string">&#x27;奖品名称&#x27;</span>,</span><br><span class="line">    `pic_url` <span class="type">varchar</span>(<span class="number">255</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;&#x27;</span> COMMENT <span class="string">&#x27;奖品图片&#x27;</span>,</span><br><span class="line">    `<span class="keyword">value</span>` <span class="type">varchar</span>(<span class="number">255</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;&#x27;</span> COMMENT <span class="string">&#x27;奖品抽象值 优惠券:优惠券ID, 积分:积分值, 实物: sku ID&#x27;</span>,</span><br><span class="line">    `probability` tinyint(<span class="number">3</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;中奖概率1~100&#x27;</span>,</span><br><span class="line">    `create_at` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;创建时间&#x27;</span>,</span><br><span class="line">    `create_by` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;创建人staff_id&#x27;</span>,</span><br><span class="line">    `update_at` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;更新时间&#x27;</span>,</span><br><span class="line">    `update_by` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;修改人staff_id&#x27;</span>,</span><br><span class="line">    `status` tinyint(<span class="number">1</span>)  <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;状态 -1:deleted, 0:disable, 1:enable&#x27;</span>,</span><br><span class="line">    <span class="keyword">PRIMARY</span> KEY (`id`)</span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8mb4 COMMENT<span class="operator">=</span><span class="string">&#x27;抽奖场次奖品表&#x27;</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>第五要素<code>均匀投奖</code>的<code>抽奖场次奖品定时投放器表</code>：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 通用抽奖工具(万能胶Glue) glue_session_prizes_timer 抽奖场次奖品定时投放器表</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `glue_session_prizes_timer` (</span><br><span class="line">    `id` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT COMMENT <span class="string">&#x27;自增ID&#x27;</span>,</span><br><span class="line">    `session_prizes_id` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;抽奖场次奖品ID&#x27;</span>,</span><br><span class="line">    `delivery_at` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;定时投放奖品数量的时间&#x27;</span>,</span><br><span class="line">    `prize_quantity` tinyint(<span class="number">3</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;奖品数量&#x27;</span>,</span><br><span class="line">    `create_at` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;创建时间&#x27;</span>,</span><br><span class="line">    `create_by` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;创建人staff_id&#x27;</span>,</span><br><span class="line">    `update_at` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;更新时间&#x27;</span>,</span><br><span class="line">    `update_by` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;修改人staff_id&#x27;</span>,</span><br><span class="line">    `status` tinyint(<span class="number">1</span>)  <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;状态 -1:deleted, 0:wait, 1:success&#x27;</span>,</span><br><span class="line">    <span class="keyword">PRIMARY</span> KEY (`id`)</span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8mb4 COMMENT<span class="operator">=</span><span class="string">&#x27;抽奖场次奖品定时投放器表&#x27;</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>其他表，抽奖记录&amp;奖品发放记录表：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 通用抽奖工具(万能胶Glue) glue_user_draw_record 用户抽奖记录表</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `glue_user_draw_record` (</span><br><span class="line">    `id` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT COMMENT <span class="string">&#x27;自增ID&#x27;</span>,</span><br><span class="line">    `activity_id` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;活动ID&#x27;</span>,</span><br><span class="line">    `session_id` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;场次ID&#x27;</span>,</span><br><span class="line">    `prize_type_id` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;奖品类型ID&#x27;</span>,</span><br><span class="line">    `user_id` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;创建人user_id&#x27;</span>,</span><br><span class="line">    `create_at` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;创建时间&#x27;</span>,</span><br><span class="line">    `update_at` <span class="type">int</span>(<span class="number">11</span>) unsigned <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;更新时间&#x27;</span>,</span><br><span class="line">    `status` tinyint(<span class="number">1</span>)  <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;状态 -1:未中奖, 1:已中奖 , 2: 发奖失败 , 3: 已发奖&#x27;</span>,</span><br><span class="line">    `log` text COMMENT <span class="string">&#x27;操作信息等记录&#x27;</span>,</span><br><span class="line">    <span class="keyword">PRIMARY</span> KEY (`id`)</span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8mb4 COMMENT<span class="operator">=</span><span class="string">&#x27;用户抽奖记录表&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置后台设计"><a href="#配置后台设计" class="headerlink" title="配置后台设计"></a>配置后台设计</h2><h4 id="创建活动"><a href="#创建活动" class="headerlink" title="创建活动"></a>创建活动</h4><p align="center">
+    <a target="_blank" rel="noopener" href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20191229224816.png?imageMogr2/thumbnail/1934x1567!/format/webp/blur/1x0/quality/75|imageslim" data-lightbox="roadtrip">
+        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20191229224816.png?imageMogr2/thumbnail/1934x1567!/format/webp/blur/1x0/quality/75|imageslim" width="66%">
+    </a>
+</p>
+
+<h4 id="创建活动场次-按数额范围区间抽奖"><a href="#创建活动场次-按数额范围区间抽奖" class="headerlink" title="创建活动场次-按数额范围区间抽奖"></a>创建活动场次-按数额范围区间抽奖</h4><p align="center">
+    <a target="_blank" rel="noopener" href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20191230081157.png?imageMogr2/thumbnail/971x2069!/format/webp/blur/1x0/quality/75%7Cimageslim" data-lightbox="roadtrip">
+        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20191230081157.png?imageMogr2/thumbnail/971x2069!/format/webp/blur/1x0/quality/75%7Cimageslim" width="66%">
+    </a>
+</p>
+
+<p align="center">
+    <a target="_blank" rel="noopener" href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20191229224543.png?imageMogr2/thumbnail/971x2214!/format/webp/blur/1x0/quality/75%7Cimageslim" data-lightbox="roadtrip">
+        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20191229224543.png?imageMogr2/thumbnail/971x2214!/format/webp/blur/1x0/quality/75%7Cimageslim" width="66%">
+    </a>
+</p>
+
+<p align="center">
+    <a target="_blank" rel="noopener" href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20191229224834.png?imageMogr2/thumbnail/971x1693!/format/webp/blur/1x0/quality/75%7Cimageslim" data-lightbox="roadtrip">
+        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20191229224834.png?imageMogr2/thumbnail/971x1693!/format/webp/blur/1x0/quality/75%7Cimageslim" width="66%">
+    </a>
+</p>
+
+<h4 id="活动列表"><a href="#活动列表" class="headerlink" title="活动列表"></a>活动列表</h4><p align="center">
+    <a target="_blank" rel="noopener" href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20191229223706.png?imageMogr2/thumbnail/1338x761!/format/webp/blur/1x0/quality/75%7Cimageslim" data-lightbox="roadtrip">
+        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20191229223706.png?imageMogr2/thumbnail/1338x761!/format/webp/blur/1x0/quality/75%7Cimageslim" width="66%">
+    </a>
+</p>
+
+
+<h2 id="接口设计"><a href="#接口设计" class="headerlink" title="接口设计"></a>接口设计</h2><ol>
+<li>获取活动信息 GET {version}&#x2F;glue&#x2F;activity</li>
+</ol>
+<p>请求参数：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>是否必传</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>serial_no</td>
+<td>string</td>
+<td>Y</td>
+<td>活动编号</td>
+</tr>
+</tbody></table>
+<p>响应内容：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;code&quot;</span><span class="punctuation">:</span> <span class="string">&quot;200&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;msg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;OK&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;result&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;serial_no&quot;</span><span class="punctuation">:</span> <span class="string">&quot;string, 活动编号&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;number, 活动抽奖类型1: 按时间抽奖 2: 按抽奖次数抽奖 3:按数额范围区间抽奖&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;string, 活动名称&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;description&quot;</span><span class="punctuation">:</span> <span class="string">&quot;string, 活动描述&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;start_time&quot;</span><span class="punctuation">:</span> <span class="string">&quot;number, 活动开始时间&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;end_time&quot;</span><span class="punctuation">:</span> <span class="string">&quot;number, 活动开始时间&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;remaining_times&quot;</span><span class="punctuation">:</span> <span class="string">&quot;number, 活动抽奖次数限制，0不限制&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;sessions_list&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span></span><br><span class="line">            <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;start_time&quot;</span><span class="punctuation">:</span> <span class="string">&quot;number, 场次开始时间&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;end_time&quot;</span><span class="punctuation">:</span> <span class="string">&quot;number, 场次开始时间&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;remaining_times&quot;</span><span class="punctuation">:</span> <span class="string">&quot;number, 场次抽奖次数限制，0不限制&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;prizes_list&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                    <span class="punctuation">&#123;</span></span><br><span class="line">                        <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;string, 奖品名称&quot;</span><span class="punctuation">,</span></span><br><span class="line">                        <span class="attr">&quot;pic_url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;string, 奖品图片&quot;</span></span><br><span class="line">                    <span class="punctuation">&#125;</span></span><br><span class="line">                <span class="punctuation">]</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>抽奖 POST {version}&#x2F;glue&#x2F;activity&#x2F;draw</li>
+</ol>
+<p>请求参数：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>是否必传</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>serial_no</td>
+<td>string</td>
+<td>Y</td>
+<td>活动编号</td>
+</tr>
+<tr>
+<td>uid</td>
+<td>number</td>
+<td>Y</td>
+<td>用户ID</td>
+</tr>
+</tbody></table>
+<p>响应内容：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 中奖</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;code&quot;</span><span class="punctuation">:</span> <span class="string">&quot;200&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;msg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;OK&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;result&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;serial_no&quot;</span><span class="punctuation">:</span> <span class="string">&quot;string, spu id&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;act_remaining_times&quot;</span><span class="punctuation">:</span> <span class="string">&quot;number, 本活动抽奖剩余次数，0不限制&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;session_remaining_times&quot;</span><span class="punctuation">:</span> <span class="string">&quot;number, 本场次抽奖剩余次数，0不限制&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;prizes_info&quot;</span><span class="punctuation">:</span> </span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;string, 奖品名称&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;pic_url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;string, 奖品图片&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 未中奖</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;code&quot;</span><span class="punctuation">:</span> <span class="string">&quot;401&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;msg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;result&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        </span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>活动营销系统中的第一个字系统<strong>通用抽奖工具</strong>今天讲完了，希望对大家有一定的帮助或启示。</p>
+<h2 id="彩蛋"><a href="#彩蛋" class="headerlink" title="彩蛋"></a>彩蛋</h2><p>通用抽奖工具的代码设计特别适合设计模式中的<code>模板模式</code>，你们觉着呢😏😏😏。所以，新的一年我会再写一篇《[Skr-Shop]通用抽奖工具之代码设计》吗？</p>
+<p>(O_O)?</p>
+<h2 id="2020"><a href="#2020" class="headerlink" title="2020"></a>2020</h2><p>最后后，祝大家2020年新年🆕快乐~</p>
+
+
+<!-- Tags -->
+
+
+
+<div class="tags">
+    <a href="/tags/shop/" class="button small">shop</a>
+</div>
+
+
+
+<!-- Qrcode -->
+<div width="100px">
+    <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg" alt="TIGERB" width="300px" style="display:block; margin: 30px auto 0px auto;">
+</div>
+
+<!-- Comments -->
+<div>
+    
+
+
+</div>
+
+
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+        <section>
+            <h2>About</h2>
+            <div>
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。现世界500强技术经理，拥有丰富的架构、电商系统设计、高并发、体系流程建设和管理经验。<br><br><img style="vertical-align:middle" width="30%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+            </div>
+        </section>
+        <section>
+            <h2>Follow</h2>
+            <ul class="icons">
+                
+                    <li><a href="https://twitter.com/CODERCOOKER" class="icon style2 fa-twitter" target="_blank" ><span class="label">Twitter</span></a></li>
+                
+                
+                
+                
+                
+                    <li><a href="https://github.com/TIGERB" class="icon style2 fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
+                
+                
+                
+                
+                
+                    <li><a href="mailto:tigerbcode@gmail.com" class="icon style2 fa-envelope-o" target="_blank" ><span class="label">Email</span></a></li>
+                
+                
+                    <li><a href="\atom.xml" class="icon style2 fa-rss" target="_blank" ><span class="label">RSS</span></a></li>
+                
+            </ul>
+        </section>
+        <ul class="copyright">
+            <li>&copy; TIGERB.cn All right reserved. 津ICP备17006784号-2</li>
+            <li><a href="https://juejin.im/user/5855e82d1b69e6006c9278b4" target="_blank">juejin</a></li>
+            <li><a href="https://segmentfault.com/u/tigerb" target="_blank">Segmentfault</a></li>
+            <li><a target="_blank" rel="noopener" href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
+            <li><a href="http://tigerb.cn/go/#/patterns/">Go设计模式实战</a></li>
+            <li><a href="http://tigerb.cn/go/#/kernal/">Go语言轻松进阶</a></li>
+            <li><a target="_blank" rel="noopener" href="https://dayutalk.cn/">大愚Talk</a></li>
+        </ul>
+    </div>
+</footer>
+    </div>
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- skel -->
+
+<script src="/js/skel.min.js"></script>
+
+
+<!-- Custom Code -->
+
+<script src="/js/util.js"></script>
+
+
+<!--[if lte IE 8]>
+
+<script src="/js/ie/respond.min.js"></script>
+
+<![endif]-->
+
+<!-- Custom Code -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Gallery -->
+<script src="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+</body>
+
+</html>

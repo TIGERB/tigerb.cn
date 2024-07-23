@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Description-->
+    
+        <meta name="description" content="Trying to be the person you want to be.">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="施展">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="程序员如何做&#34;好&#34;需求判断？"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="施展TIGERB"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content=""/>
+    
+
+    <!-- Title -->
+    
+    <title>程序员如何做&#34;好&#34;需求判断？ - 施展TIGERB</title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/sass/main.css">
+
+
+    <!--[if lt IE 8]>
+        
+<script src="/js/ie/html5shiv.js"></script>
+
+    <![endif]-->
+
+    <!--[if lt IE 8]>
+        
+<link rel="stylesheet" href="/sass/ie8.css">
+
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+        
+<link rel="stylesheet" href="/sass/ie9.css">
+
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?30c7e7d53256334a8dc1cf524fcc77f6";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Menu -->
+        <!-- Header -->
+<header id="header">
+    <div class="inner">
+
+        <!-- Logo -->
+        <a href="/" class="logo">
+            <span class="symbol"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20190707142019.png" alt="" /></span><span class="title">施展TIGERB</span>
+        </a>
+
+        <!-- Nav -->
+        <nav>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+    <h2>Menu</h2>
+    <ul>
+        
+            <li>
+                <a href="/">首页</a>
+            </li>
+        
+            <li>
+                <a target="_blank" rel="noopener" href="https://github.com/TIGERB">Github</a>
+            </li>
+        
+            <li>
+                <a target="_blank" rel="noopener" href="https://segmentfault.com/u/tigerb">Segmentfault</a>
+            </li>
+        
+            <li>
+                <a target="_blank" rel="noopener" href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
+            </li>
+        
+    </ul>
+</nav>
+
+
+        <div id="main">
+            <div class="inner">
+
+                <!-- Main Content -->
+                
+
+    <h1 class="title">程序员如何做"好"需求判断？</h1>
+    <div class="meta">
+        2024-07-07
+    </div>
+
+
+    <span class="image main"><img src="No Code No Life" alt="" /></span>
+
+
+<!-- Gallery -->
+
+
+<!-- Content -->
+<h1 id="1-导语"><a href="#1-导语" class="headerlink" title="1. 导语"></a>1. 导语</h1><hr>
+<p>本文作为2024上半年核心思考之二。</p>
+<p>通过他人经验传导、个人实践、广泛阅读书籍(方法论类、企业经营类、传记类、财务类，<strong>具体书单附文末</strong>)，学会<strong>基于更高阶的经营者视角</strong>来做<strong>好</strong>业务需求判断。本文思路如下：</p>
+<ul>
+<li>首先，抛一个灵魂问题让大家思考: 你评估过自己负责的项目做的好不好吗？</li>
+<li>接着，带着问题看解决思路</li>
+</ul>
+<h1 id="2-引人深思的问题"><a href="#2-引人深思的问题" class="headerlink" title="2. 引人深思的问题"></a>2. 引人深思的问题</h1><hr>
+<p>正在看本文的你：</p>
+<blockquote>
+<p>评估过自己负责的项目做的好不好吗？</p>
+</blockquote>
+<p>可能大多数人的答案是「按时、按质做完」。这个答案没错。接着，继续问：</p>
+<blockquote>
+<p>按时，按质的标准是什么？</p>
+</blockquote>
+<p>对于我们程序员来说，可能标准的答案：</p>
+<ul>
+<li><p>按时：业务预期时间内完成项目交付</p>
+</li>
+<li><p>按质：</p>
+</li>
+<li><ul>
+<li>功能：满足业务需求（实现功能）</li>
+<li>性能：接口峰值QPS满足业务极端场景等</li>
+<li>质量：千行代码bug率、故障数</li>
+<li>收益：符合预期</li>
+</ul>
+</li>
+</ul>
+<p>这个答案没问题，只是不够。</p>
+<blockquote>
+<p>不够在哪？</p>
+</blockquote>
+<p>答：基于更高的要求，不够在缺少个人思考：<strong>缺少基于经营者视角的思考</strong>，也就是经营者意识。如果能想到「按时、按质做完」答案的同学，在团队中主要还是扮演执行者的角色（项目来了，按时按质交付），如下：</p>
+<p align="center">
+  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/management%2F%E6%89%A7%E8%A1%8C%E8%80%85_%E6%80%9D%E8%BE%A8%E8%80%85%2F%E6%89%A7%E8%A1%8C%E8%80%85.png" style="width:100%">
+</p>
+
+<p>所以：</p>
+<blockquote>
+<p>程序员如何能以<strong>经营者视角的思考</strong>评估工作呢？</p>
+</blockquote>
+<p>答：核心自驱完成从“执行者”到“思辨者(具备经营者意识)”转变。如何完成？主要步骤如下：</p>
+<ul>
+<li><p><strong>明确角色转变目标</strong></p>
+</li>
+<li><p><strong>如何实现角色转变？</strong></p>
+</li>
+<li><ul>
+<li><strong>养成习惯（解决有没有的问题）</strong>：解决<strong>有没有</strong>以经营者视角思考的问题</li>
+<li><strong>结构化思维+阅读（解决好不好的问题）</strong>：通过阅读，学习结构化思维和企业经营知识、财务知识、互联网思维等，解决经营者视角做的<strong>好不好</strong>的问题</li>
+</ul>
+</li>
+</ul>
+<h1 id="3-如何以经营者视角评估工作？"><a href="#3-如何以经营者视角评估工作？" class="headerlink" title="3. 如何以经营者视角评估工作？"></a>3. 如何以经营者视角评估工作？</h1><hr>
+<h2 id="3-1-明确角色转变目标"><a href="#3-1-明确角色转变目标" class="headerlink" title="3.1 明确角色转变目标"></a>3.1 明确角色转变目标</h2><p><strong>从“执行者”到“思辨者”的转变，且是具备经营者意识的思辨者。</strong></p>
+<blockquote>
+<p>什么是思辨者？</p>
+</blockquote>
+<h3 id="3-1-1-什么是思辨者？"><a href="#3-1-1-什么是思辨者？" class="headerlink" title="3.1.1 什么是思辨者？"></a>3.1.1 什么是思辨者？</h3><p>对于同样的任务输入，思辨者相对于执行者：</p>
+<p><strong>表现上：</strong></p>
+<ul>
+<li>会多问为什么？</li>
+<li>会积极发表意见和建议</li>
+</ul>
+<p><strong>根上：</strong></p>
+<ul>
+<li>搞清楚逻辑：为什么这么做？</li>
+<li>合理性判断：这里的逻辑是不是有什么问题？</li>
+<li>建设性建议：这样做是不是会更好？</li>
+</ul>
+<p align="center">
+  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/management%2F%E6%89%A7%E8%A1%8C%E8%80%85_%E6%80%9D%E8%BE%A8%E8%80%85%2F%E6%80%9D%E8%BE%A8%E8%80%85.png" style="width:100%">
+</p>
+
+
+<blockquote>
+<p>什么是经营者意识？</p>
+</blockquote>
+<h3 id="3-1-2-什么是经营者意识？"><a href="#3-1-2-什么是经营者意识？" class="headerlink" title="3.1.2 什么是经营者意识？"></a>3.1.2 什么是经营者意识？</h3><p>开公司的目的是什么？挣钱。判断挣钱的指标是什么？利润。</p>
+<p>所以企业经营者会更加关注：</p>
+<ul>
+<li>项目能带来的利润</li>
+<li>项目能提升利润的背后逻辑</li>
+<li>项目的投入产出比</li>
+</ul>
+<p align="center">
+  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/management%2F%E6%89%A7%E8%A1%8C%E8%80%85_%E6%80%9D%E8%BE%A8%E8%80%85%2F%E5%85%B7%E5%A4%87%E7%BB%8F%E8%90%A5%E8%80%85%E8%A7%86%E8%A7%92%E6%80%9D%E8%80%83%E8%83%BD%E5%8A%9B%E7%9A%84%E6%80%9D%E8%BE%A8%E8%80%85.png" style="width:100%">
+</p>
+
+<h2 id="3-2-如何实现角色转变？"><a href="#3-2-如何实现角色转变？" class="headerlink" title="3.2 如何实现角色转变？"></a>3.2 如何实现角色转变？</h2><ul>
+<li><strong>步骤一，养成习惯（解决有没有的问题）</strong>：解决<strong>有没有</strong>以经营者意识思考的问题</li>
+<li><strong>步骤二，结构化思维+阅读（解决好不好的问题）</strong>：通过阅读，学习结构化思维和企业经营知识、财务知识、互联网思维等，解决经营者视角做的<strong>好不好</strong>的问题</li>
+</ul>
+<p>详细展开如下：</p>
+<h3 id="3-2-1-养成习惯（解决有没有）"><a href="#3-2-1-养成习惯（解决有没有）" class="headerlink" title="3.2.1 养成习惯（解决有没有）"></a>3.2.1 养成习惯（解决有没有）</h3><p>解法：养成习惯，比如</p>
+<ul>
+<li><strong>提前思考需求</strong>：提前看需求文档，关于需求收益部分提前产出自己的问题，做好准备。比如，典型的问题，这个收益是如何预估出来的？</li>
+<li><strong>需求评审多问</strong>：每次在需求沟通时，<strong>强制</strong>自己多去问问需求收益的逻辑是什么，哪怕听不懂，<strong>敢问</strong></li>
+</ul>
+<p>但养成习惯只解决<strong>有没有</strong>转变的问题，不解决转变过程做的<strong>好不好</strong>？接下来，解决做的好不好的问题。</p>
+<h3 id="3-2-2-结构化思维-阅读（解决好不好）"><a href="#3-2-2-结构化思维-阅读（解决好不好）" class="headerlink" title="3.2.2 结构化思维+阅读（解决好不好）"></a>3.2.2 结构化思维+阅读（解决好不好）</h3><ul>
+<li><strong>结构化思维</strong>：通过结构化思维拆解复杂问题</li>
+<li><strong>阅读</strong>：通过阅读学习结构化思维拆解方法论和获取企业经营经验、互联网思维经验、财务知识等</li>
+</ul>
+<blockquote>
+<p>什么是结构化思维？</p>
+</blockquote>
+<h4 id="3-2-2-1-什么是结构化思维？"><a href="#3-2-2-1-什么是结构化思维？" class="headerlink" title="3.2.2.1 什么是结构化思维？"></a>3.2.2.1 什么是结构化思维？</h4><p>关于结构化的概念，我拆解成了两部分：</p>
+<ul>
+<li><strong>结构化表达：</strong>本文不包含结构化表达部分。结构化表达的目的是如何能帮助我们“<strong>说清楚</strong>”，比如典型的方法论有金字塔原理等。</li>
+<li><strong>结构化拆解:</strong> 本文核心是结构化拆解。结构化拆解的目的是如何能帮助我们“<strong>想清楚</strong>”，特别是面对复杂的问题，比如基于经营者视角如何能找到提升利润的方向和具体的项目?</li>
+</ul>
+<blockquote>
+<p>如何进行结构化拆解？</p>
+</blockquote>
+<p>通过阅读《麦肯锡结构化战略思维》得到：</p>
+<ul>
+<li><strong>公式法:</strong> 来源经验，经验包括自身实战积累、他人言传身教、他人总结分享（媒体资源、书籍）。我当前经验主要来源于企业经营相关书籍，比如稻盛和夫的《阿米巴经营》、刘润的《底层逻辑2：理解商业世界的本质》等（详细书单附文章末尾）。</li>
+<li><strong>子目录列举法：</strong>穷举出所有的因子，且因子不相交</li>
+<li><strong>流程法：</strong>按照流程进行拆解</li>
+<li>等等</li>
+</ul>
+<p>基于以上方法，我们以平台电商业务为例，进行结构化拆解：</p>
+<blockquote>
+<p>基于经营者视角如何能找到提升利润的方向和具体的项目?</p>
+</blockquote>
+<p><strong>第1层拆解：如何提升利润</strong></p>
+<ul>
+<li><strong>目标</strong>：提升利润</li>
+<li><strong>问题</strong>：如何提升利润？</li>
+<li><strong>方法</strong>：公式法，利润 = 收入-费用（公式来源：财务知识，书籍《世界上最简单的会计书》、《底层逻辑2》）</li>
+<li><strong>方向</strong>：通过公式可以清楚得到影响利润的两大因子：收入和费用，要不提升收入，要不就降低费用，也就是俗话说的开源节流，以及稻盛和夫提到的企业经营原则：收入最大化和费用最小化（来源数据《阿米巴经营》》）。</li>
+</ul>
+<p align="center">
+  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/management%2F%E6%89%A7%E8%A1%8C%E8%80%85_%E6%80%9D%E8%BE%A8%E8%80%85%2F%E5%BC%80%E6%BA%90%E8%8A%82%E6%B5%81.png" style="width:100%">
+</p>
+
+
+<p><strong>第2层拆解：如何提升收入</strong></p>
+<ul>
+<li><p><strong>目标</strong>：确认收入公式</p>
+</li>
+<li><p><strong>问题</strong>：如何提升收入？</p>
+</li>
+<li><p><strong>方法</strong>：公式法，收入 = 市场<em>品类</em>流量<em>转化率</em>客单价*复购率（公式来源：书籍《增长黑客》、《精益数据分析》）</p>
+</li>
+<li><p><strong>方向</strong>：</p>
+</li>
+<li><ul>
+<li>市场：拓展市场，比如出海</li>
+<li>品类：拓展商品类别</li>
+<li>流量：进一步拆解因子</li>
+<li>转化率：进一步拆解因子</li>
+<li>客单价：进一步拆解因子</li>
+<li>复购率：进一步拆解因子</li>
+</ul>
+</li>
+</ul>
+<p align="center">
+  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/management%2F%E6%89%A7%E8%A1%8C%E8%80%85_%E6%80%9D%E8%BE%A8%E8%80%85%2F%E6%8F%90%E5%8D%87%E6%94%B6%E5%85%A5.png" style="width:100%">
+</p>
+
+<p><strong>第3层拆解之一：如何提升流量</strong></p>
+<ul>
+<li><p><strong>目标</strong>：找到所有流量来源</p>
+</li>
+<li><p><strong>问题</strong>：如何提升流量？</p>
+</li>
+<li><p><strong>方法</strong>：子目录列举法，自然流量｜搜索流量｜付费流量｜消息触达｜外链</p>
+</li>
+<li><p><strong>方向</strong>：</p>
+</li>
+<li><ul>
+<li>直接流量：-</li>
+<li>搜索流量：比如评估网页SEO质量，进行SEO优化</li>
+<li>付费流量：比如增加投入</li>
+<li>消息触达：比如丰富触达场景</li>
+<li>外链：比如增加站外链接</li>
+</ul>
+</li>
+</ul>
+<p align="center">
+  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/management%2F%E6%89%A7%E8%A1%8C%E8%80%85_%E6%80%9D%E8%BE%A8%E8%80%85%2F%E6%B5%81%E9%87%8F.png" style="width:100%">
+</p>
+
+<p><strong>第3层拆解之二：如何提升转化率</strong></p>
+<ul>
+<li><p><strong>目标</strong>：建立流量漏斗分析</p>
+</li>
+<li><p><strong>问题</strong>：如何提升转化率？</p>
+</li>
+<li><p><strong>方法</strong>：流程法，完成下单流程拆解：商品到购物车转化 | 购物车到订单转化 | 订单到支付转化</p>
+</li>
+<li><p><strong>方向</strong>：</p>
+</li>
+<li><ul>
+<li>商品到购物车转化率：进一步拆解因子</li>
+<li>购物车到订单转化率: 同上</li>
+<li>订单到支付转化率: 同上</li>
+</ul>
+</li>
+</ul>
+<p align="center">
+  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/management%2F%E6%89%A7%E8%A1%8C%E8%80%85_%E6%80%9D%E8%BE%A8%E8%80%85%2F%E8%BD%AC%E5%8C%96%E7%8E%87.png" style="width:100%">
+</p>
+
+<p>按照以上的思路层层拆解，能帮助我们清楚的找到提升利润的方向和具体项目，让我们想清楚。具体拆解结果如下：</p>
+<p align="center">
+  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/management%2F%E6%89%A7%E8%A1%8C%E8%80%85_%E6%80%9D%E8%BE%A8%E8%80%85%2F%E6%80%BB%E7%BB%93.webp" style="width:100%">
+</p>
+
+
+<h1 id="4-总结"><a href="#4-总结" class="headerlink" title="4. 总结"></a>4. 总结</h1><hr>
+<ul>
+<li><strong>养成习惯</strong>：养成基于经营者视角多问为什么的习惯</li>
+<li><strong>学会拆解</strong>：通过结构化拆解过程判断需求逻辑是否合理</li>
+<li><strong>储备知识</strong>：通过阅读书籍补充财务、企业经营、互联网思维(增长公式)知识，增强个人逻辑拆解&amp;逻辑判断知识储备</li>
+</ul>
+<p>通过以上过程，我们完成“<strong>执行者”到“思辨者(具备经营者意识)”转变</strong>后，再来看开头的问题：</p>
+<blockquote>
+<p>如何评估自己负责的项目做的好不好吗？</p>
+</blockquote>
+<p>相对于开始的答案，我们新增了一条：</p>
+<ul>
+<li><p><strong>做好需求准入判断：需求的逻辑是什么？需求的量化目标是什么？目标测算的逻辑是什么？</strong></p>
+</li>
+<li><p>按时：业务预期时间内完成项目交付</p>
+</li>
+<li><p>按质：</p>
+</li>
+<li><ul>
+<li>功能：满足业务需求（实现功能）</li>
+<li>性能：接口峰值QPS满足业务极端场景等</li>
+<li>质量：千行代码bug率、故障数</li>
+<li>收益：符合预期</li>
+</ul>
+</li>
+</ul>
+<p>反过来增加这条让我们能真正的参与企业经营，而不仅仅是一个事情的“执行者”或者“透传者”。同时，这也是我意识到打工的核心。</p>
+<p><strong>书单附录：</strong></p>
+<ol>
+<li>《麦肯锡结构化战略思维》：经典结构化拆解问题的方法论。</li>
+<li>《增长黑客》：互联网思维下的增长方法论，定义增长公式+指标牵引（不断变化的北极星指标+AB实验）</li>
+<li>《精益数据分析》：做好数据驱动的方法论，选择正确指标，建立底线指标。</li>
+<li>《世界上最简单的会计书》：财务知识入门必看，以一个卖柠檬水小摊的示例讲解资产负债表、利润表等财务概念。</li>
+<li>《底层逻辑2》：通过数学问题视角解释商业逻辑，比如资产负债表、利润表的作用。</li>
+<li>《阿米巴经营》：一代大师的企业经营理念：全员参与经营等</li>
+</ol>
+
+
+<!-- Tags -->
+
+
+
+<div class="tags">
+    <a href="/tags/经营管理/" class="button small">经营管理</a>
+</div>
+
+
+
+<!-- Qrcode -->
+<div width="100px">
+    <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg" alt="TIGERB" width="300px" style="display:block; margin: 30px auto 0px auto;">
+</div>
+
+<!-- Comments -->
+<div>
+    
+
+
+</div>
+
+
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+        <section>
+            <h2>About</h2>
+            <div>
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。现世界500强技术经理，拥有丰富的架构、电商系统设计、高并发、体系流程建设和管理经验。<br><br><img style="vertical-align:middle" width="30%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+            </div>
+        </section>
+        <section>
+            <h2>Follow</h2>
+            <ul class="icons">
+                
+                    <li><a href="https://twitter.com/CODERCOOKER" class="icon style2 fa-twitter" target="_blank" ><span class="label">Twitter</span></a></li>
+                
+                
+                
+                
+                
+                    <li><a href="https://github.com/TIGERB" class="icon style2 fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
+                
+                
+                
+                
+                
+                    <li><a href="mailto:tigerbcode@gmail.com" class="icon style2 fa-envelope-o" target="_blank" ><span class="label">Email</span></a></li>
+                
+                
+                    <li><a href="\atom.xml" class="icon style2 fa-rss" target="_blank" ><span class="label">RSS</span></a></li>
+                
+            </ul>
+        </section>
+        <ul class="copyright">
+            <li>&copy; TIGERB.cn All right reserved. 津ICP备17006784号-2</li>
+            <li><a href="https://juejin.im/user/5855e82d1b69e6006c9278b4" target="_blank">juejin</a></li>
+            <li><a href="https://segmentfault.com/u/tigerb" target="_blank">Segmentfault</a></li>
+            <li><a target="_blank" rel="noopener" href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
+            <li><a href="http://tigerb.cn/go/#/patterns/">Go设计模式实战</a></li>
+            <li><a href="http://tigerb.cn/go/#/kernal/">Go语言轻松进阶</a></li>
+            <li><a target="_blank" rel="noopener" href="https://dayutalk.cn/">大愚Talk</a></li>
+        </ul>
+    </div>
+</footer>
+    </div>
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- skel -->
+
+<script src="/js/skel.min.js"></script>
+
+
+<!-- Custom Code -->
+
+<script src="/js/util.js"></script>
+
+
+<!--[if lte IE 8]>
+
+<script src="/js/ie/respond.min.js"></script>
+
+<![endif]-->
+
+<!-- Custom Code -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Gallery -->
+<script src="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+</body>
+
+</html>

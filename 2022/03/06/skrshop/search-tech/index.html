@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Description-->
+    
+        <meta name="description" content="Trying to be the person you want to be.">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="施展">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="由浅到深，入门搜索原理"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="施展TIGERB"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content=""/>
+    
+
+    <!-- Title -->
+    
+    <title>由浅到深，入门搜索原理 - 施展TIGERB</title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/sass/main.css">
+
+
+    <!--[if lt IE 8]>
+        
+<script src="/js/ie/html5shiv.js"></script>
+
+    <![endif]-->
+
+    <!--[if lt IE 8]>
+        
+<link rel="stylesheet" href="/sass/ie8.css">
+
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+        
+<link rel="stylesheet" href="/sass/ie9.css">
+
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?30c7e7d53256334a8dc1cf524fcc77f6";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Menu -->
+        <!-- Header -->
+<header id="header">
+    <div class="inner">
+
+        <!-- Logo -->
+        <a href="/" class="logo">
+            <span class="symbol"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20190707142019.png" alt="" /></span><span class="title">施展TIGERB</span>
+        </a>
+
+        <!-- Nav -->
+        <nav>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+    <h2>Menu</h2>
+    <ul>
+        
+            <li>
+                <a href="/">首页</a>
+            </li>
+        
+            <li>
+                <a target="_blank" rel="noopener" href="https://github.com/TIGERB">Github</a>
+            </li>
+        
+            <li>
+                <a target="_blank" rel="noopener" href="https://segmentfault.com/u/tigerb">Segmentfault</a>
+            </li>
+        
+            <li>
+                <a target="_blank" rel="noopener" href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
+            </li>
+        
+    </ul>
+</nav>
+
+
+        <div id="main">
+            <div class="inner">
+
+                <!-- Main Content -->
+                
+
+    <h1 class="title">由浅到深，入门搜索原理</h1>
+    <div class="meta">
+        2022-03-06
+    </div>
+
+
+    <span class="image main"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220307222723.jpg?imageMogr2/thumbnail/1500x1000!/format/webp/blur/1x0/quality/75|imageslim" alt="" /></span>
+
+
+<!-- Gallery -->
+
+
+<!-- Content -->
+<p>本次带来电商搜索业务的介绍，电商搜索系列分为两篇文章：</p>
+<ul>
+<li>电商搜索业务介绍</li>
+<li>由浅到深，入门搜索原理</li>
+</ul>
+<blockquote>
+<p>本文均以开源搜索引擎ES(Elasticsearch)为例，下文简称ES。</p>
+</blockquote>
+<p>首先，本篇文章对于初次接触的同学来讲，涉及的概念会比较多，主要如下：</p>
+<table>
+<thead>
+<tr>
+<th>搜索名词概念</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>文档(Doc)</td>
+<td>？</td>
+</tr>
+<tr>
+<td>词条(Term)</td>
+<td>？</td>
+</tr>
+<tr>
+<td>倒排索引(Inverted Index)</td>
+<td>？</td>
+</tr>
+<tr>
+<td>关键字(Query)</td>
+<td>？</td>
+</tr>
+<tr>
+<td>召回(Recall)</td>
+<td>？</td>
+</tr>
+<tr>
+<td>词频(tf:Term Frequency)</td>
+<td>？</td>
+</tr>
+<tr>
+<td>逆文档率(idf:Inverse Document Frequency)</td>
+<td>？</td>
+</tr>
+<tr>
+<td>粗排</td>
+<td>？</td>
+</tr>
+<tr>
+<td>精排</td>
+<td>？</td>
+</tr>
+</tbody></table>
+<p>本篇文章由简到繁入门搜索原理，并逐步揭开上面这些概念的面纱。本文结构如下：</p>
+<ul>
+<li>搜索引擎ES的诞生</li>
+<li>简易版搜索过程<ul>
+<li>索引过程</li>
+<li>查询过程</li>
+</ul>
+</li>
+<li>进阶版搜索过程<ul>
+<li>索引过程<ul>
+<li>什么是文档(Doc)</li>
+<li>什么是词条(Term)</li>
+<li>什么是倒排索引(Inverted Index)</li>
+<li>文档(Doc)分析<ul>
+<li>字符过滤器</li>
+<li>分词器</li>
+<li>分词过滤器</li>
+</ul>
+</li>
+<li>创建倒排索引</li>
+</ul>
+</li>
+<li>查询过程<ul>
+<li>关键字(Query)分析<ul>
+<li>字符过滤器</li>
+<li>分词器</li>
+<li>分词过滤器</li>
+</ul>
+</li>
+<li>召回(Recall)<ul>
+<li>什么是召回(Recall)</li>
+</ul>
+</li>
+<li>排序<ul>
+<li>什么是词频(tf:Term Frequency)</li>
+<li>什么是逆文档率(idf:Inverse Document Frequency)</li>
+<li>粗排&#x2F;精排</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>搜索过程总结</li>
+</ul>
+</li>
+<li>搜索引擎ES进阶<ul>
+<li>索引(名词)的基本结构</li>
+<li>搜索引擎ES的逻辑结构</li>
+</ul>
+</li>
+</ul>
+<h1 id="搜索引擎ES的诞生"><a href="#搜索引擎ES的诞生" class="headerlink" title="搜索引擎ES的诞生"></a>搜索引擎ES的诞生</h1><hr>
+<p>ES诞生于一个开源的JAVA库<code>Lucene</code>。通过<code>Lucene</code>官网的描述我们可以发现<code>Lucene</code>具备如下能力：</p>
+<ul>
+<li><code>Lucene</code>是一个JAVA库</li>
+<li><code>Lucene</code>实现了拼写检查</li>
+<li><code>Lucene</code>实现了命中字符高亮</li>
+<li><code>Lucene</code>实现了分析、分词功能</li>
+</ul>
+<p><code>Lucene</code>不具备的能力：</p>
+<ul>
+<li>分布式</li>
+<li>高可用</li>
+<li>开箱即用</li>
+<li>等等</li>
+</ul>
+<p align="center">
+    <a target="_blank" rel="noopener" href="https://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220215203335.png" data-lightbox="roadtrip">
+        <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220215203335.png" style="width:66%">
+    </a>
+</p>
+
+<p>所以多年之前名叫<code>Shay Banon</code>的开发者，通过<code>Lucene</code>实现了一个高可用的开源分布式搜索引擎<code>Elasticsearch</code>。</p>
+<p align="center">
+    <a target="_blank" rel="noopener" href="https://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220215203346.png" data-lightbox="roadtrip">
+        <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220215203346.png" style="width:66%">
+    </a>
+</p>
+
+<p>常见的搜索功能都是基于「搜索引擎」实现的，接着我们来看看<strong>简易版搜索过程</strong>。</p>
+<h1 id="简易版搜索过程"><a href="#简易版搜索过程" class="headerlink" title="简易版搜索过程"></a>简易版搜索过程</h1><hr>
+<p>简易版搜索过程如下：</p>
+<ul>
+<li>第①步：索引过程，需要被搜索的源数据被索引(动词)到搜索引擎中，并建立索引(名词)。</li>
+<li>第②步：查询过程，用户输入关键字(Query)，搜索引擎分析Query并返回查询结果。</li>
+</ul>
+<p align="center">
+    <a target="_blank" rel="noopener" href="https://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220306221130.png" data-lightbox="roadtrip">
+        <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220306221130.png" style="width:39%">
+    </a>
+</p>
+
+<h1 id="进阶版搜索过程"><a href="#进阶版搜索过程" class="headerlink" title="进阶版搜索过程"></a>进阶版搜索过程</h1><hr>
+<h2 id="索引过程"><a href="#索引过程" class="headerlink" title="索引过程"></a>索引过程</h2><p align="center">
+    <a target="_blank" rel="noopener" href="https://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220129183509.png" data-lightbox="roadtrip">
+        <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220129183509.png" style="width:50%">
+    </a>
+</p>
+
+<h3 id="什么是文档-Doc"><a href="#什么是文档-Doc" class="headerlink" title="什么是文档(Doc)"></a>什么是文档(Doc)</h3><p>举个栗子，比如《电商设计手册 | SkrShop》网页内容需要被搜索到，那这页网页的全部内容就称之为一个<code>文档Doc</code>。</p>
+<p align="center">
+    <a target="_blank" rel="noopener" href="https://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220222131248.png" data-lightbox="roadtrip">
+        <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220222131248.png" style="width:80%">
+    </a>
+</p>
+
+<p><code>文档Doc</code>内容如下：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>电商设计手册 | SkrShop<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge,chrome=1&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;description&quot;</span> <span class="attr">content</span>=<span class="string">&quot;应该是最全、最细致、最落地的电商系统设计手册&quot;</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 省略...... --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>秒杀是电商的一种营销手段<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 省略...... --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>搜索名词概念</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>文档(doc)</td>
+<td>需要被搜索的文本内容，可以是某个商品详细信息、某个网页信息等等文本。</td>
+</tr>
+</tbody></table>
+<h3 id="什么是词条-Term"><a href="#什么是词条-Term" class="headerlink" title="什么是词条(Term)"></a>什么是词条(Term)</h3><p>继续以上文的<code>文档Doc</code>为例。为了简化对<code>词条(Term)</code>的理解，把上述<code>文档Doc</code>的内容简化为一句话<code>秒杀是电商的一种营销手段</code>。</p>
+<p><code>词条(Term)</code>就是<code>文档Doc</code>经过分词处理得到的词条结果集合。比如<code>秒杀是电商的一种营销手段</code>被中文分词之后得到：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">秒杀 / 是 / 电商 / 的 / 一种 / 营销 / 手段</span><br></pre></td></tr></table></figure>
+
+<p>秒杀、是、电商、的、一种、营销、手段分别称之为<code>词条(Term)</code>，该集合称之为<code>Terms</code>。</p>
+<table>
+<thead>
+<tr>
+<th>搜索名词概念</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>词条(Term)</td>
+<td>被搜索的文本Doc被分词器拆解成N个标准的语句。</td>
+</tr>
+</tbody></table>
+<h3 id="什么是倒排索引-Inverted-Index"><a href="#什么是倒排索引-Inverted-Index" class="headerlink" title="什么是倒排索引(Inverted Index)"></a>什么是倒排索引(Inverted Index)</h3><p>「倒排索引」是索引(动词)源数据时，创建的索引(名词)的具体实现。</p>
+<p>我们以如下文档(Doc)为例，解释倒排索引：</p>
+<table>
+<thead>
+<tr>
+<th>文档ID</th>
+<th>文档内容(Doc)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>电商设计手册SkrShop</td>
+</tr>
+<tr>
+<td>2</td>
+<td>秒杀是电商的一种营销手段</td>
+</tr>
+<tr>
+<td>3</td>
+<td>购物车是电商购买流程最重要的一步</td>
+</tr>
+</tbody></table>
+<p>分词器：文档(Doc)拆解为多个独立词条(Doc -&gt; Terms)。</p>
+<p>开源中文分词器：</p>
+<ul>
+<li>IK Analyzer</li>
+<li>jieba</li>
+<li>等</li>
+</ul>
+<p>以jieba分词器在线演示为例：<a target="_blank" rel="noopener" href="https://app.gumble.pw/jiebademo/">https://app.gumble.pw/jiebademo/</a></p>
+<table>
+<thead>
+<tr>
+<th>文档ID</th>
+<th>文档内容(Doc)</th>
+<th>中文分词结果(Terms)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>电商设计手册SkrShop</td>
+<td>电商 &#x2F; 设计 &#x2F; 手册 &#x2F; SkrShop</td>
+</tr>
+<tr>
+<td>2</td>
+<td>秒杀是电商的一种营销手段</td>
+<td>秒杀 &#x2F; 是 &#x2F; 电商 &#x2F; 的 &#x2F; 一种 &#x2F; 营销 &#x2F; 手段</td>
+</tr>
+<tr>
+<td>3</td>
+<td>购物车是电商购买流程最重要的一步</td>
+<td>购物车 &#x2F; 是 &#x2F; 电商 &#x2F; 购买 &#x2F; 流程 &#x2F; 最 &#x2F; 重要 &#x2F; 的 &#x2F; 一步</td>
+</tr>
+</tbody></table>
+<p>每个词条对应的文档ID如下：</p>
+<table>
+<thead>
+<tr>
+<th>词条</th>
+<th>文档IDs</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>电商</td>
+<td>1、2、3</td>
+</tr>
+<tr>
+<td>设计</td>
+<td>1</td>
+</tr>
+<tr>
+<td>手册</td>
+<td>1</td>
+</tr>
+<tr>
+<td>SkrShop</td>
+<td>1</td>
+</tr>
+<tr>
+<td>秒杀</td>
+<td>2</td>
+</tr>
+<tr>
+<td>是</td>
+<td>2、3</td>
+</tr>
+<tr>
+<td>的</td>
+<td>2、3</td>
+</tr>
+<tr>
+<td>一种</td>
+<td>2</td>
+</tr>
+<tr>
+<td>营销</td>
+<td>2</td>
+</tr>
+<tr>
+<td>手段</td>
+<td>2</td>
+</tr>
+<tr>
+<td>购物车</td>
+<td>3</td>
+</tr>
+<tr>
+<td>购买</td>
+<td>3</td>
+</tr>
+<tr>
+<td>流程</td>
+<td>3</td>
+</tr>
+<tr>
+<td>最</td>
+<td>3</td>
+</tr>
+<tr>
+<td>重要</td>
+<td>3</td>
+</tr>
+<tr>
+<td>一步</td>
+<td>3</td>
+</tr>
+</tbody></table>
+<p>以上就是建立倒排索引的基本过程。</p>
+<p>完成倒排索引建立之后，模拟搜索过程，假设：</p>
+<ul>
+<li>搜索<code>电商</code>，能快速找到文档1、2、3</li>
+<li>搜索<code>营销</code>，能快速找到文档2</li>
+</ul>
+<p>(这个过程叫做「召回」)</p>
+<p>以上就是「倒排索引」的概念。</p>
+<table>
+<thead>
+<tr>
+<th>搜索名词概念</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>倒排索引(Inverted Index)</td>
+<td>索引(动词)源数据时，创建的索引(名词)的具体实现。</td>
+</tr>
+</tbody></table>
+<h3 id="文档-Doc-分析"><a href="#文档-Doc-分析" class="headerlink" title="文档(Doc)分析"></a>文档(Doc)分析</h3><p>分析就是标准化文档(Doc)文本的过程，以及把文档(Doc)转换成标准化词条(Term)的过程。搜索引擎ES分析过程的实现依赖于分析器。</p>
+<p>分析器基本组成：</p>
+<ul>
+<li>字符过滤器</li>
+<li>分词器</li>
+<li>分词过滤器</li>
+</ul>
+<p align="center">
+    <a target="_blank" rel="noopener" href="https://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220129183541.png" data-lightbox="roadtrip">
+        <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220129183541.png" style="width:60%">
+    </a>
+</p>
+
+<h4 id="字符过滤器"><a href="#字符过滤器" class="headerlink" title="字符过滤器"></a>字符过滤器</h4><blockquote>
+<p>一个分析器对应一个字符过滤器。</p>
+</blockquote>
+<p>格式化为标准文本(text -&gt; standard text)，例如去掉文本中的html标签。</p>
+<p align="center">
+    <a target="_blank" rel="noopener" href="https://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220129183701.png" data-lightbox="roadtrip">
+        <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220129183701.png" style="width:60%">
+    </a>
+</p>
+
+<p>比如<code>&lt;p&gt;电商设计手册SkrShop&lt;/p&gt;</code>—&gt;<code>电商设计手册SkrShop</code></p>
+<h4 id="分词器"><a href="#分词器" class="headerlink" title="分词器"></a>分词器</h4><blockquote>
+<p>一个分析器对应一个分词器。</p>
+</blockquote>
+<p>文档(Doc)拆解为多个独立词条(doc -&gt; terms)的过程。举个例子：<br>比如<code>电商设计手册SkrShop</code>—&gt;<code>电商 / 设计 / 手册 / SkrShop</code></p>
+<p>这里还需要提到的是<strong>自定义词库</strong>：原始词库不具备的词汇，比如最近新产生的网络词汇。</p>
+<p align="center">
+    <a target="_blank" rel="noopener" href="https://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220129183714.png" data-lightbox="roadtrip">
+        <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220129183714.png" style="width:60%">
+    </a>
+</p>
+
+<h4 id="分词过滤器"><a href="#分词过滤器" class="headerlink" title="分词过滤器"></a>分词过滤器</h4><blockquote>
+<p>一个分析器对应N个分词过滤器。</p>
+</blockquote>
+<ul>
+<li>统一转小写</li>
+<li>近义词转换</li>
+<li>停用词</li>
+<li>提取词干</li>
+<li>纠错</li>
+<li>自动补全</li>
+<li>等等…</li>
+</ul>
+<p align="center">
+    <a target="_blank" rel="noopener" href="https://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220215205418.png" data-lightbox="roadtrip">
+        <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220215205418.png" style="width:60%">
+    </a>
+</p>
+
+<table>
+<thead>
+<tr>
+<th>分词过滤器</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>统一转小写</td>
+<td>适用于英文等。比如统一把英文字母转换为小写，例<code>Word -&gt; word</code></td>
+</tr>
+<tr>
+<td>近义词转换</td>
+<td>适用于各语言。例<code>宽敞 -&gt; 宽阔</code></td>
+</tr>
+<tr>
+<td>停用词</td>
+<td>适用于各语言。去除含义宽泛不具备代表性的词语和其他人工指定停用的词语，例<code>的</code>、<code>是</code>。中文停用词库：<a target="_blank" rel="noopener" href="https://github.com/goto456/stopwords">https://github.com/goto456/stopwords</a></td>
+</tr>
+<tr>
+<td>提取词干</td>
+<td>适用于英文等。例<code>words -&gt; word</code></td>
+</tr>
+<tr>
+<td>纠错</td>
+<td>适用于各语言。例<code>宽肠 -&gt; 宽敞</code></td>
+</tr>
+<tr>
+<td>自动补全</td>
+<td>适用于各语言。</td>
+</tr>
+</tbody></table>
+<h3 id="索引过程总结"><a href="#索引过程总结" class="headerlink" title="索引过程总结"></a>索引过程总结</h3><h2 id="查询过程"><a href="#查询过程" class="headerlink" title="查询过程"></a>查询过程</h2><p align="center">
+    <a target="_blank" rel="noopener" href="https://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220215205523.png" data-lightbox="roadtrip">
+        <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220215205523.png" style="width:30%">
+    </a>
+</p>
+
+<table>
+<thead>
+<tr>
+<th>搜索名词概念</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>关键字(Query)</td>
+<td>发起搜索是用户输入的关键字</td>
+</tr>
+</tbody></table>
+<h3 id="关键字-Query-分析"><a href="#关键字-Query-分析" class="headerlink" title="关键字(Query)分析"></a>关键字(Query)分析</h3><p>关键字(Query)同样需要经过<code>分析器</code>，且和文档索引过程是相同的<code>分析器</code>。</p>
+<p>相同分析器：</p>
+<ul>
+<li>相同字符过滤器</li>
+<li>相同分词器</li>
+<li>相同分词过滤器</li>
+</ul>
+<p align="center">
+    <a target="_blank" rel="noopener" href="https://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220220211920.png" data-lightbox="roadtrip">
+        <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220220211920.png" style="width:60%">
+    </a>
+</p>
+
+<p>分词器：</p>
+<table>
+<thead>
+<tr>
+<th>关键字(Query)</th>
+<th>中文分词结果(Terms)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>秒杀系统的设计</td>
+<td>秒杀 &#x2F; 系统 &#x2F; 的 &#x2F; 设计</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>词条(Terms)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>秒杀</td>
+</tr>
+<tr>
+<td>系统</td>
+</tr>
+<tr>
+<td>的</td>
+</tr>
+<tr>
+<td>设计</td>
+</tr>
+</tbody></table>
+<p>分词过滤器：</p>
+<p>此处以停用词分词过滤器为例讲解分词过滤器的过程，本文使用的停用词库示例：<a target="_blank" rel="noopener" href="https://github.com/goto456/stopwords/blob/master/cn_stopwords.txt">https://github.com/goto456/stopwords/blob/master/cn_stopwords.txt</a></p>
+<p>得到去除了停用词<code>的</code>之后的词条(Terms)集合：</p>
+<table>
+<thead>
+<tr>
+<th>词条(Terms)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>秒杀</td>
+</tr>
+<tr>
+<td>系统</td>
+</tr>
+<tr>
+<td>设计</td>
+</tr>
+</tbody></table>
+<h3 id="召回-Recall"><a href="#召回-Recall" class="headerlink" title="召回(Recall)"></a>召回(Recall)</h3><h4 id="什么是召回-Recall"><a href="#什么是召回-Recall" class="headerlink" title="什么是召回(Recall)"></a>什么是召回(Recall)</h4><p>使用上文的文档内容以及文档分词结果：</p>
+<table>
+<thead>
+<tr>
+<th>文档ID</th>
+<th>文档内容(Doc)</th>
+<th>中文分词结果(Terms)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>电商设计手册SkrShop</td>
+<td>电商 &#x2F; 设计 &#x2F; 手册 &#x2F; SkrShop</td>
+</tr>
+<tr>
+<td>2</td>
+<td>秒杀是电商的一种营销手段</td>
+<td>秒杀 &#x2F; 是 &#x2F; 电商 &#x2F; 的 &#x2F; 一种 &#x2F; 营销 &#x2F; 手段</td>
+</tr>
+<tr>
+<td>3</td>
+<td>购物车是电商购买流程最重要的一步</td>
+<td>购物车 &#x2F; 是 &#x2F; 电商 &#x2F; 购买 &#x2F; 流程 &#x2F; 最 &#x2F; 重要 &#x2F; 的 &#x2F; 一步</td>
+</tr>
+</tbody></table>
+<p>进一步使用分词过滤器过滤分词结果，以相同的停用词分词过滤器为例。本文使用的停用词库示例：<a target="_blank" rel="noopener" href="https://github.com/goto456/stopwords/blob/master/cn_stopwords.txt">https://github.com/goto456/stopwords/blob/master/cn_stopwords.txt</a></p>
+<p>比如命中了停用词<code>是</code>：</p>
+<p align="center">
+    <a target="_blank" rel="noopener" href="https://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220302203921.png" data-lightbox="roadtrip">
+        <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220302203921.png" style="width:39%">
+    </a>
+</p>
+
+<p>经过停用词分词过滤器之后的结果：</p>
+<table>
+<thead>
+<tr>
+<th>文档ID</th>
+<th>文档内容(Doc)</th>
+<th>中文分词结果(Terms)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>电商设计手册SkrShop</td>
+<td>电商 &#x2F; 设计 &#x2F; 手册 &#x2F; SkrShop</td>
+</tr>
+<tr>
+<td>2</td>
+<td>秒杀是电商的一种营销手段</td>
+<td>秒杀 &#x2F; 电商 &#x2F; 一种 &#x2F; 营销 &#x2F; 手段</td>
+</tr>
+<tr>
+<td>3</td>
+<td>购物车是电商购买流程最重要的一步</td>
+<td>购物车 &#x2F; 电商 &#x2F; 购买 &#x2F; 流程 &#x2F; 重要 &#x2F; 一步</td>
+</tr>
+</tbody></table>
+<p>进一步得到倒排索引结构：</p>
+<table>
+<thead>
+<tr>
+<th>词条</th>
+<th>文档IDs</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>电商</td>
+<td>1、2、3</td>
+</tr>
+<tr>
+<td>设计</td>
+<td>1</td>
+</tr>
+<tr>
+<td>手册</td>
+<td>1</td>
+</tr>
+<tr>
+<td>SkrShop</td>
+<td>1</td>
+</tr>
+<tr>
+<td>秒杀</td>
+<td>2</td>
+</tr>
+<tr>
+<td>一种</td>
+<td>2</td>
+</tr>
+<tr>
+<td>营销</td>
+<td>2</td>
+</tr>
+<tr>
+<td>手段</td>
+<td>2</td>
+</tr>
+<tr>
+<td>购物车</td>
+<td>3</td>
+</tr>
+<tr>
+<td>购买</td>
+<td>3</td>
+</tr>
+<tr>
+<td>流程</td>
+<td>3</td>
+</tr>
+<tr>
+<td>重要</td>
+<td>3</td>
+</tr>
+<tr>
+<td>一步</td>
+<td>3</td>
+</tr>
+</tbody></table>
+<p>接着模拟搜索过程，假设用户搜索<code>秒杀系统的设计</code>：</p>
+<table>
+<thead>
+<tr>
+<th>关键字(Query)</th>
+<th>中文分词结果(Terms)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>秒杀系统的设计</td>
+<td>秒杀 &#x2F; 系统 &#x2F; 的 &#x2F; 设计</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>词条(Terms)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>秒杀</td>
+</tr>
+<tr>
+<td>系统</td>
+</tr>
+<tr>
+<td>的</td>
+</tr>
+<tr>
+<td>设计</td>
+</tr>
+</tbody></table>
+<p>分词过滤器，使用同上过程的<code>停用词分词过滤器</code>为例，得到去除了停用词<code>的</code>之后的词条(Terms)集合，称之为关键字(Query)的词条集合：</p>
+<table>
+<thead>
+<tr>
+<th>词条(Terms)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>秒杀</td>
+</tr>
+<tr>
+<td>系统</td>
+</tr>
+<tr>
+<td>设计</td>
+</tr>
+</tbody></table>
+<ul>
+<li>关键字(Query)的词条<code>秒杀</code>，通过上述倒排索引可以很容易找到<code>文档2</code></li>
+<li>关键字(Query)的词条<code>系统</code>，通过上述倒排索引没有找到任何文档</li>
+<li>关键字(Query)的词条<code>设计</code>，通过上述倒排索引可以很容易找到<code>文档1</code></li>
+</ul>
+<p>这样用户搜索<code>秒杀系统的设计</code>就找到了如下文档：</p>
+<ul>
+<li><code>文档2</code>：秒杀是电商的一种营销手段</li>
+<li><code>文档1</code>：电商设计手册SkrShop</li>
+</ul>
+<p>以上过程就是<code>召回</code>。</p>
+<table>
+<thead>
+<tr>
+<th>搜索名词概念</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>召回(Recall)</td>
+<td>搜索引擎利用倒排索引，通过词条获取相关文档的过程。</td>
+</tr>
+</tbody></table>
+<p>上述召回过程，用户通过搜索<code>秒杀系统的设计</code>找到了文档1、2。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">补充：以上基于倒排索引的文本召回方式。除此之外还有基于相同类目、其他相似属性的召回方式，以及基于深度学习的向量召回。</span><br></pre></td></tr></table></figure>
+
+<p>接着问题来了：</p>
+<blockquote>
+<p>召回的文档1、2，谁在前，谁在后的顺序怎么决定呢？</p>
+</blockquote>
+<p>接着下文来讲搜索引擎排序的实现。</p>
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><p>引入上面的问题：</p>
+<blockquote>
+<p>文档1、2，谁在前，谁在后的顺序怎么决定呢？</p>
+</blockquote>
+<p>答：文档的相关性决定的，搜索引擎会给文档的相关性进行打分score。通常决定这个分数score主要是两个指标：</p>
+<ul>
+<li>文档率：tf(Term Frequency)</li>
+<li>逆文档率：idf(Inverse Document Frequency)</li>
+</ul>
+<p>可以简单理解为相关性score &#x3D; 文档率 * 逆文档率，相关性score的值越高排序越靠前，接着，我们分别看看相关概念的含义。</p>
+<h4 id="什么是词频-tf-Term-Frequency"><a href="#什么是词频-tf-Term-Frequency" class="headerlink" title="什么是词频(tf:Term Frequency)"></a>什么是词频(tf:Term Frequency)</h4><p>还是使用上面的文档：</p>
+<table>
+<thead>
+<tr>
+<th>文档ID</th>
+<th>文档内容(Doc)</th>
+<th>中文分词结果(Terms)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>电商设计手册SkrShop</td>
+<td>电商 &#x2F; 设计 &#x2F; 手册 &#x2F; SkrShop</td>
+</tr>
+<tr>
+<td>2</td>
+<td>秒杀是电商的一种营销手段</td>
+<td>秒杀 &#x2F; 电商 &#x2F; 一种 &#x2F; 营销 &#x2F; 手段</td>
+</tr>
+<tr>
+<td>3</td>
+<td>购物车是电商购买流程最重要的一步</td>
+<td>购物车 &#x2F; 电商 &#x2F; 购买 &#x2F; 流程 &#x2F; 重要 &#x2F; 一步</td>
+</tr>
+</tbody></table>
+<p>这里我们以词条：<code>电商/秒杀</code>为例。</p>
+<p>词频的简单算法：词频 &#x3D; 词条在单个文档出现的次数&#x2F;文档总词条数，词频的值越大越相关，反之越不相关。</p>
+<p>比如，<code>秒杀</code>一词在文档1中出现的频率，以单个文档的全部词条为维度，我们简单的到了<code>秒杀</code>一词在各文档的词频：</p>
+<table>
+<thead>
+<tr>
+<th>文档ID</th>
+<th>文档内容(Doc)</th>
+<th>中文分词结果(Terms)</th>
+<th>词条在单个文档出现的次数</th>
+<th>词频(秒杀)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>电商设计手册SkrShop</td>
+<td>电商 &#x2F; 设计 &#x2F; 手册 &#x2F; SkrShop</td>
+<td>0</td>
+<td>0&#x2F;4&#x3D;0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>秒杀是电商的一种营销手段</td>
+<td>秒杀 &#x2F; 电商 &#x2F; 一种 &#x2F; 营销 &#x2F; 手段</td>
+<td>1</td>
+<td>1&#x2F;5&#x3D;0.2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>购物车是电商购买流程最重要的一步</td>
+<td>购物车 &#x2F; 电商 &#x2F; 购买 &#x2F; 流程 &#x2F; 重要 &#x2F; 一步</td>
+<td>0</td>
+<td>0&#x2F;6&#x3D;0</td>
+</tr>
+</tbody></table>
+<p>同理，我们简单的到了<code>电商</code>一词在各文档的词频：</p>
+<table>
+<thead>
+<tr>
+<th>文档ID</th>
+<th>文档内容(Doc)</th>
+<th>中文分词结果(Terms)</th>
+<th>词条在单个文档出现的次数</th>
+<th>词频(电商)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>电商设计手册SkrShop</td>
+<td>电商 &#x2F; 设计 &#x2F; 手册 &#x2F; SkrShop</td>
+<td>1</td>
+<td>1&#x2F;4&#x3D;0.25</td>
+</tr>
+<tr>
+<td>2</td>
+<td>秒杀是电商的一种营销手段</td>
+<td>秒杀 &#x2F; 电商 &#x2F; 一种 &#x2F; 营销 &#x2F; 手段</td>
+<td>1</td>
+<td>1&#x2F;5&#x3D;0.2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>购物车是电商购买流程最重要的一步</td>
+<td>购物车 &#x2F; 电商 &#x2F; 购买 &#x2F; 流程 &#x2F; 重要 &#x2F; 一步</td>
+<td>1</td>
+<td>1&#x2F;6&#x3D;0.167</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>搜索名词概念</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>词频(tf:Term Frequency)</td>
+<td>词条在单个文档出现的次数&#x2F;文档总词条数</td>
+</tr>
+</tbody></table>
+<h4 id="什么是逆文档率-idf-Inverse-Document-Frequency"><a href="#什么是逆文档率-idf-Inverse-Document-Frequency" class="headerlink" title="什么是逆文档率(idf:Inverse Document Frequency)"></a>什么是逆文档率(idf:Inverse Document Frequency)</h4><p>对于单个文档而言，词频越的值越相关，这个对于单个文档的维度。</p>
+<blockquote>
+<p>思考个问题，如果某个词条在所有文档都出现，相关性越好还是越不好？</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">答：不好，对吧。</span><br></pre></td></tr></table></figure>
+
+<p>这个就是文档率：<code>文档率 = 包含某个词条的文档数 / 所有文档数</code>，文档率值越大越不相关，反之相关。</p>
+<p>因为词频的值越大越相关，反之越不相关。为了保证和词频的逻辑一致，以及最终相关得分越高越相关，调整了文档率的算法，调换了分子分母：<code>所有文档数 / (包含某个词条的文档数 + 1)</code>加1保证分母不为零，这个就是<code>逆文档率</code>。</p>
+<p>逆文档率 &#x3D; <code>所有文档数 / (包含某个词条的文档数 + 1)</code>。</p>
+<p>但是呢，因为文档数往往特别大，上面的到的<code>逆文档率</code>的值会巨大无比，所以调整下公式，引入对数，降低值的大小，且让值变得平滑：</p>
+<p><code>逆文档率 = log(所有文档数 / (包含某个词条的文档数 + 1))</code></p>
+<table>
+<thead>
+<tr>
+<th>词条(Term)</th>
+<th>逆文档率</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>电商</td>
+<td>log(3&#x2F;(3+1))</td>
+</tr>
+<tr>
+<td>秒杀</td>
+<td>log(3&#x2F;(1+1))</td>
+</tr>
+</tbody></table>
+<p>最终就计算出每个文档分别对应每个Query词条的相关性score(tf&#x2F;idf)：相关性score &#x3D; 文档率 * 逆文档率。</p>
+<h4 id="粗排-精排"><a href="#粗排-精排" class="headerlink" title="粗排&#x2F;精排"></a>粗排&#x2F;精排</h4><p>上面利用tf&#x2F;idf分数(<code>相关性score = 文档率 * 逆文档率</code>)排序的结果只是对召回文档的初步排序，称之为<code>粗排</code>。得到<code>粗排</code>的结果后，通常还会把文档按照实际业务的要求进行更精确的排序，比如通过<code>人工干预</code>增加一些文档的权重，使之排序更靠前，这个过程就是<code>精排</code>。</p>
+<table>
+<thead>
+<tr>
+<th>搜索名词概念</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>粗排</td>
+<td>利用tf&#x2F;idf分数排序召回文档的过程</td>
+</tr>
+<tr>
+<td>精排</td>
+<td>把粗排结果，按照实际业务的要求更加精确的排序等等</td>
+</tr>
+</tbody></table>
+<h2 id="搜索过程总结"><a href="#搜索过程总结" class="headerlink" title="搜索过程总结"></a>搜索过程总结</h2><ol>
+<li>索引过程：文档(Doc) -&gt; 分析 -&gt; 倒排索引。</li>
+</ol>
+<p align="center">
+    <a target="_blank" rel="noopener" href="https://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220306223101.png" data-lightbox="roadtrip">
+        <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220306223101.png" style="width:50%">
+    </a>
+</p>
+
+<ol start="2">
+<li>查询过程：关键字(Query) -&gt; 分析 -&gt; 召回 -&gt; 粗排 -&gt; 精排。</li>
+</ol>
+<p align="center">
+    <a target="_blank" rel="noopener" href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220309203114.png" data-lightbox="roadtrip">
+        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220309203114.png" style="width:30%">
+    </a>
+</p>
+
+<h1 id="搜索引擎ES进阶"><a href="#搜索引擎ES进阶" class="headerlink" title="搜索引擎ES进阶"></a>搜索引擎ES进阶</h1><hr>
+<h2 id="索引-名词-的基本结构"><a href="#索引-名词-的基本结构" class="headerlink" title="索引(名词)的基本结构"></a>索引(名词)的基本结构</h2><ul>
+<li>索引index<ul>
+<li>类型type：区分不同的文档数据结构类型<ul>
+<li>映射mapping：管理索引的属性，比如使用的分析器等等</li>
+<li>文档doc：需要被搜索的具体文档</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p align="center">
+    <a target="_blank" rel="noopener" href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220308195018.png" data-lightbox="roadtrip">
+        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220308195018.png" style="width:60%">
+    </a>
+</p>
+
+<p>进一步完善搜索过程：加入更详细的索引(名词)结构</p>
+<p align="center">
+    <a target="_blank" rel="noopener" href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220308194814.png" data-lightbox="roadtrip">
+        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220308194814.png" style="width:80%">
+    </a>
+</p>
+
+<h2 id="搜索引擎ES的逻辑结构"><a href="#搜索引擎ES的逻辑结构" class="headerlink" title="搜索引擎ES的逻辑结构"></a>搜索引擎ES的逻辑结构</h2><p align="center">
+    <a target="_blank" rel="noopener" href="https://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220129191435.png" data-lightbox="roadtrip">
+        <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220129191435.png" style="width:90%">
+    </a>
+</p>
+
+<!-- Tags -->
+
+
+
+<div class="tags">
+    <a href="/tags/shop/" class="button small">shop</a> <a href="/tags/搜索/" class="button small">搜索</a>
+</div>
+
+
+
+<!-- Qrcode -->
+<div width="100px">
+    <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg" alt="TIGERB" width="300px" style="display:block; margin: 30px auto 0px auto;">
+</div>
+
+<!-- Comments -->
+<div>
+    
+
+
+</div>
+
+
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+        <section>
+            <h2>About</h2>
+            <div>
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。现世界500强技术经理，拥有丰富的架构、电商系统设计、高并发、体系流程建设和管理经验。<br><br><img style="vertical-align:middle" width="30%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+            </div>
+        </section>
+        <section>
+            <h2>Follow</h2>
+            <ul class="icons">
+                
+                    <li><a href="https://twitter.com/CODERCOOKER" class="icon style2 fa-twitter" target="_blank" ><span class="label">Twitter</span></a></li>
+                
+                
+                
+                
+                
+                    <li><a href="https://github.com/TIGERB" class="icon style2 fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
+                
+                
+                
+                
+                
+                    <li><a href="mailto:tigerbcode@gmail.com" class="icon style2 fa-envelope-o" target="_blank" ><span class="label">Email</span></a></li>
+                
+                
+                    <li><a href="\atom.xml" class="icon style2 fa-rss" target="_blank" ><span class="label">RSS</span></a></li>
+                
+            </ul>
+        </section>
+        <ul class="copyright">
+            <li>&copy; TIGERB.cn All right reserved. 津ICP备17006784号-2</li>
+            <li><a href="https://juejin.im/user/5855e82d1b69e6006c9278b4" target="_blank">juejin</a></li>
+            <li><a href="https://segmentfault.com/u/tigerb" target="_blank">Segmentfault</a></li>
+            <li><a target="_blank" rel="noopener" href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
+            <li><a href="http://tigerb.cn/go/#/patterns/">Go设计模式实战</a></li>
+            <li><a href="http://tigerb.cn/go/#/kernal/">Go语言轻松进阶</a></li>
+            <li><a target="_blank" rel="noopener" href="https://dayutalk.cn/">大愚Talk</a></li>
+        </ul>
+    </div>
+</footer>
+    </div>
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- skel -->
+
+<script src="/js/skel.min.js"></script>
+
+
+<!-- Custom Code -->
+
+<script src="/js/util.js"></script>
+
+
+<!--[if lte IE 8]>
+
+<script src="/js/ie/respond.min.js"></script>
+
+<![endif]-->
+
+<!-- Custom Code -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Gallery -->
+<script src="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+</body>
+
+</html>
