@@ -28,6 +28,21 @@
 - Golang设计模式实战，完全结合真实的业务场景去运用设计模式
 - 简化大家对设计模式的理解
 
+## 目录
+
+* Go设计模式实战
+
+  * [前言](patterns/)
+  * [1.0 模板模式](patterns/template)
+  * [2.0 责任链模式](patterns/responsiblity)
+  * [3.0 组合模式](patterns/component)
+  * [4.0 观察者模式](patterns/observor)
+  * [5.0 策略模式](patterns/strategy)
+  * [6.0 状态模式](patterns/state)
+  * [7.0 并发组合模式](patterns/concurrency-component)
+  * ...
+
+
 ```
 特别说明：
 本系列的一些设计模式的概念可能和原概念存在差异，因为会结合实际使用，取其精华，适当改变，灵活使用。

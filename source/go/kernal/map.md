@@ -1,6 +1,10 @@
 # 导读
 ---
 
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>
+
 > Go源码版本1.13.8
 
 今天要分享的是主要内容是`Go语言Map底层实现`，目的让大家快速了解`Go语言Map`底层大致的实现原理。读完本篇文章你可以获得收益、以及我所期望你能获取的收益如下：
@@ -496,10 +500,12 @@ bucketloop:
 }
 ```
 
-
-
 ```
 参考：
 1.《Go语言设计与实现》https://draveness.me/golang/docs/part2-foundation/ch03-datastructure/golang-hashmap/
 2. Go源码版本1.13.8 https://github.com/golang/go/tree/go1.13.8/src
 ```
+
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>

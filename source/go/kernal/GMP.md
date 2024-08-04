@@ -1,15 +1,8 @@
----
-title: Go的GMP模型真的很"简单"
-tags:
-  - Go
-cover_index: >-
-  https://blog-1251019962.cos.ap-beijing.myqcloud.com/go-kernal/gmp/GMP.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
-categories:
-  - go-base
-date: 2024-08-03 14:55:11
----
-
 > 本文基于go1.19
+
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>
 
 # 前言
 ---
@@ -132,7 +125,12 @@ type p struct {
 - `G`和函数绑定过程
 - `G`切换上下文过程
 
-**`G`和函数绑定过程**
+#### `G`和函数绑定过程
+
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>
+
 
 当你使用`go`关键字执行一个函数时`go func(){}()`：
 
@@ -214,7 +212,12 @@ func newproc1(fn *funcval, callergp *g, callerpc uintptr) *g {
   <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/go-kernal/gmp/g-bind-func.png" style="width:60%">
 </p>
 
-**`G`切换上下文过程**
+#### `G`切换上下文过程
+
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>
+
 
 1. `goroutine`的上下文信息具体保存在哪？
 2. `goroutine`的上下文如何切换？
@@ -246,7 +249,12 @@ type gobuf struct {
 - g恢复上下文过程
 - g保存上下文过程
 
-**g恢复上下文过程：**
+##### g恢复上下文过程
+
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>
+
 
 触发调度时：
 1. 找到可执行的g（来源本地队列、全局队列、netpoll list 读或写就绪的g列表）
@@ -309,7 +317,12 @@ TEXT gogo<>(SB), NOSPLIT|NOFRAME, $0
   <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/go-kernal/gmp/g-shedule-gogo.png" style="width:60%">
 </p>
 
-**g保存上下文过程：**
+##### g保存上下文过程
+
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>
+
 
 其中两个关键函数如下
 
@@ -557,8 +570,8 @@ type m struct {
 	//...略...
 
 	// 1. 绑定真正执行代码的系统线程
-	// 2. 执行`G`的调度
-	// 3. 执行被调度的`G`绑定的函数
+	// 2. 系统线程执行`G`的调度
+	// 3. 系统线程执行被调度的`G`绑定的函数
 	mOS 
 
     //...略...
@@ -639,3 +652,8 @@ type p struct {
 	<p align="center">
 		<img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/go-kernal/gmp/g-shedule-mcall-all.png" style="width:60%">
 	</p>
+
+
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>

@@ -1,5 +1,9 @@
 ## 前言
 
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>
+
 本系列主要分享，如何在我们的真实业务场景中使用设计模式。
 
 本系列文章主要采用如下结构：
@@ -724,3 +728,7 @@ demo2代码地址：<https://github.com/TIGERB/easy-tips/blob/master/go/src/patt
 - 变：不同场景下 -> `被具体实现`
 	+ `checkParams`参数校验逻辑
 	+ `getPrizesByNode`获取该节点奖品的逻辑
+
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>

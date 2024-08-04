@@ -1,6 +1,10 @@
 # 导读
 ---
 
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>
+
 ```
 本文基于Go源码版本1.16、64位Linux平台、1Page=8KB、本文的内存特指虚拟内存
 ```
@@ -155,3 +159,7 @@ Go的内存统一由内存管理器管理的，Go的内存管理器是基于Goog
   + `mcentral`：中央缓存
   + `mheap`：堆内存
 - 线程缓存`mcache`是被逻辑处理器`p`持有，而不是系统线程`m`
+
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>

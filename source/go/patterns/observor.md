@@ -1,4 +1,9 @@
 ## 前言
+
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>
+
 本系列主要分享，如何在我们的真实业务场景中使用设计模式。
 
 本系列文章主要采用如下结构：
@@ -637,3 +642,7 @@ main.(*WechatNotify).Do 发微信消息...
 - 被通知的“订阅者”
 - “订阅者”按需**订阅**“主题”
 - “主题”变化**通知**“订阅者”
+
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>

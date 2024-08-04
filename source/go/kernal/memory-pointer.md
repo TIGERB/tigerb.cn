@@ -1,6 +1,10 @@
 # 本文导读
 ---
 
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>
+
 第一部分`知识预备`的第一个知识点`指针的大小`。
 
 > 为什么`指针的大小`会作为一个知识点呢？
@@ -86,3 +90,7 @@ CPU总线由系统总线、等等其他总线组成。
 - 存储单元为8bit
 - 指针的值就是存储单元的编号
 - CPU地址总线的宽度决定了指针的值的最大范围
+
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>

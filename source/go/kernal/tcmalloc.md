@@ -1,6 +1,10 @@
 # 本文导读
 ---
 
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>
+
 我们的主要目的是**掌握Go语言的内存分配原理**。但是呢，Go语言的内存分配主要是基于**Tcmalloc内存分配器**实现的。所以，我们想搞懂Go语言的内存分配原理前，必须先了解**Tcmalloc内存分配器**，以便于我们更好的理解**Go语言的内存分配原理**。
 
 本文目录如下：
@@ -632,3 +636,7 @@ const SizeClassInfo SizeMap::kSizeClasses[SizeMap::kSizeClassesCount] = {
 6. TCMalloc : Thread-Caching Malloc https://gperftools.github.io/gperftools/tcmalloc.html
 7. tcmalloc原理剖析(基于gperftools-2.1) http://gao-xiao-long.github.io/2017/11/25/tcmalloc/
 ```
+
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>
