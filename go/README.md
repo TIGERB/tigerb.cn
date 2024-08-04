@@ -1,86 +1,74 @@
-<h1 align="center">Go设计模式实战 | Go语言轻松进阶</h1>
+# 《Go语言轻松进阶：从入门、实战到内核揭秘》简介
 
 ---
 
-<p align="center">
-    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh-Hans">
-        <img src="https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-red" alt="Lisense">
-    </a>
+> 全面解析Go语言，从新手入门到实战应用，再到内核机制，一应俱全。
+
+<p>
+    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210109200839.png" width="30%" style="box-shadow: 3px 3px 3px 3px #ddd;">
 </p>
 
-# 版权申明
+## 目标
 
-- 未经版权所有者明确授权，禁止发行本手册及其被实质上修改的版本。 
-- 未经版权所有者事先授权，禁止将此作品及其衍生作品以标准（纸质）书籍形式发行。
-
-<p>
-    <img style="vertical-align:middle" width="25%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
-<p>
-
----
-
-# Go设计模式实战系列简介
-
----
-
-> 嗯，Go设计模式实战系列，一个设计模式业务真实使用的golang系列。
-
-<p>
-    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210215112122.png" width="36%">
-</p>
-
-### 目标
-
-- 重读设计模式，温故知新
-- Golang设计模式实战，完全结合真实的业务场景去运用设计模式
-- 简化大家对设计模式的理解
-
-```
-特别说明：
-本系列的一些设计模式的概念可能和原概念存在差异，因为会结合实际使用，取其精华，适当改变，灵活使用。
-```
-
----
-
-# Go语言轻松进阶系列简介
-
----
-
-> 嗯，Go语言轻松进阶，一个帮助深入学习Go语言的你，轻松进阶的系列。
-
-<p>
-    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210109200839.png" width="36%" style="box-shadow: 3px 3px 3px 3px #ddd;">
-</p>
-
-### 目标
-
-- 深入学习《Go语言设计与实现》、《Go语言高级编程》、Go源码
 - 把理解后的知识，使用更通俗易懂的方式表述出来，方面大家更容易的学习，简化学习成本
 
+## 版权申明
 
-### 目录
+- 未经版权所有者明确授权，禁止发行本手册及其被实质上修改的版本（形式包含文章、视频、播客等任意媒体等）。
+- 未经版权所有者事先授权，禁止将此作品及其衍生作品以标准（纸质）书籍形式发行。
+- 未与任何第三方以任何形式合作。
 
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>
+
+--- 
+
+## 目录
+
+* 《Go语言轻松进阶：从入门、实战到内核揭秘》
 * [首页](/)
-* Go设计模式实战
-
-  * [前言](patterns/)
-  * [1.0 模板模式](patterns/template)
-  * [2.0 责任链模式](patterns/responsiblity)
-  * [3.0 组合模式](patterns/component)
-  * [4.0 观察者模式](patterns/observor)
-  * [5.0 策略模式](patterns/strategy)
-  * [6.0 状态模式](patterns/state)
-  * [7.0 并发组合模式](patterns/concurrency-component)
-  * ...
-
-* Go语言轻松进阶
-  * [前言](kernal/)
+* 第一章：入门
+  * [1.0 Go语言介绍](base/start?id=Go语言介绍)
+  * [2.0 Go基础语法](base/start?id=Go基础语法)
+    * [2.1 Go常用基本类型](base/start?id=Go常用基本类型)
+    * [2.2 Go常用基本类型初始化方式](base/start?id=Go常用基本类型初始化方式)
+    * [2.3 Go结构体的初始化](base/start?id=Go结构体的初始化)
+    * [2.4 Go常用函数](base/start?id=Go常用函数)
+  * [3.0 Go避坑指南](base/start?id=Go避坑指南)
+* 第二章：实战
+  * [1.0 常用包使用介绍](base/experience?id=常用包使用介绍)
+    * [1.1 热加载工具bee](base/experience?id=热加载工具bee)
+    * [1.2 sync.WaitGroup包使用](base/experience?id=Goroutine并发控制之syncWaitGroup包的使用)
+    * [1.3 context.Context包使用](base/experience?id=子Goroutine超时控制之contextContext包的使用)
+    * [1.4 sync.Map包使用](base/experience?id=并发安全的map之syncMap包的使用)
+    * [1.5 sync.Pool包使用](base/experience?id=减少GC压力之syncPool包的使用)
+    * [1.6 singleflight包使用](base/experience?id=减少缓存穿透利器之singleflight包的使用)
+    * [1.7 channel的使用](base/experience?id=channel的使用)
+  * [2.0 设计模式实战](patterns/)
+    * [2.1 模板模式](patterns/template)
+    * [2.2 责任链模式](patterns/responsiblity)
+    * [2.3 组合模式](patterns/component)
+    * [2.4 观察者模式](patterns/observor)
+    * [2.5 策略模式](patterns/strategy)
+    * [2.6 状态模式](patterns/state)
+    * [2.7 并发组合模式](patterns/concurrency-component)
+  * [3.0 单元测试&基准测试](base/experience?id=单元测试&基准测试)
+    * [3.1 单元测试](base/experience?id=单元测试)
+    * [3.2 基准测试](base/experience?id=基准测试)
+  * [4.0 性能分析](base/experience?id=性能分析)
+    * [4.1 pprof使用](base/experience?id=pprof的使用)
+    * [4.0 trace工具使用](base/experience?id=trace工具的使用)
+    * [4.0 dlv工具使用](base/experience?id=dlv工具的使用)
+  * [5.0 逃逸分析](base/experience?id=逃逸分析)
+  * [6.0 汇编代码生成](base/experience?id=汇编代码生成)
+* 第三章：内核
   * [**1.0 Map的设计与实现**](kernal/map)
     * [1.1 本章导读](kernal/map?id=导读)
     * [1.2 一般map的实现思路](/kernal/map?id=一般map的实现思路)
     * [1.3 入门Go语言里map的实现](/kernal/map?id=go语言里map的实现思路入门程度)
     * [1.4 熟悉Go语言里map的实现](/kernal/map?id=go语言里map的实现思路熟悉程度)
-    * [1.5 解疑答惑]()
+    * [1.5 解疑答惑](/kernal/map-range)
       * [1.5.1 为什么说Go的Map是无序的?](/kernal/map-range)
       <!-- * [1.5.2 为什么读不到key时没有Panic?]() -->
       <!-- * [1.5.3 为什么并发写操作会Panic?]() -->
@@ -126,8 +114,8 @@
       * [5.2.2 g恢复上下文过程](kernal/GMP?id=g恢复上下文过程)
       * [5.2.3 g保存上下文过程](kernal/GMP?id=g保存上下文过程)
     * [5.3 Goroutine的调度总结](kernal/GMP?id=总结) 
-      
   * ...
+
 
 
 ```
