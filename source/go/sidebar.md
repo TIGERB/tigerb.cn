@@ -51,19 +51,19 @@
       * TODO
   * 3.0 channel的设计与实现
     * TODO
-  * [**4.0 Goroutine的调度**](kernal/GMP)
-    * [4.1 GMP到底是什么？](kernal/GMP?id=gmp只是结构体)
-      * [4.1.1 GMP只是结构体](kernal/GMP?id=gmp只是结构体)
-      * [4.1.2 GMP是系统线程运行的代码片段](kernal/GMP?id=gmp是系统线程运行的代码片段)
-      * [4.1.3 GMP是类似面相对象思想的封装](kernal/GMP?id=gmp是类似面相对象思想的封装)
-      * [4.1.4 G职责解析](kernal/GMP?id=g职责解析)
-      * [4.1.5 M职责解析](kernal/GMP?id=m职责解析)
-      * [4.1.6 P职责解析](kernal/GMP?id=p职责解析)
-    * [4.2 Goroutine调度过程](kernal/GMP?id=g职责解析) 
-      * [4.2.1 g和函数绑定过程](kernal/GMP?id=g和函数绑定过程)
-      * [4.2.2 g恢复上下文过程](kernal/GMP?id=g恢复上下文过程)
-      * [4.2.3 g保存上下文过程](kernal/GMP?id=g保存上下文过程)
-    * [4.3 Goroutine的调度总结](kernal/GMP?id=总结) 
+  * [**5.0 Goroutine的调度**](kernal/GMP)
+    * [5.1 GMP到底是什么？](kernal/GMP?id=gmp只是结构体)
+      * [5.1.1 GMP只是结构体](kernal/GMP?id=gmp只是结构体)
+      * [5.1.2 GMP是系统线程运行的代码片段](kernal/GMP?id=gmp是系统线程运行的代码片段)
+      * [5.1.3 GMP是类似面相对象思想的封装](kernal/GMP?id=gmp是类似面相对象思想的封装)
+      * [5.1.4 G职责解析](kernal/GMP?id=g职责解析)
+      * [5.1.5 M职责解析](kernal/GMP?id=m职责解析)
+      * [5.1.6 P职责解析](kernal/GMP?id=p职责解析)
+    * [5.2 Goroutine调度过程](kernal/GMP?id=g职责解析) 
+      * [5.2.1 g和函数绑定过程](kernal/GMP?id=g和函数绑定过程)
+      * [5.2.2 g恢复上下文过程](kernal/GMP?id=g恢复上下文过程)
+      * [5.2.3 g保存上下文过程](kernal/GMP?id=g保存上下文过程)
+    * [5.3 Goroutine的调度总结](kernal/GMP?id=总结) 
       
   * ...
 
