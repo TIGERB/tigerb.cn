@@ -1,5 +1,9 @@
 # 9张图轻松吃透Go内存管理单元
 
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>
+
 ## 导读
 
 想深入了解Go语言的内存管理实现，必然绕不开「Go内存管理单元`mspan`」，今天我们就通过几张图，层层深入并解开「Go内存管理单元`mspan`」的神秘面纱。
@@ -200,5 +204,6 @@ nelems|一共有多少个`object`
 spanclass|决定`object`的大小、以及当前`mspan`是否需要垃圾回收扫描
 ...|...
 
-
-
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>

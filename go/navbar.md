@@ -14,4 +14,5 @@
   * [前言](kernal/)
   * [1.0 Map的设计与实现](kernal/map)
   * [2.0 内存与垃圾回收](kernal/memory)
+  * [5.0 Goroutine的调度](kernal/GMP)
   * 更新中...

@@ -1,5 +1,9 @@
 # 关于Go内存架构，一个有趣的问题
 
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>
+
 在学习Go语言内存管理部分过程中，发现了一个很有意思的问题，今天就借助这篇文章：
 
 - 1.把这个问题也抛给大家，建议大家看见这个问题后，可以先自己思考一番🤔之后再读下文。
@@ -154,7 +158,6 @@ func exitsyscall0(gp *g) {
 }
 ```
 
-
-
-
-
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>

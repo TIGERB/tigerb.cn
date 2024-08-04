@@ -1,8 +1,16 @@
-
-
 # 栈内存
 
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>
+
+
 ## 什么是栈内存？
+
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>
+
 
 栈内存是计算机对连续内存的采取的「线性分配」管理方式，便于高效存储指令运行过程中的临时变量等。
 
@@ -22,6 +30,11 @@
 - 栈内存的释放过程：看起来像不像数据结构「栈」的出栈过程。
 
 ## 什么是栈空间？
+
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>
+
 
 栈空间是一个固定值，决定了栈内存最大可分配的内存范围，也就是决定了栈顶的上限。
 
@@ -47,6 +60,11 @@
 我们分别从「进程栈」和「线程栈」、「协程栈」视角看看以上两个问题。
 
 # 进程栈
+
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>
+
 
 > 什么是进程栈？
 
@@ -131,6 +149,11 @@ ADD 24, SP // 栈上释放24字节内存 3*8byte（释放栈内存指令）
 
 # 线程栈
 
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>
+
+
 > 什么是线程栈？
 
 ```
@@ -178,6 +201,11 @@ int main() {
 ```
 
 # 协程栈
+
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>
+
 
 > 什么是协程栈？
 
@@ -266,3 +294,7 @@ func malg(stacksize int32) *g {
 进程栈|进程启动时|操作系统配置，`ulimit -s`|虚拟内存的用户空间栈区|编译器，汇编`SUB`、`ADD`指令
 线程栈|创建线程时|创建线程的运行时，`pthread_attr_setstack`|虚拟内存的用户空间进程堆区域|编译器，汇编`SUB`、`ADD`指令
 协程栈|使用`go`关键字运行函数时|Go运行时，`malg(栈内存)`g0 8KB、g 2KB|虚拟内存的用户空间进程堆区域|编译器，汇编`SUB`、`ADD`指令
+
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>

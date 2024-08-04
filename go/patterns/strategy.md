@@ -1,5 +1,9 @@
 ## 前言
 
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>
+
 本系列主要分享，如何在我们的真实业务场景中使用设计模式。
 
 本系列文章主要采用如下结构：
@@ -273,3 +277,7 @@ main.(*WechatPay).Pay 使用微信支付...
 - 声明标准：定义`interface`
 - 封装算法：按照标准`interface`封装分支代码，得到每一个具体策略
 - 构建算法集：每一个具体策略构成策略池子 -> 这就是沉淀的过程
+
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>

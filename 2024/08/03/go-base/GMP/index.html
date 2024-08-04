@@ -366,8 +366,8 @@
 </ul>
 <h3 id="M职责解析"><a href="#M职责解析" class="headerlink" title="M职责解析"></a><code>M</code>职责解析</h3><ol>
 <li>绑定真正执行代码的系统线程 </li>
-<li>执行<code>G</code>的调度</li>
-<li>执行被调度的<code>G</code>绑定的函数</li>
+<li>系统线程执行<code>G</code>的调度</li>
+<li>系统线程执行被调度的<code>G</code>绑定的函数</li>
 <li>维护<code>P</code>链表（可以从下一个<code>P</code>的队列找<code>G</code>）</li>
 </ol>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Machine</span></span><br><span class="line"><span class="comment">// 代码位置：go1.19/src/runtime/proc.go</span></span><br><span class="line"><span class="keyword">type</span> m <span class="keyword">struct</span> &#123;</span><br><span class="line">	g0            *g     </span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line">	curg          *g  <span class="comment">// 当前执行的g</span></span><br><span class="line">	p             puintptr <span class="comment">// m绑定的p</span></span><br><span class="line">	nextp         puintptr <span class="comment">// 4. 维护`P`链表（可以从下一个`P`的队列找`G`）</span></span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 1. 绑定真正执行代码的系统线程</span></span><br><span class="line">	<span class="comment">// 2. 执行`G`的调度</span></span><br><span class="line">	<span class="comment">// 3. 执行被调度的`G`绑定的函数</span></span><br><span class="line">	mOS </span><br><span class="line"></span><br><span class="line">    <span class="comment">//...略...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>

@@ -1,5 +1,9 @@
 # 计算机为什么需要内存？
 
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>
+
 计算机是运行自动化程序的载体，程序(或称之为进程)由可执行代码被执行后产生。那么计算机在运行程序的过程中为什么需要「内存」呢？为了轻松理解这个问题，我们先来简单看看：
 
 - 代码的本质
@@ -37,6 +41,7 @@ CPU执行指令简易过程分为三步：
 </p>
 
 详细请移步历史文章[「回到本真，代码是如何运行的？」](https://mp.weixin.qq.com/s/w17lFYeYg9chHBi6x4o_5A)
+
 ## 内存的作用
 
 通过以上我们可以基本看出「内存」在计算机中扮演的角色：
@@ -48,6 +53,11 @@ CPU执行指令简易过程分为三步：
 至此我们基本明白了内存存在的意义。但是呢，我们又经常会听到关于「栈内存」、「堆内存」的概念，那「栈内存」和「堆内存」到底是什么呢？接下来我们继续来看看这个问题。
 
 # 为什么需要栈内存？
+
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>
+
 
 程序在使用内存的过程中，不仅仅只需要关注内存的分配问题，还需要关注到内存使用完毕的回收问题，这就是内存管理中面临的最大两个问题：
 
@@ -84,6 +94,11 @@ CPU执行指令简易过程分为三步：
 所以同时你应该也理解了「为什么称之为栈内存？」。**「栈内存」是计算机对连续内存的采取的「线性分配」管理方式，便于高效存储指令运行过程中的临时变量。**
 
 # 为什么需要堆内存？
+
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>
+
 
 假如函数A内变量是个指针且被函数B外的代码依赖，如果对应变量内存被回收，这个指针就成了野指针不安全。怎么解决这个问题呢？
 
@@ -128,6 +143,11 @@ CPU执行指令简易过程分为三步：
 接着我们分别通过**分配时机**、**分配过程**两部分，来看看Go语言栈内存和堆内存的分配。
 
 # 栈内存的分配
+
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>
+
 
 ## 栈内存分配的时机
 
@@ -226,6 +246,11 @@ func copystack(gp *g, newsize uintptr) {
 
 ## 栈内存分配过程
 
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>
+
+
 Go语言栈内存的分配按待分配的栈大小分为两大类：
 
 - 小于32KB的栈内存
@@ -273,6 +298,11 @@ Go语言栈内存的分配按待分配的栈大小分为两大类：
 </p>
 
 # 堆内存的分配
+
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>
+
 
 想要更好的理解Go堆内存分配需要先了解Go的内存三层架构以及Go的内存管理单元`mspan`。历史文章请查看：
 
@@ -488,5 +518,9 @@ case OMAKESLICE:
 - 「栈内存」也来源于堆`mheap`
 		
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220503213918.png" style="width:80%">
+  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220503213918.png" style="width:60%">
 </p>
+
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>

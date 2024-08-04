@@ -1,5 +1,9 @@
 # 为什么说Go的Map是无序的？
 
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>
+
 > Go源码版本1.13.8
 
 # 前言
@@ -332,3 +336,7 @@ B = 1
 - 再次回顾了Go的Map遍历结果“无序”的原因
 - 了解了Map的写入过程
 - 了解了Map的「成倍扩容」和「等量扩容」的设计与目的
+
+<p>
+    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+<p>
