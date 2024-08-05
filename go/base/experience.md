@@ -543,9 +543,10 @@ func main() {
 }
 
 // [Running] go run ".../demo/main.go"
-// resultB {{0 } {[]}}
-// resultA {{0 } {}}
+// resultB 0 []
+// resultA 0 {}
 // 退出
+
 ```
 
 ## 单元测试&基准测试
@@ -557,6 +558,7 @@ func main() {
 ### 单元测试
 
 一个很简单的单元测试示例：
+
 ```go
 package main
 
