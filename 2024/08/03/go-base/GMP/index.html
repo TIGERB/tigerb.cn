@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Description-->
+    
+        <meta name="description" content="Trying to be the person you want to be.">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="施展">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Go的GMP模型真的很&#34;简单&#34;"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="施展TIGERB"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content=""/>
+    
+
+    <!-- Title -->
+    
+    <title>Go的GMP模型真的很&#34;简单&#34; - 施展TIGERB</title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/sass/main.css">
+
+
+    <!--[if lt IE 8]>
+        
+<script src="/js/ie/html5shiv.js"></script>
+
+    <![endif]-->
+
+    <!--[if lt IE 8]>
+        
+<link rel="stylesheet" href="/sass/ie8.css">
+
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+        
+<link rel="stylesheet" href="/sass/ie9.css">
+
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?30c7e7d53256334a8dc1cf524fcc77f6";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Menu -->
+        <!-- Header -->
+<header id="header">
+    <div class="inner">
+
+        <!-- Logo -->
+        <a href="/" class="logo">
+            <span class="symbol"><img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20190707142019.png" alt="" /></span><span class="title">施展TIGERB</span>
+        </a>
+
+        <!-- Nav -->
+        <nav>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+    <h2>Menu</h2>
+    <ul>
+        
+            <li>
+                <a href="/">首页</a>
+            </li>
+        
+            <li>
+                <a target="_blank" rel="noopener" href="https://github.com/TIGERB">Github</a>
+            </li>
+        
+            <li>
+                <a target="_blank" rel="noopener" href="https://segmentfault.com/u/tigerb">Segmentfault</a>
+            </li>
+        
+            <li>
+                <a target="_blank" rel="noopener" href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
+            </li>
+        
+    </ul>
+</nav>
+
+
+        <div id="main">
+            <div class="inner">
+
+                <!-- Main Content -->
+                
+
+    <h1 class="title">Go的GMP模型真的很"简单"</h1>
+    <div class="meta">
+        2024-08-03
+    </div>
+
+
+    <span class="image main"><img src="No Code No Life" alt="" /></span>
+
+
+<!-- Gallery -->
+
+
+<!-- Content -->
+<blockquote>
+<p>本文基于go1.19</p>
+</blockquote>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><hr>
+<p>关于GMP模型网上已经有很多文章，讲的内容大多都是如下图的逻辑，本系列我们就不再赘述。本系列我们换个视角，核心是搞清楚两个问题：</p>
+<ul>
+<li>GMP到底是什么？</li>
+<li>goroutine如何恢复和保存上下文的？</li>
+</ul>
+<p align="center">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal/gmp/GMP.png" style="width:60%">
+</p>
+
+<p>正文开始。</p>
+<h1 id="GMP只是结构体"><a href="#GMP只是结构体" class="headerlink" title="GMP只是结构体"></a><code>GMP</code>只是结构体</h1><hr>
+<p><code>GMP</code>并不是你想象的那么神奇的存在，其实就是普通的结构体，如同你写业务代码定义的结构体一样，如下：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Goroutine</span></span><br><span class="line"><span class="comment">// 代码位置：go1.19/src/runtime/proc.go</span></span><br><span class="line"><span class="keyword">type</span> g <span class="keyword">struct</span> &#123;</span><br><span class="line">	stack     stack</span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line">	gopc      <span class="type">uintptr</span> </span><br><span class="line">	startpc   <span class="type">uintptr</span></span><br><span class="line">	sched     <span class="keyword">struct</span> &#123;</span><br><span class="line">		sp   <span class="type">uintptr</span></span><br><span class="line">		pc   <span class="type">uintptr</span></span><br><span class="line">		<span class="comment">//...略...</span></span><br><span class="line">		bp   <span class="type">uintptr</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p align="center">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal/gmp/g-struct.png" style="width:30%">
+</p>
+
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Machine</span></span><br><span class="line"><span class="comment">// 代码位置：go1.19/src/runtime/proc.go</span></span><br><span class="line"><span class="keyword">type</span> m <span class="keyword">struct</span> &#123;</span><br><span class="line">    g0            *g     </span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line">	curg          *g</span><br><span class="line">	p             puintptr</span><br><span class="line">	nextp         puintptr</span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line"></span><br><span class="line">	mOS </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p align="center">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal/gmp/m-struct.png" style="width:30%">
+</p>
+
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Processor</span></span><br><span class="line"><span class="comment">// 代码位置：go1.19/src/runtime/proc.go</span></span><br><span class="line"><span class="keyword">type</span> p <span class="keyword">struct</span> &#123;</span><br><span class="line">	id          <span class="type">int32</span></span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line">	m           muintptr </span><br><span class="line">	mcache      *mcache</span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line">	runqhead <span class="type">uint32</span></span><br><span class="line">	runqtail <span class="type">uint32</span></span><br><span class="line">	runq     [<span class="number">256</span>]guintptr</span><br><span class="line">	runnext guintptr</span><br><span class="line">    <span class="comment">//...略... </span></span><br><span class="line">	gFree <span class="keyword">struct</span> &#123;</span><br><span class="line">		gList</span><br><span class="line">		n <span class="type">int32</span></span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//...略...</span></span><br><span class="line">	mspancache <span class="keyword">struct</span> &#123;</span><br><span class="line">		<span class="built_in">len</span> <span class="type">int</span></span><br><span class="line">		buf [<span class="number">128</span>]*mspan</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//...略...</span></span><br><span class="line">	gcw gcWork</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p align="center">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal/gmp/p-struct.png" style="width:30%">
+</p>
+
+<h2 id="GMP是系统线程运行的代码片段"><a href="#GMP是系统线程运行的代码片段" class="headerlink" title="GMP是系统线程运行的代码片段"></a><code>GMP</code>是系统线程运行的代码片段</h2><p><code>GMP</code>和你写的业务代码一样，都是由系统线程运行。</p>
+<p align="center">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal/gmp/GMP-With-OSThread.png" style="width:60%">
+</p>
+
+<h2 id="GMP是类似面相对象思想的封装"><a href="#GMP是类似面相对象思想的封装" class="headerlink" title="GMP是类似面相对象思想的封装"></a><code>GMP</code>是类似面相对象思想的封装</h2><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>结构体含义</th>
+<th>结构体职责</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>G</code></td>
+<td>Goroutine，代表协程</td>
+<td>1. 封装可被并发执行的函数片段，比如 <code>go func() &#123;// 函数A&#125;()</code></td>
+</tr>
+<tr>
+<td><code>G</code></td>
+<td>-</td>
+<td>2. 暂存函数片段(协程)切换时的上下文信息</td>
+</tr>
+<tr>
+<td><code>G</code></td>
+<td>-</td>
+<td>3. 封装g的栈内存空间，暂存函数片段(协程)执行时的临时变量的</td>
+</tr>
+<tr>
+<td><code>M</code></td>
+<td>Machine，和系统线程建立映射，结构体绑定一个系统线程</td>
+<td>1. 绑定真正执行代码的系统线程，系统线程执行<code>G</code>的调度，和被调度的<code>G</code>绑定的函数</td>
+</tr>
+<tr>
+<td><code>M</code></td>
+<td>-</td>
+<td>2. 维护<code>P</code>链表（可以从下一个<code>P</code>的队列找<code>G</code>）</td>
+</tr>
+<tr>
+<td><code>P</code></td>
+<td>Processor，和逻辑处理器建立映射</td>
+<td>1. 维护可执行<code>G</code>的队列(<code>M</code>从该队列找可执行的<code>G</code>)；</td>
+</tr>
+<tr>
+<td><code>P</code></td>
+<td>-</td>
+<td>2. 堆内存缓存层（<code>mcache</code>）</td>
+</tr>
+<tr>
+<td><code>P</code></td>
+<td>-</td>
+<td>3. 维护g的闲置队列</td>
+</tr>
+</tbody></table>
+<h3 id="G职责解析"><a href="#G职责解析" class="headerlink" title="G职责解析"></a><code>G</code>职责解析</h3><p>接下来，展开关于<code>G</code>展开两个关键问题：</p>
+<ul>
+<li><code>G</code>和函数绑定过程</li>
+<li><code>G</code>切换上下文过程</li>
+</ul>
+<p><strong><code>G</code>和函数绑定过程</strong></p>
+<p>当你使用<code>go</code>关键字执行一个函数时<code>go func()&#123;&#125;()</code>：</p>
+<ol>
+<li><code>G</code>和<code>func</code>具体绑定在哪？</li>
+<li><code>G</code>和<code>func</code>何时绑定？</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// `go`关键字示例</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 使用go 关键并发执行一个函数</span></span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">&quot;demo&quot;</span>)</span><br><span class="line">	&#125;()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>G</code>和<code>func</code>具体绑定在哪？</p>
+</blockquote>
+<p>位于g的结构体 <code>g.startpc</code>属性，详细如下：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Goroutine</span></span><br><span class="line"><span class="comment">// 代码位置：go1.19/src/runtime/proc.go</span></span><br><span class="line"><span class="keyword">type</span> g <span class="keyword">struct</span> &#123;</span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line">	gopc      <span class="type">uintptr</span>  <span class="comment">// go关键字创建Goroutine的代码位置</span></span><br><span class="line">    <span class="comment">//...略...</span></span><br><span class="line">	startpc   <span class="type">uintptr</span> <span class="comment">// Goroutine绑定的函数代码地址</span></span><br><span class="line">    <span class="comment">//...略...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>G</code>和<code>func</code>何时绑定？</p>
+</blockquote>
+<ol>
+<li>当通过go关键字运行一个函数时</li>
+<li>从g的闲置队列获取一个g，并通过<code>g.startpc</code>属性绑定上待执行的函数fn</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 当你用go关键字执行一个函数</span></span><br><span class="line"><span class="comment">// 通过这个函数 绑定 g 和 待被执行的函数fn</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">newproc</span><span class="params">(fn *funcval)</span></span> &#123;</span><br><span class="line">	gp := getg()</span><br><span class="line">	<span class="comment">// 获取使用go关键字调用fn的代码位置</span></span><br><span class="line">	<span class="comment">// 方便fn执行完成之后跳回原代码位置</span></span><br><span class="line">	pc := getcallerpc()</span><br><span class="line">	systemstack(<span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		<span class="comment">// 绑定过程在这个函数中</span></span><br><span class="line">		<span class="comment">// 下面进一步分析newproc1</span></span><br><span class="line">		newg := newproc1(fn, gp, pc)</span><br><span class="line"></span><br><span class="line">		_p_ := getg().m.p.ptr()</span><br><span class="line">		<span class="comment">// 放入本地队列</span></span><br><span class="line">		<span class="comment">// 等待调度</span></span><br><span class="line">		runqput(_p_, newg, <span class="literal">true</span>)</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> mainStarted &#123;</span><br><span class="line">			wakep()</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 绑定过程在这个函数中 分析newproc1</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">newproc1</span><span class="params">(fn *funcval, callergp *g, callerpc <span class="type">uintptr</span>)</span></span> *g &#123;</span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line">	newg := gfget(_p_) <span class="comment">// 从g的闲置队列获取一个g</span></span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line">	newg.gopc = callerpc <span class="comment">// 重点：设置go关键字的位置，便于fn执行完毕跳回原代码位置</span></span><br><span class="line">	newg.startpc = fn.fn <span class="comment">// 重点：这里绑定待被执行的函数fn</span></span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> newg</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>函数绑定过程如下：</p>
+<p align="center">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal/gmp/g-bind-func.png" style="width:60%">
+</p>
+
+<p><strong><code>G</code>切换上下文过程</strong></p>
+<ol>
+<li><code>goroutine</code>的上下文信息具体保存在哪？</li>
+<li><code>goroutine</code>的上下文如何切换？</li>
+</ol>
+<blockquote>
+<p><code>goroutine</code>的上下文信息具体保存在哪？</p>
+</blockquote>
+<p>位于g的结构体 <code>g.sched</code>属性，详细如下：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Goroutine</span></span><br><span class="line"><span class="comment">// 代码位置：go1.19/src/runtime/proc.go</span></span><br><span class="line"><span class="keyword">type</span> g <span class="keyword">struct</span> &#123;</span><br><span class="line">	stack     stack <span class="comment">// 协程栈 执行过程临时变量存放的地方</span></span><br><span class="line">	sched     gobuf <span class="comment">// Goroutine上下文信息 保存在这个结构</span></span><br><span class="line">    <span class="comment">//...略...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Goroutine上下文信息</span></span><br><span class="line"><span class="keyword">type</span> gobuf <span class="keyword">struct</span> &#123;</span><br><span class="line">	sp   <span class="type">uintptr</span> <span class="comment">// 栈指针：指向栈顶</span></span><br><span class="line">	pc   <span class="type">uintptr</span> <span class="comment">// 代码(指令)执行位置的地址</span></span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line">	bp   <span class="type">uintptr</span> <span class="comment">// 基指针：指向栈基</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>goroutine</code>的上下文如何切换？</p>
+</blockquote>
+<ul>
+<li>g恢复上下文过程</li>
+<li>g保存上下文过程</li>
+</ul>
+<p><strong>g恢复上下文过程：</strong></p>
+<p>触发调度时：</p>
+<ol>
+<li>找到可执行的g（来源本地队列、全局队列、netpoll list 读或写就绪的g列表）</li>
+<li>把g的上下文<code>g.sched</code>通过汇编代码中的函数<code>gogo</code>恢复到对应的寄存器中</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// g的调度方法</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">schedule</span><span class="params">()</span></span> &#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 找可执行的g (本地队列、全局队列、netpoll list 读或写就绪的g列表 等)</span></span><br><span class="line">	gp, inheritTime, tryWakeP := findRunnable() </span><br><span class="line">	</span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//在这里 继续往下看</span></span><br><span class="line">	execute(gp, inheritTime)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">execute</span><span class="params">(gp *g, inheritTime <span class="type">bool</span>)</span></span> &#123;</span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line">	<span class="comment">// 关键就是通过gogo这个函数 恢复</span></span><br><span class="line">	gogo(&amp;gp.sched)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>gogo函数汇编代码，arm64架构示例汇编代码如下：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// void gogo(Gobuf*)</span></span><br><span class="line"><span class="comment">// restore state from Gobuf; longjmp</span></span><br><span class="line">TEXT runtime·gogo(SB), NOSPLIT|NOFRAME, $<span class="number">0</span><span class="number">-8</span></span><br><span class="line">	MOVD	buf+<span class="number">0</span>(FP), R5</span><br><span class="line">	MOVD	gobuf_g(R5), R6</span><br><span class="line">	MOVD	<span class="number">0</span>(R6), R4</span><br><span class="line">	B	gogo&lt;&gt;(SB)</span><br><span class="line"></span><br><span class="line">TEXT gogo&lt;&gt;(SB), NOSPLIT|NOFRAME, $<span class="number">0</span></span><br><span class="line">	MOVD	R6, g</span><br><span class="line">	BL	runtime·save_g(SB)</span><br><span class="line"></span><br><span class="line">	MOVD	gobuf_sp(R5), R0 <span class="comment">// 恢复栈指针</span></span><br><span class="line">	MOVD	R0, RSP</span><br><span class="line">	MOVD	gobuf_bp(R5), R29 <span class="comment">// 恢复基指针</span></span><br><span class="line">	MOVD	gobuf_lr(R5), LR </span><br><span class="line">	MOVD	gobuf_ret(R5), R0</span><br><span class="line">	MOVD	gobuf_ctxt(R5), R26</span><br><span class="line">	MOVD	$<span class="number">0</span>, gobuf_sp(R5)</span><br><span class="line">	MOVD	$<span class="number">0</span>, gobuf_bp(R5)</span><br><span class="line">	MOVD	$<span class="number">0</span>, gobuf_ret(R5)</span><br><span class="line">	MOVD	$<span class="number">0</span>, gobuf_lr(R5)</span><br><span class="line">	MOVD	$<span class="number">0</span>, gobuf_ctxt(R5)</span><br><span class="line">	CMP	ZR, ZR </span><br><span class="line">	MOVD	gobuf_pc(R5), R6 <span class="comment">// 恢复PC计数器 指向下一个待执行的指令</span></span><br><span class="line">	B	(R6)</span><br></pre></td></tr></table></figure>
+
+<p align="center">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal/gmp/g-shedule-gogo.png" style="width:60%">
+</p>
+
+<p><strong>g保存上下文过程：</strong></p>
+<p>其中两个关键函数如下</p>
+<ol>
+<li><code>func save(pc, sp uintptr)</code>触发保存上下文</li>
+<li><code>func mcall(fn func(*g))</code>触发保存上下文</li>
+</ol>
+<p><strong>save函数</strong></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">save</span><span class="params">(pc, sp <span class="type">uintptr</span>)</span></span> &#123;</span><br><span class="line">	_g_ := getg()</span><br><span class="line"></span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line"></span><br><span class="line">	_g_.sched.pc = pc <span class="comment">// 保存代码执行位置</span></span><br><span class="line">	_g_.sched.sp = sp <span class="comment">// 保存栈指针</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用<code>func save(pc, sp uintptr)</code>的场景如下：</p>
+<ul>
+<li>进入系统调用时</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 进入系统调用</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">entersyscall</span><span class="params">()</span></span> &#123;</span><br><span class="line">	reentersyscall(getcallerpc(), getcallersp())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">reentersyscall</span><span class="params">(pc, sp <span class="type">uintptr</span>)</span></span> &#123;</span><br><span class="line">	_g_ := getg()</span><br><span class="line"></span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line">	<span class="comment">// 保存上下文</span></span><br><span class="line">	save(pc, sp)</span><br><span class="line">	_g_.syscallsp = sp</span><br><span class="line">	_g_.syscallpc = pc</span><br><span class="line">	casgstatus(_g_, _Grunning, _Gsyscall)</span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p align="center">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal/gmp/g-shedule-save.png" style="width:60%">
+</p>
+
+<p><strong>mcall函数</strong></p>
+<p><code>func mcall(fn func(*g))</code>执行过程中，从g切换到g0，并执行fn。fn内部会执行调度函数shedule()，触发新的调度，下面会举一个例子。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">TEXT runtime·mcall&lt;ABIInternal&gt;(SB), NOSPLIT|NOFRAME, $<span class="number">0</span><span class="number">-8</span></span><br><span class="line">	MOVD	R0, R26	</span><br><span class="line"></span><br><span class="line">	MOVD	RSP, R0</span><br><span class="line">	MOVD	R0, (g_sched+gobuf_sp)(g) <span class="comment">// 保存当前g的栈指针</span></span><br><span class="line">	MOVD	R29, (g_sched+gobuf_bp)(g) <span class="comment">// 保存当前g的基指针</span></span><br><span class="line">	MOVD	LR, (g_sched+gobuf_pc)(g)<span class="comment">// 保存当前g的下一个待执行指令的位置 PC计数器</span></span><br><span class="line">	MOVD	$<span class="number">0</span>, (g_sched+gobuf_lr)(g)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 切换到g0，并执行函数fn</span></span><br><span class="line">	MOVD	g, R3</span><br><span class="line">	MOVD	g_m(g), R8</span><br><span class="line">	MOVD	m_g0(R8), g</span><br><span class="line">	BL	runtime·save_g(SB)</span><br><span class="line">	CMP	g, R3</span><br><span class="line">	BNE	<span class="number">2</span>(PC)</span><br><span class="line">	B	runtime·badmcall(SB)</span><br><span class="line"></span><br><span class="line">	MOVD	(g_sched+gobuf_sp)(g), R0</span><br><span class="line">	MOVD	R0, RSP	</span><br><span class="line">	MOVD	(g_sched+gobuf_bp)(g), R29</span><br><span class="line">	MOVD	R3, R0	</span><br><span class="line">	MOVD	$<span class="number">0</span>, <span class="number">-16</span>(RSP)</span><br><span class="line">	SUB	$<span class="number">16</span>, RSP</span><br><span class="line">	MOVD	<span class="number">0</span>(R26), R4</span><br><span class="line">	BL	(R4)</span><br><span class="line">	B	runtime·badmcall2(SB)</span><br></pre></td></tr></table></figure>
+
+<p align="center">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal/gmp/g-shedule-mcall.png" style="width:60%">
+</p>
+
+<p>调用<code>func mcall(fn func(*g))</code>的场景如下：</p>
+<ol>
+<li><code>Gosched()</code>：触发协作&amp;抢占式式调度时</li>
+<li><code>gopark</code>：g从运行状态转换为等待状态时</li>
+<li><code>goexit1()</code>goroutine执行完成时</li>
+<li><code>exitsyscall() </code>退出系统调用时</li>
+<li>等</li>
+</ol>
+<p>详细展开，<code>Gosched()</code>：触发协作&amp;抢占式式调度时看看，如下</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 触发调度</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Gosched</span><span class="params">()</span></span> &#123;</span><br><span class="line">	checkTimeouts()</span><br><span class="line">	mcall(gosched_m)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">gosched_m</span><span class="params">(gp *g)</span></span> &#123;</span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line">	goschedImpl(gp)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">goschedImpl</span><span class="params">(gp *g)</span></span> &#123;</span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line">	<span class="comment">// 正在运行状态转变为 可运行状态</span></span><br><span class="line">	casgstatus(gp, _Grunning, _Grunnable)</span><br><span class="line">	dropg()</span><br><span class="line">	lock(&amp;sched.lock)</span><br><span class="line">	globrunqput(gp) <span class="comment">// 放入全局队列</span></span><br><span class="line">	unlock(&amp;sched.lock)</span><br><span class="line">	<span class="comment">// 触发调度</span></span><br><span class="line">	schedule()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">schedule</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 找到下一个可执行的g</span></span><br><span class="line">	gp, inheritTime, tryWakeP := findRunnable() </span><br><span class="line"></span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 执行下一个g</span></span><br><span class="line">	execute(gp, inheritTime)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">execute</span><span class="params">(gp *g, inheritTime <span class="type">bool</span>)</span></span> &#123;</span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 恢复上下文</span></span><br><span class="line">	gogo(&amp;gp.sched)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// gogo汇编代码(arm64架构)</span></span><br><span class="line">TEXT gogo&lt;&gt;(SB), NOSPLIT|NOFRAME, $<span class="number">0</span></span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line">	MOVD	gobuf_sp(R5), R0 <span class="comment">// 恢复栈指针</span></span><br><span class="line">	MOVD	gobuf_bp(R5), R29 <span class="comment">// 恢复基指针</span></span><br><span class="line">	<span class="comment">//...略...</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>park_m 把g从运行状态转换为等待状态时</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">gopark</span><span class="params">(unlockf <span class="keyword">func</span>(*g, unsafe.Pointer)</span></span> <span class="type">bool</span>, lock unsafe.Pointer, reason waitReason, traceEv <span class="type">byte</span>, traceskip <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line">	mcall(park_m)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">park_m</span><span class="params">(gp *g)</span></span> &#123;</span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line">	casgstatus(gp, _Grunning, _Gwaiting)</span><br><span class="line">	dropg()</span><br><span class="line"></span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 触发调度</span></span><br><span class="line">	schedule()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//...略...</span></span><br><span class="line"><span class="comment">// 同上`Gosched()`</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>goexit1()</code>goroutine执行完成时</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">goexit1</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line">	mcall(goexit0)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// goexit continuation on g0.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">goexit0</span><span class="params">(gp *g)</span></span> &#123;</span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line">	<span class="comment">// 触发调度</span></span><br><span class="line">	schedule()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//...略...</span></span><br><span class="line"><span class="comment">// 同上`Gosched()`</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li> <code>exitsyscall() </code>退出系统调用时</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">exitsyscall</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line"></span><br><span class="line">	mcall(exitsyscall0)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">exitsyscall0</span><span class="params">(gp *g)</span></span> &#123;</span><br><span class="line">	casgstatus(gp, _Gsyscall, _Grunnable)</span><br><span class="line">	dropg()</span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line">	stopm()</span><br><span class="line">	<span class="comment">// 触发调度</span></span><br><span class="line">	schedule()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/...略...</span><br><span class="line"><span class="comment">// 同上`Gosched()`</span></span><br></pre></td></tr></table></figure>
+
+<p>具体如下图：</p>
+<p align="center">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal/gmp/g-shedule-mcall-scene.png" style="width:60%">
+</p>
+
+<p>总结下g的完整切换过程：</p>
+<ul>
+<li>当前g保存上下文（save/mcall）</li>
+<li>当前g切换到g0，g0执行<code>schedule</code>调度，找到新的可执行的g</li>
+<li>新的g恢复上下文（gogo）</li>
+<li>最后，<strong>实际以上操作都是有系统线程运行的</strong></li>
+</ul>
+<h3 id="M职责解析"><a href="#M职责解析" class="headerlink" title="M职责解析"></a><code>M</code>职责解析</h3><ol>
+<li>绑定真正执行代码的系统线程 </li>
+<li>系统线程执行<code>G</code>的调度</li>
+<li>系统线程执行被调度的<code>G</code>绑定的函数</li>
+<li>维护<code>P</code>链表（可以从下一个<code>P</code>的队列找<code>G</code>）</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Machine</span></span><br><span class="line"><span class="comment">// 代码位置：go1.19/src/runtime/proc.go</span></span><br><span class="line"><span class="keyword">type</span> m <span class="keyword">struct</span> &#123;</span><br><span class="line">	g0            *g     </span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line">	curg          *g  <span class="comment">// 当前执行的g</span></span><br><span class="line">	p             puintptr <span class="comment">// m绑定的p</span></span><br><span class="line">	nextp         puintptr <span class="comment">// 4. 维护`P`链表（可以从下一个`P`的队列找`G`）</span></span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 1. 绑定真正执行代码的系统线程</span></span><br><span class="line">	<span class="comment">// 2. 执行`G`的调度</span></span><br><span class="line">	<span class="comment">// 3. 执行被调度的`G`绑定的函数</span></span><br><span class="line">	mOS </span><br><span class="line"></span><br><span class="line">    <span class="comment">//...略...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="P职责解析"><a href="#P职责解析" class="headerlink" title="P职责解析"></a><code>P</code>职责解析</h3><ol>
+<li>维护可执行<code>G</code>的队列(<code>M</code>从该队列找可执行的<code>G</code>)；</li>
+<li>堆内存缓存层（<code>mcache</code>）</li>
+<li>维护g的闲置队列</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Processor</span></span><br><span class="line"><span class="comment">// 代码位置：go1.19/src/runtime/proc.go</span></span><br><span class="line"><span class="keyword">type</span> p <span class="keyword">struct</span> &#123;</span><br><span class="line">	id          <span class="type">int32</span></span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line">	m           muintptr </span><br><span class="line">	mcache      *mcache <span class="comment">// 堆内存缓存层（`mcache`)</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//...略...</span></span><br><span class="line"></span><br><span class="line">	runqhead <span class="type">uint32</span> <span class="comment">// 1. 维护可执行`G`的队列(`M`从该队列找可执行的`G`)；</span></span><br><span class="line">	runqtail <span class="type">uint32</span> <span class="comment">// 1. 维护可执行`G`的队列(`M`从该队列找可执行的`G`)；</span></span><br><span class="line">	runq     [<span class="number">256</span>]guintptr <span class="comment">// 1. 维护可执行`G`的队列(`M`从该队列找可执行的`G`)；</span></span><br><span class="line">	runnext guintptr <span class="comment">// 1. 维护可执行`G`的队列(`M`从该队列找可执行的`G`)；</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//...略... </span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 3. 维护g的闲置队列</span></span><br><span class="line">	gFree <span class="keyword">struct</span> &#123;</span><br><span class="line">		gList</span><br><span class="line">		n <span class="type">int32</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//...略...</span></span><br><span class="line">	mspancache <span class="keyword">struct</span> &#123;</span><br><span class="line">		<span class="built_in">len</span> <span class="type">int</span></span><br><span class="line">		buf [<span class="number">128</span>]*mspan</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//...略...</span></span><br><span class="line">	gcw gcWork</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><hr>
+<p>再来回头看开篇的两个问题？</p>
+<ul>
+<li>GMP到底是什么？</li>
+<li>goroutine如何恢复和保存上下文的？</li>
+</ul>
+<p>是不是已经很清晰。</p>
+<ul>
+<li>关于问题一，GMP是三个各司其职的结构体，被系统线程运行。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>结构体含义</th>
+<th>结构体职责</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>G</code></td>
+<td>Goroutine，代表协程</td>
+<td>1. 封装可被并发执行的函数片段，比如 <code>go func() &#123;// 函数A&#125;()</code></td>
+</tr>
+<tr>
+<td><code>G</code></td>
+<td>-</td>
+<td>2. 暂存函数片段(协程)切换时的上下文信息</td>
+</tr>
+<tr>
+<td><code>G</code></td>
+<td>-</td>
+<td>3. 封装g的栈内存空间，暂存函数片段(协程)执行时的临时变量的</td>
+</tr>
+<tr>
+<td><code>M</code></td>
+<td>Machine，和系统线程建立映射，结构体绑定一个系统线程</td>
+<td>1. 绑定真正执行代码的系统线程，系统线程执行<code>G</code>的调度，和被调度的<code>G</code>绑定的函数</td>
+</tr>
+<tr>
+<td><code>M</code></td>
+<td>-</td>
+<td>2. 维护<code>P</code>链表（可以从下一个<code>P</code>的队列找<code>G</code>）</td>
+</tr>
+<tr>
+<td><code>P</code></td>
+<td>Processor，和逻辑处理器建立映射</td>
+<td>1. 维护可执行<code>G</code>的队列(<code>M</code>从该队列找可执行的<code>G</code>)；</td>
+</tr>
+<tr>
+<td><code>P</code></td>
+<td>-</td>
+<td>2. 堆内存缓存层（<code>mcache</code>）</td>
+</tr>
+<tr>
+<td><code>P</code></td>
+<td>-</td>
+<td>3. 维护g的闲置队列</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>关于问题二，goroutine恢复和保存上下文过程：</p>
+<ol>
+<li><p>当前g保存上下文（save/mcall）</p>
+</li>
+<li><p>当前g切换到g0，g0执行<code>schedule</code>调度，找到新的可执行的g</p>
+</li>
+<li><p>新的g恢复上下文（gogo）</p>
+<p>具体如下图所示：</p>
+<p align="center">
+ <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal/gmp/g-shedule-mcall-all.png" style="width:60%">
+</p>
+</li>
+</ol>
+</li>
+</ul>
+
+
+<!-- Tags -->
+
+
+
+<div class="tags">
+    <a href="/tags/Go/" class="button small">Go</a>
+</div>
+
+
+
+<!-- Qrcode -->
+<div width="100px">
+    <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg" alt="TIGERB" width="300px" style="display:block; margin: 30px auto 0px auto;">
+</div>
+
+<!-- Comments -->
+<div>
+    
+
+
+</div>
+
+
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+        <section>
+            <h2>About</h2>
+            <div>
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。现世界500强技术经理，拥有丰富的架构、电商系统设计、高并发、体系流程建设和管理经验。<br><br><img style="vertical-align:middle" width="30%" src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+            </div>
+        </section>
+        <section>
+            <h2>Follow</h2>
+            <ul class="icons">
+                
+                    <li><a href="https://twitter.com/CODERCOOKER" class="icon style2 fa-twitter" target="_blank" ><span class="label">Twitter</span></a></li>
+                
+                
+                
+                
+                
+                    <li><a href="https://github.com/TIGERB" class="icon style2 fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
+                
+                
+                
+                
+                
+                    <li><a href="mailto:tigerbcode@gmail.com" class="icon style2 fa-envelope-o" target="_blank" ><span class="label">Email</span></a></li>
+                
+                
+                    <li><a href="\atom.xml" class="icon style2 fa-rss" target="_blank" ><span class="label">RSS</span></a></li>
+                
+            </ul>
+        </section>
+        <ul class="copyright">
+            <li>&copy; TIGERB.cn All right reserved. 津ICP备17006784号-2</li>
+            <li><a href="https://juejin.im/user/5855e82d1b69e6006c9278b4" target="_blank">juejin</a></li>
+            <li><a href="https://segmentfault.com/u/tigerb" target="_blank">Segmentfault</a></li>
+            <li><a target="_blank" rel="noopener" href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
+            <li><a href="http://tigerb.cn/go/#/patterns/">Go设计模式实战</a></li>
+            <li><a href="http://tigerb.cn/go/#/kernal/">Go语言轻松进阶</a></li>
+            <li><a target="_blank" rel="noopener" href="https://dayutalk.cn/">大愚Talk</a></li>
+        </ul>
+    </div>
+</footer>
+    </div>
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- skel -->
+
+<script src="/js/skel.min.js"></script>
+
+
+<!-- Custom Code -->
+
+<script src="/js/util.js"></script>
+
+
+<!--[if lte IE 8]>
+
+<script src="/js/ie/respond.min.js"></script>
+
+<![endif]-->
+
+<!-- Custom Code -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Gallery -->
+<script src="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+</body>
+
+</html>

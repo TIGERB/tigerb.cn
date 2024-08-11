@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Description-->
+    
+        <meta name="description" content="Trying to be the person you want to be.">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="施展">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="回到本真，代码是如何运行的？"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="施展TIGERB"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content=""/>
+    
+
+    <!-- Title -->
+    
+    <title>回到本真，代码是如何运行的？ - 施展TIGERB</title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/sass/main.css">
+
+
+    <!--[if lt IE 8]>
+        
+<script src="/js/ie/html5shiv.js"></script>
+
+    <![endif]-->
+
+    <!--[if lt IE 8]>
+        
+<link rel="stylesheet" href="/sass/ie8.css">
+
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+        
+<link rel="stylesheet" href="/sass/ie9.css">
+
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?30c7e7d53256334a8dc1cf524fcc77f6";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Menu -->
+        <!-- Header -->
+<header id="header">
+    <div class="inner">
+
+        <!-- Logo -->
+        <a href="/" class="logo">
+            <span class="symbol"><img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20190707142019.png" alt="" /></span><span class="title">施展TIGERB</span>
+        </a>
+
+        <!-- Nav -->
+        <nav>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+    <h2>Menu</h2>
+    <ul>
+        
+            <li>
+                <a href="/">首页</a>
+            </li>
+        
+            <li>
+                <a target="_blank" rel="noopener" href="https://github.com/TIGERB">Github</a>
+            </li>
+        
+            <li>
+                <a target="_blank" rel="noopener" href="https://segmentfault.com/u/tigerb">Segmentfault</a>
+            </li>
+        
+            <li>
+                <a target="_blank" rel="noopener" href="https://juejin.im/user/5855e82d1b69e6006c9278b4">掘金</a>
+            </li>
+        
+    </ul>
+</nav>
+
+
+        <div id="main">
+            <div class="inner">
+
+                <!-- Main Content -->
+                
+
+    <h1 class="title">回到本真，代码是如何运行的？</h1>
+    <div class="meta">
+        2022-07-10
+    </div>
+
+
+    <span class="image main"><img src="No Code No Life" alt="" /></span>
+
+
+<!-- Gallery -->
+
+
+<!-- Content -->
+<blockquote>
+<p>本文特指Linux操作系统下和静态编译性语言，以及同步处理器</p>
+</blockquote>
+<p>今天继续计算机基础系列第三篇文章。第一篇我们从图灵机开始初步了解了计算机的发展史，第二篇刨根问底我们写的代码到底是什么。今天我们就来看看二进制代码文件被执行之后是如何运行的？</p>
+<p>历史文章回顾：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/hmy_ktuSBZvUqJtO5f_zZg">回到本真，梦回计算机发展史</a></li>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/rUwXUammEJ2vkmN7CFxW9w">回到本真，代码到底是什么？</a></li>
+<li>回到本真，代码是如何运行的？</li>
+</ul>
+<h2 id="温故知新"><a href="#温故知新" class="headerlink" title="温故知新"></a>温故知新</h2><p>为了更好理解程序的运行原理，我们先来简单复习下之前的内容，详细内容可以点击上方文章链接查看。</p>
+<h3 id="如何实现自动计算？"><a href="#如何实现自动计算？" class="headerlink" title="如何实现自动计算？"></a>如何实现自动计算？</h3><ol>
+<li>数学启蒙：伟大数学家们发起一个挑战：“制造一台机器可以自动计算数学问题？”</li>
+<li>理论计算机诞生：图灵机</li>
+<li>电子学发展：诞生晶体三极管，有两个状态导通(二进制1)和截止(二进制0)</li>
+<li>门电路诞生：逻辑问题可自动判定，多个晶体管组成了与门/或门/非门/异或门</li>
+<li>算术运算集成电路诞生：算术问题可以通过逻辑运算解决，多个门电路构成半加器/全加器/乘法器等</li>
+<li>现代计算机诞生：完全实现自动运算</li>
+</ol>
+<p>图示如下，详细请移步历史文章<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/hmy_ktuSBZvUqJtO5f_zZg">「回到本真，梦回计算机发展史」</a></p>
+<p align="center">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220807222555.png" style="width:50%">
+</p>
+
+<p>到此为止，我们了解了计算机自动运算的简易实现逻辑，接着问题来了：</p>
+<blockquote>
+<p>如何告知计算机自动运算的内容？</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">答：这个就是程序员通过编写代码告知计算机的。</span><br></pre></td></tr></table></figure>
+
+<h3 id="代码是什么？"><a href="#代码是什么？" class="headerlink" title="代码是什么？"></a>代码是什么？</h3><p>简单来看代码主要包含两部分：</p>
+<ul>
+<li>指令部分：中央处理器CPU可执行的指令</li>
+<li>数据部分：常量等</li>
+</ul>
+<p>代码包含了指令，代码被转化为可执行二进制文件，被执行后加载到内存中，中央处理器CPU通过内存获取指令，图示如下。详细请移步历史文章<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/rUwXUammEJ2vkmN7CFxW9w">「回到本真，代码到底是什么？」</a></p>
+<p align="center">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220731175631.png" style="width:80%">
+</p>
+
+<p>到此为止，程序员把中央处理器CPU需要执行的指令，通过执行二进制代码文件加载到了内存中，接着问题来了：</p>
+<blockquote>
+<p>CPU如何获取下一个待执行的指令？</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">答：CPU中的控制单元负责获取、解析指令。</span><br></pre></td></tr></table></figure>
+
+<h2 id="代码是如何运行的？"><a href="#代码是如何运行的？" class="headerlink" title="代码是如何运行的？"></a>代码是如何运行的？</h2><p>进入今日正文「代码是如何运行的？」。</p>
+<h3 id="CPU控制单元"><a href="#CPU控制单元" class="headerlink" title="CPU控制单元"></a>CPU控制单元</h3><p>CPU的控制单元负责从内存中获取指令，控制单元主要由三部分组成：</p>
+<ul>
+<li>程序计数器PC</li>
+<li>指令译码器</li>
+<li>指令寄存器</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>组成部分</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>程序计数器PC</td>
+<td>负责标记下一个待执行指令的在内存中的地址</td>
+</tr>
+<tr>
+<td>指令译码器</td>
+<td>解析指令，通过解析指令的操作码判断当前指令的具体操作，比如是加法还是减法运算等等</td>
+</tr>
+<tr>
+<td>指令寄存器</td>
+<td>负责暂存当前正在执行的指令</td>
+</tr>
+</tbody></table>
+<p>CPU通过控制单元实现了从内存中获取指令、以及解析、暂存指令的功能。</p>
+<h3 id="CPU执行指令过程"><a href="#CPU执行指令过程" class="headerlink" title="CPU执行指令过程"></a>CPU执行指令过程</h3><p>CPU执行指令简易过程分为三步：</p>
+<ul>
+<li>取指：<strong>CPU控制单元</strong>从内存中获取指令</li>
+<li>译指：<strong>CPU控制单元</strong>解析从内存中获取指令</li>
+<li>执行指令：<strong>CPU运算单元</strong>负责执行具体的指令操作</li>
+</ul>
+<p>我们通过一个简易的时序图来看看CPU获取并执行指令的过程：</p>
+<p align="center">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220807232114.png" style="width:100%">
+</p>
+
+<p>通过上图其实我们可能会有一个问题：</p>
+<blockquote>
+<p>代码执行过程中的临时数据如何存储呢？</p>
+</blockquote>
+<p>CPU除了控制单元、运算单元之外，还包含寄存器部分。寄存器包含：</p>
+<ul>
+<li>数据寄存器：存数据本身</li>
+<li>地址寄存器：存内存的地址</li>
+</ul>
+<p>寄存器可以存储指令执行过程中的临时数据存储。但是呢，寄存器存储空间有限等原因(典型的取舍问题)通常使用内存存储中间数据。</p>
+<p>使用内存存储中间数据又面临新的问题：</p>
+<blockquote>
+<p>指令执行完成之后内存如何回收？</p>
+</blockquote>
+<p>这里就诞生了我们熟悉的「栈内存」，通常使用栈内存来存储指令执行过程中的临时数据。</p>
+<h3 id="栈内存"><a href="#栈内存" class="headerlink" title="栈内存"></a>栈内存</h3><blockquote>
+<p>为什么称之为栈内存?</p>
+</blockquote>
+<p>为了简单理解这个问题，其实又回到了之前的文章<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/8sWt9bML8KkmF_6FD0J5FQ">「18张图解密新时代内存分配器TCMalloc」</a>的“内存的线性分配”章节，简单回顾下。</p>
+<p>内存管理的最大两个问题：</p>
+<ul>
+<li>内存的分配</li>
+<li>内存的回收</li>
+</ul>
+<p>内存最简单、高效的分配回收方式就是对一段<strong>连续内存</strong>的「<strong>线性分配</strong>」，栈内存的分配就采用了这种方式。栈内存的管理过程：</p>
+<h4 id="栈内存的分配"><a href="#栈内存的分配" class="headerlink" title="栈内存的分配"></a>栈内存的分配</h4><p>栈内存分配逻辑：current - alloc</p>
+<p align="center">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220807234036.png" style="width:100%">
+</p>
+
+<h4 id="栈内存的释放"><a href="#栈内存的释放" class="headerlink" title="栈内存的释放"></a>栈内存的释放</h4><p>栈内存释放逻辑：current + alloc</p>
+<p align="center">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220807234046.png" style="width:100%">
+</p>
+
+<p>这样指令执行过程中的中间变量是不是就可以使用栈内存进行高效存储。其次通过如下图示可以看出：</p>
+<ul>
+<li>栈内存的分配过程：看起来像不像数据结构「栈」的入栈过程。</li>
+<li>栈内存的释放过程：看起来像不像数据结构「栈」的出栈过程。</li>
+</ul>
+<p>所以同时你应该也理解了「为什么称之为栈内存？」。<strong>栈内存是计算机对连续内存的采取的「线性分配」管理方式，便于高效存储指令运行过程中的临时变量。</strong></p>
+<p align="center">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220807235914.png" style="width:100%">
+</p>
+
+<h4 id="函数作用域内指令数据依赖"><a href="#函数作用域内指令数据依赖" class="headerlink" title="函数作用域内指令数据依赖"></a>函数作用域内指令数据依赖</h4><p>但是这样还存在别的问题：</p>
+<blockquote>
+<p>假如下一个指令对上一个指令存在数据依赖怎么办？</p>
+</blockquote>
+<p>这里就要提到函数作用域和局部变量，假如如下一段简单的代码，函数<code>test</code>在执行完成<code>d := a + 1</code>这行代码对应指令之后，局部变量<code>a和d</code>不能被回收，怎么解决呢？</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := <span class="number">1</span></span><br><span class="line">	b := <span class="number">2</span></span><br><span class="line">	c := test(a, b)</span><br><span class="line">	fmt.Println(c)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">test</span><span class="params">(a, b <span class="type">int</span>)</span></span> (c <span class="type">int</span>) &#123;</span><br><span class="line">	d := a + <span class="number">1</span> <span class="comment">// 执行完成之后，a和d的值临时存储在内存中，这时候不能被回收</span></span><br><span class="line">	c = a + b + d</span><br><span class="line">	<span class="keyword">return</span> c</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>答：在执行完成函数<code>test</code>之后再回收就可以了。</strong></p>
+<h4 id="函数作用域外指令数据依赖"><a href="#函数作用域外指令数据依赖" class="headerlink" title="函数作用域外指令数据依赖"></a>函数作用域外指令数据依赖</h4><p>除此之外，假如函数<code>test</code>内变量是个指针且被函数外的代码依赖，如果对应变量内存被回收，这个指针就成了野指针不安全。怎么解决这个问题呢？</p>
+<p>答：这就是「堆内存」的作用，比如Go语言在编译期会进行「逃逸分析」把分配在「栈」上的变量「分配到堆上去」。</p>
+<h3 id="堆内存"><a href="#堆内存" class="headerlink" title="堆内存"></a>堆内存</h3><p>「堆内存」的问题函数执行完成之后不会被自动回收，所以通常通过「垃圾回收器」进行内存回收。关于「堆内存」这里就不多说了，后续继续开启关于Go语言「栈内存和堆内存的」详细篇章。</p>
+<p align="center">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220808002156.png" style="width:100%">
+</p>
+
+<p>下篇文章我们就回归主线，来彻底看看Go语言的「栈内存/堆内存」实现。</p>
+
+
+<!-- Tags -->
+
+
+
+<div class="tags">
+    <a href="/tags/Go/" class="button small">Go</a> <a href="/tags/计算机原理/" class="button small">计算机原理</a>
+</div>
+
+
+
+<!-- Qrcode -->
+<div width="100px">
+    <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg" alt="TIGERB" width="300px" style="display:block; margin: 30px auto 0px auto;">
+</div>
+
+<!-- Comments -->
+<div>
+    
+
+
+</div>
+
+
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+        <section>
+            <h2>About</h2>
+            <div>
+                新一代轻量级「<a target="_blank" rel="noopener" href='http://easy-php.tigerb.cn'>EasyPHP</a>」框架作者，<a href="/php2go/#/">「《PHP到Go速转手册》」作者</a>，「<a target="_blank" rel="noopener" href='http://skrshop.tech/'>《电商设计手册 | SkrShop》</a>」作者，「<a href='http://tigerb.cn/go/#/patterns/'>《Go设计模式实战》系列</a>」作者，「<a href='http://tigerb.cn/go/#/kernal/'>《Go语言轻松进阶》系列</a>」作者。现世界500强技术经理，拥有丰富的架构、电商系统设计、高并发、体系流程建设和管理经验。<br><br><img style="vertical-align:middle" width="30%" src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+            </div>
+        </section>
+        <section>
+            <h2>Follow</h2>
+            <ul class="icons">
+                
+                    <li><a href="https://twitter.com/CODERCOOKER" class="icon style2 fa-twitter" target="_blank" ><span class="label">Twitter</span></a></li>
+                
+                
+                
+                
+                
+                    <li><a href="https://github.com/TIGERB" class="icon style2 fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
+                
+                
+                
+                
+                
+                    <li><a href="mailto:tigerbcode@gmail.com" class="icon style2 fa-envelope-o" target="_blank" ><span class="label">Email</span></a></li>
+                
+                
+                    <li><a href="\atom.xml" class="icon style2 fa-rss" target="_blank" ><span class="label">RSS</span></a></li>
+                
+            </ul>
+        </section>
+        <ul class="copyright">
+            <li>&copy; TIGERB.cn All right reserved. 津ICP备17006784号-2</li>
+            <li><a href="https://juejin.im/user/5855e82d1b69e6006c9278b4" target="_blank">juejin</a></li>
+            <li><a href="https://segmentfault.com/u/tigerb" target="_blank">Segmentfault</a></li>
+            <li><a target="_blank" rel="noopener" href="http://skrshop.tech/">电商设计手册 | SkrShop</a></li>
+            <li><a href="http://tigerb.cn/go/#/patterns/">Go设计模式实战</a></li>
+            <li><a href="http://tigerb.cn/go/#/kernal/">Go语言轻松进阶</a></li>
+            <li><a target="_blank" rel="noopener" href="https://dayutalk.cn/">大愚Talk</a></li>
+        </ul>
+    </div>
+</footer>
+    </div>
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- skel -->
+
+<script src="/js/skel.min.js"></script>
+
+
+<!-- Custom Code -->
+
+<script src="/js/util.js"></script>
+
+
+<!--[if lte IE 8]>
+
+<script src="/js/ie/respond.min.js"></script>
+
+<![endif]-->
+
+<!-- Custom Code -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Gallery -->
+<script src="https://cdn.bootcss.com/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+</body>
+
+</html>
