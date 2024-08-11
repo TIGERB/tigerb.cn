@@ -4,7 +4,7 @@ tags:
   - 设计模式
   - Go
 cover_index: >-
-  http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200402213213.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+  https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20200402213213.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
 categories:
   - go-patterns
 date: 2020-04-02 22:22:11
@@ -13,7 +13,7 @@ date: 2020-04-02 22:22:11
 > 嗯，Go设计模式实战系列，一个设计模式业务真实使用的golang系列。
 
 <p>
-    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210215112122.png" width="50%">
+    <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20210215112122.png" width="50%">
 </p>
 
 # **前言**
@@ -112,7 +112,7 @@ XX|以及未来会增加的逻辑...
 我们通过梳理的文本业务流程得到了如下的业务流程图：
 
 <p align="center">
-    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200327205310.png" width="50%">
+    <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20200327205310.png" width="50%">
 </p>
 
 ## **代码建模**
@@ -195,7 +195,7 @@ XX|以及未来会增加的逻辑...
 同时得到了我们的UML图：
 
 <p align="center">
-    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20200328220913.jpg" width="100%">
+    <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20200328220913.jpg" width="100%">
 </p>
 
 ## **代码demo**

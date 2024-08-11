@@ -3,7 +3,7 @@ title: 一探究竟新一代可观测标准OpenTelemetry
 tags:
   - Go
 cover_index:
-  https://blog-1251019962.cos.ap-beijing.myqcloud.com/infra%2Fopentelemtry.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+  https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/infra%2Fopentelemtry.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
 categories:
   - k8s
 date: 2023-05-28 17:00:11
@@ -20,7 +20,7 @@ date: 2023-05-28 17:00:11
 我们排查问题过程，一般都会把三者日志、指标、追踪结合来看，比如通过接口异常增量指标发现问题--->链路追踪定位异常服务--->排查异常服务日志，所以关于可观测我们经常可以看见这个经典的图片：
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/infra%2Ftelemetry.png" style="width:36%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/infra%2Ftelemetry.png" style="width:36%">
 </p>
 
 # 什么是`OpenTelemetry`
@@ -28,7 +28,7 @@ date: 2023-05-28 17:00:11
 关于可观测除了上述的各种实现外，还有另一套实现`OpenCensus`，于是诞生统一标准`OpenTelemetry`且兼容`OpenTracing`，`OpenCensus`。不过关于go语言`OpenTelemetry`的统一sdk实现还不完善，比如目前还不支持日志，具体可以查看`https://github.com/open-telemetry/opentelemetry-go`。
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/infra%2Fopentelemtry.png" style="width:36%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/infra%2Fopentelemtry.png" style="width:36%">
 </p>
 
 接下来，我们基于Go来看看，原sdk(也就是未使用`OpenTelemetry`)接入指标和追踪的方式和基于`OpenTelemetry`新体系的指标和追踪接入方式区别。
@@ -290,7 +290,7 @@ func demoGrpcReq() (string, error) {
 使用`docker-compose up -d`启动演示服务，模拟请求`curl 127.0.0.1:6060/v1/demo`，查看jaeger后台`http://localhost:16686/`，示例如下：
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/infra%2Fjaeger.png" style="width:80%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/infra%2Fjaeger.png" style="width:80%">
 </p>
 
 ## 基于`OpenTelemetry`sdk的`jaeger`追踪演示
@@ -416,7 +416,7 @@ func demoGrpcReq() (string, error) {
 使用`docker-compose up -d`启动演示服务，模拟请求`curl 127.0.0.1:6060/v1/demo`，查看jaeger后台`http://localhost:16686/`，示例如下：
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/infra%2Fjaeger-otel.png" style="width:80%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/infra%2Fjaeger-otel.png" style="width:80%">
 </p>
 
 # 总结

@@ -2,7 +2,7 @@
 title: 面向对象的设计过程
 date: 2019-10-11 20:44:39
 tags: 设计模式
-cover_index: "http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20191104124837.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
+cover_index: "https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20191104124837.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
 ---
 
 ---
@@ -70,23 +70,23 @@ cover_index: "http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/
 ```
 
 刚开始，一个业务逻辑从头写到尾
-<p align="center"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20191020234013.png" width="66%"></p>
+<p align="center"><img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20191020234013.png" width="66%"></p>
 
 一个业务逻辑(拆成多个函数)从头写到尾：
-<p align="center"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20191020234051.png" width="66%"></p>
+<p align="center"><img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20191020234051.png" width="66%"></p>
 
 一个业务逻辑(引入类)从头写到尾：
-<p align="center"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20191020234118.png" width="66%"></p>
+<p align="center"><img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20191020234118.png" width="66%"></p>
 
 一个业务逻辑(拆成多个类方法)从头写到尾，也许、可能、貌似、猜测大多数人停留到了这个阶段。
 问题：某一天多了社交的能力，咋办？
-<p align="center"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20191020234526.png" width="66%"></p>
+<p align="center"><img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20191020234526.png" width="66%"></p>
 
 一个业务逻辑(拆成多类)从头写到尾：
-<p align="center"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20191020234848.png" width="66%"></p>
+<p align="center"><img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20191020234848.png" width="66%"></p>
 
 一个业务逻辑(拆成类、抽象类、接口)从头写到尾：
-<p align="center"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20191020235015.png" width="66%"></p>
+<p align="center"><img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20191020235015.png" width="66%"></p>
 
 
 > 思考🤔：上面的代码就没啥问题了吗？
@@ -183,7 +183,7 @@ coupon_id
 
 从而我们就可以把这个事物转化成一个类(或结构体)，或者抽象类。
 
-<p align="center"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20191020223812.jpg" width="66%"></p>
+<p align="center"><img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20191020223812.jpg" width="66%"></p>
 
 ### 获取行为
 
@@ -192,21 +192,21 @@ coupon_id
 事物有了：`订单生成机器人`
 行为呢？毫无疑问就是上面各种业务逻辑。把具体的行为抽象成一个订单创建行为接口：
 
-<p align="center"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20191020224230.jpg" width="66%"></p>
+<p align="center"><img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20191020224230.jpg" width="66%"></p>
 
 ### 得到UML
 
-<p align="center"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20191020233121.png" width="100%"></p>
+<p align="center"><img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20191020233121.png" width="100%"></p>
 
 ### 设计代码
 
 1. 定义一个类
 
-<p align="center"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20191020235309.png" width="66%"></p>
+<p align="center"><img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20191020235309.png" width="66%"></p>
 
 2. 定义一个订单创建行为的接口
 
-<p align="center"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20191020235643.png" width="66%"></p>
+<p align="center"><img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20191020235643.png" width="66%"></p>
 
 3. 定义具体的不同订单创建行为类
 ```
@@ -225,33 +225,33 @@ coupon_id
 等等...
 ```
 
-<p align="center"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20191020235840.png" width="66%"></p>
+<p align="center"><img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20191020235840.png" width="66%"></p>
 
 4. 创建订单
 
 这里的代码该怎么写，这样？
-<p align="center"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20191021000742.png" width="66%"></p>
+<p align="center"><img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20191021000742.png" width="66%"></p>
 
 还可以继续优化吗？
-<p align="center"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20191021001002.png" width="66%"></p>
+<p align="center"><img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20191021001002.png" width="66%"></p>
 
 使用闭包。
-<p align="center"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20191021001305.png" width="66%"></p>
+<p align="center"><img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20191021001305.png" width="66%"></p>
 
 
 ### PHP版完整代码
 
-<p align="center"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20191024143840.png" width="66%"></p>
+<p align="center"><img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20191024143840.png" width="66%"></p>
 
 ### Go版完整代码
 
-<p align="center"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20191024144623.png" width="66%"></p>
+<p align="center"><img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20191024144623.png" width="66%"></p>
 
 > 上面的代码有什么好处？
 
 假如“我一个同事”又要新开发一个新的应用，新的应用创建订单的时候又有新的逻辑，比如没有优惠逻辑、新增了增加用户积分的逻辑等等，复用上面的代码，是不是就很简单了。
 
-<p align="center"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20191021001739.png" width="66%"></p>
+<p align="center"><img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20191021001739.png" width="66%"></p>
 
 > 所以现在，什么是面向对象？
 
@@ -307,7 +307,7 @@ coupon_id
 
 看看上面的最终的代码是不是完美契合。
 
-<p align="center"><img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20191022131439.png" width="66%"></p>
+<p align="center"><img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20191022131439.png" width="66%"></p>
 
 > 依赖倒转原则：对接口编程，依赖于抽象而不依赖于具体
   

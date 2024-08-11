@@ -3,7 +3,7 @@ title: 关于新零售的一些思考
 tags:
   - 经营管理
 cover_index: >-
-  https://blog-1251019962.cos.ap-beijing.myqcloud.com/tigerb.cn%2Frowan-heuvel-U6t80TWJ1DM-unsplash.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+  https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/tigerb.cn%2Frowan-heuvel-U6t80TWJ1DM-unsplash.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
 categories:
   - business
 date: 2024-6-22 22:20:11

@@ -2,10 +2,10 @@
 title: Go框架解析:gin
 date: 2019-07-06 12:40:30
 tags: golang
-cover_index: "http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20190714105017.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
+cover_index: "https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20190714105017.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
 ---
 
-<img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20190714104800.jpg" style="width:100%">
+<img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20190714104800.jpg" style="width:100%">
 
 ## 前言
 
@@ -75,18 +75,18 @@ func main() {
 
 下图就是我对整个Gin框架生命周期的输出，由于图片过大存在平台压缩的可能，建议大家直接查看原图链接。
 
-<img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20190704211526.png" style="width:100%">
+<img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20190704211526.png" style="width:100%">
 
-> 访问图片源地址查看大图 http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20190704211526.png
+> 访问图片源地址查看大图 https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20190704211526.png
 
-原图查看链接: <http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20190704211526.png>
+原图查看链接: <https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20190704211526.png>
 
 ---
 
 ## 关键代码解析
 
 
-<!-- <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20190706205806.svg" width="100%"> -->
+<!-- <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20190706205806.svg" width="100%"> -->
 
 ```go
 // 获取一个gin框架实例
@@ -347,7 +347,7 @@ func (c *Context) reset() {
 最后我们再简单的回顾下上面的流程,从下图看来，是不是相对于iris简单了好多。
 
 <p align="center">
-    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20190706222632.png" style="width:30%">
+    <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20190706222632.png" style="width:30%">
 </p>
 
 ---

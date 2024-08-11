@@ -2,7 +2,7 @@
 title: 电商设计手册之用户体系[下]
 date: 2018-08-15 21:50:08
 tags: shop
-cover_index: "http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20190330182424.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
+cover_index: "https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20190330182424.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
 ---
 
 # 前言
@@ -23,14 +23,14 @@ cover_index: "http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/
 具体交互流程如下：
 
 <p align="center">
-    <a href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-register-bmpr.png" data-lightbox="roadtrip">
-        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-register-bmpr.png" width="39%">
+    <a href="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-register-bmpr.png" data-lightbox="roadtrip">
+        <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-register-bmpr.png" width="39%">
     </a>
-    <a href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-register.jpg" data-lightbox="roadtrip">
-        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-register.jpg" width="90%">
+    <a href="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-register.jpg" data-lightbox="roadtrip">
+        <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-register.jpg" width="90%">
     </a>
-    <a href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-register-result-2.png" data-lightbox="roadtrip">
-        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-register-result-2.png" width="90%">
+    <a href="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-register-result-2.png" data-lightbox="roadtrip">
+        <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-register-result-2.png" width="90%">
     </a>
 </p>
 
@@ -39,14 +39,14 @@ cover_index: "http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/
 ### 登陆
 
 <p align="center">
-    <a href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-login-page.png" data-lightbox="roadtrip">
-        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-login-page.png" width="30%">
+    <a href="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-login-page.png" data-lightbox="roadtrip">
+        <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-login-page.png" width="30%">
     </a>
-    <a href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-login-logic.jpg" data-lightbox="roadtrip">
-        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-login-logic.jpg" width="90%">
+    <a href="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-login-logic.jpg" data-lightbox="roadtrip">
+        <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-login-logic.jpg" width="90%">
     </a>
-    <a href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-home-page.png" data-lightbox="roadtrip">
-        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-home-page.png" width="30%">
+    <a href="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-home-page.png" data-lightbox="roadtrip">
+        <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-home-page.png" width="30%">
     </a>
 </p>
 
@@ -55,8 +55,8 @@ cover_index: "http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/
 快捷登录的流程基本和上面一致只是验证密码换成了验证验证码。
 
 <p align="center">
-    <a href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-simple-login-page.png" data-lightbox="roadtrip">
-        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-simple-login-page.png" width="39%">
+    <a href="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-simple-login-page.png" data-lightbox="roadtrip">
+        <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-simple-login-page.png" width="39%">
     </a>
 </p>
 
@@ -77,8 +77,8 @@ cover_index: "http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/
 
 
 <p align="center">
-    <a href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-platform-login.jpg" data-lightbox="roadtrip">
-        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-platform-login.jpg" width="100%">
+    <a href="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-platform-login.jpg" data-lightbox="roadtrip">
+        <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-platform-login.jpg" width="100%">
     </a>
 </p>
 
@@ -86,8 +86,8 @@ cover_index: "http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/
 交互界面图如下：
 
 <p align="center">
-    <a href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-platform-login-page.png" data-lightbox="roadtrip">
-        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-platform-login-page.png" width="39%">
+    <a href="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-platform-login-page.png" data-lightbox="roadtrip">
+        <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/skr-account-platform-login-page.png" width="39%">
     </a>
 </p>
 
@@ -115,8 +115,8 @@ cover_index: "http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/
 具体交互如下：
 
 <p align="center">
-    <a href="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/skr-earth-2.jpg" data-lightbox="roadtrip">
-        <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/skr-earth-2.jpg" width="100%">
+    <a href="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/skr-earth-2.jpg" data-lightbox="roadtrip">
+        <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/skr-earth-2.jpg" width="100%">
     </a>
 </p>
 

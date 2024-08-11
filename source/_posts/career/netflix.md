@@ -3,7 +3,7 @@ title: 读一本好书｜奈飞文化手册
 tags:
   - 职场软技能
 cover_index: >-
-  https://blog-1251019962.cos.ap-beijing.myqcloud.com/management/%E8%AF%BB%E4%B8%80%E6%9C%AC%E5%A5%BD%E4%B9%A6%E8%A3%81%E5%87%8F%E5%9B%BE.png
+  https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/management/%E8%AF%BB%E4%B8%80%E6%9C%AC%E5%A5%BD%E4%B9%A6%E8%A3%81%E5%87%8F%E5%9B%BE.png
 categories:
   - career
 date: 2023-03-26 22:00:11
@@ -168,7 +168,7 @@ date: 2023-03-26 22:00:11
 不应该|团队建设-沟通|低估每一层员工反应的问题
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/management/%E7%AE%A1%E7%90%86%E4%BD%93%E7%B3%BB.jpg" style="width:80%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/management/%E7%AE%A1%E7%90%86%E4%BD%93%E7%B3%BB.jpg" style="width:80%">
 </p>
 
 ## 对于员工角色
@@ -192,6 +192,6 @@ date: 2023-03-26 22:00:11
 读书摘要脑图
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/management/%E3%80%8A%E5%A5%88%E9%A3%9E%E6%96%87%E5%8C%96%E6%89%8B%E5%86%8C%E3%80%8B%E6%80%BB%E7%BB%93%E4%B8%8E%E6%80%9D%E8%80%83.jpg" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/management/%E3%80%8A%E5%A5%88%E9%A3%9E%E6%96%87%E5%8C%96%E6%89%8B%E5%86%8C%E3%80%8B%E6%80%BB%E7%BB%93%E4%B8%8E%E6%80%9D%E8%80%83.jpg" style="width:100%">
 </p>
 

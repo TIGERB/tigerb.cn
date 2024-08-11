@@ -3,7 +3,7 @@ title: 程序员如何做"好"需求判断？
 tags:
   - 经营管理
 cover_index: >-
-  https://blog-1251019962.cos.ap-beijing.myqcloud.com/management/%E8%AF%BB%E4%B8%80%E6%9C%AC%E5%A5%BD%E4%B9%A6%E8%A3%81%E5%87%8F%E5%9B%BE.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+  https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/management/%E8%AF%BB%E4%B8%80%E6%9C%AC%E5%A5%BD%E4%B9%A6%E8%A3%81%E5%87%8F%E5%9B%BE.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
 categories:
   - business
 date: 2024-7-7 22:20:11
@@ -48,7 +48,7 @@ date: 2024-7-7 22:20:11
 答：基于更高的要求，不够在缺少个人思考：**缺少基于经营者视角的思考**，也就是经营者意识。如果能想到「按时、按质做完」答案的同学，在团队中主要还是扮演执行者的角色（项目来了，按时按质交付），如下：
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/management%2F%E6%89%A7%E8%A1%8C%E8%80%85_%E6%80%9D%E8%BE%A8%E8%80%85%2F%E6%89%A7%E8%A1%8C%E8%80%85.png" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/management%2F%E6%89%A7%E8%A1%8C%E8%80%85_%E6%80%9D%E8%BE%A8%E8%80%85%2F%E6%89%A7%E8%A1%8C%E8%80%85.png" style="width:100%">
 </p>
 
 所以：
@@ -89,7 +89,7 @@ date: 2024-7-7 22:20:11
 - 建设性建议：这样做是不是会更好？
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/management%2F%E6%89%A7%E8%A1%8C%E8%80%85_%E6%80%9D%E8%BE%A8%E8%80%85%2F%E6%80%9D%E8%BE%A8%E8%80%85.png" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/management%2F%E6%89%A7%E8%A1%8C%E8%80%85_%E6%80%9D%E8%BE%A8%E8%80%85%2F%E6%80%9D%E8%BE%A8%E8%80%85.png" style="width:100%">
 </p>
 
 
@@ -106,7 +106,7 @@ date: 2024-7-7 22:20:11
 - 项目的投入产出比
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/management%2F%E6%89%A7%E8%A1%8C%E8%80%85_%E6%80%9D%E8%BE%A8%E8%80%85%2F%E5%85%B7%E5%A4%87%E7%BB%8F%E8%90%A5%E8%80%85%E8%A7%86%E8%A7%92%E6%80%9D%E8%80%83%E8%83%BD%E5%8A%9B%E7%9A%84%E6%80%9D%E8%BE%A8%E8%80%85.png" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/management%2F%E6%89%A7%E8%A1%8C%E8%80%85_%E6%80%9D%E8%BE%A8%E8%80%85%2F%E5%85%B7%E5%A4%87%E7%BB%8F%E8%90%A5%E8%80%85%E8%A7%86%E8%A7%92%E6%80%9D%E8%80%83%E8%83%BD%E5%8A%9B%E7%9A%84%E6%80%9D%E8%BE%A8%E8%80%85.png" style="width:100%">
 </p>
 
 ## 3.2 如何实现角色转变？
@@ -160,7 +160,7 @@ date: 2024-7-7 22:20:11
 - **方向**：通过公式可以清楚得到影响利润的两大因子：收入和费用，要不提升收入，要不就降低费用，也就是俗话说的开源节流，以及稻盛和夫提到的企业经营原则：收入最大化和费用最小化（来源数据《阿米巴经营》》）。
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/management%2F%E6%89%A7%E8%A1%8C%E8%80%85_%E6%80%9D%E8%BE%A8%E8%80%85%2F%E5%BC%80%E6%BA%90%E8%8A%82%E6%B5%81.png" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/management%2F%E6%89%A7%E8%A1%8C%E8%80%85_%E6%80%9D%E8%BE%A8%E8%80%85%2F%E5%BC%80%E6%BA%90%E8%8A%82%E6%B5%81.png" style="width:100%">
 </p>
 
 
@@ -182,7 +182,7 @@ date: 2024-7-7 22:20:11
   - 复购率：进一步拆解因子
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/management%2F%E6%89%A7%E8%A1%8C%E8%80%85_%E6%80%9D%E8%BE%A8%E8%80%85%2F%E6%8F%90%E5%8D%87%E6%94%B6%E5%85%A5.png" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/management%2F%E6%89%A7%E8%A1%8C%E8%80%85_%E6%80%9D%E8%BE%A8%E8%80%85%2F%E6%8F%90%E5%8D%87%E6%94%B6%E5%85%A5.png" style="width:100%">
 </p>
 
 **第3层拆解之一：如何提升流量**
@@ -202,7 +202,7 @@ date: 2024-7-7 22:20:11
   - 外链：比如增加站外链接
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/management%2F%E6%89%A7%E8%A1%8C%E8%80%85_%E6%80%9D%E8%BE%A8%E8%80%85%2F%E6%B5%81%E9%87%8F.png" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/management%2F%E6%89%A7%E8%A1%8C%E8%80%85_%E6%80%9D%E8%BE%A8%E8%80%85%2F%E6%B5%81%E9%87%8F.png" style="width:100%">
 </p>
 
 **第3层拆解之二：如何提升转化率**
@@ -220,13 +220,13 @@ date: 2024-7-7 22:20:11
   - 订单到支付转化率: 同上
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/management%2F%E6%89%A7%E8%A1%8C%E8%80%85_%E6%80%9D%E8%BE%A8%E8%80%85%2F%E8%BD%AC%E5%8C%96%E7%8E%87.png" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/management%2F%E6%89%A7%E8%A1%8C%E8%80%85_%E6%80%9D%E8%BE%A8%E8%80%85%2F%E8%BD%AC%E5%8C%96%E7%8E%87.png" style="width:100%">
 </p>
 
 按照以上的思路层层拆解，能帮助我们清楚的找到提升利润的方向和具体项目，让我们想清楚。具体拆解结果如下：
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/management%2F%E6%89%A7%E8%A1%8C%E8%80%85_%E6%80%9D%E8%BE%A8%E8%80%85%2F%E6%80%BB%E7%BB%93.webp" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/management%2F%E6%89%A7%E8%A1%8C%E8%80%85_%E6%80%9D%E8%BE%A8%E8%80%85%2F%E6%80%BB%E7%BB%93.webp" style="width:100%">
 </p>
 
 

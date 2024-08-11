@@ -1,7 +1,7 @@
 > 本文基于go1.19
 
 <p>
-    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+    <img style="vertical-align:middle" width="20%" src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
 <p>
 
 # 前言
@@ -13,7 +13,7 @@
 - goroutine如何恢复和保存上下文的？
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/go-kernal/gmp/GMP.png" style="width:60%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal/gmp/GMP.png" style="width:60%">
 </p>
 
 正文开始。
@@ -43,7 +43,7 @@ type g struct {
 ```
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/go-kernal/gmp/g-struct.png" style="width:30%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal/gmp/g-struct.png" style="width:30%">
 </p>
 
 ```go
@@ -62,7 +62,7 @@ type m struct {
 ```
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/go-kernal/gmp/m-struct.png" style="width:30%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal/gmp/m-struct.png" style="width:30%">
 </p>
 
 ```go
@@ -94,7 +94,7 @@ type p struct {
 ```
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/go-kernal/gmp/p-struct.png" style="width:30%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal/gmp/p-struct.png" style="width:30%">
 </p>
 
 ## `GMP`是系统线程运行的代码片段
@@ -102,7 +102,7 @@ type p struct {
 `GMP`和你写的业务代码一样，都是由系统线程运行。
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/go-kernal/gmp/GMP-With-OSThread.png" style="width:60%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal/gmp/GMP-With-OSThread.png" style="width:60%">
 </p>
 
 ## `GMP`是类似面相对象思想的封装
@@ -209,7 +209,7 @@ func newproc1(fn *funcval, callergp *g, callerpc uintptr) *g {
 函数绑定过程如下：
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/go-kernal/gmp/g-bind-func.png" style="width:60%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal/gmp/g-bind-func.png" style="width:60%">
 </p>
 
 #### `G`切换上下文过程
@@ -314,7 +314,7 @@ TEXT gogo<>(SB), NOSPLIT|NOFRAME, $0
 ```
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/go-kernal/gmp/g-shedule-gogo.png" style="width:60%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal/gmp/g-shedule-gogo.png" style="width:60%">
 </p>
 
 ##### g保存上下文过程
@@ -369,7 +369,7 @@ func reentersyscall(pc, sp uintptr) {
 ```
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/go-kernal/gmp/g-shedule-save.png" style="width:60%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal/gmp/g-shedule-save.png" style="width:60%">
 </p>
 
 **mcall函数**
@@ -407,7 +407,7 @@ TEXT runtime·mcall<ABIInternal>(SB), NOSPLIT|NOFRAME, $0-8
 ```
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/go-kernal/gmp/g-shedule-mcall.png" style="width:60%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal/gmp/g-shedule-mcall.png" style="width:60%">
 </p>
 
 调用`func mcall(fn func(*g))`的场景如下：
@@ -540,7 +540,7 @@ func exitsyscall0(gp *g) {
 具体如下图：
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/go-kernal/gmp/g-shedule-mcall-scene.png" style="width:60%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal/gmp/g-shedule-mcall-scene.png" style="width:60%">
 </p>
 
 总结下g的完整切换过程：
@@ -650,7 +650,7 @@ type p struct {
 	具体如下图所示：
 
 	<p align="center">
-		<img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/go-kernal/gmp/g-shedule-mcall-all.png" style="width:60%">
+		<img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal/gmp/g-shedule-mcall-all.png" style="width:60%">
 	</p>
 
 

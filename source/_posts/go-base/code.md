@@ -4,7 +4,7 @@ tags:
   - Go
   - 计算机原理
 cover_index: >-
-  http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220731175631.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+  https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220731175631.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
 categories:
   - go-base
 date: 2022-07-10 15:20:11
@@ -25,7 +25,7 @@ date: 2022-07-10 15:20:11
   + 等等
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220717220428.png" style="width:90%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220717220428.png" style="width:90%">
 </p>
 
 > 现代编程语言语言，可以让我们更加高效编写程序。
@@ -42,7 +42,7 @@ date: 2022-07-10 15:20:11
 - 数据部分：指令执行过程中依赖的数据，常量或者输入设备的数据
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220725132320.png" style="width:90%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220725132320.png" style="width:90%">
 </p>
 
 
@@ -55,7 +55,7 @@ date: 2022-07-10 15:20:11
 等等 | ...
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220728133011.png" style="width:90%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220728133011.png" style="width:90%">
 </p>
 
 当二进制代码文件被执行时：
@@ -64,7 +64,7 @@ date: 2022-07-10 15:20:11
 - 预置数据被加载进内存
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220725131631.png" style="width:90%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220725131631.png" style="width:90%">
 </p>
 
 同样被加载到内存中的「代码」也主要分为两部分：
@@ -73,7 +73,7 @@ date: 2022-07-10 15:20:11
 - 数据部分：文本代码中预置的数据，比如常量等
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220725132155.png" style="width:90%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220725132155.png" style="width:90%">
 </p>
 
 ## CPU读取指令
@@ -81,7 +81,7 @@ date: 2022-07-10 15:20:11
 二进制代码被加载到内存之后，中央处理器CPU就可以从内存中读取指令、解析并执行指令，同时执行指令过程中有需要的话「中央处理器CPU」从内存中读取代码中预置数据(常量等)。这里代码运行过程就是我们通常说到的「运行时 runtime」。
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220731163738.png" style="width:90%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220731163738.png" style="width:90%">
 </p>
 
 ## 总结
@@ -93,7 +93,7 @@ date: 2022-07-10 15:20:11
 5. 程序员根据需求编写源代码文本
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220731175631.png" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220731175631.png" style="width:100%">
 </p>
 
 

@@ -19,7 +19,7 @@ tags: work-flow
 
 如下图，是我整理的我所理解的一套开发流程：
 
-![http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/develop-flow.png?imageView2/0/q/75|watermark/2/text/wqkgVElHRVJCLmNu/font/Y2FuZGFyYQ==/fontsize/320/fill/IzExMTAxMA==/dissolve/60/gravity/SouthEast/dx/10/dy/10|imageslim](http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/develop-flow.png?imageView2/0/q/75|watermark/2/text/wqkgVElHRVJCLmNu/font/Y2FuZGFyYQ==/fontsize/320/fill/IzExMTAxMA==/dissolve/60/gravity/SouthEast/dx/10/dy/10|imageslim)
+![https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/develop-flow.png?imageView2/0/q/75|watermark/2/text/wqkgVElHRVJCLmNu/font/Y2FuZGFyYQ==/fontsize/320/fill/IzExMTAxMA==/dissolve/60/gravity/SouthEast/dx/10/dy/10|imageslim](https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/develop-flow.png?imageView2/0/q/75|watermark/2/text/wqkgVElHRVJCLmNu/font/Y2FuZGFyYQ==/fontsize/320/fill/IzExMTAxMA==/dissolve/60/gravity/SouthEast/dx/10/dy/10|imageslim)
 
 上图中，我们在开发过程中随着时间线的前移，我们犯错的概率尽可能的集中在前面。另外，图中蓝紫色的图标是在我目前的开发流程中没有或者体现的并不明显的地方。
 

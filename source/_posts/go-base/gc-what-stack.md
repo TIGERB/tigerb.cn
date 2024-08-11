@@ -3,7 +3,7 @@ title: 初识协程栈
 tags:
   - Go
 cover_index: >-
-  https://blog-1251019962.cos.ap-beijing.myqcloud.com/go-kernal%2F%E8%BF%9B%E7%A8%8B%E6%A0%88-%E6%80%BB%E7%BB%93.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+  https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal%2F%E8%BF%9B%E7%A8%8B%E6%A0%88-%E6%80%BB%E7%BB%93.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
 categories:
   - go-base
 date: 2023-8-27 19:27:11
@@ -27,7 +27,7 @@ date: 2023-8-27 19:27:11
 栈是一种先进后出(Frist In Last Out)的数据结构。第一个元素所在位置为栈底，最后一个元素所在位置为栈顶。栈顶添加一个元素的过程为压栈(入栈)，栈顶移出一个元素的过程为出栈(弹栈)。如下图所示：
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/go-kernal%2F%E6%A0%88(%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84).png" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal%2F%E6%A0%88(%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84).png" style="width:100%">
 </p>
 
 # 内存管理中栈的概念
@@ -42,13 +42,13 @@ date: 2023-8-27 19:27:11
 1. 栈内存分配逻辑：current - alloc
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220807234036.png" style="width:80%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220807234036.png" style="width:80%">
 </p>
 
 2. 栈内存释放逻辑：current + alloc
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220807234046.png" style="width:80%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220807234046.png" style="width:80%">
 </p>
 
 - 栈内存的分配过程：看起来像不像数据结构「栈」的压栈过程。
@@ -59,7 +59,7 @@ date: 2023-8-27 19:27:11
 栈空间是一个固定值，决定了栈内存最大可分配的内存范围，也就是决定了栈顶的上限。
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/go-kernal%2F%E6%A0%88(%E5%86%85%E5%AD%98-%E6%A0%88%E7%A9%BA%E9%97%B4).png" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal%2F%E6%A0%88(%E5%86%85%E5%AD%98-%E6%A0%88%E7%A9%BA%E9%97%B4).png" style="width:100%">
 </p>
 
 ## **栈内存的作用？**
@@ -88,7 +88,7 @@ date: 2023-8-27 19:27:11
 ```
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/go-kernal%2F%E8%BF%9B%E7%A8%8B%E6%A0%88.png" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal%2F%E8%BF%9B%E7%A8%8B%E6%A0%88.png" style="width:100%">
 </p>
 
 > 谁决定了栈空间(进程栈)的大小范围？
@@ -158,7 +158,7 @@ ADD 24, SP // 栈上释放24字节内存 3*8byte（释放栈内存指令）
 「进程栈」位于虚拟内存的用户空间，进程栈的栈底为用户空间部分高地址的开始位置。进程栈的栈空间大小为固定值，由操作系统的配置决定。进程运行过程中栈内存的分配和释放的时机和大小值由编译器决定。
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/go-kernal%2F%E8%BF%9B%E7%A8%8B%E6%A0%88-%E6%80%BB%E7%BB%93.png" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal%2F%E8%BF%9B%E7%A8%8B%E6%A0%88-%E6%80%BB%E7%BB%93.png" style="width:100%">
 </p>
 
 
@@ -195,7 +195,7 @@ int main() {
 ```
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/go-kernal%2F%E7%BA%BF%E7%A8%8B%E6%A0%88.png" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal%2F%E7%BA%BF%E7%A8%8B%E6%A0%88.png" style="width:100%">
 </p>
 
 > 谁决定了栈空间(线程栈)的大小范围？
@@ -219,7 +219,7 @@ int main() {
 ```
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/go-kernal%2F%E5%8D%8F%E7%A8%8B%E6%A0%88.png" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal%2F%E5%8D%8F%E7%A8%8B%E6%A0%88.png" style="width:100%">
 </p>
 
 > 谁决定了协程栈的栈空间的大小范围？

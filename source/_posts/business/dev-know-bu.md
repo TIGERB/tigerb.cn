@@ -3,7 +3,7 @@ title: 程序员需要具备经营意识吗？
 tags:
   - 经营管理
 cover_index: >-
-  https://blog-1251019962.cos.ap-beijing.myqcloud.com/management/%E8%AF%BB%E4%B8%80%E6%9C%AC%E5%A5%BD%E4%B9%A6%E8%A3%81%E5%87%8F%E5%9B%BE.png
+  https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/management/%E8%AF%BB%E4%B8%80%E6%9C%AC%E5%A5%BD%E4%B9%A6%E8%A3%81%E5%87%8F%E5%9B%BE.png
 categories:
   - business
 date: 2023-11-19 10:20:11
@@ -45,7 +45,7 @@ date: 2023-11-19 10:20:11
 > 详细的可以去查看历史总结《从新手到一线主管》。
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/management%2F%E5%9B%A2%E9%98%9F%E7%AE%A1%E7%90%86.png" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/management%2F%E5%9B%A2%E9%98%9F%E7%AE%A1%E7%90%86.png" style="width:100%">
 </p>
 
 通过以上的管理动作，团队通常都能正常运转起来：输入目标->目标对齐->项目/团队管理->目标达成。这里可能管理者绝大多数的工作其实还是执行，并没有参与目标的制定与输出。

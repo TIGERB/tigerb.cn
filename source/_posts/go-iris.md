@@ -2,7 +2,7 @@
 title: Go框架解析:iris
 date: 2019-06-29 19:46:53
 tags: golang
-cover_index: "http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20190627125846.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
+cover_index: "https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20190627125846.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim"
 ---
 
 ## 前言
@@ -40,9 +40,9 @@ func main() {
 
 ## iris的生命周期
 
-<img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20190704211456.png" style="width:100%">
+<img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20190704211456.png" style="width:100%">
 
-> 访问图片源地址查看大图 http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20190628234814.png
+> 访问图片源地址查看大图 https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20190628234814.png
 
 上图是我在读iris代码时，整理的iris框架的一个生命周期流程图，内容比较多。总的来说划分为四个大的部分：
 
@@ -294,7 +294,7 @@ serverHandler{c.server}.ServeHTTP(w, w.req)
 最后我们再简单的回顾下上面的流程：
 
 <p align="center">
-    <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20190629151818.png" style="width:30%">
+    <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20190629151818.png" style="width:30%">
 </p>
 
 ---

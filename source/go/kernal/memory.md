@@ -2,7 +2,7 @@
 ---
 
 <p>
-    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+    <img style="vertical-align:middle" width="20%" src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
 <p>
 
 ```
@@ -12,7 +12,7 @@
 今天我们开始拉开《Go语言轻松系列》第二章「内存与垃圾回收」的序幕。
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210109200839.png" style="width:36%;box-shadow: 3px 3px 3px 3px #ddd;">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20210109200839.png" style="width:36%;box-shadow: 3px 3px 3px 3px #ddd;">
 </p>
 
 关于「内存与垃圾回收」章节，目录如下：
@@ -73,5 +73,5 @@
 - Go语言垃圾回收原理(进行中)
 
 <p>
-    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+    <img style="vertical-align:middle" width="20%" src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
 <p>

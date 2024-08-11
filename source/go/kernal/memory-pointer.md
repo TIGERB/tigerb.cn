@@ -2,7 +2,7 @@
 ---
 
 <p>
-    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+    <img style="vertical-align:middle" width="20%" src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
 <p>
 
 第一部分`知识预备`的第一个知识点`指针的大小`。
@@ -21,7 +21,7 @@
 
 存储单元是存储器(本文指内存)的基本单位，每个存储单元是8bit，也就是1Byte，如下图所示：
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210121193201.png" style="width:70%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20210121193201.png" style="width:70%">
 </p>
 
 同时从上图中我们可以看出，每个存储单元会被编号，这个编号又是什么呢？
@@ -54,7 +54,7 @@ CPU总线由系统总线、等等其他总线组成。
 内存的地址(存储单元的编号)是通过**地址总线**传递的，地址总线里的“每一根线”传递二进制`0`或`1`，如下图所示(实际不是这么简单，图示为了便于大家理解)。
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210121194127.png" style="width:70%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20210121194127.png" style="width:70%">
 </p>
 
 地址总线的**宽度**决定了一次能传递多少个`0`或`1`，由于64位CPU每次可处理64位数据，所以理论上地址总线的宽度可以支持到最大64，也就是2^64种组合，可代表的数字范围为`0 ~ 2^64-1`。
@@ -92,5 +92,5 @@ CPU总线由系统总线、等等其他总线组成。
 - CPU地址总线的宽度决定了指针的值的最大范围
 
 <p>
-    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+    <img style="vertical-align:middle" width="20%" src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
 <p>

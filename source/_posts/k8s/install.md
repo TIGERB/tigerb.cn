@@ -3,7 +3,7 @@ title: 100元实践k8s搭建过程
 tags:
   - Go
 cover_index:
-  http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20221215090444.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+  https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20221215090444.jpg?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
 categories:
   - k8s
 date: 2022-12-03 21:00:11
@@ -30,7 +30,7 @@ kubectl kubelet kubeadm版本: 1.23.1
 ```备注：官方文档标记最低配置内存要求2G，但是安装完dashboard、ingress等服务之后比较卡顿，所以为了流畅这里推荐4G内存。```
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20221207092204.png" style="width:90%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20221207092204.png" style="width:90%">
 </p>
 
 ### 2.放开端口
@@ -38,7 +38,7 @@ kubectl kubelet kubeadm版本: 1.23.1
 外网放开`30000`端口，后续浏览器登陆k8s dashboard看板使用。并检查ssh服务端口22是否正常开启。
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20221207091445.png" style="width:90%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20221207091445.png" style="width:90%">
 </p>
 
 使用ssh登陆云主机，开始配置。
@@ -75,7 +75,7 @@ systemctl enable docker
 
 查看docker版本`docker version`：
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20221211200219.png" style="width:60%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20221211200219.png" style="width:60%">
 </p>
 
 ### 2.安装 kubectl kubelet kubeadm 
@@ -108,7 +108,7 @@ systemctl enable kubelet
 
 查看kubectl版本：
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20221211202333.png" style="width:90%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20221211202333.png" style="width:90%">
 </p>
 
 #### 2.3修改`cgroupdriver`
@@ -165,7 +165,7 @@ kubeadm init --kubernetes-version=1.23.1  \
 
 通常会卡在这一步，如果大家按照本文的版本，理论不会报错，如果报错需要逐个搜索解决了。
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20221211205050.png" style="width:60%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20221211205050.png" style="width:60%">
 </p>
 
 如果初始化失败，执行如下命令后再重新初始化：
@@ -195,7 +195,7 @@ kubectl get pod --all-namespaces
 ```
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20221211210014.png" style="width:90%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20221211210014.png" style="width:90%">
 </p>
 
 
@@ -212,7 +212,7 @@ kubectl get pod --all-namespaces
 ```
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20221211211436.png" style="width:90%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20221211211436.png" style="width:90%">
 </p>
 
 
@@ -229,7 +229,7 @@ wget https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-rc7/aio/deplo
 配置nodeport，外网访问dashboard：
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20221211212325.png" style="width:50%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20221211212325.png" style="width:50%">
 </p>
 
 #### 4.3 创建dashboard服务
@@ -245,7 +245,7 @@ kubectl get pod -n kubernetes-dashboard
 ```
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20221211212432.png" style="width:90%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20221211212432.png" style="width:90%">
 </p>
 
 #### 4.4 外网访问dashboard
@@ -253,13 +253,13 @@ kubectl get pod -n kubernetes-dashboard
 浏览器打开dashboard，地址：<你的外网IP:30000>
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20221208084417.png" style="width:90%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20221208084417.png" style="width:90%">
 </p>
 
 如上图所示，因为https的问题，浏览器会提示「您的连接不是私密连接」。推荐使用chrome浏览器，并在当前页面上任意位置点击，然后键盘输入「thisisunsafe」再点击回车健即可。
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20221208085817.png" style="width:90%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20221208085817.png" style="width:90%">
 </p>
 
 #### 4.5 获取token
@@ -309,13 +309,13 @@ kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get
 ```
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20221213093543.png" style="width:90%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20221213093543.png" style="width:90%">
 </p>
 
 #### 4.6 复制token登陆dashboard
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20221208091332.png" style="width:90%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20221208091332.png" style="width:90%">
 </p>
 
 到这里我们已经可以正常创建pod了，但是外网还不能直接访问到pod，虽然可以采用dashboard的`nodeport`的方案，但是`nodeport`只支持暴露30000-32767的端口，不适用于生产环境，接着我们就通过另一种方式`ingress`来对外暴露pod。
@@ -353,7 +353,7 @@ kubectl get pod --all-namespaces
 ```
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20221211213756.png" style="width:90%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20221211213756.png" style="width:90%">
 </p>
 
 创建完成之后，查看ingress状态，为`pending`状态，原因是缺少LB，这里我们使用`metallb` 。
@@ -366,7 +366,7 @@ kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.13.7/confi
 ```
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20221211214826.png" style="width:90%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20221211214826.png" style="width:90%">
 </p>
 
 创建secret：
@@ -387,7 +387,7 @@ kubectl get service ingress-nginx-controller --namespace=ingress-nginx
 ```
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20221211222959.png" style="width:80%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20221211222959.png" style="width:80%">
 </p>
 
 
@@ -400,19 +400,19 @@ externalIPs:
 ```
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20221211223105.png" style="width:50%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20221211223105.png" style="width:50%">
 </p>
 
 ```
 kubectl get service ingress-nginx-controller --namespace=ingress-nginx
 ```
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20221211223220.png" style="width:80%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20221211223220.png" style="width:80%">
 </p>
 
 查看启动状态`kubectl get pod --all-namespaces`：
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20221211220300.png" style="width:80%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20221211220300.png" style="width:80%">
 </p>
 
 metalab和`ingress-nginx`的状态还是`pending`，查看原因：
@@ -422,7 +422,7 @@ kubectl describe pod ingress-nginx-controller-6bfbdbdd64-jp7lw -n ingress-nginx
 ```
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20221211221006.png" style="width:80%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20221211221006.png" style="width:80%">
 </p>
 
 原因是现在只有`master`节点，还没有`node`节点，未了节省成本，这里我们允许master参与调度，把master节点也当node使用。
@@ -440,7 +440,7 @@ kubectl get pod --all-namespaces
 ```
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20221211221338.png" style="width:80%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20221211221338.png" style="width:80%">
 </p>
 
 pod均正常运行。到这里，一个基础的k8s服务基本安装完成。
@@ -470,13 +470,13 @@ kubectl create ingress demo --class=nginx  --rule="k8s.tigerb.cn/*=demo:80"
 查看ingress服务service的外网端口
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20221211224544.png" style="width:80%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20221211224544.png" style="width:80%">
 </p>
 
 `demo`pod启动成功后访问`http://k8s.tigerb.cn:32374/`测试服务即可。
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20221211224105.png" style="width:80%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20221211224105.png" style="width:80%">
 </p>
 
 到此为止，我们就成功部署了一个k8s服务，使用dashborad就可以很轻松完成服务部署、扩容、缩容等。

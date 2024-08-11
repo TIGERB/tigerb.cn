@@ -4,7 +4,7 @@ tags:
   - Go
   - 计算机原理
 cover_index: >-
-  http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220807232114.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+  https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220807232114.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
 categories:
   - go-base
 date: 2022-07-10 15:20:11
@@ -36,7 +36,7 @@ date: 2022-07-10 15:20:11
 图示如下，详细请移步历史文章[「回到本真，梦回计算机发展史」](https://mp.weixin.qq.com/s/hmy_ktuSBZvUqJtO5f_zZg)
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220807222555.png" style="width:50%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220807222555.png" style="width:50%">
 </p>
 
 到此为止，我们了解了计算机自动运算的简易实现逻辑，接着问题来了：
@@ -57,7 +57,7 @@ date: 2022-07-10 15:20:11
 代码包含了指令，代码被转化为可执行二进制文件，被执行后加载到内存中，中央处理器CPU通过内存获取指令，图示如下。详细请移步历史文章[「回到本真，代码到底是什么？」](https://mp.weixin.qq.com/s/rUwXUammEJ2vkmN7CFxW9w)
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220731175631.png" style="width:80%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220731175631.png" style="width:80%">
 </p>
 
 到此为止，程序员把中央处理器CPU需要执行的指令，通过执行二进制代码文件加载到了内存中，接着问题来了：
@@ -99,7 +99,7 @@ CPU执行指令简易过程分为三步：
 我们通过一个简易的时序图来看看CPU获取并执行指令的过程：
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220807232114.png" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220807232114.png" style="width:100%">
 </p>
 
 通过上图其实我们可能会有一个问题：
@@ -137,7 +137,7 @@ CPU除了控制单元、运算单元之外，还包含寄存器部分。寄存�
 栈内存分配逻辑：current - alloc
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220807234036.png" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220807234036.png" style="width:100%">
 </p>
 
 #### 栈内存的释放
@@ -145,7 +145,7 @@ CPU除了控制单元、运算单元之外，还包含寄存器部分。寄存�
 栈内存释放逻辑：current + alloc
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220807234046.png" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220807234046.png" style="width:100%">
 </p>
 
 这样指令执行过程中的中间变量是不是就可以使用栈内存进行高效存储。其次通过如下图示可以看出：
@@ -156,7 +156,7 @@ CPU除了控制单元、运算单元之外，还包含寄存器部分。寄存�
 所以同时你应该也理解了「为什么称之为栈内存？」。**栈内存是计算机对连续内存的采取的「线性分配」管理方式，便于高效存储指令运行过程中的临时变量。**
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220807235914.png" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220807235914.png" style="width:100%">
 </p>
 
 #### 函数作用域内指令数据依赖
@@ -199,7 +199,7 @@ func test(a, b int) (c int) {
 「堆内存」的问题函数执行完成之后不会被自动回收，所以通常通过「垃圾回收器」进行内存回收。关于「堆内存」这里就不多说了，后续继续开启关于Go语言「栈内存和堆内存的」详细篇章。
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220808002156.png" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220808002156.png" style="width:100%">
 </p>
 
 下篇文章我们就回归主线，来彻底看看Go语言的「栈内存/堆内存」实现。

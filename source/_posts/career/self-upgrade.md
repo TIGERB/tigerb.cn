@@ -3,7 +3,7 @@ title: 从新手到一线主管
 tags:
   - 经营管理
 cover_index: >-
-  https://blog-1251019962.cos.ap-beijing.myqcloud.com/management/%E8%AF%BB%E4%B8%80%E6%9C%AC%E5%A5%BD%E4%B9%A6%E8%A3%81%E5%87%8F%E5%9B%BE.png
+  https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/management/%E8%AF%BB%E4%B8%80%E6%9C%AC%E5%A5%BD%E4%B9%A6%E8%A3%81%E5%87%8F%E5%9B%BE.png
 categories:
   - career
 date: 2023-11-05 11:05:00

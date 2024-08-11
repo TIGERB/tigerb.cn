@@ -3,7 +3,7 @@ title: 9张图轻松吃透Go内存管理单元
 tags:
   - Go
 cover_index: >-
-  http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220405235059.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
+  https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220405235059.png?imageMogr2/thumbnail/640x480!/format/webp/blur/1x0/quality/75|imageslim
 categories:
   - go-base
 date: 2022-04-23 23:32:10
@@ -36,7 +36,7 @@ date: 2022-04-23 23:32:10
 操作系统是按`page`管理内存的，同样Go语言也是也是按`page`管理内存的，1page为8KB，保证了和操作系统一致，如下图所示：
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210120131944.png" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20210120131944.png" style="width:100%">
 </p>
 
 Go内存管理单元`mspan`通常由**N个**且**连续**的`page`组成，如下图所示：
@@ -45,7 +45,7 @@ Go内存管理单元`mspan`通常由**N个**且**连续**的`page`组成，如�
 ---
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220405235014.png" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220405235014.png" style="width:100%">
 </p>
 
 - `mspan`可以由1个`page`组成
@@ -61,7 +61,7 @@ Go内存管理单元`mspan`通常由**N个**且**连续**的`page`组成，如�
 ---
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220405235024.png" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220405235024.png" style="width:100%">
 </p>
 
 这里需要注意的是：**只有`npages`的值相同的`mspan`互相才可以组成一个链表**。如上图所示，具体原因下文会讲。
@@ -71,7 +71,7 @@ Go内存管理单元`mspan`通常由**N个**且**连续**的`page`组成，如�
 答案：当然不是，如果这样的话会导致内存使用率不高。Go语言内存管理器会把`mspan`再拆解为更小粒度的单位`object`。如下图所示：
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220423214224.png" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220423214224.png" style="width:100%">
 </p>
 
 `object`和`object`之间构成一个链表，大家这里肯定会想到是`LinkedList`，实际上并不是，因为`LinkedList`节点自身的指针也会占用8B内存，作为内存管理器，这部分内存会被白白浪费掉，所以这里通常使用的数据结构是`FreeList`。
@@ -88,7 +88,7 @@ Go内存管理单元`mspan`通常由**N个**且**连续**的`page`组成，如�
 如下图所示：
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20210124224723.png" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20210124224723.png" style="width:100%">
 </p>
 
 > 所以：`FreeList`一个节点最小为8字节Byte
@@ -100,7 +100,7 @@ Go内存管理单元`mspan`通常由**N个**且**连续**的`page`组成，如�
 得到Go内存管理单元`mspan`被拆解为`object`图示如下：
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220423215017.png" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220423215017.png" style="width:100%">
 </p>
 
 > 到这里问题又来了，`object`的具体大小是多大呢，是怎么决定的？
@@ -154,7 +154,7 @@ tail waste: 该`mspan`拆分为object之后，mspan剩余末尾浪费的内存
 所以`mspan`结构体上只要维护一个`sizeclass`的字段，就可以知道该`mspan`中`object`的大小、数量。但是呢，实际上这个字段并不是`sizeclass`，而是`spanclass`，如下图所示：
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220423211420.png" style="width:30%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220423211420.png" style="width:30%">
 </p>
 
 那么，问题又来了😂。
@@ -177,7 +177,7 @@ tail waste: 该`mspan`拆分为object之后，mspan剩余末尾浪费的内存
 图示如下：
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220423213157.png" style="width:80%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220423213157.png" style="width:80%">
 </p>
 
 #  总结
@@ -200,7 +200,7 @@ tail waste: 该`mspan`拆分为object之后，mspan剩余末尾浪费的内存
 具体图示如下：
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220405235059.png" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220405235059.png" style="width:100%">
 </p>
 
 ##  **`mspan`关键字段总结**
@@ -209,7 +209,7 @@ tail waste: 该`mspan`拆分为object之后，mspan剩余末尾浪费的内存
 挑选`mspan`的几个重要字段，如下图：
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220405234945.png" style="width:30%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220405234945.png" style="width:30%">
 </p>
 
 字段名|解释

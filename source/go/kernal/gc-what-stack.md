@@ -1,14 +1,14 @@
 # 栈内存
 
 <p>
-    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+    <img style="vertical-align:middle" width="20%" src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
 <p>
 
 
 ## 什么是栈内存？
 
 <p>
-    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+    <img style="vertical-align:middle" width="20%" src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
 <p>
 
 
@@ -17,13 +17,13 @@
 1. 栈内存分配逻辑：current - alloc
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220807234036.png" style="width:80%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220807234036.png" style="width:80%">
 </p>
 
 2. 栈内存释放逻辑：current + alloc
 
 <p align="center">
-  <img src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/20220807234046.png" style="width:80%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/20220807234046.png" style="width:80%">
 </p>
 
 - 栈内存的分配过程：看起来像不像数据结构「栈」的压栈过程。
@@ -32,14 +32,14 @@
 ## 什么是栈空间？
 
 <p>
-    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+    <img style="vertical-align:middle" width="20%" src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
 <p>
 
 
 栈空间是一个固定值，决定了栈内存最大可分配的内存范围，也就是决定了栈顶的上限。
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/go-kernal%2F%E6%A0%88(%E5%86%85%E5%AD%98-%E6%A0%88%E7%A9%BA%E9%97%B4).png" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal%2F%E6%A0%88(%E5%86%85%E5%AD%98-%E6%A0%88%E7%A9%BA%E9%97%B4).png" style="width:100%">
 </p>
 
 ## 栈内存的作用？
@@ -62,7 +62,7 @@
 # 进程栈
 
 <p>
-    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+    <img style="vertical-align:middle" width="20%" src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
 <p>
 
 
@@ -73,7 +73,7 @@
 ```
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/go-kernal%2F%E8%BF%9B%E7%A8%8B%E6%A0%88.png" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal%2F%E8%BF%9B%E7%A8%8B%E6%A0%88.png" style="width:100%">
 </p>
 
 > 谁决定了栈空间(进程栈)的大小范围？
@@ -143,14 +143,14 @@ ADD 24, SP // 栈上释放24字节内存 3*8byte（释放栈内存指令）
 「进程栈」位于虚拟内存的用户空间，进程栈的栈底为用户空间部分高地址的开始位置。进程栈的栈空间大小为固定值，由操作系统的配置决定。进程运行过程中栈内存的分配和释放的时机和大小值由编译器决定。
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/go-kernal%2F%E8%BF%9B%E7%A8%8B%E6%A0%88-%E6%80%BB%E7%BB%93.png" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal%2F%E8%BF%9B%E7%A8%8B%E6%A0%88-%E6%80%BB%E7%BB%93.png" style="width:100%">
 </p>
 
 
 # 线程栈
 
 <p>
-    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+    <img style="vertical-align:middle" width="20%" src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
 <p>
 
 
@@ -185,7 +185,7 @@ int main() {
 ```
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/go-kernal%2F%E7%BA%BF%E7%A8%8B%E6%A0%88.png" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal%2F%E7%BA%BF%E7%A8%8B%E6%A0%88.png" style="width:100%">
 </p>
 
 > 谁决定了栈空间(线程栈)的大小范围？
@@ -203,7 +203,7 @@ int main() {
 # 协程栈
 
 <p>
-    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+    <img style="vertical-align:middle" width="20%" src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
 <p>
 
 
@@ -214,7 +214,7 @@ int main() {
 ```
 
 <p align="center">
-  <img src="https://blog-1251019962.cos.ap-beijing.myqcloud.com/go-kernal%2F%E5%8D%8F%E7%A8%8B%E6%A0%88.png" style="width:100%">
+  <img src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/go-kernal%2F%E5%8D%8F%E7%A8%8B%E6%A0%88.png" style="width:100%">
 </p>
 
 > 谁决定了协程栈的栈空间的大小范围？
@@ -296,5 +296,5 @@ func malg(stacksize int32) *g {
 协程栈|使用`go`关键字运行函数时|Go运行时，`malg(栈内存)`g0 8KB、g 2KB|虚拟内存的用户空间进程堆区域|编译器，汇编`SUB`、`ADD`指令
 
 <p>
-    <img style="vertical-align:middle" width="20%" src="http://blog-1251019962.cos.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
+    <img style="vertical-align:middle" width="20%" src="https://blog-1251019962.cos-website.ap-beijing.myqcloud.com/qiniu_img_2022/wechat-blog-qrcode.jpg?imageMogr2/thumbnail/260x260!/format/webp/blur/1x0/quality/90|imageslim">
 <p>
